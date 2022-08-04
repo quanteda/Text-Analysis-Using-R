@@ -1,0 +1,45 @@
+# R Basics {#rbasics}
+
+## Objectives
+
+To provide a targeted introduction to R, for those needing an introduction or a review.
+
+We will cover:
+
+-   core object types (atomic, vectors, lists, complex)
+-   detailed survey of characters and "strings"
+-   detailed coverage of list types
+-   detailed coverage of matrix types
+-   introduction to the data.frame
+-   output data in the form of a data.frame
+-   output data in the form of a plot (ggplot2 object)
+
+The objective is to introduce how these core object types behave, and use them to store basic quantities required in text analysis.
+
+## Methods
+
+The methods are primarily about how to use R, including:
+
+We will build up the basic objects needed for understand the core structures needed in R to hold texts (character), meta-data (data.frame), tokens (lists), dictionaries (lists), and document-feature matrices (matrices).
+
+## Examples
+
+Examples working through the construction of each text object container using the types above.
+
+## Issues
+
+Could have used "tidy" approaches.
+
+Sparsity.
+
+Indexing.
+
+Wouldn't it be nice if we could nest some objects inside others?
+
+## Further Reading
+
+Some resources on R.
+
+## Exercises
+
+Add some here.

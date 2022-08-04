@@ -1,0 +1,34 @@
+# Text analysis in "Hard" Languages {#further-hardlangs}
+
+## Objectives
+
+- Non-English characters, and encoding issues
+- Segmentation in languages that do not use whitespace delimiters between words
+- Right-to-left languages
+- Emoji
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Chinese, Japanese, Korean.
+
+Hindi, Georgian.
+
+Arabic and other RTL languages.
+
+## Issues
+
+Stemming, syllables, character counts may be off.
+
+Font issues.
+
+## Further Reading
+
+Further reading here.
+
+## Exercises
+
+Add some here.

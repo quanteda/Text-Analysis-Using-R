@@ -1,0 +1,40 @@
+# R Workflow {#rworkflow}
+
+## Objectives
+
+How R works:
+- passing by value, compared to other languages
+- using "pipes"
+- object orientation: object classes and methods (functions)
+
+Workflow issues:
+- clear code
+- reproducible workflow
+- R markdown and R notebooks
+
+Using packages
+
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Objects that work on character and lists.
+
+Things that work for data.frames.  Non-standard evaluation for named columns in a data.frame.
+
+ggplot2
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Advanced reading on R.  Packages.
+
+## Exercises
+
+Add some here.

@@ -1,0 +1,16 @@
+Type: Book
+Package: TAUR
+Title: Text Analysis Using R
+Version: 0.1.0
+Depends: 
+  R (>= 4.1.0)
+Imports: 
+  quanteda,
+  tibble,
+  readtext,
+  quanteda.textstats,
+  quanteda.textplots,
+  quanteda.textmodels,
+  stopwords,
+  tidyverse
+Encoding: UTF-8

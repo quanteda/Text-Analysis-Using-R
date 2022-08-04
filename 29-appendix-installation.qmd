@@ -1,0 +1,103 @@
+# Installing the Required Tools {#appendix-installing}
+
+## Objectives
+
+-   Installing R
+-   Installing RStudio
+-   Installing **quanteda**
+-   Installing **spacy**
+-   Installing companion package(s)
+-   Keeping up to date
+-   Troubleshooting problems
+
+## Installing R
+
+R is a free software environment for statistical computing that runs on numerous platforms, including Windows, macOS, Linux, and Solaris. You can find details at https://www.r-project.org/, and link there to a set of mirror websites for downloading the latest version.
+
+For this book, we have used R 3.5.3, which we recommend you use also. There are seldom reasons to use older versions of R, and the R Core Team and the maintainers of the largest repository of R packages, CRAN (for Comprehensive R Archive Network) put an enormous amount of attention and energy into assuring that extension packages work with stably and with one another.
+
+You verify which version of R you are using by either viewing the messages on startup, e.g.
+
+    R version 3.5.3 (2019-03-11) -- "Great Truth"
+    Copyright (C) 2019 The R Foundation for Statistical Computing
+    Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+    R is free software and comes with ABSOLUTELY NO WARRANTY.
+    You are welcome to redistribute it under certain conditions.
+    Type 'license()' or 'licence()' for distribution details.
+
+      Natural language support but running in an English locale
+
+    R is a collaborative project with many contributors.
+    Type 'contributors()' for more information and
+    'citation()' on how to cite R or R packages in publications.
+
+    Type 'demo()' for some demos, 'help()' for on-line help, or
+    'help.start()' for an HTML browser interface to help.
+    Type 'q()' to quit R.
+    >
+
+or by calling
+
+```{r}
+R.Version()$version.string
+```
+
+## Installing recommended tools and packages
+
+### RStudio
+
+There are numerous ways of running R, including from the "command line" ("Terminal" on Mac or Linux, or "Command Prompt" on Windows) or from the R Gui console that comes with most installations of R. But our very strong recommendation is to us the outstanding [RStudio Dekstop](https://www.rstudio.com/products/rstudio/). "IDE" stands for *integrated development environment*, and provides a combination of file manager, package manager, help viewer, graphics viewer, environment browser, editor, and much more. Before this can be used, however, you must have installed R.
+
+RStudio can be installed from https://www.rstudio.com/products/rstudio/download/.
+
+### Additional packages
+
+The main package you will need for the examples in this book is **quanteda**, which provides a framework for the quantitative analysis of textual data. When you install this package, by default it will also install any required packages that **quanteda** depends on to function (such as **stringi** that it uses for many essential string handling operations). Because "dependencies" are installed into your local library, these additional packages are also available for you to use independently. You only need to install them once (although they might need updating, see below).
+
+We also suggest you install:
+
+-   **readtext** - for reading in documents that contain text, and converting them automatically to plain text;
+
+-   **spacyr** - an R wrapper to the Python package [spaCy](https://spacy.io) for natural language processing, including part-of-speech tagging and entity extraction. While we have tried hard to make this automatic, installing and configuring **spacyr** actually involves some major work under the hood, such as installing a version of Python in a self-contained virtual environment and then installing spaCy and one of its language models.
+
+### Keeping packages up-to-date
+
+R has an easy method for ensuring you have the latest versions of installed packages:
+
+```{r, eval = FALSE}
+update.packages()
+```
+
+## Additional Issues
+
+### Installing development versions of packages
+
+The R packages that you can install using the methods described above are the pre-compiled binary versions that are distributed on CRAN. (Linux installations are the exception, as these are always compiled upon installation.) Sometimes, package developers will publish "development" versions of their packages that have yet to published on CRAN, for instance on the popular [GitHub](https://github.com) platform hosting the world's largest collection of open-source software.
+
+The **quanteda** package, for instance, is hosted on GitHub at https://github.com/quanteda/quanteda, where its development version tends to be slightly ahead of the CRAN version. If you are feeling adventurous, or need a new version in which a specific issue or bug has been fixed, you can install it from the GitHub source using:
+
+```{r, eval = FALSE}
+devtools::install_github("quanteda/quanteda") 
+```
+
+Because installing from GitHub is the same as installing from the source code, this also involves compiling the C++ and Fortran source code that makes parts of **quanteda** so fast. For this source installation to work, you will need to have installed the appropriate compilers.
+
+If you are using a Windows platform, this means you will need also to install the [Rtools](https://CRAN.R-project.org/bin/windows/Rtools/) software available from CRAN.
+
+If you are using macOS, you should install the [macOS tools](https://cran.r-project.org/bin/macosx/tools/), namely the Clang 6.x compiler and the GNU Fortran compiler (as **quanteda** requires gfortran to build).[^29-appendix-installation-1]\
+Linux always compiles packages containing C++ code upon installation, so if you are using that platform then you are unlikely to need to install any additional components in order to install a development version.
+
+[^29-appendix-installation-1]: If you are still getting errors related to gfortran, follow the fixes [here](https://thecoatlessprofessor.com/programming/rcpp-rcpparmadillo-and-os-x-mavericks--lgfortran-and--lquadmath-error/).
+
+### Troubleshooting
+
+Most problems come from not having the latest versions of packages installed, so make sure you have updated them using the instructions above.
+
+Other problems include: - Lack of permissions to install packages. This might affect Windows users of work laptops, whose workplace prevents user modification of any software. - Lack of internet access, or access being restricted by a firewall or proxy server.
+
+## Further Reading
+
+Hadley Wickham's excellent book [R Packages](http://r-pkgs.had.co.nz/) is well worth reading.
+
+-   Wickham, Hadley. (2015). *R packages: organize, test, document, and share your code.* O'Reilly Media, Inc..

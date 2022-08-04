@@ -1,0 +1,37 @@
+# Everything You Never Wanted to Know about Encoding {#appendix-encoding}
+
+(and were afraid to ask)
+
+## Objectives
+
+- The concept of encoding
+- Classic 8-bit encodings
+- How to detect encodings
+- Converting files
+- Converting text once loaded
+- Encoding "bit" versus actual text encoding
+- When you are likely to encounter problems (with what sorts of files) 
+- Unicode encodings (UTF-8, UTF-16)
+- How to avoid encoding headaches forever
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples here.
+
+## Issues
+
+UTF-16 in some operating systems (Windows).
+
+Editors that are "encoding smart".
+
+## Further Reading
+
+Further reading here.
+
+## Exercises
+
+Add some here.

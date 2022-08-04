@@ -1,0 +1,36 @@
+# Advanced NLP using R {#further-nlp}
+
+## Objectives
+
+-   What is "NLP" and how does it differ from what we have covered so far?
+-   Part of speech tagging
+-   Different schemes for part of speech tagging
+-   Differentiating homographs based on POS
+-   POS tagging in other languages
+-   Named Entity Recognition
+-   Noun phrase extraction
+-   Dependency parsing to extract syntactic relations
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples of each of the above methods.
+
+## Issues
+
+Alternative NLP tools. (Here we focus on **spacyr**.)
+
+Other languages.
+
+Training new models.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

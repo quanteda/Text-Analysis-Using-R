@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Text Analysis Using R - Preface</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./01-intro.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Preface</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Text Analysis Using R</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">About the Authors</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface.html" class="sidebar-item-text sidebar-link active">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction and Motivation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-r-basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-r-workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Workflow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-r-strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Working with Text in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Acquiring Texts</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-acquiring-files.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-acquiring-packages.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using Text Import Tools</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-acquiring-internet.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Obtaining Texts from the Internet</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Managing Textual Data Using quanteda</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-quanteda-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introducing the <strong>quanteda</strong> Package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-quanteda-corpus.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating and Managing Corpora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-quanteda-tokens.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing tokens</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-quanteda-tokensadvanced.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Token Manipulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-quanteda-dictionaries.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating and Managing Dictionaries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-quanteda-dfms.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Exploring and Describing Texts</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-exploring-description.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describing Texts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-exploring-kwic.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Keywords-in-Context</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-exploring-dictionaries.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Applying Dictionaries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-exploring-frequencies.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Most Frequent Words</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Statistics for Comparing Texts</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-comparing-sophistication.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Profiling Lexical Patterns and Usage</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-comparing-documents.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Document Similarity and Distance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-comparing-features.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Feature Similarity and Distance</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">Machine Learning for Texts</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-ml-supervised-scaling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Supervised Document Scaling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-ml-unsupervised-scaling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Unsupervised Document Scaling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-ml-classifiers.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Methods for Text Classification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-ml-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Word embedding models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-ml-topicmodels.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Topic modelling</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">Further Methods for Texts</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-further-advanced-nlp.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./27-further-tidy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Integrating “tidy” approaches</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-further-hardlanguages.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Text analysis in “Hard” Languages</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./29-appendix-installation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing the Required Tools</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./30-appendix-encoding.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Everything You Never Wanted to Know about Encoding</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./31-appendix-regex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">A Survival Guide to Regular Expressions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-r-and-another-book-on-text-mining-in-r" id="toc-why-r-and-another-book-on-text-mining-in-r" class="nav-link active" data-scroll-target="#why-r-and-another-book-on-text-mining-in-r">Why R (and another book on text mining in R)?</a></li>
+  <li><a href="#what-to-expect-from-this-book" id="toc-what-to-expect-from-this-book" class="nav-link" data-scroll-target="#what-to-expect-from-this-book">What to Expect from This Book</a></li>
+  <li><a href="#who-this-book-is-for" id="toc-who-this-book-is-for" class="nav-link" data-scroll-target="#who-this-book-is-for">Who This Book Is For</a></li>
+  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a>
+  <ul class="collapse">
+  <li><a href="#chapters-outline" id="toc-chapters-outline" class="nav-link" data-scroll-target="#chapters-outline">Chapters Outline</a></li>
+  </ul></li>
+  <li><a href="#outline" id="toc-outline" class="nav-link" data-scroll-target="#outline">Outline</a>
+  <ul class="collapse">
+  <li><a href="#chapter-structure" id="toc-chapter-structure" class="nav-link" data-scroll-target="#chapter-structure">Chapter Structure</a></li>
+  <li><a href="#data-used-in-examples" id="toc-data-used-in-examples" class="nav-link" data-scroll-target="#data-used-in-examples">Data used in examples</a></li>
+  <li><a href="#how-to-contact-us" id="toc-how-to-contact-us" class="nav-link" data-scroll-target="#how-to-contact-us">How to Contact Us</a></li>
+  </ul></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#colophon" id="toc-colophon" class="nav-link" data-scroll-target="#colophon">Colophon</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Preface</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>The uses and means for analysing text, especially using quantitative and computational approaches, have exploded in recent years across the fields of academic, industry, policy, and other forms of research and analysis. Text mining and text analysis have become the focus of a major methodological wave of innovation in the fields of political science in particular, but also extending to finance, media and communications, and sociology.</p>
+<p>Text analysis is a broad label for a wide range of tools applied to <em>textual</em> data, a form of structured data that is created from typically unstructured raw data in the form of natural language documents. It includes descriptive analysis, keyword analysis, topic analysis, measurement and scaling, clustering, text and vocabulary comparisons, or sentiment analysis. It may include causal analysis or predictive modelling. In its most advanced current forms, it extends to the natural language generation models that power the newest generation of artificial intelligence systems.</p>
+<p>This book provides a practical guide introducing the fundamentals of text analysis methods and how to implement them using the R programming language. It covers a wide range of topics to provide a useful resource for a range of students from complete beginners to experienced users of R wanting to learn more advanced techniques.</p>
+<section id="why-r-and-another-book-on-text-mining-in-r" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="why-r-and-another-book-on-text-mining-in-r">Why R (and another book on text mining in R)?</h2>
+<p>This book is intended for a specific audience: those wishing to apply the methods of quantitative analysis and natural language processing text using the R language. Excellent alternatives exist, especially those in Python. So why use R for such a task?</p>
+<p>Text mining tools for R have existed for many years, led by the venerable package <span class="citation" data-cites="tmpackage">(<a href="references.html#ref-tmpackage" role="doc-biblioref">Feinerer, Hornik, and Meyer 2008</a>)</span>. In 2015, the first version of was published on CRAN. Since then, the package has undergone three major versions, with each release improving its consistency, power, and usability. Starting with version 2, split into a series of packages designed around its different functions (such as plotting, statistics, or machine learning), with retaining the core text processing functions. Other popular alternatives exist, such as , although as we explain in [further-tidy], works perfectly well with tidyverse and other tidytext-like approaches.</p>
+<p>Why another book about text analysis using R?</p>
+<p>Why use R for this? When perfectly adequate packages exist for Python?</p>
+<p>(This might belong in the Introduction instead.)</p>
+<p>And why <strong>quanteda</strong>?</p>
+</section>
+<section id="what-to-expect-from-this-book" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="what-to-expect-from-this-book">What to Expect from This Book</h2>
+<p>This book is meant to be as a practical resource for those confronting the practical challenges of text analysis for the first time, focusing on how to do this in R. Our main focus is on the <strong>quanteda</strong> package <span class="citation" data-cites="quantedaJOSS">(<a href="references.html#ref-quantedaJOSS" role="doc-biblioref">Benoit et al. 2018</a>)</span> and its extensions, although we also cover more general issues including a brief overview of the R functions required to get started quickly with practical text analysis We cover an introduction to the R language, for</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Many text analysis packages exist for the R programming language, but here our focus is on the <strong>quanteda</strong> package and its extensions. “quanteda” is a portmanteau name indicating the purpose of the package, which is the quantitative analysis of textual data.</p>
+</div>
+</div>
+<p><span class="citation" data-cites="benoit2020text">Benoit (<a href="references.html#ref-benoit2020text" role="doc-biblioref">2020</a>)</span> provides a detailed overview of the analysis of textual data, and what distinguishes textual data from other forms of data. It also clearly articulates what is meant by treating text “as data” for analysis. This book and the approaches it presents are firmly geared toward this mindset. All of three of the authors are academics, although we also have experience working in industry or in applying text analysis for non-academic purposes. The typical reader may be a student of text analysis in the literal sense (of being an student) or in the general sense of someone studying techniques in order to improve their practical and conceptual knowledge.</p>
+<p>Each chapter is structured so to provide a continuity across each topic. For each main subject explained in a chapter, we clearly explain the objective of the chapter, then describe the text analytic methods in an applied fashion so that readers are aware of the workings of the method. We then provide practical examples, with detailed working code in R as to how to implement the method. Next, we identify any special issues involved in correctly applying the method, including how to hand the more complicated situations that may arise in practice. Finally, we provide further reading for readers wishing to learn more, and exercises for those wishing for hands-on practice, or for assigning these when using them in teaching environment. Our goal is to make the book is suitable for self-learning or to form the basis for teaching and learning in a course on applied text analysis.</p>
+</section>
+<section id="who-this-book-is-for" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="who-this-book-is-for">Who This Book Is For</h2>
+<p>Prerequisites. We don’t assume any previous knowledge of text mining and very little knowledge of R, although it will help to start with some. Resources for complete beginners that we recommend include: …</p>
+<p>Our orientation as social scientists, with a specialization in political text and political communications and media. But this book is for everyone: social scientists, computer scientists, scholars of digital humanities, researchers in marketing and management, and applied researchers working in policy, government, or business fields.</p>
+<p>How to use the book depending on where the reader fits within the continuum of R experience and prior experience with text analysis.</p>
+</section>
+<section id="how-to-use-this-book" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h2>
+<section id="chapters-outline" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="chapters-outline">Chapters Outline</h3>
+</section>
+</section>
+<section id="outline" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="outline">Outline</h2>
+<p>The book is divided into seven sections. These group topics that we feel represent common stages of learning in text analysis, or similar groups of topics that different users will be drawn too. By grouping stages of learning, we make it possible also for intermediate or advanced users to jump to the section that interests them most, or to the sections where they feel they need additional learning.</p>
+<p>Our sections are:</p>
+<ul>
+<li><p><strong>(Working in R):</strong> This section is designed for beginners to learn quickly the R required for the techniques we cover in the book, and to guide them in learning a proper R workflow for text analysis.</p></li>
+<li><p><strong>Acquiring texts:</strong> Often described (by us at least) as the hardest problem in text analysis, we cover how to source documents, including from Internet sources, and to import these into R as part of the quantitative text analysis pipeline.</p></li>
+<li><p><strong>Managing textual data using quanteda:</strong> In this section, we introduce the <strong>quanteda</strong> package, and cover each stage of textual data processing, from creating structured corpora, to tokenisation, and building matrix representations of these tokens. WE also talk about how to build and manage structured lexical resources such as dictionaries and stop word lists.</p></li>
+<li><p><strong>Exploring and describing texts:</strong> How to get overviews of texts using summary statistics, exploring texts using keywords-in-context, extracting target words, and identifying key words.</p></li>
+<li><p><strong>Statistics for comparing texts:</strong> How to characterise documents in terms of their lexical diversity. readability, similarity, or distance.</p></li>
+<li><p><strong>Machine learning for texts:</strong> How to apply scaling models, predictive models, and classification models to textual matrices.</p></li>
+<li><p><strong>Further methods for texts:</strong> Advanced methods including the use of natural language models to annotate texts, extract entities, or use word embeddings; integrating <strong>quanteda</strong> with “tidy” data approaches; and how to apply text analysis to “hard” languages such as Chinese (hard because of the high dimensional character set and the lack of whitespace to delimit words).</p></li>
+</ul>
+<p>Finally, in several <strong>appendices</strong>, we provide more detail about some tricky subjects, such as text encoding formats and working with regular expressions.</p>
+<section id="chapter-structure" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="chapter-structure">Chapter Structure</h3>
+<p>Our approach in each chapter is split into the following components, which we apply in every chapter:</p>
+<ul>
+<li><p>Objectives. We explain the purpose of each chapter and what we believe are the most important learning outcomes.</p></li>
+<li><p>Methods. We clearly explain the methodological elements of each chapter, through a combination of high-level explanations, formulas, and references.</p></li>
+<li><p>Examples. We use practical examples, with R code, demonstrating how to apply the methods to realise the objectives.</p></li>
+<li><p>Issues. We identify any special issues, potential problems, or additional approaches that a user might face when applying the methods to their text analysis problem.</p></li>
+<li><p>Further Reading. In part because our scholarly backgrounds compel us to do so, and in part because we know that many readers will want to read more about each method, each chapter contains its own set of references and further readings.</p></li>
+<li><p>Exercises. For those wishing additional practice or to use this text as a teaching resource (which we strongly encourage!), we provide exercises that can be assigned for each chapter.</p></li>
+</ul>
+<p>Throughout the book, we will demonstrate with examples and build models using a selection of text data sets. A description of these data sets can be found in Appendix @ref(appendixdata).</p>
+<p>We use three kinds of info boxes throughout the book to invite attention to notes and other ideas.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The first type of boxes provides notes, information on best practices, and links to further information.</p>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some boxes call out warnings or possible problems to watch out for.</p>
+</div>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Boxes marked with hexagons highlight information about specific R packages and how they are used. We use <strong>bold</strong> for the names of R packages.</p>
+</div>
+</div>
+</section>
+<section id="data-used-in-examples" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="data-used-in-examples">Data used in examples</h3>
+<p>All examples and code are bundled as a companion R package to the book, available from our <a href="https://github.com/quanteda/Text-Analysis-Using-R/">public GitHub repository</a>.</p>
+<p>We largely rely on data from three sources:</p>
+<ul>
+<li>the built-in-objects from the <strong>quanteda</strong> package, such as the US Presidential Inaugural speech corpus;<br>
+</li>
+<li>additional <strong>quanteda</strong> corpora from the <strong>quanteda.corpora</strong> package; and<br>
+</li>
+<li>added corpora from the book’s companion package.</li>
+</ul>
+<p>Although not commonly used, our scheme for naming data follows a very consistent scheme. The data objects being with <code>data</code>, have the object class as the second part of the name, such as <code>corpus</code>, and the third and final part of the data object name contains a description. The three elements are separated by the underscore (<code>_</code>) character. This means that any object is known by its name to be data, so that it shows up in the index of package objects (from the all-important help page, e.g.&nbsp;from <code>help(package = "quanteda")</code>) in one location, under “d”. It also means that its object class is known from the name, without further inspection. So <code>data_dfm_lbgexample</code> is a dfm, while <code>data_corpus_inaugural</code> is clearly a corpus. We use this scheme and others like with an almost religious fervour, because we think that learning the functionality of a programming framework for NLP and quantitative text analysis is complicated enough without having also to decipher or remember a mishmash of haphazard and inconsistently named functions and objects. The more you use our software packages and specifically <strong>quanteda</strong>, the more you will come to appreciate the attention we have paid to implementing a consistent naming scheme for objects, functions, and their arguments as well as to their consistent functionality.</p>
+</section>
+<section id="how-to-contact-us" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="how-to-contact-us">How to Contact Us</h3>
+<p>Please address comments and questions concerning this book by filing an issue on our GitHub page, <a href="https://github.com/quanteda/Text-Analysis-Using-R/issues/" class="uri">https://github.com/quanteda/Text-Analysis-Using-R/issues/</a>.</p>
+<p>At this repository, you will also find instructions for installing the companion R package, <strong>TAURbook</strong>.</p>
+<p>For more information about the authors or the Quanteda Initiative, visit our <a href="https://quanteda.org">website</a>.</p>
+</section>
+</section>
+<section id="acknowledgements" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>We are so thankful for everything. Especially the ERC. Gush, gush.</p>
+</section>
+<section id="colophon" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="colophon">Colophon</h2>
+<p>This book was written in <a href="https://www.rstudio.com/ide/">RStudio</a> using <a href="https://quarto.org"><strong>Quarto</strong></a>. The <a href="https://quanteda.github.io/Text-Analysis-Using-R/">website</a> is hosted via <a href="https://pages.github.com">GitHub Pages</a>, and the complete source is available on <a href="https://github.com/quanteda/Text-Analysis-Using-R">GitHub</a>.</p>
+<p>This version of the book was built with R version 4.2.1 (2022-06-23) and the following packages:</p>
+<div class="cell-output-display">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Package</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">quanteda</td>
+<td style="text-align: left;">3.2.1</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">quanteda.textmodels</td>
+<td style="text-align: left;">0.9.4</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">quanteda.textplots</td>
+<td style="text-align: left;">0.94.1</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">quanteda.textstats</td>
+<td style="text-align: left;">0.95</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">readtext</td>
+<td style="text-align: left;">0.81</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stopwords</td>
+<td style="text-align: left;">2.3</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tibble</td>
+<td style="text-align: left;">3.1.7</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tidyverse</td>
+<td style="text-align: left;">1.3.1</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-benoit2020text" class="csl-entry" role="doc-biblioentry">
+Benoit, Kenneth. 2020. <span>“Text as Data: An Overview.”</span> In <em>Handbook of Research Methods in Political Science and International Relations</em>, edited by Luigi Curini and Robert Franzese, 461–97. Thousand Oaks: Sage.
+</div>
+<div id="ref-quantedaJOSS" class="csl-entry" role="doc-biblioentry">
+Benoit, Kenneth, Kohei Watanabe, Haiyan Wang, Paul Nulty, Adam Obeng, Stefan Müller, and Akitaka Matsuo. 2018. <span>“Quanteda: An <span>R</span> Package for the Quantitative Analysis of Textual Data.”</span> <em>Journal of Open Source Software</em> 3 (30): 774. <a href="https://doi.org/10.21105/joss.00774">https://doi.org/10.21105/joss.00774</a>.
+</div>
+<div id="ref-tmpackage" class="csl-entry" role="doc-biblioentry">
+Feinerer, Ingo, Kurt Hornik, and David Meyer. 2008. <span>“Text Mining Infrastructure in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 25 (5): 1–54. <a href="https://www.jstatsoft.org/v25/i05/">https://www.jstatsoft.org/v25/i05/</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">About the Authors</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./01-intro.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction and Motivation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

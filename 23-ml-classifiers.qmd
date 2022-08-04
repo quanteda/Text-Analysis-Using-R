@@ -1,0 +1,34 @@
+# Methods for Text Classification {#ml-classifiers}
+
+## Objectives
+
+-   Class prediction versus scaling, and the notion of predicting classes
+-   Naive Bayes
+-   SVMs
+-   More advanced methods
+-   Feature selection for improving prediction
+-   Assessing performance
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples here.
+
+## Issues
+
+Why kNN is poor choice.
+
+Which classifier?
+
+ngrams or unigrams?
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

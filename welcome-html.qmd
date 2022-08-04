@@ -1,0 +1,5 @@
+## Welcome {.unnumbered}
+
+This is the [website](https://quanteda.github.io/Text-Analysis-Using-R/) for *Text Analysis Using R*.
+
+© Kenneth Benoit, Stefan Müller, and Kohei Watanabe, all rights reserved.

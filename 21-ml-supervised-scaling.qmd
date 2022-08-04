@@ -1,0 +1,30 @@
+# Supervised Document Scaling {#ml-supervised-scaling}
+
+## Objectives
+
+-   Introduction to the notion of document scaling. Difference from classification, which we cover in Chapter \@ref(ml-classifiers).\
+-   Supervised versus unsupervised methods
+-   Wordscores
+-   Class affinity model
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples here.
+
+## Issues
+
+Training documents and how to select them.
+
+Uncertainty accounting.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

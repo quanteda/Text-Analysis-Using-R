@@ -1,0 +1,30 @@
+# Introducing the **quanteda** Package {#quanteda-overview}
+
+## Objectives
+
+-   Purpose
+-   Basic object types in **quanteda**
+-   Inter-related classes
+-   Workflow
+-   Key differences between **quanteda** and other packages
+-   Working with other packages
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples of each of the above methods.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

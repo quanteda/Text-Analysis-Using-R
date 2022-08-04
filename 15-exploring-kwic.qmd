@@ -1,0 +1,30 @@
+# Keywords-in-Context {#exploring-kwic}
+
+## Objectives
+
+- What are "keywords".  
+- The notion of a "concordance"
+- Using patterns and different input types
+- Multi-word patterns
+- Using kwic objects for subsequent input - to `corpus()`, or to `textplot_xray()`
+- Preview: Statistical detection of key words
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Using `kwic()` to verify a dictionary usage.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

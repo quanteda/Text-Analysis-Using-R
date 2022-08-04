@@ -1,0 +1,30 @@
+# Unsupervised Document Scaling {#ml-unsupervised-scaling}
+
+## Objectives
+
+-   Notion of unsupervised scaling, based on distance
+-   LSA
+-   Correspondence analysis
+-   The "wordfish" model
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples here.
+
+## Issues
+
+The hazards of *ex post* interpretation of scaling.
+
+Dimensionality.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

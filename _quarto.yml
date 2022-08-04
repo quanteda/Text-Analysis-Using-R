@@ -1,0 +1,91 @@
+project:
+  type: book
+  output-dir: docs
+
+
+book:
+  title: "Text Analysis Using R"
+  bibliography: book.bib
+  author:
+    - name: Kenneth Benoit
+    - name: Stefan Müller
+    - name: Kohei Watanabe
+  cover-image: images/quanteda.png
+  site-url: https://quanteda.github.io/Text-Analysis-Using-R/
+  #repo-url: https://github.com/quanteda/Text-Analysis-Using-R
+  repo-branch: master
+  #repo-actions: [edit]
+  #sharing: [twitter, facebook, linkedin]
+  chapters:
+    - index.qmd
+    #- authors.qmd
+    - preface.qmd
+    - "01-intro.qmd"
+    - part: "R"
+      chapters: 
+        - "02-r-basics.qmd"
+        - "03-r-workflow.qmd"
+        - "04-r-strings.qmd"
+    - part: "Acquiring Texts"
+      chapters: 
+        - "05-acquiring-files.qmd"
+        - "06-acquiring-packages.qmd"
+        - "07-acquiring-internet.qmd"
+    - part: "Managing Textual Data Using quanteda"
+      chapters: 
+        - "08-quanteda-overview.qmd"
+        - "09-quanteda-corpus.qmd"
+        - "10-quanteda-tokens.qmd"
+        - "11-quanteda-tokensadvanced.qmd"
+        - "12-quanteda-dictionaries.qmd"
+        - "13-quanteda-dfms.qmd"
+    - part: "Exploring and Describing Texts"
+      chapters: 
+        - "14-exploring-description.qmd"
+        - "15-exploring-kwic.qmd"
+        - "16-exploring-dictionaries.qmd"
+        - "17-exploring-frequencies.qmd"
+    - part: "Statistics for Comparing Texts"
+      chapters: 
+        - "18-comparing-sophistication.qmd"
+        - "19-comparing-documents.qmd"
+        - "20-comparing-features.qmd"
+    - part: "Machine Learning for Texts"
+      chapters: 
+        - "21-ml-supervised-scaling.qmd"
+        - "22-ml-unsupervised-scaling.qmd"
+        - "23-ml-classifiers.qmd"
+        - "24-ml-embedding.qmd"
+        - "25-ml-topicmodels.qmd"
+    - part: "Further Methods for Texts"
+      chapters: 
+        - "26-further-advanced-nlp.qmd"
+        - "27-further-tidy.qmd"
+        - "28-further-hardlanguages.qmd"
+    - "references.qmd"
+  appendices:
+      - "29-appendix-installation.qmd"
+      - "30-appendix-encoding.qmd"
+      - "31-appendix-regex.qmd"
+    # - part: cards.qmd
+
+format:
+  html: 
+    theme: cosmo
+    cover-image: images/quanteda.png
+    code-link: true
+    bibliography: book.bib
+  pdf:
+    toc: true
+    toc-title: "Table of Contents"
+    number-sections: true
+    colorlinks: true
+    link-citations: yes
+    links-as-notes: true
+    monofont: "inconsolata"
+    monofontoptions: "Scale=0.9"
+    fontsize: 11pt
+    include-in-header:
+      - latex/preamble.tex
+
+

@@ -1,0 +1,31 @@
+# Working with Text in R {#rstrings}
+
+## Objectives
+
+A deeper dive into how text is represented in R.
+- character vectors vesus "strings"
+- factors
+- **base** package string handling 
+- the **stringi** and **stringr** packages
+- regular expressions
+- encoding, briefly.
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Lots of the above.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+String handling in R.  More regular expressions.  More on encoding.
+
+## Exercises
+
+Add some here.

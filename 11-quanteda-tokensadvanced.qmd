@@ -1,0 +1,35 @@
+# Advanced Token Manipulation {#quanteda-tokensadvanced}
+
+## Objectives
+
+Advanced operations with tokens.
+
+-   selecting within windows
+-   replacement
+-   splitting
+-   chunking
+-   compounding
+-   the `phrase()` function
+-   ngrams
+-   skipgrams
+-   brief introduction to lookup
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples of each of the above methods.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

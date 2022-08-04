@@ -1,0 +1,32 @@
+# Document Similarity and Distance {#comparing-documents}
+
+## Objectives
+
+- Distance and similarity measures
+- Measuring similarity
+- Measuring distance
+- Clustering
+- Multi-dimensional scaling
+- Network analysis of document connections
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples here.
+
+## Issues
+
+Weighting and feature selection and its effects on similarity and distance.
+
+Computational issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

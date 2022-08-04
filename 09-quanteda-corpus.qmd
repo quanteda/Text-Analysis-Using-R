@@ -1,0 +1,25 @@
+# Creating and Managing Corpora {#quanteda-corpus}
+
+## Objectives
+
+Everything you always wanted to know about corpus creation and manipulation, but were afraid to ask. - corpus creation - reshaping corpora - segmenting corpora - subsetting corpora - extracting texts (using `texts()`) - managing metadata.
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples of each of the above methods.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

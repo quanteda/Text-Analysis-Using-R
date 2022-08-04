@@ -1,0 +1,32 @@
+# A Survival Guide to Regular Expressions {#appendix-regex}
+
+## Objectives
+
+- Basic of regular expressions
+- Fixed matching and "globs" and relationship to regexes
+- Base regular expressions versus **stringi**
+- character classes
+- Unicode character categories
+- Lookaheads
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples here.
+
+## Issues
+
+Older variants: PCRE, versus GNU, versus **stringi** implementations.
+
+Shortcut names versus Unicode categories.
+
+## Further Reading
+
+Further reading here.
+
+## Exercises
+
+Add some here.

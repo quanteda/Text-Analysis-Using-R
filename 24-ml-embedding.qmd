@@ -1,0 +1,30 @@
+# Word embedding models {#ml-embeddings}
+
+## Objectives
+
+- The `word2vec` method and its descendants
+- Constructing a feature-cooccurrence matrix
+- Fitting a word embedding model
+- Using pre-trained embedding scores with documents
+- Prediction based on embeddings
+- Further methods
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples here.
+
+## Issues
+
+Issues here.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

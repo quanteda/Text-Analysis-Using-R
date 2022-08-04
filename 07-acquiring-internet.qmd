@@ -1,0 +1,28 @@
+# Obtaining Texts from the Internet {#acquire-internet}
+
+## Objectives
+
+-   Web scraping
+-   Markup formats
+-   Challenges of removing tags
+-   APIs, and JSON
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples of each of the above methods.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

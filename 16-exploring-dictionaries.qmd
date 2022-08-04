@@ -1,0 +1,32 @@
+# Applying Dictionaries {#exploring-dictionaries}
+
+## Objectives
+
+- The basic idea of counting token and feature matches as equivalence classes
+- Matching phrases
+- Weighting dictionary applications
+- Multi-lingual applications
+- Scaling dictionary results
+- Confidence intervals and bootstrapping
+- Dictionary validation using `kwic()`
+- Dictionary construction using `textstat_keyness()`
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Sentiment analysis.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

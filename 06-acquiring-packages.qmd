@@ -1,0 +1,29 @@
+# Using Text Import Tools {#acquire-tools}
+
+## Objectives
+
+- The **readtext** package
+- Using API gateway packages: **twitteR** and other social media packages
+- Dealing with JSON formats
+- Newspaper formats, LexisNexis, etc.
+- OCR tools
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples of each of the above methods.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

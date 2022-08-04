@@ -1,0 +1,32 @@
+# Most Frequent Words {#exploring-freqs}
+
+## Objectives
+
+-   Summarizing features via a `dfm()`
+-   Most frequent features
+-   `dfm_group()` revisited
+-   Using dictionaries to count keys
+-   `topfeatures()`
+-   `textplot_wordcloud()`
+-   `textstat_frequency()`
+-   `textstat_keyness()`, `textplot_keyness()`
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Using `kwic()` to verify a dictionary usage.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

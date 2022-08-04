@@ -1,0 +1,29 @@
+# Topic modelling {#ml-topicmodels}
+
+## Objectives
+
+- Latent Dirichlet Allocation
+- Older methods (e.g. LSA)
+- Advanced methods
+- Using the **stm** package
+- Pre-processing steps and their importance, including compounding MWEs
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples here.
+
+## Issues
+
+Using other topic model packages
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

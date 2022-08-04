@@ -1,0 +1,30 @@
+# Building Document-Feature Matrices {#quanteda-dfms}
+
+## Objectives
+
+Creating and revising dfm objects.
+
+-   the nature of a dfm object, and the importance of sparsity
+-   dfm creation - document selection (subsetting)
+-   document grouping (and via docvars)
+-   feature selection and transformation - weighting - trimming - smoothing - sorting - matching dfms for machine learning - fcm creation and manipulation - converting dfm objects for further use
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples of each of the above methods.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

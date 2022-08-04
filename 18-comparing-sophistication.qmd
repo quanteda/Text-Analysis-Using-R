@@ -1,0 +1,35 @@
+# Profiling Lexical Patterns and Usage {#comparing-lexical}
+
+## Objectives
+
+-   Sentence length
+-   Syllables
+-   Types versus tokens
+-   Usage in word lists
+-   Lexical diversity
+-   Readability
+-   Bootstrapping methods and uncertainty accounting
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Sentiment analysis.
+
+## Issues
+
+Non-English languages.
+
+Sampling.
+
+Text length and its effect on diversity. Zipf's law and Heap's law.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

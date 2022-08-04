@@ -1,0 +1,25 @@
+# Working with Files {#acquire-files}
+
+## Objectives
+
+Really basic issues for working with files, such as: - Where files typically live on your computer; - Paths, the "current working directory" and how to change it; - Input formats and methods to convert them; - saving and naming files; - text editors; - cleaning texts; - detecting and converting text file encodings.
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples of each of the above methods.
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

@@ -1,0 +1,28 @@
+# Feature Similarity and Distance {#comparing-features}
+
+## Objectives
+
+- Distance and similarity measures revisited
+- Clustering
+- Network analysis of feature connections
+- Improving feature comparisons through detection and pre-processing of multi-word expressions
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples here.
+
+## Issues
+
+Computational issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.
