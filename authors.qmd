@@ -1,0 +1,17 @@
+# About the Authors {.unnumbered}
+
+*Kenneth Benoit* is currently Professor of Computational Social Science in the Department of Methodology at the London School of Economics and Political Science. He has previously held positions in the Department of Political Science at Trinity College Dublin and at the Central European University (Budapest). He received his Ph.D. (1998) from Harvard University, Department of Government. His current research focuses on computational, quantitative methods for processing large amounts of textual data, mainly political texts and social media.
+
+*Stefan Müller* is an Assistant Professor and Ad Astra Fellow in the School of Politics and International Relations at University College Dublin. Previously, he was a Senior Researcher at the University of Zurich. He received his Ph.D. (2019) from Trinity College Dublin, Department of Political Science. His current research focuses on political representation, party competition, political communication, public opinion, and quantitative text analysis. His work has been published in journals such as the *American Political Science Review*, *The Journal of Politics*, *Political Communication*, the *European Journal of Political Research*, and *Political Science Research and Methods*, among others.
+
+*Kohei Watanabe* is Senior Data Scientist at Lazard Asset Management. Before returning to Tokyo, he was a research officer at the Department of Methodology and the Department of International Relations of the London School of Economics and Political Science. He is also a member of a project on popular mobilization in Russia at the LSE's International Relations Department and a co-author of the **quanteda** quantitative text analysis package for R. He holds a PhD in Social Research Methods from the LSE and an MA in Political Science (Central European University).
+
+The *Quanteda Initiative* is a non-profit company we founded in 2018 in London, devoted to the promotion of open-source text analysis software. It supports active development of these tools, in addition to providing training materials, training events, and sponsoring workshops and conferences. Its main product is the open-source **quanteda** package for R, but the Quanteda Initiative also supports a family of independent but interrelated packages for providing additional functionality for natural language processing and document management.
+
+Its core objectives, as stated in its charter, are to:
+
+-   Support open-source, text analysis software developed for research and scientific analysis. These efforts focus mainly on the open-source software library quanteda, written for the R programming language, and its related family of extension packages.
+
+-   Promote interoperability between text analytic software libraries, including those written in other languages such as Python, Java, or C++.
+
+-   Provide ongoing user, technical, and development support for open-source text analysis software. Organize training and dissemination activities related to open-source text analysis software.

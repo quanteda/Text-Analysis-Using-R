@@ -2,6 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-
+*.Rproj
 /.quarto/
 .DS_Store
