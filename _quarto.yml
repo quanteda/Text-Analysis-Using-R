@@ -9,7 +9,7 @@ book:
     - name: Kenneth Benoit
     - name: Stefan Müller
     - name: Kohei Watanabe
-  cover-image: images/quanteda.png
+  cover-image: images/TAURbook_cover.png
   site-url: https://quanteda.github.io/Text-Analysis-Using-R/
   repo-url: https://github.com/quanteda/Text-Analysis-Using-R
   repo-branch: master
@@ -71,7 +71,7 @@ book:
 format:
   html: 
     theme: cosmo
-    cover-image: images/quanteda.png
+    cover-image: images/TAURbook_cover.jpg
     code-link: true
     bibliography: TAUR.bib
   pdf:
