@@ -8,13 +8,12 @@ book:
   author:
     - name: Kenneth Benoit
     - name: Stefan Müller
-    - name: Kohei Watanabe
-  cover-image: images/TAURbook_cover.png
+  cover-image: images/TAURbook_cover_small.png
   site-url: https://quanteda.github.io/Text-Analysis-Using-R/
   repo-url: https://github.com/quanteda/Text-Analysis-Using-R
   repo-branch: master
-  #repo-actions: [edit]
-  #sharing: [twitter, facebook, linkedin]
+  repo-actions: [edit]
+  sharing: [twitter, facebook, linkedin]
   chapters:
     - index.qmd
     - preface.qmd
@@ -71,18 +70,17 @@ book:
 format:
   html: 
     theme: cosmo
-    cover-image: images/TAURbook_cover.jpg
+    cover-image: images/TAURbook_cover_small.png
     code-link: true
-    bibliography: TAUR.bib
   pdf:
     toc: true
-    toc-title: "Table of Contents"
     number-sections: true
     colorlinks: true
+#    toc-title: "Table of Contents"
     link-citations: yes
     links-as-notes: true
-    monofont: "inconsolata"
-    monofontoptions: "Scale=0.9"
-    fontsize: 11pt
-    include-in-header:
-      - latex/preamble.tex
+#    monofont: "inconsolata"
+#    monofontoptions: "Scale=0.9"
+#    fontsize: 11pt
+#    include-in-header:
+#      - latex/preamble.tex
