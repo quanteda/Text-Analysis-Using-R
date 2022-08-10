@@ -1,4 +1,4 @@
-# Document Similarity and Distance {#comparing-documents}
+# Document Similarity and Distance {#sec-comparing-documents}
 
 ## Objectives
 

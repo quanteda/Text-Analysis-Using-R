@@ -1,4 +1,4 @@
-# Most Frequent Words {#exploring-freqs}
+# Most Frequent Words {#sec-exploring-freqs}
 
 ## Objectives
 

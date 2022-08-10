@@ -1,4 +1,4 @@
-# Feature Similarity and Distance {#comparing-features}
+# Feature Similarity and Distance {#sec-comparing-features}
 
 ## Objectives
 

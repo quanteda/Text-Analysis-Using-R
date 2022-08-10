@@ -1,4 +1,4 @@
-# A Survival Guide to Regular Expressions {#appendix-regex}
+# A Survival Guide to Regular Expressions {#sec-appendix-regex}
 
 ## Objectives
 

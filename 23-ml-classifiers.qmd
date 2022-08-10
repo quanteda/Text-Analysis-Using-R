@@ -1,4 +1,4 @@
-# Methods for Text Classification {#ml-classifiers}
+# Methods for Text Classification {#sec-ml-classifiers}
 
 ## Objectives
 

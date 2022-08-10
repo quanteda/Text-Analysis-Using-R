@@ -18,24 +18,25 @@ For this book, we have used R 3.5.3, which we recommend you use also. There are 
 
 You verify which version of R you are using by either viewing the messages on startup, e.g.
 
-    R version 3.5.3 (2019-03-11) -- "Great Truth"
-    Copyright (C) 2019 The R Foundation for Statistical Computing
-    Platform: x86_64-apple-darwin15.6.0 (64-bit)
+```
+R version 4.2.1 (2022-06-23) -- "Funny-Looking Kid"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
 
-    R is free software and comes with ABSOLUTELY NO WARRANTY.
-    You are welcome to redistribute it under certain conditions.
-    Type 'license()' or 'licence()' for distribution details.
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
 
-      Natural language support but running in an English locale
+  Natural language support but running in an English locale
 
-    R is a collaborative project with many contributors.
-    Type 'contributors()' for more information and
-    'citation()' on how to cite R or R packages in publications.
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
 
-    Type 'demo()' for some demos, 'help()' for on-line help, or
-    'help.start()' for an HTML browser interface to help.
-    Type 'q()' to quit R.
-    >
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+```
 
 or by calling
 
@@ -100,4 +101,4 @@ Other problems include: - Lack of permissions to install packages. This might af
 
 Hadley Wickham's excellent book [R Packages](http://r-pkgs.had.co.nz/) is well worth reading.
 
--   Wickham, Hadley. (2015). *R packages: organize, test, document, and share your code.* O'Reilly Media, Inc..
+-   Wickham, Hadley. (2015). *R packages: organize, test, document, and share your code.* O'Reilly Media, Inc.
