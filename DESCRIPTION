@@ -12,5 +12,6 @@ Imports:
   quanteda.textplots,
   quanteda.textmodels,
   stopwords,
-  tidyverse
+  tidyverse,
+  jsonlite
 Encoding: UTF-8

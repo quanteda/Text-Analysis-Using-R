@@ -1,6 +1,5 @@
 project:
   type: book
-  output-dir: docs
 
 book:
   title: "Text Analysis Using R"
@@ -86,3 +85,6 @@ format:
     fontsize: 12pt
 #    include-in-header:
 #      - latex/preamble.tex
+
+execute:
+  freeze: auto

@@ -4,5 +4,7 @@
 .Ruserdata
 *.Rproj
 /.quarto/
+/_site/
+docs/
 .DS_Store
 Text-Analysis-Using-R-Quarto.Rproj
