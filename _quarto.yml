@@ -86,3 +86,6 @@ format:
     fontsize: 12pt
 #    include-in-header:
 #      - latex/preamble.tex
+
+execute:
+  freeze: auto

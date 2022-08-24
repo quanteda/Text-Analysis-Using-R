@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.36">
+<meta name="generator" content="quarto-1.0.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Text Analysis Using R - Preface</title>
 <style>
@@ -12,6 +12,25 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -288,7 +307,7 @@ ul.task-list{list-style: none;}
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./24-ml-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Word embedding models</span></a>
+  <a href="./24-ml-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -399,13 +418,13 @@ ul.task-list{list-style: none;}
 <p>This book provides a practical guide introducing the fundamentals of text analysis methods and how to implement them using the R programming language. It covers a wide range of topics to provide a useful resource for a range of students from complete beginners to experienced users of R wanting to learn more advanced techniques.</p>
 <section id="why-r-and-another-book-on-text-mining-in-r" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="why-r-and-another-book-on-text-mining-in-r">Why R (and another book on text mining in R)?</h2>
 <p>This book is intended for a specific audience: those wishing to apply the methods of quantitative analysis and natural language processing text using the R language. Excellent alternatives exist, especially those in Python. So why use R for such a task?</p>
-<p>Text mining tools for R have existed for many years, led by the venerable package <span class="citation" data-cites="tmpackage">[@tmpackage]</span>. In 2015, the first version of was published on CRAN. Since then, the package has undergone three major versions, with each release improving its consistency, power, and usability. Starting with version 2, split into a series of packages designed around its different functions (such as plotting, statistics, or machine learning), with retaining the core text processing functions. Other popular alternatives exist, such as , although as we explain in [further-tidy], works perfectly well with tidyverse and other tidytext-like approaches.</p>
+<p>Text mining tools for R have existed for many years, led by the venerable package <span class="citation" data-cites="tmpackage">(<a href="references.html#ref-tmpackage" role="doc-biblioref">Feinerer, Hornik, and Meyer 2008</a>)</span>. In 2015, the first version of was published on CRAN. Since then, the package has undergone three major versions, with each release improving its consistency, power, and usability. Starting with version 2, split into a series of packages designed around its different functions (such as plotting, statistics, or machine learning), with retaining the core text processing functions. Other popular alternatives exist, such as , although as we explain in [further-tidy], works perfectly well with tidyverse and other tidytext-like approaches.</p>
 <p>Why another book about text analysis using R?</p>
 <p>Why use R for this? When perfectly adequate packages exist for Python?</p>
 <p>(This might belong in the Introduction instead.)</p>
 <p>And why <strong>quanteda</strong>?</p>
 </section><section id="what-to-expect-from-this-book" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="what-to-expect-from-this-book">What to Expect from This Book</h2>
-<p>This book is meant to be as a practical resource for those confronting the practical challenges of text analysis for the first time, focusing on how to do this in R. Our main focus is on the <strong>quanteda</strong> package <span class="citation" data-cites="quantedaJOSS">[@quantedaJOSS]</span> and its extensions, although we also cover more general issues including a brief overview of the R functions required to get started quickly with practical text analysis We cover an introduction to the R language, for</p>
+<p>This book is meant to be as a practical resource for those confronting the practical challenges of text analysis for the first time, focusing on how to do this in R. Our main focus is on the <strong>quanteda</strong> package <span class="citation" data-cites="quantedaJOSS">(<a href="references.html#ref-quantedaJOSS" role="doc-biblioref">Benoit et al. 2018</a>)</span> and its extensions, although we also cover more general issues including a brief overview of the R functions required to get started quickly with practical text analysis We cover an introduction to the R language, for</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -419,7 +438,7 @@ Note
 <p>Many text analysis packages exist for the R programming language, but here our focus is on the <strong>quanteda</strong> package and its extensions. “quanteda” is a portmanteau name indicating the purpose of the package, which is the quantitative analysis of textual data.</p>
 </div>
 </div>
-<p><span class="citation" data-cites="benoit2020text">@benoit2020text</span> provides a detailed overview of the analysis of textual data, and what distinguishes textual data from other forms of data. It also clearly articulates what is meant by treating text “as data” for analysis. This book and the approaches it presents are firmly geared toward this mindset. All of three of the authors are academics, although we also have experience working in industry or in applying text analysis for non-academic purposes. The typical reader may be a student of text analysis in the literal sense (of being an student) or in the general sense of someone studying techniques in order to improve their practical and conceptual knowledge.</p>
+<p><span class="citation" data-cites="benoit2020text">Benoit (<a href="references.html#ref-benoit2020text" role="doc-biblioref">2020</a>)</span> provides a detailed overview of the analysis of textual data, and what distinguishes textual data from other forms of data. It also clearly articulates what is meant by treating text “as data” for analysis. This book and the approaches it presents are firmly geared toward this mindset. All of three of the authors are academics, although we also have experience working in industry or in applying text analysis for non-academic purposes. The typical reader may be a student of text analysis in the literal sense (of being an student) or in the general sense of someone studying techniques in order to improve their practical and conceptual knowledge.</p>
 <p>Each chapter is structured so to provide a continuity across each topic. For each main subject explained in a chapter, we clearly explain the objective of the chapter, then describe the text analytic methods in an applied fashion so that readers are aware of the workings of the method. We then provide practical examples, with detailed working code in R as to how to implement the method. Next, we identify any special issues involved in correctly applying the method, including how to hand the more complicated situations that may arise in practice. Finally, we provide further reading for readers wishing to learn more, and exercises for those wishing for hands-on practice, or for assigning these when using them in teaching environment. Our goal is to make the book is suitable for self-learning or to form the basis for teaching and learning in a course on applied text analysis.</p>
 </section><section id="who-this-book-is-for" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="who-this-book-is-for">Who This Book Is For</h2>
 <p>Prerequisites. We don’t assume any previous knowledge of text mining and very little knowledge of R, although it will help to start with some. Resources for complete beginners that we recommend include: …</p>
@@ -510,7 +529,7 @@ Important
 <p>We are so thankful for everything. Especially the ERC. Gush, gush.</p>
 </section><section id="colophon" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="colophon">Colophon</h2>
 <p>This book was written in <a href="https://www.rstudio.com/ide/">RStudio</a> using <a href="https://quarto.org"><strong>Quarto</strong></a>. The <a href="https://quanteda.github.io/Text-Analysis-Using-R/">website</a> is hosted via <a href="https://pages.github.com">GitHub Pages</a>, and the complete source is available on <a href="https://github.com/quanteda/Text-Analysis-Using-R">GitHub</a>.</p>
-<p>This version of the book was built with R version 4.2.0 (2022-04-22) and the following packages:</p>
+<p>This version of the book was built with R version 4.2.1 (2022-06-23) and the following packages:</p>
 <div class="cell-output-display">
 <table class="table">
 <thead><tr class="header">
@@ -521,8 +540,8 @@ Important
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">quanteda</td>
-<td style="text-align: left;">3.2.1</td>
-<td style="text-align: left;">local</td>
+<td style="text-align: left;">3.2.2</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">quanteda.textmodels</td>
@@ -551,12 +570,12 @@ Important
 </tr>
 <tr class="odd">
 <td style="text-align: left;">tibble</td>
-<td style="text-align: left;">3.1.7</td>
+<td style="text-align: left;">3.1.8</td>
 <td style="text-align: left;">CRAN (R 4.2.0)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">tidyverse</td>
-<td style="text-align: left;">1.3.1</td>
+<td style="text-align: left;">1.3.2</td>
 <td style="text-align: left;">CRAN (R 4.2.0)</td>
 </tr>
 </tbody>
@@ -564,6 +583,17 @@ Important
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-benoit2020text" class="csl-entry" role="doc-biblioentry">
+Benoit, Kenneth. 2020. <span>“Text as Data: An Overview.”</span> In <em>Handbook of Research Methods in Political Science and International Relations</em>, edited by Luigi Curini and Robert Franzese, 461–97. Thousand Oaks: Sage.
+</div>
+<div id="ref-quantedaJOSS" class="csl-entry" role="doc-biblioentry">
+Benoit, Kenneth, Kohei Watanabe, Haiyan Wang, Paul Nulty, Adam Obeng, Stefan Müller, and Akitaka Matsuo. 2018. <span>“Quanteda: An <span>R</span> Package for the Quantitative Analysis of Textual Data.”</span> <em>Journal of Open Source Software</em> 3 (30): 774. <a href="https://doi.org/10.21105/joss.00774">https://doi.org/10.21105/joss.00774</a>.
+</div>
+<div id="ref-tmpackage" class="csl-entry" role="doc-biblioentry">
+Feinerer, Ingo, Kurt Hornik, and David Meyer. 2008. <span>“Text Mining Infrastructure in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 25 (5): 1–54. <a href="https://www.jstatsoft.org/v25/i05/">https://www.jstatsoft.org/v25/i05/</a>.
+</div>
+</div>
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
