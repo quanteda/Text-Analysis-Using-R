@@ -1,12 +1,11 @@
-# Integrating "tidy" approaches {#further-tidy}
+# Integrating "tidy" approaches {#sec-furthertidy}
 
 ## Objectives
 
-- What is the "tidy" approach and how does it apply to text?
-- The **tidytext** package and its advantages
-- Switching from **quanteda** to **tidytext** (and back)
-- Advantages of non-tidy text objects
-
+-   What is the "tidy" approach and how does it apply to text?
+-   The **tidytext** package and its advantages
+-   Switching from **quanteda** to **tidytext** (and back)
+-   Advantages of non-tidy text objects
 
 ## Methods
 
@@ -18,11 +17,11 @@ Examples of each of the above methods.
 
 ## Issues
 
-Efficiency.  Complexity.
+Efficiency. Complexity.
 
 ## Further Reading
 
-Tidy resources.  Tidytext book.  Data Science Using R (Wickham and Grolemund).
+Tidy resources. Tidytext book. Data Science Using R (Wickham and Grolemund).
 
 ## Exercises
 

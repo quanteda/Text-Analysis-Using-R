@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.36">
+<meta name="generator" content="quarto-1.0.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Text Analysis Using R - Appendix A — Installing the Required Tools</title>
 <style>
@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./24-ml-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Word embedding models</span></a>
+  <a href="./24-ml-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -444,7 +444,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="appendix-installing" class="quarto-section-identifier d-none d-lg-block">Appendix A — Installing the Required Tools</span></h1>
+<h1 class="title"><span id="sec-appendix-installing" class="quarto-section-identifier d-none d-lg-block">Appendix A — Installing the Required Tools</span></h1>
 </div>
 
 
@@ -473,9 +473,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>R is a free software environment for statistical computing that runs on numerous platforms, including Windows, macOS, Linux, and Solaris. You can find details at https://www.r-project.org/, and link there to a set of mirror websites for downloading the latest version.</p>
 <p>For this book, we have used R 3.5.3, which we recommend you use also. There are seldom reasons to use older versions of R, and the R Core Team and the maintainers of the largest repository of R packages, CRAN (for Comprehensive R Archive Network) put an enormous amount of attention and energy into assuring that extension packages work with stably and with one another.</p>
 <p>You verify which version of R you are using by either viewing the messages on startup, e.g.</p>
-<pre><code>R version 3.5.3 (2019-03-11) -- "Great Truth"
-Copyright (C) 2019 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
+<pre><code>R version 4.2.1 (2022-06-23) -- "Funny-Looking Kid"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -489,13 +489,12 @@ Type 'contributors()' for more information and
 
 Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
-Type 'q()' to quit R.
-&gt;</code></pre>
+Type 'q()' to quit R.</code></pre>
 <p>or by calling</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Version.html">R.Version</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">version.string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Version.html">R.Version</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">version.string</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "R version 4.2.0 (2022-04-22)"</code></pre>
+<pre><code>[1] "R version 4.2.1 (2022-06-23)"</code></pre>
 </div>
 </div>
 </section><section id="installing-recommended-tools-and-packages" class="level2" data-number="A.3"><h2 data-number="A.3" class="anchored" data-anchor-id="installing-recommended-tools-and-packages">
@@ -515,7 +514,7 @@ Type 'q()' to quit R.
 <span class="header-section-number">A.3.3</span> Keeping packages up-to-date</h3>
 <p>R has an easy method for ensuring you have the latest versions of installed packages:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/update.packages.html">update.packages</a></span><span class="op">(</span><span class="op">)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/update.packages.html">update.packages</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="additional-issues" class="level2" data-number="A.4"><h2 data-number="A.4" class="anchored" data-anchor-id="additional-issues">
 <span class="header-section-number">A.4</span> Additional Issues</h2>
@@ -524,7 +523,7 @@ Type 'q()' to quit R.
 <p>The R packages that you can install using the methods described above are the pre-compiled binary versions that are distributed on CRAN. (Linux installations are the exception, as these are always compiled upon installation.) Sometimes, package developers will publish “development” versions of their packages that have yet to published on CRAN, for instance on the popular <a href="https://github.com">GitHub</a> platform hosting the world’s largest collection of open-source software.</p>
 <p>The <strong>quanteda</strong> package, for instance, is hosted on GitHub at https://github.com/quanteda/quanteda, where its development version tends to be slightly ahead of the CRAN version. If you are feeling adventurous, or need a new version in which a specific issue or bug has been fixed, you can install it from the GitHub source using:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"quanteda/quanteda"</span><span class="op">)</span> </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"quanteda/quanteda"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Because installing from GitHub is the same as installing from the source code, this also involves compiling the C++ and Fortran source code that makes parts of <strong>quanteda</strong> so fast. For this source installation to work, you will need to have installed the appropriate compilers.</p>
 <p>If you are using a Windows platform, this means you will need also to install the <a href="https://CRAN.R-project.org/bin/windows/Rtools/">Rtools</a> software available from CRAN.</p>
@@ -538,7 +537,7 @@ Linux always compiles packages containing C++ code upon installation, so if you 
 <span class="header-section-number">A.5</span> Further Reading</h2>
 <p>Hadley Wickham’s excellent book <a href="http://r-pkgs.had.co.nz/">R Packages</a> is well worth reading.</p>
 <ul>
-<li>Wickham, Hadley. (2015). <em>R packages: organize, test, document, and share your code.</em> O’Reilly Media, Inc..</li>
+<li>Wickham, Hadley. (2015). <em>R packages: organize, test, document, and share your code.</em> O’Reilly Media, Inc.</li>
 </ul>
 
 
