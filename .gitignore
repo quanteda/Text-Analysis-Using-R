@@ -7,5 +7,6 @@
 /_site/
 /_book/
 docs/
+/_book/
 .DS_Store
 Text-Analysis-Using-R-Quarto.Rproj
