@@ -1,1 +1,0 @@
-Sitemap: https://quanteda.github.io/Text-Analysis-Using-R/sitemap.xml
