@@ -8,6 +8,7 @@ Imports:
   quanteda,
   tibble,
   readtext,
+  rmarkdown,
   quanteda.textstats,
   quanteda.textplots,
   quanteda.textmodels,

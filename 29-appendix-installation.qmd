@@ -14,29 +14,27 @@
 
 R is a free software environment for statistical computing that runs on numerous platforms, including Windows, macOS, Linux, and Solaris. You can find details at https://www.r-project.org/, and link there to a set of mirror websites for downloading the latest version.
 
-For this book, we have used R 3.5.3, which we recommend you use also. There are seldom reasons to use older versions of R, and the R Core Team and the maintainers of the largest repository of R packages, CRAN (for Comprehensive R Archive Network) put an enormous amount of attention and energy into assuring that extension packages work with stably and with one another.
+We recommend that you always using the latest version of R, which is what we used for compiling this book. There are seldom reasons to use older versions of R, and the R Core Team and the maintainers of the largest repository of R packages, CRAN (for Comprehensive R Archive Network) put an enormous amount of attention and energy into assuring that extension packages work with stably and with one another.
 
 You verify which version of R you are using by either viewing the messages on startup, e.g.
 
-```
-R version 4.2.1 (2022-06-23) -- "Funny-Looking Kid"
-Copyright (C) 2022 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin17.0 (64-bit)
+    R version 4.2.1 (2022-06-23) -- "Funny-Looking Kid"
+    Copyright (C) 2022 The R Foundation for Statistical Computing
+    Platform: x86_64-apple-darwin17.0 (64-bit)
 
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under certain conditions.
-Type 'license()' or 'licence()' for distribution details.
+    R is free software and comes with ABSOLUTELY NO WARRANTY.
+    You are welcome to redistribute it under certain conditions.
+    Type 'license()' or 'licence()' for distribution details.
 
-  Natural language support but running in an English locale
+      Natural language support but running in an English locale
 
-R is a collaborative project with many contributors.
-Type 'contributors()' for more information and
-'citation()' on how to cite R or R packages in publications.
+    R is a collaborative project with many contributors.
+    Type 'contributors()' for more information and
+    'citation()' on how to cite R or R packages in publications.
 
-Type 'demo()' for some demos, 'help()' for on-line help, or
-'help.start()' for an HTML browser interface to help.
-Type 'q()' to quit R.
-```
+    Type 'demo()' for some demos, 'help()' for on-line help, or
+    'help.start()' for an HTML browser interface to help.
+    Type 'q()' to quit R.
 
 or by calling
 
