@@ -8,9 +8,9 @@
 
 This is the source code of the book in progress, *Text Analysis Using R*, by Kenneth Benoit and Stefan Müller.
 
-The draft HTML version of this book is published at https://quanteda.github.io/Text-Analysis-Using-R/. **However** we are not circulating this URL until we have a bit more content, at which stage we will also make the repository public.
+The draft HTML version of this book is published at https://quanteda.github.io/Text-Analysis-Using-R/. It is authored in [Quarto](https://quarto.org) and we will be updating it as we fill in the chapter outline with completed draft chapters.
 
-## A companion R package
+## Companion R package
 
 We have released a companion R package, TAUR, containing data and functions used in the book. You can install it using:
 
