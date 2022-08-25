@@ -24,7 +24,7 @@ You'll learn how to prepare your texts for analysis, how to analyse texts for in
 
 The book is organised into parts, starting with a review of R and especially the R packages and functions relevant to text analysis. If you are already comfortable with R you can skim or skip that section and proceed straight to part two.
 
-::: {.callout-note appearance="simple"}
+::: callout-note
 This book is a work in progress. We will publish chapters as we write them, and open up the GitHub source repository for readers to make comments or even suggest corrections. You can view this at this <https://github.com/quanteda/Text-Analysis-Using-R>.
 :::
 

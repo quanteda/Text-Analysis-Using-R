@@ -1,4 +1,4 @@
-# Installing the Required Tools {#appendix-installing}
+# Installing the Required Tools {#sec-appendix-installing}
 
 ## Objectives
 

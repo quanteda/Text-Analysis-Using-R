@@ -1,50 +1,50 @@
+::: hidden
+$$
+ \def\quanteda{{\bf quanteda}}
+$$
+:::
+
 # Preface {.unnumbered}
 
-The uses and means for analysing text, especially using quantitative and computational approaches, have exploded in recent years across the fields of academic, industry, policy, and other forms of research and analysis. Text mining and text analysis have become the focus of a major methodological wave of innovation in the fields of political science in particular, but also extending to finance, media and communications, and sociology.
+The uses and means for analysing text, especially using quantitative and computational approaches, have exploded in recent years across the fields of academic, industry, policy, and other forms of research and analysis. Text mining and text analysis have become the focus of a major methodological wave of innovation in the social sciences, especially political science but also extending to finance, media and communications, and sociology. In non-academic research or industry, furthermore, text mining applications are found in almost every sector, given the ubiquity of text and the need to analyse it.
 
-Text analysis is a broad label for a wide range of tools applied to *textual* data, a form of structured data that is created from typically unstructured raw data in the form of natural language documents. It includes descriptive analysis, keyword analysis, topic analysis, measurement and scaling, clustering, text and vocabulary comparisons, or sentiment analysis. It may include causal analysis or predictive modelling. In its most advanced current forms, it extends to the natural language generation models that power the newest generation of artificial intelligence systems.
+"Text analysis" is a broad label for a wide range of tools applied to *textual data*. It encompasses all manner of methods for turning unstructured raw data in the form of natural language documents into structured data that can be analysed systematically and using specific quantitative approaches. Text analytic methods include descriptive analysis, keyword analysis, topic analysis, measurement and scaling, clustering, text and vocabulary comparisons, or sentiment analysis. It may include causal analysis or predictive modelling. In their most advanced current forms, these methods extend to the natural language generation models that power the newest generation of artificial intelligence systems.
 
-This book provides a practical guide introducing the fundamentals of text analysis methods and how to implement them using the R programming language. It covers a wide range of topics to provide a useful resource for a range of students from complete beginners to experienced users of R wanting to learn more advanced techniques.
+This book provides a practical guide introducing the fundamentals of text analysis methods and how to implement them using the R programming language. It covers a wide range of topics to provide a useful resource for a range of students from complete beginners to experienced users of R wanting to learn more advanced techniques. Our emphasis is on the text analytic workflow as a whole, ranging from an introduction to text manipulation in R, all the way through to advanced machine learning methods for textual data.
 
-## Why R (and another book on text mining in R)? {.unnumbered}
+## Why another book on text mining in R? {.unnumbered}
 
-This book is intended for a specific audience: those wishing to apply the methods of quantitative analysis and natural language processing text using the R language. Excellent alternatives exist, especially those in Python. So why use R for such a task?
+Text mining tools for R have existed for many years, led by the venerable **tm** package [@tmpackage]. In 2015, the first version of **quanteda** [@quantedaJOSS] was published on CRAN. Since then, the package has undergone three major versions, with each release improving its consistency, power, and usability. Starting with version 2, **quanteda** split into a series of packages designed around its different functions (such as plotting, statistics, or machine learning), with **quanteda** retaining the core text processing functions. Other popular alternatives exist, such as **tidytext** [@tidytextJOSS], although as we explain in [Chapter -@sec-furthertidy], **quanteda** works perfectly well with the R "tidyverse" and related approaches to text analysis.
 
-Text mining tools for R have existed for many years, led by the venerable \textbf{tm} package [@tmpackage]. In 2015, the first version of \textbf{quanteda} was published on CRAN. Since then, the package has undergone three major versions, with each release improving its consistency, power, and usability. Starting with version 2, \textbf{quanteda} split into a series of packages designed around its different functions (such as plotting, statistics, or machine learning), with \textbf{quanteda} retaining the core text processing functions. Other popular alternatives exist, such as \textbf{tidytext}, although as we explain in \[further-tidy\], \textbf{quanteda} works perfectly well with tidyverse and other tidytext-like approaches.
+This is hardly the only book covering how to work with text in R. @silge2017text introduced the **tidytext** package and numerous examples for mining text using the tidyverse approach to programming in R, including keyword analysis, mining word associations, and topic modelling. @kwartler2017text provides a good coverage of text mining workflows, plus methods for text visualisations, sentiment scoring, clustering, and classification, as well as methods for sourcing and manipulating source documents. Earlier works include @turenne2016analyse and @becue2019textual.
 
-Why another book about text analysis using R?
+::: {.callout-note icon="true"}
+## One of the two hard things in computer science: Naming things
 
-Why use R for this? When perfectly adequate packages exist for Python?
+Where does does the package name come from? *quanteda* is a portmanteau name indicating the purpose of the package, which is the **qu**antitative **an**alysis of **te**xtual **da**ta.
+:::
 
-(This might belong in the Introduction instead.)
-
-And why **quanteda**?
+So why another book? First, the R ecosystem for text analysis is rapidly evolving, with the publication in recent years of massively improved, specialist text analysis packages such as **quanteda**. None of the earlier books covers this amazing family of packages. In addition, the field of text analysis methodologies has also advanced rapidly, including machine learning approaches based on artificial neural networks and deep learning. These and the packages that make use of them---for instance **spacyr** [@spacyr] for harnessing the power of the spaCy natural language processing library for Python [@spaCy]---have yet to be presented in a systematic, book-length treatment. Furthermore, as we are the authors and creators of many of the packages we cover in this book, we view this as the authoritative reference and how-to guide for using these packages.
 
 ## What to Expect from This Book {.unnumbered}
 
-This book is meant to be as a practical resource for those confronting the practical challenges of text analysis for the first time, focusing on how to do this in R. Our main focus is on the **quanteda** package [@quantedaJOSS] and its extensions, although we also cover more general issues including a brief overview of the R functions required to get started quickly with practical text analysis We cover an introduction to the R language, for
+This book is meant to be as a practical resource for those confronting the practical challenges of text analysis for the first time, focusing on how to do this in R. Our main focus is on the **quanteda** package and its extensions, although we also cover more general issues including a brief overview of the R functions required to get started quickly with practical text analysis We cover an introduction to the R language, for
 
-::: callout-note
-Many text analysis packages exist for the R programming language, but here our focus is on the **quanteda** package and its extensions. "quanteda" is a portmanteau name indicating the purpose of the package, which is the quantitative analysis of textual data.
-:::
+@benoit2020text provides a detailed overview of the analysis of textual data, and what distinguishes textual data from other forms of data. It also clearly articulates what is meant by treating text "as data" for analysis. This book and the approaches it presents are firmly geared toward this mindset.
 
-@benoit2020text provides a detailed overview of the analysis of textual data, and what distinguishes textual data from other forms of data. It also clearly articulates what is meant by treating text "as data" for analysis. This book and the approaches it presents are firmly geared toward this mindset. All of three of the authors are academics, although we also have experience working in industry or in applying text analysis for non-academic purposes. The typical reader may be a student of text analysis in the literal sense (of being an student) or in the general sense of someone studying techniques in order to improve their practical and conceptual knowledge.
+Each chapter is structured so to provide a continuity across each topic. For each main subject explained in a chapter, we clearly explain the objective of the chapter, then describe the text analytic methods in an applied fashion so that readers are aware of the workings of the method. We then provide practical examples, with detailed working code in R as to how to implement the method. Next, we identify any special issues involved in correctly applying the method, including how to hand the more complicated situations that may arise in practice. Finally, we provide further reading for readers wishing to learn more, and exercises for those wishing for hands-on practice, or for assigning these when using them in teaching environment.
 
-Each chapter is structured so to provide a continuity across each topic. For each main subject explained in a chapter, we clearly explain the objective of the chapter, then describe the text analytic methods in an applied fashion so that readers are aware of the workings of the method. We then provide practical examples, with detailed working code in R as to how to implement the method. Next, we identify any special issues involved in correctly applying the method, including how to hand the more complicated situations that may arise in practice. Finally, we provide further reading for readers wishing to learn more, and exercises for those wishing for hands-on practice, or for assigning these when using them in teaching environment. Our goal is to make the book is suitable for self-learning or to form the basis for teaching and learning in a course on applied text analysis.
+We have years of experience in teaching this material in many practical short courses, summer schools, and regular university courses. We have drawn extensively from this experience in designing the overall scope of this book and the structure of each chapter. Our goal is to make the book is suitable for self-learning or to form the basis for teaching and learning in a course on applied text analysis. Indeed, we have partly written this book to assign when teaching text analysis in our own curricula.
 
 ## Who This Book Is For {.unnumbered}
 
-Prerequisites. We don't assume any previous knowledge of text mining and very little knowledge of R, although it will help to start with some. Resources for complete beginners that we recommend include: ...
+We don't assume any previous knowledge of text mining---indeed, the goal of this book is to provide that, from a foundation through to some very advanced topics. Getting use from this book does not require a pre-existing familiarity with R, although, as the slogan goes, "every little helps". In Part I we cover some of the basics of R and how to make use of it for text analysis specifically. Readers will also learn more of R through our extensive examples. However, experience in teaching and presenting this material tells us that a foundation of R will enable readers to advance through the applications far more rapidly than if they were learning R from scratch at the same time that they take the plunge into the possibly strange new world of text analysis.
 
-Our orientation as social scientists, with a specialization in political text and political communications and media. But this book is for everyone: social scientists, computer scientists, scholars of digital humanities, researchers in marketing and management, and applied researchers working in policy, government, or business fields.
+We are both academics, although we also have experience working in industry or in applying text analysis for non-academic purposes. The typical reader may be a student of text analysis in the literal sense (of being an student) or in the general sense of someone studying techniques in order to improve their practical and conceptual knowledge. Our orientation as social scientists, with a specialization in political text and political communications and media. But this book is for everyone: social scientists, computer scientists, scholars of digital humanities, researchers in marketing and management, and applied researchers working in policy, government, or business fields. This book is written to have the credibility and scholarly rigour (for referencing methods, for instance) needed by academic readers, but is designed to be written in a straightforward, jargon-free (as much as we were able!) manner to be of maximum practical use to non-academic analysts as well.
 
-How to use the book depending on where the reader fits within the continuum of R experience and prior experience with text analysis.
+## How the Book is Structured {.unnumbered}
 
-## How to Use This Book {.unnumbered}
-
-### Chapters Outline {.unnumbered}
-
-## Outline {.unnumbered}
+### Sections {.unnumbered}
 
 The book is divided into seven sections. These group topics that we feel represent common stages of learning in text analysis, or similar groups of topics that different users will be drawn too. By grouping stages of learning, we make it possible also for intermediate or advanced users to jump to the section that interests them most, or to the sections where they feel they need additional learning.
 
@@ -66,7 +66,7 @@ Our sections are:
 
 Finally, in several **appendices**, we provide more detail about some tricky subjects, such as text encoding formats and working with regular expressions.
 
-### Chapter Structure {.unnumbered}
+### Chapter structure {.unnumbered}
 
 Our approach in each chapter is split into the following components, which we apply in every chapter:
 
@@ -82,45 +82,58 @@ Our approach in each chapter is split into the following components, which we ap
 
 -   Exercises. For those wishing additional practice or to use this text as a teaching resource (which we strongly encourage!), we provide exercises that can be assigned for each chapter.
 
-Throughout the book, we will demonstrate with examples and build models using a selection of text data sets. A description of these data sets can be found in Appendix \@ref(appendixdata).
+Throughout the book, we will demonstrate with examples and build models using a selection of text data sets. A description of these data sets can be found in [Appendix -@sec-appendix-installing].
 
-We use three kinds of info boxes throughout the book to invite attention to notes and other ideas.
+### Conventions {.unnumbered}
+
+Throughout the book we use several kinds of info boxes to call your attention to information, cautions, and warnings.
 
 ::: callout-note
-The first type of boxes provides notes, information on best practices, and links to further information.
+The information icon signals a note or a reference to further information.
 :::
 
-::: callout-warning
-Some boxes call out warnings or possible problems to watch out for.
+::: callout-tip
+Tips provide suggestions for better ways of doing things.
 :::
 
 ::: callout-important
-Boxes marked with hexagons highlight information about specific R packages and how they are used. We use **bold** for the names of R packages.
+The exclamation mark icon signals an important point to consider.
 :::
+
+::: callout-warning
+Warning icons flag things you definitely want to avoid.
+:::
+
+As you may already have noticed, we put names of R packages in **boldface**.
+
+Code blocks will be self-evident, and will look like this, with the output produced from executing those commands shown below the highlighted code in a mono-spaced font.
+
+```{r}
+library("quanteda")
+data_corpus_inaugural[1:3]
+```
+
+We love the pipe operator in R (when used with discipline!) and built **quanteda** with a the aim making all of the main functions easily and logically pipeable. Since version 1, we have re-exported the `%>%` operator from **magrittr** to make it available out of the box with **quanteda**. With the introduction of the `|>` pipe in R 4.1.0, however, we prefer to use this variant, so will use that in all code used in this book.
 
 ### Data used in examples {.unnumbered}
 
-All examples and code are bundled as a companion R package to the book, available from our [public GitHub repository](https://github.com/quanteda/Text-Analysis-Using-R/).
+All examples and code are bundled as a companion R package to the book, available from our [public GitHub repository](https://github.com/quanteda/TAUR/).
+
+::: callout-tip
+We have written a companion package for this book called **TAUR**, which can be installed from GitHub using this command:
+
+```{r eval = FALSE}
+remotes::install_github("quanteda/TAUR")
+```
+:::
 
 We largely rely on data from three sources:
 
 -   the built-in-objects from the **quanteda** package, such as the US Presidential Inaugural speech corpus;\
--   additional **quanteda** corpora from the **quanteda.corpora** package; and\
--   added corpora from the book's companion package.
+-   added corpora from the book's companion package, **TAUR**; and
+-   some additional **quanteda** corpora or dictionaries from from the additional sources or packages where indicated.
 
 Although not commonly used, our scheme for naming data follows a very consistent scheme. The data objects being with `data`, have the object class as the second part of the name, such as `corpus`, and the third and final part of the data object name contains a description. The three elements are separated by the underscore (`_`) character. This means that any object is known by its name to be data, so that it shows up in the index of package objects (from the all-important help page, e.g. from `help(package = "quanteda")`) in one location, under "d". It also means that its object class is known from the name, without further inspection. So `data_dfm_lbgexample` is a dfm, while `data_corpus_inaugural` is clearly a corpus. We use this scheme and others like with an almost religious fervour, because we think that learning the functionality of a programming framework for NLP and quantitative text analysis is complicated enough without having also to decipher or remember a mishmash of haphazard and inconsistently named functions and objects. The more you use our software packages and specifically **quanteda**, the more you will come to appreciate the attention we have paid to implementing a consistent naming scheme for objects, functions, and their arguments as well as to their consistent functionality.
-
-### How to Contact Us {.unnumbered}
-
-Please address comments and questions concerning this book by filing an issue on our GitHub page, <https://github.com/quanteda/Text-Analysis-Using-R/issues/>.
-
-At this repository, you will also find instructions for installing the companion R package, **TAURbook**.
-
-For more information about the authors or the Quanteda Initiative, visit our [website](https://quanteda.org).
-
-## Acknowledgements {.unnumbered}
-
-We are so thankful for everything. Especially the ERC. Gush, gush.
 
 ## Colophon {.unnumbered}
 
@@ -140,3 +153,21 @@ df <- tibble::tibble(
   dplyr::mutate(Source = stringr::str_remove(Source, "\\\\@[a-f0-9]*"))
 knitr::kable(df, format = "markdown")
 ```
+
+### How to Contact Us {.unnumbered}
+
+Please address comments and questions concerning this book by filing an issue on our GitHub page, <https://github.com/quanteda/Text-Analysis-Using-R/issues/>. At this repository, you will also find instructions for installing the companion R package, [**TAUR**](https://github.com/quanteda/TAUR).
+
+For more information about the authors or the Quanteda Initiative, visit our [website](https://quanteda.org).
+
+## Acknowledgements {.unnumbered}
+
+Developing **quanteda** has been a labour of many years involving many contributors. The most notable contributor to the package and its learning materials is Kohei Watanabe, without whom **quanteda** would not be the incredible package it is today. Kohei has provided a clear and vigorous vision for the package's evolution across its major versions and continues to maintain it today. Others have contributed in major ways both through design and programming, namely Paul Nulty and Akitaka Matsuo, both who were present at creation and through the 1.0 launch which involved the first of many major redesigns. Adam Obeng made a brief but indelible imprint on several of the packages in the quanteda family. Haiyan Wang wrote versions of some of the core C++ code that makes quanteda so fast, as well as contributing to the R base. William Lowe and Christian Müller also contributed code and ideas that have enriched the package and the methods it implements.
+
+No project this large could have existed without institutional and financial benefactors and supporters. Most notable of these is the European Research Council, who funded the original development under a its Starting Investigator Grant scheme, awarded to Kenneth Benoit in 2011 for a project entitled QUANTESS: Quantitative Text Analysis for the Social Sciences (ERC-2011-StG 283794-QUANTESS). Our day jobs (as university professors) have also provided invaluable material and intellectual support for the development of the ideas, methodologies, and software documented in this book. This list includes the London School of Economics and Political Science, which employs Ken Benoit and which hosted the QUANTESS grant and employed many of the core quanteda team and/or where they completed PhDs; University College Dublin where Stefan Müller is employed; Trinity College Dublin, where Ken Benoit was formerly a Professor of Quantitative Social Sciences and where Stefan completed his PhD in political science; and the Australian National University which provided a generous affiliation to Ken Benoit and where the outline for this book took first shape as a giant tableau of post-it notes on the wall of a visiting office in the former building of the School of Politics and International Relations.
+
+As we develop this book, we hope that many readers of the work-in-progress will contribute feedback, comments, and even edits, and we plan to acknowledge you all. So, don't be shy readers.
+
+We also have to give a much-deserved shout-out to the amazing team at RStudio, many of whom we've been privileged to hear speak at events or meet in person. You made Quarto available at just the right time. That and the innovations in R tools and software that you have driven for the past decade have been rich beyond every expectation.
+
+Finally, no acknowledgements would be complete without a profound thanks to our partners, who have put up with us during the long incubation of this project. They have had to listen us talk about this book for years before we finally got around to writing it. They've tolerated us cursing software bugs, students, CRAN, each other, package users, and ourselves. But they've also seen they joy that we've experienced from creating tools and materials that empower users and students, and the excitement of the long intellectual voyage we have taken together and with our ever-growing base of users and students. Bina and Émeline, thank you for all of your support and encouragement. You'll be so happy to know we finally have this book project well underway.

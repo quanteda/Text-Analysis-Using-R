@@ -5,6 +5,7 @@
 *.Rproj
 /.quarto/
 /_site/
+/_book/
 docs/
 /_book/
 .DS_Store
