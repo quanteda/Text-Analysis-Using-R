@@ -1,4 +1,4 @@
-# Text Analysis Using R <img src="images/TAURbook_cover_large.png" align="right" height="220px" width="auto"/>
+# Text Analysis Using R <a href="https://quanteda.github.io/Text-Analysis-Using-R/"><img src="images/TAURbook_cover_large.png" align="right" height="220px" width="auto"/></a>
 
 <!-- badges: start -->
 
