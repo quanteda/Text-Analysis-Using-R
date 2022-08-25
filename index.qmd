@@ -7,6 +7,10 @@ links-as-notes: true
 bibliography: [TAUR.bib]
 ---
 
+::: {.content-visible when-format="html"}
+<img src="images/TAURbook_cover_large.png" align="right" height="220px" width="auto"/>
+:::
+
 ## Welcome {.unnumbered}
 
 \pagenumbering{roman}

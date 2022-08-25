@@ -7,7 +7,7 @@ book:
   author:
     - name: Kenneth Benoit
     - name: Stefan Müller
-  cover-image: images/TAURbook_cover_small.png
+  # cover-image: images/TAURbook_cover_small.png
   site-url: https://quanteda.github.io/Text-Analysis-Using-R/
   repo-url: https://github.com/quanteda/Text-Analysis-Using-R
   repo-branch: master
@@ -70,7 +70,7 @@ format:
   html: 
     theme: cosmo
     bibliography: TAUR.bib
-    cover-image: images/TAURbook_cover_small.png
+    # cover-image: images/TAURbook_cover_small.png
     code-link: true
   pdf:
     toc: true

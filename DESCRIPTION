@@ -1,5 +1,5 @@
 Type: Book
-Package: TAUR
+Package: Text-Analysis-Using-R
 Title: Text Analysis Using R
 Version: 0.1.0
 Depends: 
