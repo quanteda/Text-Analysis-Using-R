@@ -7,7 +7,6 @@ book:
   author:
     - name: Kenneth Benoit
     - name: Stefan Müller
-  # cover-image: images/TAURbook_cover_small.png
   site-url: https://quanteda.github.io/Text-Analysis-Using-R/
   repo-url: https://github.com/quanteda/Text-Analysis-Using-R
   repo-branch: master
@@ -64,24 +63,19 @@ book:
       - "29-appendix-installation.qmd"
       - "30-appendix-encoding.qmd"
       - "31-appendix-regex.qmd"
-    # - part: cards.qmd
 
 format:
   html: 
     theme: cosmo
     bibliography: TAUR.bib
-    # cover-image: images/TAURbook_cover_small.png
-    code-link: true
+    # code-link: false
   pdf:
     toc: true
     number-sections: true
     colorlinks: true
     bibliography: TAUR.bib
-#    toc-title: "Table of Contents"
     link-citations: yes
     links-as-notes: true
-#    monofont: "inconsolata"
-#    monofontoptions: "Scale=0.9"
     fontsize: 12pt
 #    include-in-header:
 #      - latex/preamble.tex
