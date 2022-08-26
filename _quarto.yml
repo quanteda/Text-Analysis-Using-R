@@ -72,19 +72,19 @@ format:
     bibliography: TAUR.bib
     # cover-image: images/TAURbook_cover_small.png
     code-link: true
-#   pdf:
-#     toc: true
-#     number-sections: true
-#     colorlinks: true
-#     bibliography: TAUR.bib
-# #    toc-title: "Table of Contents"
-#     link-citations: yes
-#     links-as-notes: true
-# #    monofont: "inconsolata"
-# #    monofontoptions: "Scale=0.9"
-#     fontsize: 12pt
-# #    include-in-header:
-# #      - latex/preamble.tex
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    bibliography: TAUR.bib
+#    toc-title: "Table of Contents"
+    link-citations: yes
+    links-as-notes: true
+#    monofont: "inconsolata"
+#    monofontoptions: "Scale=0.9"
+    fontsize: 12pt
+#    include-in-header:
+#      - latex/preamble.tex
 
 execute:
   freeze: true
