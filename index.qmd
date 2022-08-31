@@ -30,6 +30,6 @@ This book is a work in progress. We will publish chapters as we write them, and 
 
 ## License
 
-We will eventually seek a publisher for this book, but want to write it first. In the meantime we retaining full copyright and licensing it only to be free to read.
+We will eventually seek a publisher for this book, but want to write it first. In the meantime we are retaining full copyright and licensing it only to be free to read.
 
 © Kenneth Benoit and Stefan Müller all rights reserved.
