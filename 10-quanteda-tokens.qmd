@@ -1,4 +1,4 @@
-# Creating and Managing tokens {#quanteda-tokens}
+# Creating and Managing tokens {#sec-quanteda-tokens}
 
 ## Objectives
 

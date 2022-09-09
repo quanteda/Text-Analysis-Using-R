@@ -1,4 +1,4 @@
-# Working with Text in R {#rstrings}
+# Working with Text in R {#sec-rstrings}
 
 ## Objectives
 

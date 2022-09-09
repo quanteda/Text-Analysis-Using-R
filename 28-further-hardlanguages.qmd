@@ -1,4 +1,4 @@
-# Text analysis in "Hard" Languages {#further-hardlangs}
+# Text analysis in "Hard" Languages {#sec-further-hardlangs}
 
 ## Objectives
 

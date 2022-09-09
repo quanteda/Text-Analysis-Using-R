@@ -1,4 +1,4 @@
-# Using Text Import Tools {#acquire-tools}
+# Using Text Import Tools {#sec-acquire-packages}
 
 ## Objectives
 

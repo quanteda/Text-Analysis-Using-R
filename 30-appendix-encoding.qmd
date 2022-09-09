@@ -1,4 +1,4 @@
-# Everything You Never Wanted to Know about Encoding {#appendix-encoding}
+# Everything You Never Wanted to Know about Encoding {#sec-appendix-encoding}
 
 (and were afraid to ask)
 

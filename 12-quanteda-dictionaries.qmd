@@ -1,4 +1,4 @@
-# Creating and Managing Dictionaries {#quanteda-dictionaries}
+# Creating and Managing Dictionaries {#sec-quanteda-dictionaries}
 
 ## Objectives
 

@@ -1,4 +1,4 @@
-# Keywords-in-Context {#exploring-kwic}
+# Keywords-in-Context {#sec-exploring-kwic}
 
 ## Objectives
 

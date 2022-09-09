@@ -1,4 +1,4 @@
-# Advanced Token Manipulation {#quanteda-tokensadvanced}
+# Advanced Token Manipulation {#sec-quanteda-tokensadvanced}
 
 ## Objectives
 
