@@ -1,104 +1,62 @@
-# Creating and Managing Corpora {#quanteda-corpus}
+# Creating and Managing Corpora {#sec-quanteda-corpus}
 
 ## Objectives
-
 
 In this section, we cover the corpus object. We explain why you need a text corpus for text analysis and how the selection of texts can affect your results and inferences. We also outline approaches for changing the unit of analysis (reshaping and segmenting corpora), how to filter a text corpus based on variables associated with texts, how to retrieve the raw texts from a text corpus, and how to manage metadata about a text corpus. 
 
 
 ## Methods
 
+Text analysis projects involve choices about the texts to be analyzed. Texts are collected in a _text corpus_. Text corpora usually consist of three elements: the texts, document-level variables, and meta data about the texts. 
 
-All text analysis projects involve choices about the texts to be analyzed. Creating a text corpus starts with defining a sample of the available texts, out of all possible texts you could have selected. Afterwards, the texts identified for analysis need to be collected, gathered in a text corpus, and (usually) accompanied by attributes that distinguish texts. Examples include the newspaper, the date of publication, and the article's author [@benoit2020text]. A text corpus could be all articles published on immigration in Irish newspapers, with each article constituting one document in the text corpus. These so-called document-level variables contain additional information on each document and allow researchers to distinguish between texts in their analysis. 
+Creating a text corpus starts with defining a sample of the available texts, out of all possible texts you could have selected. A text corpus could include all articles published on immigration in Irish newspapers, with each article comprising one _document_ in the text corpus. A corpus could also be the reviews about one specific hotel, or a random sample of reviews about hotels in Europe. Researchers need to consider and justify why certain texts are (not) included in a corpus, since the generalisability and validity of findings can depend on the documents selected for analysis. 
 
-In some text analysis applications, the sample could constitute the entirety of texts. Analyzing all texts released by the actor(s) of interest does not necessarily mean that an analysis is without problems. Selection issues can drive the information that is recorded. Texts or information that are not transcribed or published cannot be included in the analysis. When analyzing budget speeches, speaker selection is an important caveat. Parties strategically select Members of Parliament who can express their opinion on government policy and budget decisions [@herzog15cuts]. The positions of politicians not selected for speaking at a budget debate, cannot be considered in the textual analysis. PROVIDE ANOTHER EXAMPLE? Researchers should therefore consider potential selection effects or systematic missingness of information when assembling a text corpus.
+The principles of your research design should justify the inclusion or exclusion of documents for analysis. For example, if you want to study rhetoric during televised debates, the corpus would be limited to transcripts of televised debates. When comparing issue salience in  televised debates and campaign speeches, the corpus will contain debate transcripts and speeches. Thus, the research question should drive document selection.
 
-The selection of texts will determine the scope of the analysis, generalizability, and inferences you can draw from your analysis. The principles of your research design should justify the inclusion or exclusion of documents for analysis. For example, if you want to study rhetoric during televised debates, the corpus would be limited to transcripts of televised debates. When comparing issue salience in  televised debates and campaign speeches, the corpus will include debate transcripts and speeches. Thus, the research question should drive document selection.
+In some text analysis applications, the sample could constitute the entirety of texts. Analyzing all texts released by the actor(s) of interest does not necessarily mean that an analysis is without problems. Selection issues can drive the information that is recorded. Texts or information not transcribed or published cannot be included in the analysis. When analyzing budget speeches, speaker selection is an important caveat. Parties strategically select Members of Parliament who can express their opinion on government policy and budget decisions [@herzog15cuts]. The positions of politicians not selected for speaking at a budget debate cannot be considered in the textual analysis. Researchers should therefore consider potential selection effects or systematic missingness of information when assembling a text corpus. 
 
 ::: {.callout-note appearance="simple"}
 Including and comparing texts with very different characteristics may affect your analysis. For example, written speeches often differ from spoken speeches [@benoit19sophistication]. Debates follow a different data-generating process than campaign speeches. Debates rely on questions and spontaneous responses, while politicians or their campaign teams draft campaign speeches well in advance. This does not mean that different types of text cannot or should not be compared since such a comparison can reveal structural differences based on the medium of communication. However, we would strongly advise you to identify structural differences between types of texts by comparing different groups of texts. We discuss how to differences in word usage across groups in @sec-exploring-freqs. @sec-ml-topicmodels shows how to identify variation in topic prevalence for two or more groups of documents.
 :::
 
-Besides selecting texts for analysis, researchers need to determine the unit of analysis of the text corpus. The unit of analysis should be driven by your research design. If a researcher is interested in textual features associated with likes and retweets on Twitter, the unit of analysis is an individual tweet. A project about the association between sentiment and real-time voter reactions may shift the unit of analysis could be a candidate's speech utterance [@boussalis21reactions]. 
+Besides the raw text, corpora (usually) include attributes that distinguish texts. We call these attributes _document-level variables_ or _docvars_. Docvars contain additional information on each document and allow researchers to differentiate between texts in their analysis. Document-level variables could be the author of a text, the newspaper in which an article was published, the hotel which was reviewed on TripAdvisor, or the date when a speech was delivered. A text corpus also contains _meta data_ describing the source(s) of the texts or providing information on how to cite the corpus.
 
 
-## Examples
+Besides selecting texts for analysis, researchers need to determine the _unit of analysis_ of the text corpus. The unit of analysis should be driven by your research design. If a researcher is interested in textual features associated with likes and retweets on Twitter, the unit of analysis is an individual tweet. A project about the association between sentiment and real-time voter reactions may shift the unit of analysis could be a candidate's speech utterance [@boussalis21reactions]. In reviews of hotels, the unit could be an individual review of a hotel, the mention of the hotel and its immediate context, or all texts that review a hotel. 
+Grouping or splitting texts into different units is a central aspect of preparing the text corpus and requires careful consideration. Next, we show how to access and modify all elements of the corpus mentioned in this section.
 
-For demonstration, we will use the corpus of televised debate transcripts from the U.S. Presidential election campaign of 2020. Donald Trump and Joe Biden participated in two televised debates. The first debate took place in Cleveland, Ohio, on 29 September 2020. The two candidates met again in Nashville, Tennessee on 10 December.[^09-quanteda-corpus-1] Following the **quanteda** naming conventinos, the object name starts with `data_` (since it contains data), followed by `corpus_` (indicating that the object is a text corpus) and `debates`, describing the text corpus. 
+
+## Applications
+
+For demonstration, we will use the corpus of televised debate transcripts from the U.S. Presidential election campaign of 2020. Donald Trump and Joe Biden participated in two televised debates. The first debate took place in Cleveland, Ohio, on 29 September 2020. The two candidates met again in Nashville, Tennessee on 10 December.[^09-quanteda-corpus-1] The corpus **TAUR** package contains this text corpus as `data_corpus_debates`.  Following the **quanteda** naming conventions, the object name starts with `data_` (since it contains data), followed by `corpus_` (indicating that the object is a text corpus) and `debates`, describing the content of the text corpus. 
 
 [^09-quanteda-corpus-1]: The transcripts are available at https://www.presidency.ucsb.edu/documents/presidential-debate-case-western-reserve-university-cleveland-ohio and https://www.presidency.ucsb.edu/documents/presidential-debate-belmont-university-nashville-tennessee-0. 
 
+First, we load the packages and inspect the text corpus using `summary()`.
 
-First, we inspect the text corpus using the `summary()` and `ndoc()` functions.
-
-```{r,}
+```{r}
 #| echo: false
 #| message: false
 library("quanteda")
-library("rvest")
-library("stringr")
-library("quanteda.tidy")
-
-# assign URL of debates to an object called url_debates
-url_debates <- "https://www.presidency.ucsb.edu/advanced-search?field-keywords=&field-keywords2=&field-keywords3=&from%5Bdate%5D=01-01-2020&to%5Bdate%5D=12-31-2020&person2=200301&category2%5B%5D=64&items_per_page=50"
-
-source_page <- read_html(url_debates)
-
-# get debate meta-data
-
-nodes_pres <- ".views-field-title a"
-text_pres <- ".views-field-field-docs-start-date-time-value.text-nowrap"
-
-debates_meta <- data.frame(
-    location = html_text(html_nodes(source_page, nodes_pres)),
-    date =  html_text(html_nodes(source_page, text_pres)),
-    stringsAsFactors = FALSE
-)
-
-# format the date
-debates_meta$date <- as.Date(trimws(debates_meta$date), 
-                             format = "%b %d, %Y")
-
-# get debate URLs
-debates_links <- source_page |> 
-    html_nodes(".views-field-title a") |> 
-    html_attr(name = "href") 
-
-# add first part of URL to debate links
-debates_links <- paste0("https://www.presidency.ucsb.edu", debates_links)
-
-# scrape search results
-debates_scraped <- lapply(debates_links, read_html)
-
-# get character vector, one element per debate
-debates_text <- sapply(debates_scraped, function(x) {
-    html_nodes(x, "p") |> 
-        html_text() |>
-        paste(collapse = "\n\n")
-})
-
-debates_meta$location <- str_remove_all(debates_meta$location, 
-                                        "Presidential Debate at ")
-
-data_corpus_debates <- corpus(debates_text, 
-                              docvars = debates_meta)
-
-docnames(data_corpus_debates) <- paste0("Debate: ", data_corpus_debates$date)
+library("TAUR")
 ```
 
 
 ```{r}
 summary(data_corpus_debates)
-
-ndoc(data_corpus_debates)
 ```
 
-The corpus consists of `r ndoc(data_corpus_debates)` documents. When inspecting the output of `summary(data_corpus_debates)` reveals that each document currently is the full transcript (Biden, Trump, and moderator) of a debate. The first document, containing the transcripts of the debate in Cleveland contains 24,548 tokens, 2565 types (i.e., unique tokens) and 1928 sentences. The second debate in Nashville is slightly shorter (21,652 tokens and 2,413 types). 
+The corpus consists of `r ndoc(data_corpus_debates)` documents. The output of `summary(data_corpus_debates)` also reveals that each document is the full debate transcript. The first document contains the transcript of the debate in Cleveland, consisting of `r ntoken(corpus_subset(data_corpus_debates, date == "2020-09-29"))` tokens, `r  ntype(corpus_subset(data_corpus_debates, date == "2020-09-29"))` types (i.e., unique tokens), and `r nsentence(corpus_subset(data_corpus_debates, date == "2020-09-29"))` sentences. The second debate in Nashville is slightly shorter (`r  ntoken(corpus_subset(data_corpus_debates, date == "2020-10-22"))` tokens and `r  ntype(corpus_subset(data_corpus_debates, date == "2020-10-22"))` types). 
 
+The `meta()` function contains details on the source, author, and title of the corpus.  
+
+```{r}
+meta(data_corpus_debates)
+```
 
 ### Changing the Unit of Analysis
 
-When analyzing debates, researchers often move to the level of utterances. We can achieve this using `corpus_segment()`. In the transcript, an utterance starts with the speaker's name in ALL CAPS, followed by a colon. The regular expression `"\\s*[[:upper:]]+:\\s+"` identifies speaker names in ALL CAPS (`\\s*[[:upper:]]+`), followed by a colon `+:` and a white space `\\s+`. For a primer on regular expression see @sec-appendix-regex. 
+Next, we show the importance of adjusting the unit of a text corpus. When analyzing debates, researchers often move to the level of utterances. We can achieve this using `corpus_segment()`. In the transcript, an utterance starts with the speaker's name in ALL CAPS, followed by a colon. The regular expression `"\\s*[[:upper:]]+:\\s+"` identifies speaker names in ALL CAPS (`\\s*[[:upper:]]+`), followed by a colon `+:` and a white space `\\s+`. For a primer on regular expressions see @sec-appendix-regex. 
 
 
 ```{r}
@@ -119,6 +77,7 @@ ndoc(data_corpus_debatesseg)
 The new corpus consists of `r ndoc(data_corpus_debatesseg)` utterances by the moderators and candidates. The document-level variable `pattern` assigned the speaker name to each document. We can create a new `speaker` document-level variable by combining functions from the **stringr** and **quanteda.tidy** packages: `mutate()` creates a new `speaker` variable, and the stringr functions remove empty whitespaces (`str_trim()`), the colon (`str_remove_all()`) and change the names from UPPER CASE to Title Case (`str_to_title()`).
 
 ```{r}
+#| message: false
 library("stringr")
 library("quanteda.tidy")
 
@@ -145,7 +104,8 @@ data_corpus_debatessent <- corpus_reshape(data_corpus_debatesseg,
 
 ndoc(data_corpus_debatessent)
 ```
-The new text corpus moved from `r ndoc(data_corpus_debatesseg)` utterances to `r ndoc(data_corpus_debatessent)` sentences. Using functions such as **quanteda.textstat**'s `textstat_summary()` we can retrieve summary statistics about each sentence.
+
+The new text corpus moved from `r ndoc(data_corpus_debatesseg)` utterances to `r ndoc(data_corpus_debatessent)` sentences. Using functions such as **quanteda.textstat**'s `textstat_summary()` we can retrieve summary statistics of the sentence-level corpus.
 
 ```{r}
 library("quanteda.textstats")
@@ -154,21 +114,136 @@ dat_summary_sents <- textstat_summary(data_corpus_debatessent)
 # aggregated summary statistics
 summary(dat_summary_sents)
 ```
-### Subset a Text Corpus
+
+### Subsetting a Text Corpus
 
 The last example in this chapter covers subsetting a text corpus based on document-level variables. Researchers who want to compare Trump and Biden may not be interested in the moderator's statements. We can exclude the moderators with `corpus_subset()`. 
 
 ```{r}
-data_corpus_debatescand <- corpus_subset(data_corpus_debatesseg,
-                                          speaker %in% c("Trump", "Biden"))
+data_corpus_debatescand <- data_corpus_debatesseg |> 
+    corpus_subset(speaker %in% c("Trump", "Biden"))
 
 # check that subsetting worked as expected
-table(data_corpus_debatescand$speaker,
-      data_corpus_debatescand$location)
+table(data_corpus_debatescand$location,
+      data_corpus_debatescand$speaker)
 ```
 
 
-## Issues
+## Advanced
+
+
+### The Structure of a **quanteda** Corpus Object
+
+To be added...
+
+- the structure of a corpus object, which is basically a character vector with special attributes. 
+- Why to preserve these we need [] even when it's mycorpus[seq_len(mycorpus)] <- some_character_transformation
+
+
+### Conversion from and to Other Formats
+
+We recommend using a **quanteda** corpus object when starting a text analysis project. The *quanteda** package contains various functions for converting a corpus from and to other formats, like a data frame, **tm** corpus, or keyword-in-context (`kwic`) object.
+
+Below, we provide examples of the conversion. Converting a `corpus` object to a data frame could be useful, for instance, if you want to reshape a corpus to sentences and hand-code a sample of these sentences for validation purposes or a training set for supervised classifiers (see @sec-ml-classifiers). The example below shows how to convert the corpus of hotel reviews to a data frame.
+
+
+```{r}
+# create data frame containing texts
+# and document-level variables
+
+dat_TAhotels <- data.frame(
+    text = as.character(data_corpus_TAhotels),
+    docvars(data_corpus_TAhotels))
+
+dim(dat_TAhotels)
+```
+The resulting data frame consists of `r nrow(dat_TAhotels)` observations, which each observation being a hotel review, and `r  ncol(dat_TAhotels)` variables (`text` and `Rating`). We could also select a sample of observations and store them in a spreadsheet if we wanted to hand-code a selection of reviews (for instance, based on their sentiment).
+
+```{r}
+#| message: false
+
+# set seed for reproducibility
+set.seed(125)
+
+# sample 1000 reviews
+n <- 1000
+
+# solution using base R
+dat_TAhotels_sample_base_r <- dat_TAhotels[sample(nrow(dat_TAhotels), n), ]
+
+# solution using sample_n() from the dplyr package
+library("dplyr")
+
+set.seed(125)
+dat_TAhotels_sample_dplyr <- sample_n(dat_TAhotels, size = n)
+
+# check whether both objects are identical
+identical(dat_TAhotels_sample_base_r, 
+          dat_TAhotels_sample_dplyr)
+```
+
+```{r}
+#| eval: false
+
+# store data frame as csv file with UTF-8 encoding and remove row names
+write.csv(dat_TAhotels_sample_base_r, 
+          file = "dat_TAhotels_sample.csv",
+          fileEncoding = "UTF-8",
+          row.names = FALSE)
+
+# the rio package allows us to store 
+# the data frame in many different file formats
+library("rio")
+
+export(dat_TAhotels_sample_base_r,
+       file = "dat_TAhotels_sample.xlsx")
+```
+
+We can also create a `corpus` object from a data frame. The example below shows how to construct a text corpus from the data frame we created above. 
+
+```{r}
+corp_sample <- corpus(dat_TAhotels_sample_base_r)
+
+# inspect structure of corpus and texts
+print(corp_sample, max_ndoc = 5, max_nchar = 40)
+```
+
+In addition, we can create a text corpus from a `kwic()` object. Keywords-in-context is covered extensively in Chapter @sec-exploring-kwic.
+
+For example, we could extract all mentions of "terrible", "awful", and "disgusting", and the immediate context of 20 words from the corpus of hotel reviews, and convert the output to a new text corpus. 
+
+```{r}
+kw_TAhotels <- data_corpus_TAhotels |> 
+    tokens(remove_separators = FALSE) |> 
+    kwic(pattern = c("terrible", "awful",
+                     "disgusting"),
+         window = 20,
+         separator = " ")
+
+# check number of matches
+nrow(kw_TAhotels)
+
+# check how often each pattern was matched
+table(kw_TAhotels$pattern)
+
+# convert kwic object to a new text corpus
+corp_kwic <- corpus(kw_TAhotels, split_context = FALSE)
+
+ndoc(corp_kwic)
+print(corp_kwic, max_ndoc = 5, max_nchar = 40)
+```
+
+### Coercion Methods
+
+We can also coerce an object to a text corpus (`as.corpus()`) or extract the texts from a corpus (`as.character()`). `as.corpus()` can only be applied to a **quanteda** corpus object and upgrades it to the newest format. This function can be handy for researchers who work with older **quanteda** objects. For transforming data frames or **tm** corpus objects into a **quanteda** corpus, you should use the `corpus()` function. The function `as.character()` returns the corpus text as a plain character vector.
+
+```{r}
+chars_TAhotels <- as.character(data_corpus_TAhotels)
+
+# inspect character object
+str(chars_TAhotels)
+```
+
 
 ### Identifying Patterns for Corpus Segmentation
 
@@ -178,9 +253,6 @@ Segmenting corpora into smaller units requires a common pattern across the docum
 ### Reshaping Corpora after Statistical Analyis of Texts
 
 In many applications, the unit of analysis of the text corpus differs from the dataset used for statistical analyses. For example, @castanhosilva22eu study sentiment on European politics in tweets and parliamentary speeches. The authors construct a corpus of speeches and tweets that mention keywords relating to Europe or the EU and apply a sentiment dictionary to each document. The authors aggregate sentiment to the level of all relevant texts by a single politician, moving from over 100,000 Europe-related tweets and 20,000 Europe-related speeches to around 2500 observations. Each observation stores the sentiment by one Member of Parliament during their period of investigation. These sentiment scores are then used in regression models. 
-
-@mueller22temporal studied the temporal focus of parties' campaign communication. First, he reshaped party manifestos to the level of sentences before identifying the temporal focus of each sentence using supervised classification (@sec-ml-classifiers). The regression models use an aggregated dataset with only three observations per manifesto (sentiment in sections about the past, present, and future).
-
 
 ::: {.callout-tip appearance="simple"}
 Applying the `group_by()` in combination with the `summarise()` functions of the **dplyr** packages allows you to reshape the output of a textual analysis, stored as a data frame, to a higher-level unit of analysis.
@@ -194,13 +266,12 @@ Applying the `group_by()` in combination with the `summarise()` functions of the
 
 ## Exercises
 
-In the exercises below, we use a corpus of speeches from the 2017 UN General Debates (`data_corpus_ungd2017`, included in the **quanteda.corpora** package).^[We will update the corpus before publishing the book and use the most recent UNGD speeches.]
+In the exercises below, we use a corpus of TripAdvisor hotel reviews, `data_corpus_TAhotels`, included in the **TAUR** package).
 
-1. Identify the number of documents in `data_corpus_ungd2017`. 
-2. Select only speeches delivered by representatives of African and Asian countries.
+1. Identify the number of documents in `data_corpus_TAhotels`. 
+2. Subset the corpus by selecting only  reviews with the maximum rating of 5.
 2. Reshape this subsetted corpus to the level of sentences.
-3. Explore `textstat_summary()` of the **quanteda.textstats** package. Apply the function to `data_corpus_ungd2017` and assign it to an object called `tstat_sum_ungd`. 
+3. Explore `textstat_summary()` of the **quanteda.textstats** package. Apply the function to `data_corpus_TAhotels` and assign it to an object called `tstat_sum_TAhotels`. 
 4. What are the average, median, minimum, and maximum document lengths?
-5. Advanced: filter only speeches consisting of at least ?? tokens. 
-6. Advanced: use `tstat_sum_ungd` and create a histogram of document length using the **ggplot2** package. 
-7. Advanced: rerun the code for plotting the distribution, but add `facet_wrap()` and create small multiples for each continent.
+5. Advanced: use `data_corpus_TAhotels` filter only speeches consisting of at least 300 tokens by combining `ntoken()` and `corpus_subset()`.
+6. Create a new document-level variable `RankingRecoded` that which splits up the rankings into three categories: Negative (Ranking = 1 and 2), Neutral (Ranking = 3), and Positive (Ranking = 4 and 5). Which of the three categories is the most frequent one?
