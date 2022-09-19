@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.165">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -206,12 +206,12 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./preface.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./00-preface.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./authors.html" class="sidebar-item-text sidebar-link">About the Authors</a>
+  <a href="./00-authors.html" class="sidebar-item-text sidebar-link">About the Authors</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -465,16 +465,20 @@ div.csl-indent {
   <ul>
   <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="toc-section-number">9.1</span>  Objectives</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="toc-section-number">9.2</span>  Methods</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="toc-section-number">9.3</span>  Examples</a>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><span class="toc-section-number">9.3</span>  Applications</a>
   <ul class="collapse">
   <li><a href="#changing-the-unit-of-analysis" id="toc-changing-the-unit-of-analysis" class="nav-link" data-scroll-target="#changing-the-unit-of-analysis"><span class="toc-section-number">9.3.1</span>  Changing the Unit of Analysis</a></li>
   <li><a href="#creating-new-document-level-variables" id="toc-creating-new-document-level-variables" class="nav-link" data-scroll-target="#creating-new-document-level-variables"><span class="toc-section-number">9.3.2</span>  Creating New Document-Level Variables</a></li>
-  <li><a href="#subset-a-text-corpus" id="toc-subset-a-text-corpus" class="nav-link" data-scroll-target="#subset-a-text-corpus"><span class="toc-section-number">9.3.3</span>  Subset a Text Corpus</a></li>
+  <li><a href="#subsetting-a-text-corpus" id="toc-subsetting-a-text-corpus" class="nav-link" data-scroll-target="#subsetting-a-text-corpus"><span class="toc-section-number">9.3.3</span>  Subsetting a Text Corpus</a></li>
   </ul></li>
-  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues"><span class="toc-section-number">9.4</span>  Issues</a>
+  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced"><span class="toc-section-number">9.4</span>  Advanced</a>
   <ul class="collapse">
-  <li><a href="#identifying-patterns-for-corpus-segmentation" id="toc-identifying-patterns-for-corpus-segmentation" class="nav-link" data-scroll-target="#identifying-patterns-for-corpus-segmentation"><span class="toc-section-number">9.4.1</span>  Identifying Patterns for Corpus Segmentation</a></li>
-  <li><a href="#reshaping-corpora-after-statistical-analyis-of-texts" id="toc-reshaping-corpora-after-statistical-analyis-of-texts" class="nav-link" data-scroll-target="#reshaping-corpora-after-statistical-analyis-of-texts"><span class="toc-section-number">9.4.2</span>  Reshaping Corpora after Statistical Analyis of Texts</a></li>
+  <li><a href="#corpus-cleaning" id="toc-corpus-cleaning" class="nav-link" data-scroll-target="#corpus-cleaning"><span class="toc-section-number">9.4.1</span>  Corpus “cleaning”</a></li>
+  <li><a href="#the-structure-of-a-quanteda-corpus-object" id="toc-the-structure-of-a-quanteda-corpus-object" class="nav-link" data-scroll-target="#the-structure-of-a-quanteda-corpus-object"><span class="toc-section-number">9.4.2</span>  The Structure of a <strong>quanteda</strong> Corpus Object</a></li>
+  <li><a href="#conversion-from-and-to-other-formats" id="toc-conversion-from-and-to-other-formats" class="nav-link" data-scroll-target="#conversion-from-and-to-other-formats"><span class="toc-section-number">9.4.3</span>  Conversion from and to Other Formats</a></li>
+  <li><a href="#converting-or-coercing-to-other-object-types" id="toc-converting-or-coercing-to-other-object-types" class="nav-link" data-scroll-target="#converting-or-coercing-to-other-object-types"><span class="toc-section-number">9.4.4</span>  Converting or coercing to other object types</a></li>
+  <li><a href="#identifying-patterns-for-corpus-segmentation" id="toc-identifying-patterns-for-corpus-segmentation" class="nav-link" data-scroll-target="#identifying-patterns-for-corpus-segmentation"><span class="toc-section-number">9.4.5</span>  Identifying Patterns for Corpus Segmentation</a></li>
+  <li><a href="#reshaping-corpora-after-statistical-analyis-of-texts" id="toc-reshaping-corpora-after-statistical-analyis-of-texts" class="nav-link" data-scroll-target="#reshaping-corpora-after-statistical-analyis-of-texts"><span class="toc-section-number">9.4.6</span>  Reshaping Corpora after Statistical Analyis of Texts</a></li>
   </ul></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="toc-section-number">9.5</span>  Further Reading</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">9.6</span>  Exercises</a></li>
@@ -486,7 +490,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="quanteda-corpus" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating and Managing Corpora</span></span></h1>
+<h1 class="title"><span id="sec-quanteda-corpus" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating and Managing Corpora</span></span></h1>
 </div>
 
 
@@ -506,9 +510,10 @@ div.csl-indent {
 </section>
 <section id="methods" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="methods"><span class="header-section-number">9.2</span> Methods</h2>
-<p>All text analysis projects involve choices about the texts to be analyzed. Creating a text corpus starts with defining a sample of the available texts, out of all possible texts you could have selected. Afterwards, the texts identified for analysis need to be collected, gathered in a text corpus, and (usually) accompanied by attributes that distinguish texts. Examples include the newspaper, the date of publication, and the article’s author <span class="citation" data-cites="benoit2020text">(<a href="references.html#ref-benoit2020text" role="doc-biblioref">Benoit 2020</a>)</span>. A text corpus could be all articles published on immigration in Irish newspapers, with each article constituting one document in the text corpus. These so-called document-level variables contain additional information on each document and allow researchers to distinguish between texts in their analysis.</p>
-<p>In some text analysis applications, the sample could constitute the entirety of texts. Analyzing all texts released by the actor(s) of interest does not necessarily mean that an analysis is without problems. Selection issues can drive the information that is recorded. Texts or information that are not transcribed or published cannot be included in the analysis. When analyzing budget speeches, speaker selection is an important caveat. Parties strategically select Members of Parliament who can express their opinion on government policy and budget decisions <span class="citation" data-cites="herzog15cuts">(<a href="references.html#ref-herzog15cuts" role="doc-biblioref">Herzog and Benoit 2015</a>)</span>. The positions of politicians not selected for speaking at a budget debate, cannot be considered in the textual analysis. PROVIDE ANOTHER EXAMPLE? Researchers should therefore consider potential selection effects or systematic missingness of information when assembling a text corpus.</p>
-<p>The selection of texts will determine the scope of the analysis, generalizability, and inferences you can draw from your analysis. The principles of your research design should justify the inclusion or exclusion of documents for analysis. For example, if you want to study rhetoric during televised debates, the corpus would be limited to transcripts of televised debates. When comparing issue salience in televised debates and campaign speeches, the corpus will include debate transcripts and speeches. Thus, the research question should drive document selection.</p>
+<p>Text analysis projects involve choices about the texts to be analyzed. Texts are collected in a <em>text corpus</em>. Text corpora usually consist of three elements: the texts, document-level variables, and metadata about the corpus overall.</p>
+<p>Creating a text corpus starts with defining a sample of the available texts, out of all possible texts you could have selected. A text corpus could include all articles published on immigration in Irish newspapers, with each article recorded as one <em>document</em> in the text corpus. A corpus could also be the reviews about one specific hotel, or a random sample of reviews about hotels in Europe. Researchers need to consider and justify why certain texts are (not) included in a corpus, since the generalisability and validity of findings can depend on the documents selected for analysis.</p>
+<p>The principles of your specific project or research design should guide your decisions to include or exclude of documents for analysis. For example, if you want to study rhetoric during televised debates, the corpus would be limited to transcripts of televised debates. When comparing issue salience in televised debates and campaign speeches, the corpus will contain debate transcripts and speeches. Thus, the research question should drive document selection.</p>
+<p>In some text analysis applications, the sample could constitute the entirety of texts. Analysing all texts released by the actor(s) of interest does not necessarily mean that an analysis is without problems. Selection issues can drive the information that is recorded. Texts or information not transcribed or published cannot be included in the analysis. When analysing budget speeches, speaker selection is an important caveat. Parties strategically select Members of Parliament who can express their opinion on government policy and budget decisions <span class="citation" data-cites="herzog15cuts">(<a href="references.html#ref-herzog15cuts" role="doc-biblioref">Herzog and Benoit 2015</a>)</span>. The positions of politicians not selected for speaking at a budget debate cannot be considered in the textual analysis. Researchers should therefore consider potential selection effects or systematic missingness of information when assembling a text corpus.</p>
 <div class="callout-note callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -519,12 +524,51 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Besides selecting texts for analysis, researchers need to determine the unit of analysis of the text corpus. The unit of analysis should be driven by your research design. If a researcher is interested in textual features associated with likes and retweets on Twitter, the unit of analysis is an individual tweet. A project about the association between sentiment and real-time voter reactions may shift the unit of analysis could be a candidate’s speech utterance <span class="citation" data-cites="boussalis21reactions">(<a href="references.html#ref-boussalis21reactions" role="doc-biblioref">Boussalis et al. 2021</a>)</span>.</p>
+<p>Besides the raw text, corpora (usually) include attributes that distinguish texts. We call these attributes <em>document-level variables</em> or, in the language <strong>quanteda</strong>, “docvars”. Docvars contain additional information on each document and allow researchers to differentiate between texts in their analysis. Document-level variables could be the name of the author of a text, the newspaper in which an article was published, the hotel which was reviewed on TripAdvisor, or the date when the document was created.</p>
+<p>A text corpus also typically contains <em>metadata</em> recording important information about the corpus as a whole. Metadata that is generally useful to record in a corpus include the source where the corpus was obtained, including possibly the URL; the author of the corpus (if from a single source); a title for the corpus; and possibly important keywords that might be used later in categorising the corpus. Corpus metadata can be quite general, including a codeboo, instructions how to cite the corpus, or a license for the use of the corpus or copyright information.</p>
+<div class="callout-tip callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>While there no universal standard exists for which metadata to record, there are guidelines for corpus objects that are followed in the <strong>quanteda</strong> packages that provide example corpora, including those in the package that accompanies this book. These all record the following metadata fields: <em>title and</em> description<em>, providing a title and short text description of the corpus respectively;</em> source* and <em>url</em>, documenting in plain text and as a web address where the corpus was obtained; <em>author</em>, even when there was no single author of the documents; and <em>keywords</em>, a vector of keywords categorising the corpus. We recommend using this scheme for new corpus object that you create.</p>
+</div>
+</div>
+</div>
+<p>Just in the decision to selecting which documents should be included in the corpus, the text analyst must also think carefully about what will define a document. Sometimes, this decision is natural, such recording individual product reviews, individual speeches (as in the Presidential inaugural speech corpus), or individual social media posts. Because the definition of a document can be fluid, however, not all such decisions are so clear cut. A user might wish to cut some longer documents into sub-sections (like chapters of a book, or paragraphs of a speech) that will form documents. Or, when facing lots of smaller texts such as posts on Twitter, a user might wish to aggregate these by user, or by day or week, to define new documents. As with the decision to select texts for a corpus, the decision as to precisely how documents should be defined will depend on a user’s needs for a specific project. Sometimes, this will produce a need to redefine the document units in which texts were collected, into document units that resemble the units that the user will analyse for the purposes of a broader study. In his study about the association between sentiment and real-time voter reactions, for instance, <span class="citation" data-cites="boussalis21reactions">Boussalis et al. (<a href="references.html#ref-boussalis21reactions" role="doc-biblioref">2021</a>)</span> redefines the speech unit of documents in which campaign speeches where found, into specific utterances that were later analysed as specific statements associated with variable levels of sentiment. In reviews of hotels, the unit could be an individual review of a hotel, the mention of the hotel and its immediate context, or all texts that review a hotel. The point is that the document units in which texts are collected may not be the same as the document units that a text researcher will need for the purposes of their analysis. In the section that follows, we will show to reshape, split, and combine document units from a corpus that allow a flexible redefinition of document-level units to meet specific analytic needs. We also cover how to access and modify all elements of the corpus mentioned in this section.</p>
+<div class="callout-important callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Some tools for text analysis call for “cleaning” a corpus, sometimes by removing elements that are deemed to be unwanted, such as punctuation. We strongly discourage this, because such radical interventions lessen the generality of a corpus. We take the same approach to defining documents: We prefer that a corpus contain <em>natural</em> units of analysis, such a individual reviews, rather than <em>analytic</em> units of analysis such as combined or aggregated reviews. Cleaning should be limited to removing <em>textual cruft</em>, such as page numbers if a document was converted from pdf format, and these are not of interest.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="examples" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="examples"><span class="header-section-number">9.3</span> Examples</h2>
-<p>For demonstration, we will use the corpus of televised debate transcripts from the U.S. Presidential election campaign of 2020. Donald Trump and Joe Biden participated in two televised debates. The first debate took place in Cleveland, Ohio, on 29 September 2020. The two candidates met again in Nashville, Tennessee on 10 December.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Following the <strong>quanteda</strong> naming conventinos, the object name starts with <code>data_</code> (since it contains data), followed by <code>corpus_</code> (indicating that the object is a text corpus) and <code>debates</code>, describing the text corpus.</p>
-<p>First, we inspect the text corpus using the <code>summary()</code> and <code>ndoc()</code> functions.</p>
+<section id="applications" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="applications"><span class="header-section-number">9.3</span> Applications</h2>
+<div class="callout-important callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Authors’ note:</strong> We should move the segmentation to the Advanced section, and use the Applications section for:</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">Creating a corpus from different input sources, including some minimal cleanup</li>
+<li><input type="checkbox" disabled="">Accessing and assigning docvars</li>
+<li><input type="checkbox" disabled="">Accessing and assigning corpus metadata</li>
+<li><input type="checkbox" disabled=""><code>corpus_subset()</code>, from below, using <code>data_corpus_inaugural</code></li>
+<li><input type="checkbox" disabled=""><code>corpus_sample()</code>, using <code>data_corpus_inaugural</code></li>
+</ul>
+</div>
+</div>
+</div>
+<p>In this section we will demonstrate the construction of a corpus that requires some reshaping. For this purpose, we will use the corpus of televised debate transcripts from the U.S. Presidential election campaign of 2020. Donald Trump and Joe Biden participated in two televised debates. The first debate took place in Cleveland, Ohio, on 29 September 2020. The two candidates met again in Nashville, Tennessee on 10 December.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The corpus <strong>TAUR</strong> package contains this text corpus as <code>data_corpus_debates</code>. Following the <strong>quanteda</strong> naming conventions, the object name starts with <code>data_</code> (since it contains data), followed by <code>corpus_</code> (indicating that the object is a text corpus) and <code>debates</code>, describing the content of the text corpus.</p>
+<p>First, we load the packages and inspect the text corpus using <code>summary()</code>.</p>
 <div class="cell">
 
 </div>
@@ -534,21 +578,56 @@ div.csl-indent {
 <pre><code>Corpus consisting of 2 documents, showing 2 documents:
 
                Text Types Tokens Sentences
- Debate: 2020-09-29  2565  24548      1928
- Debate: 2020-10-22  2413  21652      1417
+ Debate: 2020-09-29  2537  24473      1926
+ Debate: 2020-10-22  2378  21579      1415
                                            location       date
  Case Western Reserve University in Cleveland, Ohio 2020-09-29
          Belmont University in Nashville, Tennessee 2020-10-22</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ndoc</span>(data_corpus_debates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The corpus consists of 2 documents. The output of <code>summary(data_corpus_debates)</code> also reveals that each document is the full debate transcript. The first document contains the transcript of the debate in Cleveland, consisting of 24,473 tokens, 2,537 types (i.e., unique tokens), and 1,926 sentences. The second debate in Nashville is slightly shorter (21,579 tokens and 2,378 types).</p>
+<div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>“Types” and “tokens” are specific linguistic terms that refer to the quantity and quality of the linguistic units found in a text. A <em>type</em> is a unique lexical unit, and a <em>token</em> is any lexical unit. Lexical units are most often words, but may also include punctuation characters, numerals, emoji, or even spaces. We cover this in greater detail in <span class="quarto-unresolved-ref">?sec-tokens</span>.</p>
+</div>
+</div>
+</div>
+<p>The <code>meta()</code> function returns a named list containing the corpus-level information stored in the corpus, reflecting the standard set of metadata fields that we have chosen to use for <strong>quanteda</strong> objects. The “keywords” element of this list is a character vector containing seven keywords.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">meta</span>(data_corpus_debates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>$description
+[1] "2020 US Presidential Debates between Donald J. Trump pand Joe Biden"
+
+$source
+[1] "The Presidential Presidency Project"
+
+$url
+[1] "https://www.presidency.ucsb.edu"
+
+$author
+[1] "UC Santa Barbara"
+
+$keywords
+[1] "political"         "US politics"       "United States"    
+[4] "presidents"        "Trump"             "Biden"            
+[7] "televised debates"
+
+$title
+[1] "2020 US Presidential Debates"</code></pre>
 </div>
 </div>
-<p>The corpus consists of 2 documents. When inspecting the output of <code>summary(data_corpus_debates)</code> reveals that each document currently is the full transcript (Biden, Trump, and moderator) of a debate. The first document, containing the transcripts of the debate in Cleveland contains 24,548 tokens, 2565 types (i.e., unique tokens) and 1928 sentences. The second debate in Nashville is slightly shorter (21,652 tokens and 2,413 types).</p>
 <section id="changing-the-unit-of-analysis" class="level3" data-number="9.3.1">
 <h3 data-number="9.3.1" class="anchored" data-anchor-id="changing-the-unit-of-analysis"><span class="header-section-number">9.3.1</span> Changing the Unit of Analysis</h3>
-<p>When analyzing debates, researchers often move to the level of utterances. We can achieve this using <code>corpus_segment()</code>. In the transcript, an utterance starts with the speaker’s name in ALL CAPS, followed by a colon. The regular expression <code>"\\s*[[:upper:]]+:\\s+"</code> identifies speaker names in ALL CAPS (<code>\\s*[[:upper:]]+</code>), followed by a colon <code>+:</code> and a white space <code>\\s+</code>. For a primer on regular expression see <a href="31-appendix-regex.html"><span>Appendix&nbsp;C</span></a>.</p>
+<p>The debate corpus contains only two documents, each a transcript of a length debate that included many different statements by the presidential candidates and the moderator. The corpus recorded these “natural” speech units as a document, but in the case of transcripts, that is often not the “analytical” document unit that will meet the analyst’s needs.</p>
+<p>To make the document unit align with our analytical purposes, we will need to reshape the corpus by segmenting it into individual statements, recording the speaker and the sequence in which the statement occurred, as new document-level variables.</p>
+<p>The tool for this segmentation in <strong>quanteda</strong> is <code>corpus_segment()</code>. As discussed in <a href="08-quanteda-overview.html">Chapter&nbsp;<span>8</span></a>, the name of this function reflects the object that it takes as an input and produces as an output (a corpus) and the verb element describes the operation it will perform (segmentation). To perform this segmentation, we will rely on the presence in the transcript of regular patterns marking the introduction of a new statement. <strong>quanteda</strong> can take multiple forms of patterns, including a fixed match, a “glob” match, and a full regular expression match. Because we need to match a very specific pattern with more elements than a simple glob pattern can handle, we will need to use the regular expression “valuetype”. (For a brief primer on pattern matching and regular expressions see <a href="31-appendix-regex.html">Appendix&nbsp;<span>C</span></a>.)</p>
+<p>In the transcript, a statement starts with the speaker’s name in ALL CAPS, followed by a colon. To match this marker of a new statement, we will use the regular expression <code>"\\s*[[:upper:]]+:\\s+"</code>. This identifies speaker names in ALL CAPS (<code>\\s*[[:upper:]]+</code>), indicating no or more spaces followed by one or more upper case words, followed by a colon (the literal<code>:</code>), followed by one or more white spaces <code>\\s+</code>. The <code>case_insensitive = FALSE</code> tells the pattern matcher to pay attention to case (how a word’s letters are capitalised or not).</p>
+<p>By default, <code>corpus_segment()</code> will split the original documents into smaller documents corresponding to the segments preceded by the pattern, and extract the pattern found to a new variable for the split document (a docvar named <code>pattern</code>). It is also smart enough to record the original, longer document from which each split document originally came.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># segment text corpus to level of utterances</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data_corpus_debatesseg <span class="ot">&lt;-</span> <span class="fu">corpus_segment</span>(data_corpus_debates, </span>
@@ -566,35 +645,32 @@ div.csl-indent {
  Debate: 2020-09-29.2     6      6         1
  Debate: 2020-09-29.3     5      5         1
  Debate: 2020-09-29.4     3      3         1
-                                           location       date       pattern
- Case Western Reserve University in Cleveland, Ohio 2020-09-29 \n\nWALLACE: 
- Case Western Reserve University in Cleveland, Ohio 2020-09-29   \n\nBIDEN: 
- Case Western Reserve University in Cleveland, Ohio 2020-09-29   \n\nTRUMP: 
- Case Western Reserve University in Cleveland, Ohio 2020-09-29   \n\nBIDEN: </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ndoc</span>(data_corpus_debatesseg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1207</code></pre>
+                                           location       date     pattern
+ Case Western Reserve University in Cleveland, Ohio 2020-09-29   WALLACE: 
+ Case Western Reserve University in Cleveland, Ohio 2020-09-29 \n\nBIDEN: 
+ Case Western Reserve University in Cleveland, Ohio 2020-09-29 \n\nTRUMP: 
+ Case Western Reserve University in Cleveland, Ohio 2020-09-29 \n\nBIDEN: </code></pre>
 </div>
 </div>
+<p>The new, split corpus, has turned the 2 original documents into 1,207 new docments. Note also that we have kept the <strong>quanteda</strong> naming conventions in assigning the new object a name that identifies it as data, as a corpus, and describes what it is. Because any function in <strong>quanteda</strong> that begins with <code>corpus_</code> will always take in and output a corpus, we know that this object will be a corpus.</p>
 </section>
 <section id="creating-new-document-level-variables" class="level3" data-number="9.3.2">
 <h3 data-number="9.3.2" class="anchored" data-anchor-id="creating-new-document-level-variables"><span class="header-section-number">9.3.2</span> Creating New Document-Level Variables</h3>
-<p>The new corpus consists of 1207 utterances by the moderators and candidates. The document-level variable <code>pattern</code> assigned the speaker name to each document. We can create a new <code>speaker</code> document-level variable by combining functions from the <strong>stringr</strong> and <strong>quanteda.tidy</strong> packages: <code>mutate()</code> creates a new <code>speaker</code> variable, and the stringr functions remove empty whitespaces (<code>str_trim()</code>), the colon (<code>str_remove_all()</code>) and change the names from UPPER CASE to Title Case (<code>str_to_title()</code>).</p>
+<p>In the split document, the new docvar <code>pattern</code> contains the pattern that we matched. Because this also included additional elements such as the spaces and the colon, however, it’s not as clean as we would prefer. Let’s turn this into a new <code>speaker</code> document-level variable by cleaning it up and renaming it. To make this easy, we will use the <strong>stringr</strong> for string manipulation, and the <strong>quanteda.tidy</strong> package for applying some <strong>dplyr</strong> functions from the “tidyverse” to manipulate the variables. Specifically, we will use <code>mutate()</code> to create a new <code>speaker</code> variable, and the <strong>stringr</strong> functions to remove empty whitespace (<code>str_trim()</code>) and the colon (<code>str_remove_all()</code>), and to change the names from UPPER CASE to Title Case (<code>str_to_title()</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"stringr"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"quanteda.tidy"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>data_corpus_debatesseg <span class="ot">&lt;-</span> data_corpus_debatesseg <span class="sc">|&gt;</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">speaker =</span> stringr<span class="sc">::</span><span class="fu">str_trim</span>(pattern),</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">speaker =</span> stringr<span class="sc">::</span><span class="fu">str_remove_all</span>(speaker, <span class="st">":"</span>),</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">speaker =</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(speaker)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"stringr"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"quanteda.tidy"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>data_corpus_debatesseg <span class="ot">&lt;-</span> data_corpus_debatesseg <span class="sc">|&gt;</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">speaker =</span> stringr<span class="sc">::</span><span class="fu">str_trim</span>(pattern),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">speaker =</span> stringr<span class="sc">::</span><span class="fu">str_remove_all</span>(speaker, <span class="st">":"</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">speaker =</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(speaker)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we can use simple base R functions to inspect the count of utterances by speaker and debate.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cross-table of speaker statements by debate</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_corpus_debatesseg<span class="sc">$</span>location,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>      data_corpus_debatesseg<span class="sc">$</span>speaker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cross-table of speaker statements by debate</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_corpus_debatesseg<span class="sc">$</span>location,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>      data_corpus_debatesseg<span class="sc">$</span>speaker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                                    
                                                      Biden Trump Wallace Welker
@@ -602,81 +678,268 @@ div.csl-indent {
   Case Western Reserve University in Cleveland, Ohio   269   340     246      0</code></pre>
 </div>
 </div>
+<div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>There are multiple ways to access docvars in a <strong>quanteda</strong> object—here a corpus, but also other objects derived from a corpus such as tokens object, or separate objects such as dictionaries. These can be <code>docvars(data_corpus_debatesseg, "speaker")</code> or, for individual docvars, using the <code>$</code> operator known from lists or data.frames, i.e.&nbsp;<code>data_corpus_debatesseg$speaker</code>.</p>
+</div>
+</div>
+</div>
 <p>We could further reshape the corpus to the level of sentences with <code>corpus_reshape()</code> if we are interested, for instance, in sentence-level sentiment or issue salience.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data_corpus_debatessent <span class="ot">&lt;-</span> <span class="fu">corpus_reshape</span>(data_corpus_debatesseg,</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">to =</span> <span class="st">"sentences"</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ndoc</span>(data_corpus_debatessent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data_corpus_debatessent <span class="ot">&lt;-</span> <span class="fu">corpus_reshape</span>(data_corpus_debatesseg,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">to =</span> <span class="st">"sentences"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ndoc</span>(data_corpus_debatessent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3564</code></pre>
+<pre><code>[1] 3560</code></pre>
 </div>
 </div>
-<p>The new text corpus moved from 1207 utterances to 3564 sentences. Using functions such as <strong>quanteda.textstat</strong>’s <code>textstat_summary()</code> we can retrieve summary statistics about each sentence.</p>
+<p>The new text corpus moved from 1207 utterances to 3560 sentences. Using functions such as <strong>quanteda.textstat</strong>’s <code>textstat_summary()</code> we can retrieve summary statistics of the sentence-level corpus.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"quanteda.textstats"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>dat_summary_sents <span class="ot">&lt;-</span> <span class="fu">textstat_summary</span>(data_corpus_debatessent)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># aggregated summary statistics</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat_summary_sents)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"quanteda.textstats"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>dat_summary_sents <span class="ot">&lt;-</span> <span class="fu">textstat_summary</span>(data_corpus_debatessent)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># aggregated summary statistics</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat_summary_sents)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   document             chars            sents       tokens     
- Length:3564        Min.   :  3.00   Min.   :1   Min.   : 1.00  
+ Length:3560        Min.   :  3.00   Min.   :1   Min.   : 1.00  
  Class :character   1st Qu.: 24.00   1st Qu.:1   1st Qu.: 6.00  
  Mode  :character   Median : 41.00   Median :1   Median : 9.00  
-                    Mean   : 55.46   Mean   :1   Mean   :12.27  
+                    Mean   : 55.31   Mean   :1   Mean   :12.26  
                     3rd Qu.: 73.00   3rd Qu.:1   3rd Qu.:16.00  
                     Max.   :414.00   Max.   :1   Max.   :79.00  
-     types           puncts          numbers          symbols       
- Min.   : 1.00   Min.   : 0.000   Min.   :0.0000   Min.   :0.00000  
- 1st Qu.: 6.00   1st Qu.: 1.000   1st Qu.:0.0000   1st Qu.:0.00000  
- Median : 9.00   Median : 1.000   Median :0.0000   Median :0.00000  
- Mean   :10.83   Mean   : 1.965   Mean   :0.0794   Mean   :0.01543  
- 3rd Qu.:14.00   3rd Qu.: 3.000   3rd Qu.:0.0000   3rd Qu.:0.00000  
- Max.   :56.00   Max.   :15.000   Max.   :4.0000   Max.   :3.00000  
-      urls                tags       emojis 
- Min.   :0.0000000   Min.   :0   Min.   :0  
- 1st Qu.:0.0000000   1st Qu.:0   1st Qu.:0  
- Median :0.0000000   Median :0   Median :0  
- Mean   :0.0005612   Mean   :0   Mean   :0  
- 3rd Qu.:0.0000000   3rd Qu.:0   3rd Qu.:0  
- Max.   :1.0000000   Max.   :0   Max.   :0  </code></pre>
+     types           puncts          numbers           symbols       
+ Min.   : 1.00   Min.   : 0.000   Min.   :0.00000   Min.   :0.00000  
+ 1st Qu.: 6.00   1st Qu.: 1.000   1st Qu.:0.00000   1st Qu.:0.00000  
+ Median : 9.00   Median : 1.000   Median :0.00000   Median :0.00000  
+ Mean   :10.82   Mean   : 1.964   Mean   :0.07949   Mean   :0.01376  
+ 3rd Qu.:14.00   3rd Qu.: 3.000   3rd Qu.:0.00000   3rd Qu.:0.00000  
+ Max.   :56.00   Max.   :15.000   Max.   :4.00000   Max.   :2.00000  
+      urls        tags       emojis 
+ Min.   :0   Min.   :0   Min.   :0  
+ 1st Qu.:0   1st Qu.:0   1st Qu.:0  
+ Median :0   Median :0   Median :0  
+ Mean   :0   Mean   :0   Mean   :0  
+ 3rd Qu.:0   3rd Qu.:0   3rd Qu.:0  
+ Max.   :0   Max.   :0   Max.   :0  </code></pre>
 </div>
 </div>
 </section>
-<section id="subset-a-text-corpus" class="level3" data-number="9.3.3">
-<h3 data-number="9.3.3" class="anchored" data-anchor-id="subset-a-text-corpus"><span class="header-section-number">9.3.3</span> Subset a Text Corpus</h3>
+<section id="subsetting-a-text-corpus" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="subsetting-a-text-corpus"><span class="header-section-number">9.3.3</span> Subsetting a Text Corpus</h3>
 <p>The last example in this chapter covers subsetting a text corpus based on document-level variables. Researchers who want to compare Trump and Biden may not be interested in the moderator’s statements. We can exclude the moderators with <code>corpus_subset()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data_corpus_debatescand <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_debatesseg,</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                                          speaker <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Trump"</span>, <span class="st">"Biden"</span>))</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check that subsetting worked as expected</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_corpus_debatescand<span class="sc">$</span>speaker,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      data_corpus_debatescand<span class="sc">$</span>location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_corpus_debatescand <span class="ot">&lt;-</span> data_corpus_debatesseg <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">corpus_subset</span>(speaker <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Trump"</span>, <span class="st">"Biden"</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check that subsetting worked as expected</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_corpus_debatescand<span class="sc">$</span>location,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      data_corpus_debatescand<span class="sc">$</span>speaker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       
-        Belmont University in Nashville, Tennessee
-  Biden                                         84
-  Trump                                        122
-       
-        Case Western Reserve University in Cleveland, Ohio
-  Biden                                                269
-  Trump                                                340</code></pre>
+<pre><code>                                                    
+                                                     Biden Trump
+  Belmont University in Nashville, Tennessee            84   122
+  Case Western Reserve University in Cleveland, Ohio   269   340</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="issues" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="issues"><span class="header-section-number">9.4</span> Issues</h2>
-<section id="identifying-patterns-for-corpus-segmentation" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="identifying-patterns-for-corpus-segmentation"><span class="header-section-number">9.4.1</span> Identifying Patterns for Corpus Segmentation</h3>
+<section id="advanced" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="advanced"><span class="header-section-number">9.4</span> Advanced</h2>
+<div class="callout-important callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Authors’ note:</strong> Segmentation and reshaping should be moved to this section.</p>
+</div>
+</div>
+</div>
+<section id="corpus-cleaning" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="corpus-cleaning"><span class="header-section-number">9.4.1</span> Corpus “cleaning”</h3>
+<p>Why we favour a “conservative” approach, including storing documents in their natural format rather than an analytical format that can be created from the natural units, and especially not intervening to change documents in a corpus (such as removing punctuation).</p>
+<p>We can discuss what constitutes recommended cleaning, and provide an example, perhaps from the debate transcript example.</p>
+</section>
+<section id="the-structure-of-a-quanteda-corpus-object" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="the-structure-of-a-quanteda-corpus-object"><span class="header-section-number">9.4.2</span> The Structure of a <strong>quanteda</strong> Corpus Object</h3>
+<p>To be added…</p>
+<ul>
+<li>the structure of a corpus object, which is basically a character vector with special attributes.</li>
+<li>Why to preserve these we need [] even when it’s mycorpus[seq_len(mycorpus)] &lt;- some_character_transformation</li>
+</ul>
+</section>
+<section id="conversion-from-and-to-other-formats" class="level3" data-number="9.4.3">
+<h3 data-number="9.4.3" class="anchored" data-anchor-id="conversion-from-and-to-other-formats"><span class="header-section-number">9.4.3</span> Conversion from and to Other Formats</h3>
+<p>We recommend using a <strong>quanteda</strong> corpus object when starting a text analysis project. The *quanteda <strong>package contains various functions for converting a corpus from and to other formats, like a data frame,</strong> tm** corpus, or keyword-in-context (<code>kwic</code>) object.</p>
+<p>Below, we provide examples of the conversion. Converting a <code>corpus</code> object to a data frame could be useful, for instance, if you want to reshape a corpus to sentences and hand-code a sample of these sentences for validation purposes or a training set for supervised classifiers (see <a href="23-ml-classifiers.html"><span>Chapter&nbsp;23</span></a>). The example below shows how to convert the corpus of hotel reviews to a data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create data frame containing texts</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and document-level variables</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>dat_TAhotels <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="fu">as.character</span>(data_corpus_TAhotels),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">docvars</span>(data_corpus_TAhotels))</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dat_TAhotels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20491     2</code></pre>
+</div>
+</div>
+<p>The resulting data frame consists of 20491 observations, which each observation being a hotel review, and 2 variables (<code>text</code> and <code>Rating</code>). We could also select a sample of observations and store them in a spreadsheet if we wanted to hand-code a selection of reviews (for instance, based on their sentiment).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed for reproducibility</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">125</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sample 1000 reviews</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># solution using base R</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>dat_TAhotels_sample_base_r <span class="ot">&lt;-</span> dat_TAhotels[<span class="fu">sample</span>(<span class="fu">nrow</span>(dat_TAhotels), n), ]</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># solution using sample_n() from the dplyr package</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">125</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>dat_TAhotels_sample_dplyr <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(dat_TAhotels, <span class="at">size =</span> n)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co"># check whether both objects are identical</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(dat_TAhotels_sample_base_r, </span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>          dat_TAhotels_sample_dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store data frame as csv file with UTF-8 encoding and remove row names</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dat_TAhotels_sample_base_r, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"dat_TAhotels_sample.csv"</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the rio package allows us to store </span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># the data frame in many different file formats</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"rio"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(dat_TAhotels_sample_base_r,</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">file =</span> <span class="st">"dat_TAhotels_sample.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can also create a <code>corpus</code> object from a data frame. The example below shows how to construct a text corpus from the data frame we created above.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>corp_sample <span class="ot">&lt;-</span> <span class="fu">corpus</span>(dat_TAhotels_sample_base_r)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect structure of corpus and texts</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(corp_sample, <span class="at">max_ndoc =</span> <span class="dv">5</span>, <span class="at">max_nchar =</span> <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 1,000 documents and 1 docvar.
+text7658 :
+"beautiful view bryant park hotel stayed ..."
+
+text19647 :
+"lovely hotel enjoyed recent day trip bar..."
+
+text2169 :
+"great place stay breakfast wonderful.loc..."
+
+text10083 :
+"wonderful hotel definitely stay hotel lo..."
+
+text7508 :
+"gave away pre-paid room 3 confirmation p..."
+
+[ reached max_ndoc ... 995 more documents ]</code></pre>
+</div>
+</div>
+<p>In addition, we can create a text corpus from a <code>kwic()</code> object. Keywords-in-context is covered extensively in Chapter <a href="15-exploring-kwic.html"><span>Chapter&nbsp;15</span></a>.</p>
+<p>For example, we could extract all mentions of “terrible”, “awful”, and “disgusting”, and the immediate context of 20 words from the corpus of hotel reviews, and convert the output to a new text corpus.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>kw_TAhotels <span class="ot">&lt;-</span> data_corpus_TAhotels <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_separators =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kwic</span>(<span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"terrible"</span>, <span class="st">"awful"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"disgusting"</span>),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">window =</span> <span class="dv">20</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">separator =</span> <span class="st">" "</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># check number of matches</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(kw_TAhotels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1181</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check how often each pattern was matched</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(kw_TAhotels<span class="sc">$</span>pattern)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  terrible      awful disgusting 
+       642        387        152 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert kwic object to a new text corpus</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>corp_kwic <span class="ot">&lt;-</span> <span class="fu">corpus</span>(kw_TAhotels, <span class="at">split_context =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ndoc</span>(corp_kwic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1181</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(corp_kwic, <span class="at">max_ndoc =</span> <span class="dv">5</span>, <span class="at">max_nchar =</span> <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 1,181 documents and 1 docvar.
+text66.L5 :
+"hated   inn  terrible,   room-service   ..."
+
+text98.L1 :
+"terrible  hotel   approximately   2   we..."
+
+text111.L304 :
+"  downtown   pike   place   waterfront ,..."
+
+text142.L1 :
+"terrible  experience   awful   night   s..."
+
+text142.L5 :
+"terrible   experience  awful  night   st..."
+
+[ reached max_ndoc ... 1,176 more documents ]</code></pre>
+</div>
+</div>
+</section>
+<section id="converting-or-coercing-to-other-object-types" class="level3" data-number="9.4.4">
+<h3 data-number="9.4.4" class="anchored" data-anchor-id="converting-or-coercing-to-other-object-types"><span class="header-section-number">9.4.4</span> Converting or coercing to other object types</h3>
+<p>We can also coerce an object to a text corpus (<code>as.corpus()</code>) or extract the texts from a corpus (<code>as.character()</code>). <code>as.corpus()</code> can only be applied to a <strong>quanteda</strong> corpus object and upgrades it to the newest format. This function can be handy for researchers who work with older <strong>quanteda</strong> objects. For transforming data frames or <strong>tm</strong> corpus objects into a <strong>quanteda</strong> corpus, you should use the <code>corpus()</code> function. The function <code>as.character()</code> returns the corpus text as a plain character vector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>chars_TAhotels <span class="ot">&lt;-</span> <span class="fu">as.character</span>(data_corpus_TAhotels)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect character object</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(chars_TAhotels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Named chr [1:20491] "nice hotel expensive parking got good deal stay hotel anniversary, arrived late evening took advice previous re"| __truncated__ ...
+ - attr(*, "names")= chr [1:20491] "text1" "text2" "text3" "text4" ...</code></pre>
+</div>
+</div>
+<p>We can also convert a corpus to a <code>data.frame</code>, which will consist of the columns <code>doc_id</code>, containing the document name; <code>text</code>, containing the actual text of the document; and any docvars that were in the corpus, which in this example consist of <code>location</code> and <code>date</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">convert</span>(data_corpus_debates, <span class="at">to =</span> <span class="st">"data.frame"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  pillar<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2
+Columns: 4
+$ doc_id   &lt;chr&gt; "Debate: 2020-09-29", "Debate: 2020-10-22"
+$ text     &lt;chr&gt; "WALLACE: Good evening from the Health Education Campus of Ca…
+$ location &lt;fct&gt; "Case Western Reserve University in Cleveland, Ohio", "Belmon…
+$ date     &lt;date&gt; 2020-09-29, 2020-10-22</code></pre>
+</div>
+</div>
+</section>
+<section id="identifying-patterns-for-corpus-segmentation" class="level3" data-number="9.4.5">
+<h3 data-number="9.4.5" class="anchored" data-anchor-id="identifying-patterns-for-corpus-segmentation"><span class="header-section-number">9.4.5</span> Identifying Patterns for Corpus Segmentation</h3>
 <p>Segmenting corpora into smaller units requires a common pattern across the documents. In the example above, we identified utterances based on the combination of a speaker’s surname in capital letters followed by a colon. Other corpora may include markers such as line breaks or headings that can be used to segment a corpus. When segmenting text corpora, we strongly recommend inspecting the resulting text corpus and spot-check that the segmentation worked as expected.</p>
 </section>
-<section id="reshaping-corpora-after-statistical-analyis-of-texts" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="reshaping-corpora-after-statistical-analyis-of-texts"><span class="header-section-number">9.4.2</span> Reshaping Corpora after Statistical Analyis of Texts</h3>
+<section id="reshaping-corpora-after-statistical-analyis-of-texts" class="level3" data-number="9.4.6">
+<h3 data-number="9.4.6" class="anchored" data-anchor-id="reshaping-corpora-after-statistical-analyis-of-texts"><span class="header-section-number">9.4.6</span> Reshaping Corpora after Statistical Analyis of Texts</h3>
 <p>In many applications, the unit of analysis of the text corpus differs from the dataset used for statistical analyses. For example, <span class="citation" data-cites="castanhosilva22eu">Castanho Silva and Proksch (<a href="references.html#ref-castanhosilva22eu" role="doc-biblioref">2021</a>)</span> study sentiment on European politics in tweets and parliamentary speeches. The authors construct a corpus of speeches and tweets that mention keywords relating to Europe or the EU and apply a sentiment dictionary to each document. The authors aggregate sentiment to the level of all relevant texts by a single politician, moving from over 100,000 Europe-related tweets and 20,000 Europe-related speeches to around 2500 observations. Each observation stores the sentiment by one Member of Parliament during their period of investigation. These sentiment scores are then used in regression models.</p>
-<p><span class="citation" data-cites="mueller22temporal">Müller (<a href="references.html#ref-mueller22temporal" role="doc-biblioref">2022</a>)</span> studied the temporal focus of parties’ campaign communication. First, he reshaped party manifestos to the level of sentences before identifying the temporal focus of each sentence using supervised classification (<a href="23-ml-classifiers.html"><span>Chapter&nbsp;23</span></a>). The regression models use an aggregated dataset with only three observations per manifesto (sentiment in sections about the past, present, and future).</p>
 <div class="callout-tip callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -693,21 +956,21 @@ div.csl-indent {
 <h2 data-number="9.5" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">9.5</span> Further Reading</h2>
 <ul>
 <li>Selecting document and considerations of “found data”: <span class="citation" data-cites="grimmer22textasdata">Grimmer, Roberts, and Stewart (<a href="references.html#ref-grimmer22textasdata" role="doc-biblioref">2022</a>, ch.&nbsp;4)</span></li>
+<li>Definitions of document units and the reasons for and implications of redefining these: <span class="citation" data-cites="benoit2020text">Benoit (<a href="references.html#ref-benoit2020text" role="doc-biblioref">2020, pp480–481</a>, “Defining Documents and Choosing the Unit of Analysis”)</span></li>
 <li>Adjusting strings: <span class="citation" data-cites="wickham17r4ds">Wickham and Grolemund (<a href="references.html#ref-wickham17r4ds" role="doc-biblioref">2017</a>, ch.&nbsp;14)</span></li>
 </ul>
 </section>
 <section id="exercises" class="level2" data-number="9.6">
 <h2 data-number="9.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.6</span> Exercises</h2>
-<p>In the exercises below, we use a corpus of speeches from the 2017 UN General Debates (<code>data_corpus_ungd2017</code>, included in the <strong>quanteda.corpora</strong> package).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>In the exercises below, we use a corpus of TripAdvisor hotel reviews, <code>data_corpus_TAhotels</code>, included in the <strong>TAUR</strong> package).</p>
 <ol type="1">
-<li>Identify the number of documents in <code>data_corpus_ungd2017</code>.</li>
-<li>Select only speeches delivered by representatives of African and Asian countries.</li>
+<li>Identify the number of documents in <code>data_corpus_TAhotels</code>.</li>
+<li>Subset the corpus by selecting only reviews with the maximum rating of 5.</li>
 <li>Reshape this subsetted corpus to the level of sentences.</li>
-<li>Explore <code>textstat_summary()</code> of the <strong>quanteda.textstats</strong> package. Apply the function to <code>data_corpus_ungd2017</code> and assign it to an object called <code>tstat_sum_ungd</code>.</li>
+<li>Explore <code>textstat_summary()</code> of the <strong>quanteda.textstats</strong> package. Apply the function to <code>data_corpus_TAhotels</code> and assign it to an object called <code>tstat_sum_TAhotels</code>.</li>
 <li>What are the average, median, minimum, and maximum document lengths?</li>
-<li>Advanced: filter only speeches consisting of at least ?? tokens.</li>
-<li>Advanced: use <code>tstat_sum_ungd</code> and create a histogram of document length using the <strong>ggplot2</strong> package.</li>
-<li>Advanced: rerun the code for plotting the distribution, but add <code>facet_wrap()</code> and create small multiples for each continent.</li>
+<li>Advanced: use <code>data_corpus_TAhotels</code> filter only speeches consisting of at least 300 tokens by combining <code>ntoken()</code> and <code>corpus_subset()</code>.</li>
+<li>Create a new document-level variable <code>RankingRecoded</code> that which splits up the rankings into three categories: Negative (Ranking = 1 and 2), Neutral (Ranking = 3), and Positive (Ranking = 4 and 5). Which of the three categories is the most frequent one?</li>
 </ol>
 
 
@@ -730,9 +993,6 @@ Grimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. 2022. <em>Text as 
 <div id="ref-herzog15cuts" class="csl-entry" role="doc-biblioentry">
 Herzog, Alexander, and Kenneth Benoit. 2015. <span>“The Most Unkindest Cuts: Speaker Selection and Expressed Goverment Dissent During Economic Crisis.”</span> <em>The Journal of Politics</em> 77 (4): 1157–75. <a href="https://doi.org/10.1086/682670">https://doi.org/10.1086/682670</a>.
 </div>
-<div id="ref-mueller22temporal" class="csl-entry" role="doc-biblioentry">
-Müller, Stefan. 2022. <span>“The Temporal Focus of Campaign Communication.”</span> <em>The Journal of Politics</em> 84 (1): 585–90. <a href="https://doi.org/10.1086/715165">https://doi.org/10.1086/715165</a>.
-</div>
 <div id="ref-wickham17r4ds" class="csl-entry" role="doc-biblioentry">
 Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. Sebastopol: O’Reilly. <a href="https://r4ds.had.co.nz">https://r4ds.had.co.nz</a>.
 </div>
@@ -742,7 +1002,6 @@ Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Import, Ti
 <hr>
 <ol>
 <li id="fn1"><p>The transcripts are available at https://www.presidency.ucsb.edu/documents/presidential-debate-case-western-reserve-university-cleveland-ohio and https://www.presidency.ucsb.edu/documents/presidential-debate-belmont-university-nashville-tennessee-0.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>We will update the corpus before publishing the book and use the most recent UNGD speeches.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
