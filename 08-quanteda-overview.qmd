@@ -1,4 +1,4 @@
-# Introducing the **quanteda** Package {#quanteda-overview}
+# Introducing the **quanteda** Package {#sec-quanteda-overview}
 
 ## Objectives
 

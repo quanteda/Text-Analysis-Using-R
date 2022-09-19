@@ -13,9 +13,9 @@ book:
   repo-actions: [edit]
   sharing: [twitter, facebook, linkedin]
   chapters:
-    - index.qmd
-    - preface.qmd
-    - authors.qmd
+    - "index.qmd"
+    - "00-preface.qmd"
+    - "00-authors.qmd"
     - "01-intro.qmd"
     - part: "R"
       chapters: 

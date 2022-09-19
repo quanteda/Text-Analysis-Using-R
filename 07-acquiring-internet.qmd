@@ -1,4 +1,4 @@
-# Obtaining Texts from the Internet {#acquire-internet}
+# Obtaining Texts from the Internet {#sec-acquire-internet}
 
 ## Objectives
 

@@ -1,4 +1,4 @@
-# Unsupervised Document Scaling {#ml-unsupervised-scaling}
+# Unsupervised Document Scaling {#sec-ml-unsupervised-scaling}
 
 ## Objectives
 

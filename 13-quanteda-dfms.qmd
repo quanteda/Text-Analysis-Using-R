@@ -1,4 +1,4 @@
-# Building Document-Feature Matrices {#quanteda-dfms}
+# Building Document-Feature Matrices {#sec-quanteda-dfms}
 
 ## Objectives
 

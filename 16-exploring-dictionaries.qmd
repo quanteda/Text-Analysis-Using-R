@@ -1,4 +1,4 @@
-# Applying Dictionaries {#exploring-dictionaries}
+# Applying Dictionaries {#sec-exploring-dictionaries}
 
 ## Objectives
 

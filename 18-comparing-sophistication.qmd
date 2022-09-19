@@ -1,4 +1,4 @@
-# Profiling Lexical Patterns and Usage {#comparing-lexical}
+# Profiling Lexical Patterns and Usage {#sec-comparing-lexical}
 
 ## Objectives
 

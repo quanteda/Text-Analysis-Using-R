@@ -1,4 +1,4 @@
-# Word Embedding Models {#ml-embeddings}
+# Word Embedding Models {#sec-ml-embeddings}
 
 ## Objectives
 

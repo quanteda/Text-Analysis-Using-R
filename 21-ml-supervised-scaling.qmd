@@ -1,4 +1,4 @@
-# Supervised Document Scaling {#ml-supervised-scaling}
+# Supervised Document Scaling {#sec-ml-supervised-scaling}
 
 ## Objectives
 

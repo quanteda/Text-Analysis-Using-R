@@ -1,4 +1,4 @@
-# Describing Texts {#exploring-description}
+# Describing Texts {#sec-exploring-description}
 
 ## Objectives
 

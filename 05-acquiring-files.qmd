@@ -1,4 +1,4 @@
-# Working with Files {#acquire-files}
+# Working with Files {#sec-acquire-files}
 
 ## Objectives
 
