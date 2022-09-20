@@ -23,15 +23,14 @@ Besides the raw text, corpora (usually) include attributes that distinguish text
 A text corpus also typically contains *metadata* recording important information about the corpus as a whole. Metadata that is generally useful to record in a corpus include the source where the corpus was obtained, including possibly the URL; the author of the corpus (if from a single source); a title for the corpus; and possibly important keywords that might be used later in categorising the corpus. Corpus metadata can be quite general, including a codebook, instructions how to cite the corpus, or a license for the use of the corpus or copyright information.
 
 ::: {.callout-tip appearance="simple"}
-While there no universal standard exists for which metadata to record, there are guidelines for corpus objects that are followed in the **quanteda** packages that provide example corpora, including those in the package that accompanies this book. These all record the following metadata fields: *title* and  *description*, providing a title and short text description of the corpus respectively; *source* and *url*, documenting in plain text and as a web address where the corpus was obtained; *author*, even when there was no single author of the documents; and *keywords*, a vector of keywords categorising the corpus. We recommend using this scheme for new corpus object that you create.
+While there no universal standard exists for which metadata to record, there are guidelines for corpus objects that are followed in the **quanteda** packages that provide example corpora, including those in the package that accompanies this book. These all record the following metadata fields: *title* and *description*, providing a title and short text description of the corpus respectively; *source* and *url*, documenting in plain text and as a web address where the corpus was obtained; *author*, even when there was no single author of the documents; and *keywords*, a vector of keywords categorising the corpus. We recommend using this scheme for new corpus object that you create.
 :::
 
 Just in the decision to selecting which documents should be included in the corpus, the text analyst must also think carefully about what will define a document. Sometimes, this decision is natural, such recording individual product reviews, individual speeches (as in the Presidential inaugural speech corpus), or individual social media posts. Because the definition of a document can be fluid, however, not all such decisions are so clear cut. A user might wish to cut some longer documents into sub-sections (like chapters of a book, or paragraphs of a speech) that will form documents. Or, when facing lots of smaller texts such as posts on Twitter, a user might wish to aggregate these by user, or by day or week, to define new documents. As with the decision to select texts for a corpus, the decision as to precisely how documents should be defined will depend on a user's needs for a specific project. Sometimes, this will produce a need to redefine the document units in which texts were collected, into document units that resemble the units that the user will analyse for the purposes of a broader study. In their study about the association between emotions and real-time voter reactions, for instance, @boussalis21reactions redefine the speech unit of documents in which campaign speeches where found, into specific utterances that were later analysed as specific statements associated with variable levels of sentiment. In reviews of hotels, the unit could be an individual review of a hotel, the mention of the hotel and its immediate context, or all texts that review a hotel. The point is that the document units in which texts are collected may not be the same as the document units that a text researcher will need for the purposes of their analysis. In the section that follows, we will show to reshape, split, and combine document units from a corpus that allow a flexible redefinition of document-level units to meet specific analytic needs. We also cover how to access and modify all elements of the corpus mentioned in this section.
 
 ::: {.callout-important appearance="simple"}
-Some tools for text analysis call for "cleaning" a corpus, sometimes by removing elements that are deemed to be unwanted, such as punctuation. We strongly discourage this, because such radical interventions lessen the generality of a corpus. We take the same approach to defining documents: We prefer that a corpus contain *natural* units of analysis, such a individual reviews, rather than *analytic* units of analysis such as combined or aggregated reviews. Chapters -@sec-quanteda-tokensadvanced and --@sec-quanteda-dfms show to combine documents to the _analytic_ unit of analysis using `tokens_group()` or `dfm_group()`. Cleaning should be limited to removing *textual cruft*, such as page numbers if a document was converted from pdf format, and these are not of interest.
+Some tools for text analysis call for "cleaning" a corpus, sometimes by removing elements that are deemed to be unwanted, such as punctuation. We strongly discourage this, because such radical interventions lessen the generality of a corpus. We take the same approach to defining documents: We prefer that a corpus contain *natural* units of analysis, such a individual reviews, rather than *analytic* units of analysis such as combined or aggregated reviews. @sec-quanteda-tokensadvanced and @sec-quanteda-dfms show to combine documents to the *analytic* unit of analysis using `tokens_group()` or `dfm_group()`. Cleaning should be limited to removing *textual cruft*, such as page numbers if a document was converted from pdf format, and these are not of interest.
 :::
-
 
 ## Applications
 
@@ -45,17 +44,15 @@ Some tools for text analysis call for "cleaning" a corpus, sometimes by removing
 -   [x] `corpus_sample()`, using `data_corpus_inaugural`
 :::
 
-In this section, we will demonstrate how to create a corpus from different input sources, how to access and assign docvars and corpus metadata, how to subset documents from a corpus based on document-level variables, and how to draw a random sample of documents from a text corpus. We will use the corpus of US inaugural speeches, which is included in the **quanteda** package as `data_corpus_inaugural`. 
+In this section, we will demonstrate how to create a corpus from different input sources, how to access and assign docvars and corpus metadata, how to subset documents from a corpus based on document-level variables, and how to draw a random sample of documents from a text corpus. We will use the corpus of US inaugural speeches, which is included in the **quanteda** package as `data_corpus_inaugural`.
 
 ### Creating a Corpus from Different Input Sources
 
-We can create a *quanteda* corpus from different input sources, for example a data frame, a **tm** corpus object, or a keyword-in-context object (`kwic`). 
-
+We can create a *quanteda* corpus from different input sources, for example a data frame, a **tm** corpus object, or a keyword-in-context object (`kwic`).
 
 ::: {.callout-note appearance="simple"}
-In Chapter -@sec-acquire-files we show how users can import texts in various formats, e.g., PDF documents, Word documents, or spreadsheets with the **readtext** package. The output of the `readtext()` function is always a data frame, which can be easily  transformed to a corpus object using `corpus()`. 
+In Chapter @sec-acquire-files we show how users can import texts in various formats, e.g., PDF documents, Word documents, or spreadsheets with the **readtext** package. The output of the `readtext()` function is always a data frame, which can be easily transformed to a corpus object using `corpus()`.
 :::
-
 
 Creating a corpus from a data frame or tibble object is straightforward. We use `corpus()` and determine the `text_field` that contains the text. By default, all remaining variables of the data frame will be added as docvars.
 
@@ -80,7 +77,7 @@ corp_dataframe <- corpus(dat, text_field = "some_text",
 summary(corp_dataframe)
 ```
 
-We can also create a **quanteda** corpus from a **tm** corpus object. The following example uses the corpus `crude` corpus from the **tm** package which contains 20 exemplary news articles. 
+We can also create a **quanteda** corpus from a **tm** corpus object. The following example uses the corpus `crude` corpus from the **tm** package which contains 20 exemplary news articles.
 
 ```{r}
 # load in a tm example VCorpus object
@@ -89,7 +86,6 @@ data(crude, package = "tm")
 # create quanteda corpus
 corp_newsarticles <- corpus(crude)
 ```
-
 
 In addition, we can create a text corpus from a `kwic()` object. Keywords-in-context is covered extensively in Chapter @sec-exploring-kwic.
 
@@ -128,7 +124,7 @@ First, we load the packages and inspect the text corpus using `summary()`.
 summary(data_corpus_inaugural, n = 6)
 ```
 
-The corpus consists of `r ndoc(data_corpus_inaugural)` documents. Each document is one inaugural speech delivered between `r min(data_corpus_inaugural$Year)` and `r max(data_corpus_inaugural$Year)`. 
+The corpus consists of `r ndoc(data_corpus_inaugural)` documents. Each document is one inaugural speech delivered between `r min(data_corpus_inaugural$Year)` and `r max(data_corpus_inaugural$Year)`.
 
 The `meta()` function returns a named list containing the corpus-level information stored in the corpus, reflecting the standard set of metadata fields that we have chosen to use for **quanteda** objects. The "keywords" element of this list is a character vector containing five keywords.
 
@@ -158,15 +154,13 @@ docvars(data_corpus_inaugural, "PrePostWW") <- ifelse(
     "Post World War II", "Pre World War II")
 ```
 
-
 ::: {.callout-note appearance="simple"}
 There are multiple ways to access docvars in a **quanteda** object---here a corpus, but also other objects derived from a corpus such as tokens object, or separate objects such as dictionaries. These can be `docvars(data_corpus_inaugural, "Party")` or, for individual docvars, using the `$` operator known from lists or data.frames, i.e. `data_corpus_inaugural$Party`.
 :::
 
-
 ### Subsetting a Text Corpus
 
-Applying `corpus_subset()` to a corpus allows us to subset a text corpus based on values of document-level variables. We can filter, for instance, only speeches delivered by Democratic Presidents, speeches delivered after World War II, or speeches from selected presidents. 
+Applying `corpus_subset()` to a corpus allows us to subset a text corpus based on values of document-level variables. We can filter, for instance, only speeches delivered by Democratic Presidents, speeches delivered after World War II, or speeches from selected presidents.
 
 ```{r}
 # subset only Republican Presidents
@@ -184,24 +178,23 @@ corp_cob <- corpus_subset(data_corpus_inaugural, President %in% c("Clinton", "Ob
 corp_nobiden <- corpus_subset(data_corpus_inaugural, President != "Biden")
 ```
 
+::: {.callout-tip appearance="simple"}
+Usually, we use logical operators for subsetting a text corpus or creating a new document-level variable based on certain conditions. The most relevant logical operators are:
 
-::: {.callout-tip  appearance="simple"}
-Usually, we use logical operators for subsetting a text corpus or creating a new document-level variable based on certain conditions. The most relevant logical operators are: 
-
-- `<`: less than
-- `<=`: less than or equal to
-- `>`: greater than
-- `>=`: greater than or equal to
-- `==`: equal
-- `!=`: not equal
-- `!x`: not x (negation)
-- `x | y`: x OR y
-- `x & y`: x AND y
+-   `<`: less than
+-   `<=`: less than or equal to
+-   `>`: greater than
+-   `>=`: greater than or equal to
+-   `==`: equal
+-   `!=`: not equal
+-   `!x`: not x (negation)
+-   `x | y`: x OR y
+-   `x & y`: x AND y
 :::
 
 ### Randomly Sample Documents From a Corpus
 
-Often, users may be interested in taking a random sample of documentsf from the text corpus. For example, a user may implement and test the workflow for a small, random subset of the documents, and only later run the analysis on the full text corpus. 
+Often, users may be interested in taking a random sample of documentsf from the text corpus. For example, a user may implement and test the workflow for a small, random subset of the documents, and only later run the analysis on the full text corpus.
 
 The `corpus_sample()` function allows for sampling documents from a specified size (`size`) with or without replacement (`replace`), optionally stratified by grouping variables (`by`) or with probability weights (`prob`).
 
@@ -221,10 +214,7 @@ corp_sample_prepost <- corpus_sample(data_corpus_inaugural, size = 15,
 table(corp_sample_prepost$PrePostWW2)
 ```
 
-
-
 ## Advanced
-
 
 ### Corpus "Cleaning"
 
@@ -241,7 +231,7 @@ To be added...
 
 ### Conversion from and to Other Formats
 
-Below, we provide examples of converting a **qunateda** corpus to other objects. Converting a `corpus` object to a data frame could be useful, for instance, if you want to reshape a corpus to sentences and hand-code a sample of these sentences for validation purposes or a training set for supervised classifiers (see @sec-ml-classifiers). The example below shows how to sample 1,000 hotel reviews, and converting this corpus to a data frame. 
+Below, we provide examples of converting a **qunateda** corpus to other objects. Converting a `corpus` object to a data frame could be useful, for instance, if you want to reshape a corpus to sentences and hand-code a sample of these sentences for validation purposes or a training set for supervised classifiers (see @sec-ml-classifiers). The example below shows how to sample 1,000 hotel reviews, and converting this corpus to a data frame.
 
 ```{r}
 # set seed for reproducibility
@@ -255,8 +245,8 @@ corp_TAhotels_sample <- corpus_sample(data_corpus_TAhotels,
 dat_TAhotels_sample <- convert(corp_TAhotels_sample, to = "data.frame")
 ```
 
- which will consist of the columns `doc_id`, containing the document name; `text`, containing the actual text of the document; and any docvars that were in the corpus, which in this example consist of `location` and `date`.
- 
+which will consist of the columns `doc_id`, containing the document name; `text`, containing the actual text of the document; and any docvars that were in the corpus, which in this example consist of `location` and `date`.
+
 The resulting data frame consists of `r nrow(dat_TAhotels_sample)` randomly sampled reviews and `r  ncol(dat_TAhotels_sample)` columns: `doc_id`, containing the document name; `text`, containing the actual text of the document; and any docvars that were in the corpus (in our case `Rating`).
 
 We can easily store this data frame as a spreadsheet, which can be useful when hand-code a selection of reviews (for instance, based on their sentiment).
@@ -289,32 +279,28 @@ chars_TAhotels <- as.character(data_corpus_TAhotels)
 str(chars_TAhotels)
 ```
 
-
 ### Changing the Unit of Analysis
 
 In this section we will demonstrate the construction of a corpus that requires some reshaping. For this purpose, we will use the corpus of televised debate transcripts from the U.S. Presidential election campaign of 2020. Donald Trump and Joe Biden participated in two televised debates. The first debate took place in Cleveland, Ohio, on 29 September 2020. The two candidates met again in Nashville, Tennessee on 10 December.[^09-quanteda-corpus-1] The corpus **TAUR** package contains this text corpus as `data_corpus_debates`.
 
 [^09-quanteda-corpus-1]: The transcripts are available at https://www.presidency.ucsb.edu/documents/presidential-debate-case-western-reserve-university-cleveland-ohio and https://www.presidency.ucsb.edu/documents/presidential-debate-belmont-university-nashville-tennessee-0.
 
-
 ```{r}
 # inspect text corpus
 summary(data_corpus_debates)
 ```
 
-
 The output of `summary(data_corpus_debates)` reveals that the corpus contains only two documents, i.e. the full debate transcript. The first document contains the transcript of the debate in Cleveland, consisting of `r ntoken(corpus_subset(data_corpus_debates, date == "2020-09-29")) |> format(big.mark = ",")` tokens, `r  ntype(corpus_subset(data_corpus_debates, date == "2020-09-29")) |> format(big.mark = ",")` types (i.e., unique tokens), and `r nsentence(corpus_subset(data_corpus_debates, date == "2020-09-29")) |> format(big.mark = ",")` sentences. The second debate in Nashville is slightly shorter (`r  ntoken(corpus_subset(data_corpus_debates, date == "2020-10-22")) |> format(big.mark = ",")` tokens and `r  ntype(corpus_subset(data_corpus_debates, date == "2020-10-22")) |> format(big.mark = ",")` types).
 
 ::: {.callout-note appearance="simple"}
-"Types" and "tokens" are specific linguistic terms that refer to the quantity and quality of the linguistic units found in a text. A *type* is a unique lexical unit, and a *token* is any lexical unit. Lexical units are most often words, but may also include punctuation characters, numerals, emoji, or even spaces. We cover this in greater detail in [Chapter -@sec-quanteda-tokens].
+"Types" and "tokens" are specific linguistic terms that refer to the quantity and quality of the linguistic units found in a text. A *type* is a unique lexical unit, and a *token* is any lexical unit. Lexical units are most often words, but may also include punctuation characters, numerals, emoji, or even spaces. We cover this in greater detail in [Chapter @sec-quanteda-tokens].
 :::
-
 
 The debate corpus contains only two documents, each a transcript of a length debate that included many different statements by the presidential candidates and the moderator. The corpus recorded these "natural" speech units as a document, but in the case of transcripts, that is often not the "analytical" document unit that will meet the analyst's needs.
 
 To make the document unit align with our analytical purposes, we will need to reshape the corpus by segmenting it into individual statements, recording the speaker and the sequence in which the statement occurred, as new document-level variables.
 
-The tool for this segmentation in **quanteda** is `corpus_segment()`. As discussed in [Chapter -@sec-quanteda-overview], the name of this function reflects the object that it takes as an input and produces as an output (a corpus) and the verb element describes the operation it will perform (segmentation). To perform this segmentation, we will rely on the presence in the transcript of regular patterns marking the introduction of a new statement. **quanteda** can take multiple forms of patterns, including a fixed match, a "glob" match, and a full regular expression match. Because we need to match a very specific pattern with more elements than a simple glob pattern can handle, we will need to use the regular expression "valuetype". (For a brief primer on pattern matching and regular expressions see [Appendix -@sec-appendix-regex].)
+The tool for this segmentation in **quanteda** is `corpus_segment()`. As discussed in [Chapter @sec-quanteda-overview], the name of this function reflects the object that it takes as an input and produces as an output (a corpus) and the verb element describes the operation it will perform (segmentation). To perform this segmentation, we will rely on the presence in the transcript of regular patterns marking the introduction of a new statement. **quanteda** can take multiple forms of patterns, including a fixed match, a "glob" match, and a full regular expression match. Because we need to match a very specific pattern with more elements than a simple glob pattern can handle, we will need to use the regular expression "valuetype". (For a brief primer on pattern matching and regular expressions see [Appendix -@sec-appendix-regex].)
 
 In the transcript, a statement starts with the speaker's name in ALL CAPS, followed by a colon. To match this marker of a new statement, we will use the regular expression `"\\s*[[:upper:]]+:\\s+"`. This identifies speaker names in ALL CAPS (`\\s*[[:upper:]]+`), indicating no or more spaces followed by one or more upper case words, followed by a colon (the literal`:`), followed by one or more white spaces `\\s+`. The `case_insensitive = FALSE` tells the pattern matcher to pay attention to case (how a word's letters are capitalised or not).
 
@@ -373,11 +359,9 @@ dat_summary_sents <- textstat_summary(data_corpus_debatessent)
 summary(dat_summary_sents)
 ```
 
-
 ::: {.callout-tip appearance="simple"}
 Segmenting corpora into smaller units requires a common pattern across the documents. In the example above, we identified utterances based on the combination of a speaker's surname in capital letters followed by a colon. Other corpora may include markers such as line breaks or headings that can be used to segment a corpus. When segmenting text corpora, we strongly recommend inspecting the resulting text corpus and spot-check that the segmentation worked as expected.
 :::
-
 
 ### Reshaping Corpora after Statistical Analyis of Texts
 
