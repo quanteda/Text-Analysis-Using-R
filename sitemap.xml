@@ -2,142 +2,142 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/index.html</loc>
-    <lastmod>2022-09-20T15:49:25.402Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.295Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/00-preface.html</loc>
-    <lastmod>2022-09-20T15:49:25.406Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.295Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/00-authors.html</loc>
-    <lastmod>2022-09-20T15:49:25.406Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.295Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/01-intro.html</loc>
-    <lastmod>2022-09-20T15:49:25.410Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.299Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/02-r-basics.html</loc>
-    <lastmod>2022-09-20T15:49:25.410Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.303Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/03-r-workflow.html</loc>
-    <lastmod>2022-09-20T15:49:25.410Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.303Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/04-r-strings.html</loc>
-    <lastmod>2022-09-20T15:49:25.414Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.303Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/05-acquiring-files.html</loc>
-    <lastmod>2022-09-20T15:49:25.414Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.307Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/06-acquiring-packages.html</loc>
-    <lastmod>2022-09-20T15:49:25.414Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.307Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/07-acquiring-internet.html</loc>
-    <lastmod>2022-09-20T15:49:25.418Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.307Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/08-quanteda-overview.html</loc>
-    <lastmod>2022-09-20T15:49:25.418Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.307Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/09-quanteda-corpus.html</loc>
-    <lastmod>2022-09-20T15:49:25.422Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.311Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/10-quanteda-tokens.html</loc>
-    <lastmod>2022-09-20T15:49:25.422Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.315Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/11-quanteda-tokensadvanced.html</loc>
-    <lastmod>2022-09-20T15:49:25.422Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.315Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/12-quanteda-dictionaries.html</loc>
-    <lastmod>2022-09-20T15:49:25.426Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.315Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/13-quanteda-dfms.html</loc>
-    <lastmod>2022-09-20T15:49:25.426Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.315Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/14-exploring-description.html</loc>
-    <lastmod>2022-09-20T15:49:25.426Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.319Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/15-exploring-kwic.html</loc>
-    <lastmod>2022-09-20T15:49:25.430Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.319Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/16-exploring-dictionaries.html</loc>
-    <lastmod>2022-09-20T15:49:25.430Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.323Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/17-exploring-frequencies.html</loc>
-    <lastmod>2022-09-20T15:49:25.430Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.323Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/18-comparing-sophistication.html</loc>
-    <lastmod>2022-09-20T15:49:25.434Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.323Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/19-comparing-documents.html</loc>
-    <lastmod>2022-09-20T15:49:25.434Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.323Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/20-comparing-features.html</loc>
-    <lastmod>2022-09-20T15:49:25.434Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.327Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/21-ml-supervised-scaling.html</loc>
-    <lastmod>2022-09-20T15:49:25.438Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.327Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/22-ml-unsupervised-scaling.html</loc>
-    <lastmod>2022-09-20T15:49:25.438Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.327Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/23-ml-classifiers.html</loc>
-    <lastmod>2022-09-20T15:49:25.438Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.327Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/24-ml-embedding.html</loc>
-    <lastmod>2022-09-20T15:49:25.442Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.331Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/25-ml-topicmodels.html</loc>
-    <lastmod>2022-09-20T15:49:25.442Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.331Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/26-further-advanced-nlp.html</loc>
-    <lastmod>2022-09-20T15:49:25.442Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.331Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/27-further-tidy.html</loc>
-    <lastmod>2022-09-20T15:49:25.446Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.335Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/28-further-hardlanguages.html</loc>
-    <lastmod>2022-09-20T15:49:25.446Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.335Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/references.html</loc>
-    <lastmod>2022-09-20T15:49:25.446Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.335Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/29-appendix-installation.html</loc>
-    <lastmod>2022-09-20T15:49:25.450Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.335Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/30-appendix-encoding.html</loc>
-    <lastmod>2022-09-20T15:49:25.450Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.339Z</lastmod>
   </url>
   <url>
     <loc>https://quanteda.github.io/Text-Analysis-Using-R/31-appendix-regex.html</loc>
-    <lastmod>2022-09-20T15:49:25.450Z</lastmod>
+    <lastmod>2022-09-20T15:57:57.339Z</lastmod>
   </url>
 </urlset>
