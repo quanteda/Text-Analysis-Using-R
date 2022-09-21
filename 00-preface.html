@@ -549,7 +549,7 @@ One of the two hard things in computer science: Naming things
 <ul>
 <li><p><strong>(Working in R):</strong> This section is designed for beginners to learn quickly the R required for the techniques we cover in the book, and to guide them in learning a proper R workflow for text analysis.</p></li>
 <li><p><strong>Acquiring texts:</strong> Often described (by us at least) as the hardest problem in text analysis, we cover how to source documents, including from Internet sources, and to import these into R as part of the quantitative text analysis pipeline.</p></li>
-<li><p><strong>Managing textual data using quanteda:</strong> In this section, we introduce the <strong>quanteda</strong> package, and cover each stage of textual data processing, from creating structured corpora, to tokenisation, and building matrix representations of these tokens. WE also talk about how to build and manage structured lexical resources such as dictionaries and stop word lists.</p></li>
+<li><p><strong>Managing textual data using quanteda:</strong> In this section, we introduce the <strong>quanteda</strong> package, and cover each stage of textual data processing, from creating structured corpora, to tokenisation, and building matrix representations of these tokens. We also talk about how to build and manage structured lexical resources such as dictionaries and stop word lists.</p></li>
 <li><p><strong>Exploring and describing texts:</strong> How to get overviews of texts using summary statistics, exploring texts using keywords-in-context, extracting target words, and identifying key words.</p></li>
 <li><p><strong>Statistics for comparing texts:</strong> How to characterise documents in terms of their lexical diversity. readability, similarity, or distance.</p></li>
 <li><p><strong>Machine learning for texts:</strong> How to apply scaling models, predictive models, and classification models to textual matrices.</p></li>
@@ -631,11 +631,11 @@ Warning
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"quanteda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Package version: 3.2.3
-Unicode version: 14.0
-ICU version: 70.1</code></pre>
+Unicode version: 13.0
+ICU version: 69.1</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Parallel computing: 10 of 10 threads used.</code></pre>
+<pre><code>Parallel computing: 12 of 12 threads used.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>See https://quanteda.io for tutorials and examples.</code></pre>
@@ -701,22 +701,22 @@ Tip
 <tr class="odd">
 <td style="text-align: left;">quanteda</td>
 <td style="text-align: left;">3.2.3</td>
-<td style="text-align: left;">local</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">quanteda.textmodels</td>
-<td style="text-align: left;">0.9.5</td>
-<td style="text-align: left;">local</td>
+<td style="text-align: left;">0.9.4</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">quanteda.textplots</td>
-<td style="text-align: left;">0.94.2</td>
-<td style="text-align: left;">local</td>
+<td style="text-align: left;">0.94.1</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">quanteda.textstats</td>
-<td style="text-align: left;">0.95.2</td>
-<td style="text-align: left;">local</td>
+<td style="text-align: left;">0.95</td>
+<td style="text-align: left;">CRAN (R 4.2.0)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">readtext</td>
