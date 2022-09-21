@@ -66,13 +66,12 @@ dat <- data.frame(
     some_ints = 1L:6L,
     some_text = paste0("This is text number ", 1:6, "."),
     stringsAsFactors = FALSE,
-    row.names = paste0("fromDf_", 1:6))
+    row.names = paste0("from_df_", 1:6))
 
 head(dat)
 
 # create corpus
-corp_dataframe <- corpus(dat, text_field = "some_text",
-                         meta = list(source = "From a data.frame called dat."))
+corp_dataframe <- corpus(dat, text_field = "some_text")
 
 summary(corp_dataframe)
 ```
@@ -162,18 +161,23 @@ Applying `corpus_subset()` to a corpus allows us to subset a text corpus based o
 
 ```{r}
 # subset only Republican Presidents
-corp_democrats <- corpus_subset(data_corpus_inaugural, Party == "Republican")
+corp_democrats <- corpus_subset(data_corpus_inaugural,
+                                Party == "Republican")
 
 # subset speeches delivered after WW2
-corp_postww2 <- corpus_subset(data_corpus_inaugural, PrePostWW2 == "Post World War II")
+corp_postww2 <- corpus_subset(data_corpus_inaugural,
+                              PrePostWW2 == "Post World War II")
 
-corp_postww2 <- corpus_subset(data_corpus_inaugural, Year > 1945)
+corp_postww2 <- corpus_subset(data_corpus_inaugural, 
+                              Year > 1945)
 
 # subset speeches delivered by Clinton, Obama, and Biden
-corp_cob <- corpus_subset(data_corpus_inaugural, President %in% c("Clinton", "Obama", "Biden"))
+corp_cob <- corpus_subset(data_corpus_inaugural, 
+                          President %in% c("Clinton", "Obama", "Biden"))
 
 # remove Biden's 2021 speech
-corp_nobiden <- corpus_subset(data_corpus_inaugural, President != "Biden")
+corp_nobiden <- corpus_subset(data_corpus_inaugural,
+                              President != "Biden")
 ```
 
 ::: {.callout-tip appearance="simple"}
@@ -198,13 +202,15 @@ The `corpus_sample()` function allows for sampling documents from a specified si
 
 ```{r}
 # sample 30 inaugural speeches without replacement
-corp_sample30 <- corpus_sample(data_corpus_inaugural, size = 30, replace = FALSE)
+corp_sample30 <- corpus_sample(data_corpus_inaugural, 
+                               size = 30, replace = FALSE)
 
 # check that the corpus consists of 30 documents
 ndoc(corp_sample30)
 
-# sample 15 speeches from before and 15 from after World War I (30 documents in total)
-corp_sample_prepost <- corpus_sample(data_corpus_inaugural, size = 15, 
+# sample 15 speeches from before and 15 from after World War I
+corp_sample_prepost <- corpus_sample(data_corpus_inaugural,
+                                     size = 15, 
                                      replace = FALSE,
                                      by = PrePostWW2)
 
@@ -232,6 +238,8 @@ To be added...
 Below, we provide examples of converting a **qunateda** corpus to other objects. Converting a `corpus` object to a data frame could be useful, for instance, if you want to reshape a corpus to sentences and hand-code a sample of these sentences for validation purposes or a training set for supervised classifiers (see @sec-ml-classifiers). The example below shows how to sample 1,000 hotel reviews, and converting this corpus to a data frame.
 
 ```{r}
+library("TAUR")
+
 # set seed for reproducibility
 set.seed(35)
 
