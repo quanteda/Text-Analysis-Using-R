@@ -2,7 +2,7 @@
 
 ## Objectives
 
-In this section, we cover the corpus object. We explain why you need a text corpus for text analysis and how the selection of texts can affect your results and inferences. We also outline approaches for changing the unit of analysis (reshaping and segmenting corpora), how to filter a text corpus based on variables associated with texts, how to retrieve the raw texts from a text corpus, and how to manage metadata about a text corpus.
+In this chapter, we cover the corpus object. We explain why you need a text corpus for text analysis and how the selection of texts can affect your results and inferences. We also outline approaches for changing the unit of analysis (reshaping and segmenting corpora), how to filter a text corpus based on variables associated with texts, how to retrieve the raw texts from a text corpus, and how to manage metadata about a text corpus.
 
 ## Methods
 
@@ -51,7 +51,7 @@ In this section, we will demonstrate how to create a corpus from different input
 We can create a *quanteda* corpus from different input sources, for example a data frame, a **tm** corpus object, or a keyword-in-context object (`kwic`).
 
 ::: {.callout-note appearance="simple"}
-In Chapter @sec-acquire-files we show how users can import texts in various formats, e.g., PDF documents, Word documents, or spreadsheets with the **readtext** package. The output of the `readtext()` function is always a data frame, which can be easily transformed to a corpus object using `corpus()`.
+In @sec-acquire-files we show how to use the **readtext** package for importing texts stored in various formats, e.g., PDF documents, Word documents, or spreadsheets. The output of the `readtext()` function is always a data frame, which can be easily transformed to a corpus object using `corpus()`.
 :::
 
 Creating a corpus from a data frame or tibble object is straightforward. We use `corpus()` and determine the `text_field` that contains the text. By default, all remaining variables of the data frame will be added as docvars.
@@ -87,28 +87,26 @@ data(crude, package = "tm")
 corp_newsarticles <- corpus(crude)
 ```
 
-In addition, we can create a text corpus from a `kwic()` object. Keywords-in-context is covered extensively in Chapter @sec-exploring-kwic.
+In addition, we can create a text corpus from a `kwic()` object. Keywords-in-context is covered extensively in @sec-exploring-kwic.
 
-For example, we could extract all mentions of "terrible", "awful", and "disgusting", and the immediate context of 20 words from our corpus of hotel reviews, and convert the output to a new text corpus.
+For example, we could extract all mentions of "freedom", "war", and "economy", and the immediate context of 20 words from our corpus of hotel reviews, and convert the output to a new text corpus.
 
 ```{r}
-library("TAUR")
-
-kw_TAhotels <- data_corpus_TAhotels |> 
+kw_inaugural <- data_corpus_inaugural |> 
     tokens(remove_separators = FALSE) |> 
-    kwic(pattern = c("terrible", "awful",
-                     "disgusting"),
+    kwic(pattern = c("freedom", "war",
+                     "econom*"),
          window = 20,
          separator = " ")
 
 # check number of matches
-nrow(kw_TAhotels)
+nrow(kw_inaugural)
 
 # check how often each pattern was matched
-table(kw_TAhotels$pattern)
+table(kw_inaugural$pattern)
 
 # convert kwic object to a new text corpus
-corp_kwic <- corpus(kw_TAhotels, split_context = FALSE)
+corp_kwic <- corpus(kw_inaugural, split_context = FALSE)
 
 print(corp_kwic, max_ndoc = 5, max_nchar = 40)
 ```
