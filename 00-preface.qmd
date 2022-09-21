@@ -54,7 +54,7 @@ Our sections are:
 
 -   **Acquiring texts:** Often described (by us at least) as the hardest problem in text analysis, we cover how to source documents, including from Internet sources, and to import these into R as part of the quantitative text analysis pipeline.
 
--   **Managing textual data using quanteda:** In this section, we introduce the **quanteda** package, and cover each stage of textual data processing, from creating structured corpora, to tokenisation, and building matrix representations of these tokens. WE also talk about how to build and manage structured lexical resources such as dictionaries and stop word lists.
+-   **Managing textual data using quanteda:** In this section, we introduce the **quanteda** package, and cover each stage of textual data processing, from creating structured corpora, to tokenisation, and building matrix representations of these tokens. We also talk about how to build and manage structured lexical resources such as dictionaries and stop word lists.
 
 -   **Exploring and describing texts:** How to get overviews of texts using summary statistics, exploring texts using keywords-in-context, extracting target words, and identifying key words.
 
