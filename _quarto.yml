@@ -77,8 +77,8 @@ format:
     link-citations: yes
     links-as-notes: true
     fontsize: 12pt
-#    include-in-header:
-#      - latex/preamble.tex
+    #include-in-header:
+    # - latex/preamble.tex
 
 execute:
-  freeze: true
+  freeze: auto
