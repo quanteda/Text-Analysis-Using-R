@@ -241,12 +241,12 @@ To replace a character in a corpus with another, for instance, will typically st
 ```{r}
 # not a corpus any longer
 corp <- corpus(c(letters[1:3]))
-corp <- stringr::str_replace(corp, "b", "B")
+corp <- stringr::str_replace_all(corp, "b", "B")
 corp
 
 # still a corpus
 corp <- corpus(c(letters[1:3]))
-corp[seq_along(corp)] <- stringr::str_replace(corp, "b", "B")
+corp[seq_along(corp)] <- stringr::str_replace_all(corp, "b", "B")
 corp
 ```
 :::
@@ -405,7 +405,7 @@ Applying the `group_by()` in combination with the `summarise()` functions of the
 
 -   Selecting document and considerations of "found data": @grimmer22textasdata [ch. 4]
 -   Definitions of document units and the reasons for and implications of redefining these: @benoit2020text [pp480--481, "Defining Documents and Choosing the Unit of Analysis"]
--   Adjusting strings: @wickham17r4ds [ch. 14]
+-   Adjusting strings: @wickham23r4ds [ch. 15]
 
 ## Exercises
 
