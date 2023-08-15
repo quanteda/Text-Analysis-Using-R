@@ -3,7 +3,6 @@ project:
 
 book:
   title: "Text Analysis Using R"
-  bibliography: TAUR.bib
   author:
     - name: Kenneth Benoit
     - name: Stefan Müller
@@ -18,17 +17,17 @@ book:
     - "00-authors.qmd"
     - "01-intro.qmd"
     - part: "R"
-      chapters: 
+      chapters:
         - "02-r-basics.qmd"
         - "03-r-workflow.qmd"
         - "04-r-strings.qmd"
     - part: "Acquiring Texts"
-      chapters: 
+      chapters:
         - "05-acquiring-files.qmd"
         - "06-acquiring-packages.qmd"
         - "07-acquiring-internet.qmd"
     - part: "Managing Textual Data Using quanteda"
-      chapters: 
+      chapters:
         - "08-quanteda-overview.qmd"
         - "09-quanteda-corpus.qmd"
         - "10-quanteda-tokens.qmd"
@@ -36,25 +35,25 @@ book:
         - "12-quanteda-dictionaries.qmd"
         - "13-quanteda-dfms.qmd"
     - part: "Exploring and Describing Texts"
-      chapters: 
+      chapters:
         - "14-exploring-description.qmd"
         - "15-exploring-kwic.qmd"
         - "16-exploring-dictionaries.qmd"
         - "17-exploring-frequencies.qmd"
     - part: "Statistics for Comparing Texts"
-      chapters: 
+      chapters:
         - "18-comparing-sophistication.qmd"
         - "19-comparing-documents.qmd"
         - "20-comparing-features.qmd"
     - part: "Machine Learning for Texts"
-      chapters: 
+      chapters:
         - "21-ml-supervised-scaling.qmd"
         - "22-ml-unsupervised-scaling.qmd"
         - "23-ml-classifiers.qmd"
         - "24-ml-embedding.qmd"
         - "25-ml-topicmodels.qmd"
     - part: "Further Methods for Texts"
-      chapters: 
+      chapters:
         - "26-further-advanced-nlp.qmd"
         - "27-further-tidy.qmd"
         - "28-further-hardlanguages.qmd"
@@ -65,7 +64,7 @@ book:
       - "31-appendix-regex.qmd"
 
 format:
-  html: 
+  html:
     theme: cosmo
     bibliography: TAUR.bib
     # code-link: false
@@ -74,7 +73,7 @@ format:
     number-sections: true
     colorlinks: true
     bibliography: TAUR.bib
-    link-citations: yes
+    link-citations: true
     links-as-notes: true
     fontsize: 12pt
     #include-in-header:
