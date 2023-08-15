@@ -76,8 +76,10 @@ format:
     link-citations: true
     links-as-notes: true
     fontsize: 12pt
-    #include-in-header:
-    # - latex/preamble.tex
+    pdf-engine: lualatex
+    monofont: "Menlo"
+    monofontoptions:
+      - Scale = 0.75
 
 execute:
   freeze: auto
