@@ -2,7 +2,7 @@
 
 ## Objectives
 
--   Introduction to the notion of document scaling. Difference from classification, which we cover in Chapter \@ref(ml-classifiers).\
+-   Introduction to the notion of document scaling. Difference from classification, which we cover in [Chapter @sec-ml-classifiers].
 -   Supervised versus unsupervised methods
 -   Wordscores
 -   Class affinity model

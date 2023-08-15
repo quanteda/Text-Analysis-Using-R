@@ -6,7 +6,7 @@
 
 To dive right in to text analysis using R, by means of an extended demonstration of how to acquire, process, quantify, and analyze a series of texts. The objective is to demonstrate the techniques covered in the book and the tools required to apply them.
 
-This overview is intended to serve more as a demonstration of the kinds of natural language processing and text analysis that can be done powerfully and easily in R, rather than as primary instructional material. Starting in Chapter \@ref(rbasics), you learn about the R fundamentals and work our way gradually up to basic and then more advanced text analysis. Until then, enjoy the demonstration, and don't be discouraged if it seems too advanced to follow at this stage. By the time you have finished this book, this sort of analysis will be very familiar.
+This overview is intended to serve more as a demonstration of the kinds of natural language processing and text analysis that can be done powerfully and easily in R, rather than as primary instructional material. Starting in [Chapter @sec-rbasics], you learn about the R fundamentals and work our way gradually up to basic and then more advanced text analysis. Until then, enjoy the demonstration, and don't be discouraged if it seems too advanced to follow at this stage. By the time you have finished this book, this sort of analysis will be very familiar.
 
 ## Application: Analyzing Candidate Debates from the US Presidential Election Campaign of 2020
 
@@ -31,7 +31,7 @@ For demonstration, we will use the corpus of televised debate transcripts from t
 
 ### Acquiring text directly from the world wide web.
 
-Full transcripts of both televized debates are available from [The American Presidency Project](https://www.presidency.ucsb.edu/documents/app-categories/elections-and-transitions/debates). We start our demonstration by scraping the debates using the **rvest** package [@rvest]. You will learn more about scraping data from the internet in Chapter \@ref(acquire-internet). We first need to install and load the packages required for this demonstration.
+Full transcripts of both televized debates are available from [The American Presidency Project](https://www.presidency.ucsb.edu/documents/app-categories/elections-and-transitions/debates). We start our demonstration by scraping the debates using the **rvest** package [@rvest]. You will learn more about scraping data from the internet in [Chapter @sec-acquire-internet]. We first need to install and load the packages required for this demonstration.
 
 ```{r, eval=FALSE}
 # install packages
@@ -99,7 +99,7 @@ debates_text <- sapply(debates_scraped, function(x) {
 })
 ```
 
-Having retrieved the text of the two debates, we clean up the character vector. More specifically, we clean up the details on the location using regular expressions and the **stringr** package (see Chapter \@ref(appendix-regex)).
+Having retrieved the text of the two debates, we clean up the character vector. More specifically, we clean up the details on the location using regular expressions and the **stringr** package (see [Chapter @sec-appendix-regex]).
 
 ```{r}
 debates_meta$location <- str_replace(debates_meta$location, "^.* in ", "")
