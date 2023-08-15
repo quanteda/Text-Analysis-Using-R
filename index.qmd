@@ -2,7 +2,7 @@
 description-meta: |
   A practical guide to quantitative text analysis and natural language processing using R, with a focus on the quanteda family of packages.
 biblio-style: apalike
-link-citations: yes
+link-citations: true
 links-as-notes: true
 bibliography: [TAUR.bib]
 ---
