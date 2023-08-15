@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,48 +47,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -101,8 +73,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -139,7 +110,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -153,11 +125,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction and Motivation</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction and Motivation</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -165,294 +142,339 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Text Analysis Using R</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/quanteda/Text-Analysis-Using-R" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-            <i class="bi bi-bi-twitter pe-1"></i>
-          Twitter
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-            <i class="bi bi-bi-facebook pe-1"></i>
-          Facebook
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-            <i class="bi bi-bi-linkedin pe-1"></i>
-          LinkedIn
-          </a>
-        </li>
-    </ul>
+    <a href="https://github.com/quanteda/Text-Analysis-Using-R" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-preface.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./00-preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-authors.html" class="sidebar-item-text sidebar-link">About the Authors</a>
+  <a href="./00-authors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the Authors</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction and Motivation</span></a>
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction and Motivation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">R</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-r-basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Basics</span></a>
+  <a href="./02-r-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Basics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-r-workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Workflow</span></a>
+  <a href="./03-r-workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Workflow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-r-strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Working with Text in R</span></a>
+  <a href="./04-r-strings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Working with Text in R</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Acquiring Texts</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Acquiring Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-acquiring-files.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Files</span></a>
+  <a href="./05-acquiring-files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Files</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-acquiring-packages.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using Text Import Tools</span></a>
+  <a href="./06-acquiring-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using Text Import Tools</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-acquiring-internet.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Obtaining Texts from the Internet</span></a>
+  <a href="./07-acquiring-internet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Obtaining Texts from the Internet</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Managing Textual Data Using quanteda</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Managing Textual Data Using quanteda</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-quanteda-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introducing the <strong>quanteda</strong> Package</span></a>
+  <a href="./08-quanteda-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introducing the <strong>quanteda</strong> Package</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-quanteda-corpus.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating and Managing Corpora</span></a>
+  <a href="./09-quanteda-corpus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating and Managing Corpora</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-quanteda-tokens.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing tokens</span></a>
+  <a href="./10-quanteda-tokens.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing tokens</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-quanteda-tokensadvanced.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Token Manipulation</span></a>
+  <a href="./11-quanteda-tokensadvanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Token Manipulation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-quanteda-dictionaries.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating and Managing Dictionaries</span></a>
+  <a href="./12-quanteda-dictionaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating and Managing Dictionaries</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-quanteda-dfms.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></a>
+  <a href="./13-quanteda-dfms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Exploring and Describing Texts</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Exploring and Describing Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-exploring-description.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describing Texts</span></a>
+  <a href="./14-exploring-description.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describing Texts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-exploring-kwic.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Keywords-in-Context</span></a>
+  <a href="./15-exploring-kwic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Keywords-in-Context</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-exploring-dictionaries.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Applying Dictionaries</span></a>
+  <a href="./16-exploring-dictionaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Applying Dictionaries</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17-exploring-frequencies.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Most Frequent Words</span></a>
+  <a href="./17-exploring-frequencies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Most Frequent Words</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Statistics for Comparing Texts</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Statistics for Comparing Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./18-comparing-sophistication.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Profiling Lexical Patterns and Usage</span></a>
+  <a href="./18-comparing-sophistication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Profiling Lexical Patterns and Usage</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./19-comparing-documents.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Document Similarity and Distance</span></a>
+  <a href="./19-comparing-documents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Document Similarity and Distance</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./20-comparing-features.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Feature Similarity and Distance</span></a>
+  <a href="./20-comparing-features.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Feature Similarity and Distance</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">Machine Learning for Texts</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Machine Learning for Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./21-ml-supervised-scaling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Supervised Document Scaling</span></a>
+  <a href="./21-ml-supervised-scaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Supervised Document Scaling</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./22-ml-unsupervised-scaling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Unsupervised Document Scaling</span></a>
+  <a href="./22-ml-unsupervised-scaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Unsupervised Document Scaling</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./23-ml-classifiers.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Methods for Text Classification</span></a>
+  <a href="./23-ml-classifiers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Methods for Text Classification</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./24-ml-embedding.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></a>
+  <a href="./24-ml-embedding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./25-ml-topicmodels.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Topic modelling</span></a>
+  <a href="./25-ml-topicmodels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Topic modelling</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">Further Methods for Texts</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Further Methods for Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./26-further-advanced-nlp.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></a>
+  <a href="./26-further-advanced-nlp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./27-further-tidy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Integrating “tidy” approaches</span></a>
+  <a href="./27-further-tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Integrating “tidy” approaches</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./28-further-hardlanguages.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Text analysis in “Hard” Languages</span></a>
+  <a href="./28-further-hardlanguages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Text analysis in “Hard” Languages</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">Appendices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./29-appendix-installation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing the Required Tools</span></a>
+  <a href="./29-appendix-installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing the Required Tools</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./30-appendix-encoding.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Everything You Never Wanted to Know about Encoding</span></a>
+  <a href="./30-appendix-encoding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Everything You Never Wanted to Know about Encoding</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./31-appendix-regex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">A Survival Guide to Regular Expressions</span></a>
+  <a href="./31-appendix-regex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">A Survival Guide to Regular Expressions</span></span></a>
   </div>
 </li>
       </ul>
@@ -460,27 +482,28 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="toc-section-number">1.1</span>  Objectives</a></li>
-  <li><a href="#application-analyzing-candidate-debates-from-the-us-presidential-election-campaign-of-2020" id="toc-application-analyzing-candidate-debates-from-the-us-presidential-election-campaign-of-2020" class="nav-link" data-scroll-target="#application-analyzing-candidate-debates-from-the-us-presidential-election-campaign-of-2020"><span class="toc-section-number">1.2</span>  Application: Analyzing Candidate Debates from the US Presidential Election Campaign of 2020</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">1.1</span> Objectives</a></li>
+  <li><a href="#application-analyzing-candidate-debates-from-the-us-presidential-election-campaign-of-2020" id="toc-application-analyzing-candidate-debates-from-the-us-presidential-election-campaign-of-2020" class="nav-link" data-scroll-target="#application-analyzing-candidate-debates-from-the-us-presidential-election-campaign-of-2020"><span class="header-section-number">1.2</span> Application: Analyzing Candidate Debates from the US Presidential Election Campaign of 2020</a>
   <ul class="collapse">
-  <li><a href="#acquiring-text-directly-from-the-world-wide-web." id="toc-acquiring-text-directly-from-the-world-wide-web." class="nav-link" data-scroll-target="#acquiring-text-directly-from-the-world-wide-web."><span class="toc-section-number">1.2.1</span>  Acquiring text directly from the world wide web.</a></li>
-  <li><a href="#creating-a-text-corpus" id="toc-creating-a-text-corpus" class="nav-link" data-scroll-target="#creating-a-text-corpus"><span class="toc-section-number">1.2.2</span>  Creating a text corpus</a></li>
-  <li><a href="#tokenizing-a-corpus" id="toc-tokenizing-a-corpus" class="nav-link" data-scroll-target="#tokenizing-a-corpus"><span class="toc-section-number">1.2.3</span>  Tokenizing a corpus</a></li>
-  <li><a href="#keywords-in-context" id="toc-keywords-in-context" class="nav-link" data-scroll-target="#keywords-in-context"><span class="toc-section-number">1.2.4</span>  Keywords-in-context</a></li>
-  <li><a href="#text-processing" id="toc-text-processing" class="nav-link" data-scroll-target="#text-processing"><span class="toc-section-number">1.2.5</span>  Text processing</a></li>
-  <li><a href="#identifying-multiword-expressions" id="toc-identifying-multiword-expressions" class="nav-link" data-scroll-target="#identifying-multiword-expressions"><span class="toc-section-number">1.2.6</span>  Identifying multiword expressions</a></li>
-  <li><a href="#document-feature-matrix" id="toc-document-feature-matrix" class="nav-link" data-scroll-target="#document-feature-matrix"><span class="toc-section-number">1.2.7</span>  Document-feature matrix</a></li>
-  <li><a href="#bringing-it-all-together-sentiment-analysis" id="toc-bringing-it-all-together-sentiment-analysis" class="nav-link" data-scroll-target="#bringing-it-all-together-sentiment-analysis"><span class="toc-section-number">1.2.8</span>  Bringing it all together: Sentiment analysis</a></li>
+  <li><a href="#acquiring-text-directly-from-the-world-wide-web." id="toc-acquiring-text-directly-from-the-world-wide-web." class="nav-link" data-scroll-target="#acquiring-text-directly-from-the-world-wide-web."><span class="header-section-number">1.2.1</span> Acquiring text directly from the world wide web.</a></li>
+  <li><a href="#creating-a-text-corpus" id="toc-creating-a-text-corpus" class="nav-link" data-scroll-target="#creating-a-text-corpus"><span class="header-section-number">1.2.2</span> Creating a text corpus</a></li>
+  <li><a href="#tokenizing-a-corpus" id="toc-tokenizing-a-corpus" class="nav-link" data-scroll-target="#tokenizing-a-corpus"><span class="header-section-number">1.2.3</span> Tokenizing a corpus</a></li>
+  <li><a href="#keywords-in-context" id="toc-keywords-in-context" class="nav-link" data-scroll-target="#keywords-in-context"><span class="header-section-number">1.2.4</span> Keywords-in-context</a></li>
+  <li><a href="#text-processing" id="toc-text-processing" class="nav-link" data-scroll-target="#text-processing"><span class="header-section-number">1.2.5</span> Text processing</a></li>
+  <li><a href="#identifying-multiword-expressions" id="toc-identifying-multiword-expressions" class="nav-link" data-scroll-target="#identifying-multiword-expressions"><span class="header-section-number">1.2.6</span> Identifying multiword expressions</a></li>
+  <li><a href="#document-feature-matrix" id="toc-document-feature-matrix" class="nav-link" data-scroll-target="#document-feature-matrix"><span class="header-section-number">1.2.7</span> Document-feature matrix</a></li>
+  <li><a href="#bringing-it-all-together-sentiment-analysis" id="toc-bringing-it-all-together-sentiment-analysis" class="nav-link" data-scroll-target="#bringing-it-all-together-sentiment-analysis"><span class="header-section-number">1.2.8</span> Bringing it all together: Sentiment analysis</a></li>
   </ul></li>
-  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues"><span class="toc-section-number">1.3</span>  Issues</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="toc-section-number">1.4</span>  Further Reading</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">1.5</span>  Exercises</a></li>
+  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues"><span class="header-section-number">1.3</span> Issues</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">1.4</span> Further Reading</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">1.5</span> Exercises</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/master/01-intro.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -489,7 +512,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-intro" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction and Motivation</span></span></h1>
+<h1 class="title"><span id="sec-intro" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction and Motivation</span></span></h1>
 </div>
 
 
@@ -497,6 +520,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -506,7 +530,7 @@ div.csl-indent {
 <section id="objectives" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">1.1</span> Objectives</h2>
 <p>To dive right in to text analysis using R, by means of an extended demonstration of how to acquire, process, quantify, and analyze a series of texts. The objective is to demonstrate the techniques covered in the book and the tools required to apply them.</p>
-<p>This overview is intended to serve more as a demonstration of the kinds of natural language processing and text analysis that can be done powerfully and easily in R, rather than as primary instructional material. Starting in Chapter @ref(rbasics), you learn about the R fundamentals and work our way gradually up to basic and then more advanced text analysis. Until then, enjoy the demonstration, and don’t be discouraged if it seems too advanced to follow at this stage. By the time you have finished this book, this sort of analysis will be very familiar.</p>
+<p>This overview is intended to serve more as a demonstration of the kinds of natural language processing and text analysis that can be done powerfully and easily in R, rather than as primary instructional material. Starting in <a href="02-r-basics.html">Chapter&nbsp;<span>2</span></a>, you learn about the R fundamentals and work our way gradually up to basic and then more advanced text analysis. Until then, enjoy the demonstration, and don’t be discouraged if it seems too advanced to follow at this stage. By the time you have finished this book, this sort of analysis will be very familiar.</p>
 </section>
 <section id="application-analyzing-candidate-debates-from-the-us-presidential-election-campaign-of-2020" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="application-analyzing-candidate-debates-from-the-us-presidential-election-campaign-of-2020"><span class="header-section-number">1.2</span> Application: Analyzing Candidate Debates from the US Presidential Election Campaign of 2020</h2>
@@ -528,7 +552,7 @@ div.csl-indent {
 <p>For demonstration, we will use the corpus of televised debate transcripts from the U.S. Presidential election campaign of 2020. Donald Trump and Joe Biden participated in two televised debates. The first debate took place in Cleveland, Ohio, on 29 September 2020. The two candidates met again in Nashville, Tennessee on 10 December.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <section id="acquiring-text-directly-from-the-world-wide-web." class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="acquiring-text-directly-from-the-world-wide-web."><span class="header-section-number">1.2.1</span> Acquiring text directly from the world wide web.</h3>
-<p>Full transcripts of both televized debates are available from <a href="https://www.presidency.ucsb.edu/documents/app-categories/elections-and-transitions/debates">The American Presidency Project</a>. We start our demonstration by scraping the debates using the <strong>rvest</strong> package <span class="citation" data-cites="rvest">(<a href="references.html#ref-rvest" role="doc-biblioref">Wickham 2021</a>)</span>. You will learn more about scraping data from the internet in Chapter @ref(acquire-internet). We first need to install and load the packages required for this demonstration.</p>
+<p>Full transcripts of both televized debates are available from <a href="https://www.presidency.ucsb.edu/documents/app-categories/elections-and-transitions/debates">The American Presidency Project</a>. We start our demonstration by scraping the debates using the <strong>rvest</strong> package <span class="citation" data-cites="rvest">(<a href="references.html#ref-rvest" role="doc-biblioref">Wickham 2021</a>)</span>. You will learn more about scraping data from the internet in <a href="07-acquiring-internet.html">Chapter&nbsp;<span>7</span></a>. We first need to install and load the packages required for this demonstration.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"quanteda"</span>)</span>
@@ -591,7 +615,7 @@ div.csl-indent {
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
 <span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Having retrieved the text of the two debates, we clean up the character vector. More specifically, we clean up the details on the location using regular expressions and the <strong>stringr</strong> package (see Chapter @ref(appendix-regex)).</p>
+<p>Having retrieved the text of the two debates, we clean up the character vector. More specifically, we clean up the details on the location using regular expressions and the <strong>stringr</strong> package (see <a href="31-appendix-regex.html">Chapter&nbsp;<span>C</span></a>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>debates_meta<span class="sc">$</span>location <span class="ot">&lt;-</span> <span class="fu">str_replace</span>(debates_meta<span class="sc">$</span>location, <span class="st">"^.* in "</span>, <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -727,13 +751,13 @@ text1.6 :
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntoken</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 43742</code></pre>
+<pre><code>[1] 43614</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>toks_usdebates2020 <span class="sc">|&gt;</span> </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntype</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 28174</code></pre>
+<pre><code>[1] 28137</code></pre>
 </div>
 </div>
 <p>Without any pre-processing, the corpus consists of 43,742 tokens and 28,174 types. We can easily check how these numbers change when transforming all tokens to lowercase and removing punctuation characters.</p>
@@ -747,13 +771,13 @@ text1.6 :
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntoken</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 36740</code></pre>
+<pre><code>[1] 36801</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>toks_usdebates2020_reduced <span class="sc">|&gt;</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntype</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 24965</code></pre>
+<pre><code>[1] 25049</code></pre>
 </div>
 </div>
 <p>The number of tokens and types decreases to 36,740 and 28,174, respectively, after removing punctuation and harmonizing all terms to lowercase.</p>
@@ -817,127 +841,127 @@ text1.6 :
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">booktabs =</span> T) <span class="sc">%&gt;%</span></span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"scale_down"</span>), <span class="at">html_font =</span> <span class="st">"Source Sans Pro"</span>, <span class="at">full_width =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<table class="table" style="font-family: Source Sans Pro; width: auto !important; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Pre </th>
-   <th style="text-align:left;"> Keyword </th>
-   <th style="text-align:left;"> Post </th>
-   <th style="text-align:left;"> Pattern </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Pre</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Keyword</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Post</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Pattern</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> class towns </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> well guy </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> half states </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> significant increase </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> united states </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> wants open </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> worst president </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> ever come </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> equality whole </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> never accomplished </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> equally applied </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> believe separate </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> defeat racism </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> increase homicides </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> summer particularly </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> less violence </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> today president </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> fired plant </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> one's going </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> fire plant </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> going move </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> united states </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> situation thousands </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> every company </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> blow away </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> united states </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> united states </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> anybody seeking </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> section race </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> want talk </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> institutional racism </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> always said </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> growing industry </td>
-   <td style="text-align:left;"> america </td>
-   <td style="text-align:left;"> electric excuse </td>
-   <td style="text-align:left;"> america </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">class towns</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">well guy</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">half states</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">significant increase</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">united states</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">wants open</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">worst president</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">ever come</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">equality whole</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">never accomplished</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">equally applied</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">believe separate</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">defeat racism</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">increase homicides</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">summer particularly</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">less violence</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">today president</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fired plant</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">one's going</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fire plant</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">going move</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">united states</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">situation thousands</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">every company</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">blow away</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">united states</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">united states</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">anybody seeking</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">section race</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">want talk</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">institutional racism</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">always said</td>
+<td style="text-align: left;">america</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">growing industry</td>
+<td style="text-align: left;">america</td>
+<td style="text-align: left;">are--is electric--excuse</td>
+<td style="text-align: left;">america</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
@@ -974,7 +998,7 @@ text1.6 :
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ntoken</span>(toks_usdebates2020_grouped)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Biden, 2020-09-29 Biden, 2020-10-22 Trump, 2020-09-29 Trump, 2020-10-22 
-             7996              8093              8973              9016 </code></pre>
+             7977              8060              8956              8981 </code></pre>
 </div>
 </div>
 <p>The number of tokens between Trump and Biden do not differ substantively in both debates. Trump’s share of speech is only slightly higher than Biden’s (7996 v 8093 tokens; 8973 v 9016 tokens).</p>
@@ -992,26 +1016,26 @@ text1.6 :
 <span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tstat_coll, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       collocation count count_nested length   lambda        z
-1  president trump    71           44      2 6.928550 22.01175
-2        make sure    30            4      2 7.439572 21.53052
-3  president biden    52           52      2 6.450825 20.63073
-4     mr president    34           21      2 5.389748 19.78036
-5      health care    20           15      2 7.580147 19.32484
-6       number one    18           16      2 5.595991 17.94433
-7        right now    18           12      2 4.801444 16.82701
-8       number two    15           11      2 5.472508 16.69323
-9     half million    15           13      2 6.852610 16.55670
-10         mr vice    15           15      2 5.323919 16.52522
-11      four years    19           15      2 7.433288 16.49838
-12 american people    22            4      2 4.969408 16.44720
-13     two minutes    28           19      2 8.504176 16.09104
-14       come back    12            7      2 5.537489 15.46566
-15     three years    12            5      2 5.464293 15.20941
-16      one number    12           12      2 5.122270 14.65987
-17  climate change    11            8      2 8.963835 14.65614
-18  million people    18           18      2 4.073645 14.42229
-19  final question    14            7      2 7.008316 14.40121
-20  vice president    99           81      2 9.070192 14.05817</code></pre>
+1  president trump    69           42      2 6.898135 21.87073
+2        make sure    30            4      2 7.463828 21.53833
+3  president biden    51           51      2 6.434178 20.53644
+4     mr president    33           20      2 5.358261 19.55120
+5      health care    20           15      2 7.578059 19.31951
+6       number one    18           16      2 5.593899 17.93762
+7        right now    18           13      2 4.814084 16.84894
+8       number two    15           11      2 5.470417 16.68685
+9     half million    15           13      2 6.850521 16.55165
+10         mr vice    15           15      2 5.345112 16.54794
+11 american people    22            4      2 4.971608 16.45284
+12     two minutes    28           19      2 8.502087 16.08709
+13      four years    19           15      2 7.592875 16.04832
+14       come back    12            7      2 5.535399 15.45982
+15      one number    12           12      2 5.120179 14.65388
+16  climate change    11            8      2 8.961748 14.65273
+17     three years    11            5      2 5.346560 14.55198
+18  million people    18           18      2 4.075772 14.42822
+19  vice president    99           81      2 9.074332 14.06393
+20 million dollars    10           10      2 5.285594 13.99695</code></pre>
 </div>
 </div>
 <p>We can use <code>tokens_compound()</code> to compound certain multiword expressions before creating a document-feature matrix which does not consider word order. For illustration purposes, we compound <code>climate change</code> ,<code>social securit*</code>, and <code>health insurance*</code>. By default, compounded tokens are concatenated by <code>_</code>.</p>
@@ -1034,7 +1058,7 @@ text1.6 :
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">topfeatures</span>(dfmat_presdebates20, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>president     going    people      said      know      want       get       say 
-      288       278       259       164       139       129       119       114 
+      287       278       258       162       139       128       118       114 
      look      vice 
       105       101 </code></pre>
 </div>
@@ -1044,25 +1068,25 @@ text1.6 :
 <div class="cell-output cell-output-stdout">
 <pre><code>$Biden
     going    people      fact      said       get      make      know president 
-      126       119        72        62        54        46        46        45 
+      126       118        72        62        54        46        46        45 
      sure       can 
        44        43 
 
 $Trump
-people  going   know   said   look   want    joe   done    say  think 
-   111     92     85     77     65     62     55     55     54     52 
+people  going   know   said   look   want    joe   done    say   just 
+   111     92     85     75     65     61     55     55     54     52 
 
 $Wallace
 president       sir     going  question        mr      vice     trump        go 
-      110        56        44        39        39        36        33        30 
+      110        56        44        39        38        36        33        30 
       two     right 
        28        25 
 
 $Welker
-president      vice     trump     biden  question     right       let      move 
-      100        52        39        35        31        28        28        24 
-     talk      want 
-       21        18 </code></pre>
+president      vice     trump     biden       let     right  question      move 
+       99        52        37        34        28        27        26        24 
+     talk        -- 
+       21        19 </code></pre>
 </div>
 </div>
 <p>Many methods build on document-feature matrices and the “bag-of-words” approach. In this section, we introduce <code>textstat_keyness()</code>, which identifies features that occur differentially across different categories – in our case, Trump’s and Biden’s utterances. The function <code>textplot_keyness()</code> provides a straightforward way of visualize the results of the keyness analysis (Figure (fig:keynesspres).)</p>
@@ -1107,7 +1131,7 @@ president      vice     trump     biden  question     right       let      move
 1   Biden      357      465           33            8   Biden  0.19272394
 2   Trump      430      509            7            2   Trump  0.15627088
 3 Wallace      136      185            0            4 Wallace  0.32806441
-4  Welker      106      102            0            0  Welker -0.03828219</code></pre>
+4  Welker      106      100            0            0  Welker -0.05798726</code></pre>
 </div>
 </div>
 </section>
@@ -1125,11 +1149,11 @@ president      vice     trump     biden  question     right       let      move
 <p>Add some here.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-rvest" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-rvest" class="csl-entry" role="listitem">
 Wickham, Hadley. 2021. <em>Rvest: Easily Harvest (Scrape) Web Pages</em>. <a href="https://CRAN.R-project.org/package=rvest">https://CRAN.R-project.org/package=rvest</a>.
 </div>
-<div id="ref-young2012" class="csl-entry" role="doc-biblioentry">
+<div id="ref-young2012" class="csl-entry" role="listitem">
 Young, Lori, and Stuart N. Soroka. 2012. <span>“Affective News: The Automated Coding of Sentiment in Political Texts.”</span> <em>Political Communication</em> 29 (2): 205–31.
 </div>
 </div>
@@ -1170,9 +1194,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1184,7 +1222,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1220,24 +1275,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
