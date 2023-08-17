@@ -8,7 +8,6 @@ book:
     - name: Stefan Müller
   site-url: https://quanteda.github.io/Text-Analysis-Using-R/
   repo-url: https://github.com/quanteda/Text-Analysis-Using-R
-  repo-branch: master
   repo-actions: [edit]
   sharing: [twitter, facebook, linkedin]
   chapters:
