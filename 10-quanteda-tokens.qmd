@@ -124,7 +124,8 @@ We can also use other lists included in the **stopwords** package.
 # load the stopwords package
 library(stopwords)
 
-# check the first five stopwords from English ISO code list (note that numbers are included)
+# check the first five stopwords from English ISO code list
+# (note that list includes numbers)
 head(stopwords::stopwords("en", source = "stopwords-iso"), 5)
 ```
 
@@ -182,8 +183,13 @@ txt <- c(
     two = "taxing taxis taxes taxed my tax return"
 )
 
-toks_stemming <- tokens(txt)
-tokens_wordstem(toks_stemming)
+# create tokens object
+tokens(txt)
+
+# create tokens object and stem tokens
+toks_stemming |> 
+    tokens() |> 
+    tokens_wordstem()
 ```
 
 Lemmatisation is more complex than stemming since it does not rely on pre-defined rules. The **spacyr** package allows you to lemmatise a text corpus. We describe lemmatisation in the Advanced section below.
@@ -292,13 +298,15 @@ toks_inaugural <- data_corpus_inaugural |>
     tokens_wordstem() |> 
     tokens_tolower()
 
-head(toks_inaugural)
+# inspect first tokens from the first two speeches
+head(toks_inaugural, 2)
 ```
 ::: {.callout-warning appearance="simple"}
 The sequence of processing steps during the tokensation is important. For example, if we first stem our tokens and remove stopwords or specific patterns afterwards, we might not remove all desired features. Consider the following example: 
 
 ```{r}
-txt <- "During my stay in London I visited the museum and attended a very good concert."
+txt <- "During my stay in London I visited the museum
+and attended a very good concert."
 
 # remove stopwords before stemming tokens
 tokens(txt, remove_punct = TRUE) %>%
@@ -314,10 +322,6 @@ tokens(txt, remove_punct = TRUE) %>%
 The first example produces what most users want: it removes all terms from our stopword list (during, my, I, the, and, a, very), while the second example first stems "During" to "dure" and "very" to "veri", which changes the terms to tokens not included in  `stopwords("en")`.
 :::
 
-
-
-
-Some processing steps are sequence-dependent, for instance when a user removes stopwords and also applies a stemmer.
 
 ### Managing Document-Level Variables and Metadata
 
