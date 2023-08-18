@@ -277,6 +277,48 @@ stop_extended <- c(stopwords("en"), "furthermore", "therefore")
 tail(stop_extended)
 ```
 
+As discussed above, tokenisation and processing involves many steps, and we can combine these steps using the base R pipe (`|>`). The example below shows a typical workflow. 
+
+```{r}
+# tokenise data_corpus_inaugural, 
+# remove punctuation and numbers,
+# remove stopwords, 
+# stem the tokens,
+# and transform object to lowercase
+
+toks_inaugural <- data_corpus_inaugural |> 
+    tokens(remove_punct = TRUE, remove_numbers = TRUE) |> 
+    tokens_remove(pattern = stopwords("en")) |> 
+    tokens_wordstem() |> 
+    tokens_tolower()
+
+head(toks_inaugural)
+```
+::: {.callout-warning appearance="simple"}
+The sequence of processing steps during the tokensation is important. For example, if we first stem our tokens and remove stopwords or specific patterns afterwards, we might not remove all desired features. Consider the following example: 
+
+```{r}
+txt <- "During my stay in London I visited the museum and attended a very good concert."
+
+# remove stopwords before stemming tokens
+tokens(txt, remove_punct = TRUE) %>%
+    tokens_remove(stopwords("en")) %>%
+    tokens_wordstem()
+
+# stem tokens before removing stopwords
+tokens(txt, remove_punct = TRUE) %>%
+    tokens_wordstem() %>%
+    tokens_remove(stopwords("en"))
+```
+
+The first example produces what most users want: it removes all terms from our stopword list (during, my, I, the, and, a, very), while the second example first stems "During" to "dure" and "very" to "veri", which changes the terms to tokens not included in  `stopwords("en")`.
+:::
+
+
+
+
+Some processing steps are sequence-dependent, for instance when a user removes stopwords and also applies a stemmer.
+
 ### Managing Document-Level Variables and Metadata
 
 By default, tokens object contain the document-level variables and the metadata assigned to your corpus. You can access or modify these variables in the same way as we did in @sec-quanteda-corpus.
@@ -295,7 +337,9 @@ table(toks_inaugural$post_1990)
 
 ## Further Reading
 
-Additional resources from libraries or the web.
+- The concept of tokenisation and how to build a custom tokeniser: @hvitfeldt21ml [ch. 2]
+- Introduction to the **tokenizers** package: @tokenizers
+- How processing decisions can influence results: @denny18preprocess
 
 ## Exercises
 
