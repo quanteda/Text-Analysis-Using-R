@@ -4,13 +4,15 @@
 ## Objectives
 
 In this chapter, we cover the basics of tokenisation and the **quanteda** tokens object.
-You will learn what to pay attention to when tokenizing texts, and how to select, keep, and remove tokens. We also introduce the concept of "stopwords" and how to remove stopwords from a tokens object. We cover stemming and lemmatisation, methods for reducing words to their base or root form. Finally, we show how to manage metadata in a tokens object, which largely mirrors the way metadata is managed in a corpus object.
+You will learn what to pay attention to when tokenizing texts, and how to select, keep, and remove tokens.  We explain methods for selecting tokens to remove or to modify, for instance removing "stopwords" or removing suffixes through stemming and lemmatisation, methods for reducing words to their base or root form. Finally, we show how to manage metadata in a tokens object, which largely mirrors the way metadata is managed in a corpus object.  At the end of this chapter, the reader will have a solid understanding of how to create and manage tokens objects in **quanteda** that will serve as a foundation for more advanced tokens manipulation methods in later chapters.
 
 ## Methods
 
-After having collected the text for analysis and collecting these texts in a corpus (see @sec-quanteda-corpus), we usually tokenise our text. Tokenisation describes the process of breaking up text into individual units (tokens) that can be analysed. Usually, tokenisation works by identifying delimiters between words. In most languages, these delimiters are spaces, but they can also be newlines or tabs. Tokenisation is a critical step of every text analysis project. It is very important to pay very close attention to the tokenisation of your text.
+After having collected the text for analysis and collecting these texts in a corpus (see @sec-quanteda-corpus), the next most common step is tokenise our texts. Tokenisation is the process of segmenting longer texts into individual units known as _tokens_, based on semantic, linguistic, or lexographic distinctions.  The most common variety of tokens consists of distinct words, but tokens can also be punctuation characters, numeric or alphabetic characters, emoji, or speaces.  Tokens can also consist of sequences of these, such as sentences, paragraphs, or word sequences of arbitrary length.  
 
-We can tokenise our texts to different levels: words,sentences, or individual characters. Most of the time, we tokenise our documents to the level of words. Note that the level of tokenisation does not affect the unit of analysis in our text corpus: if the corpus is on the level of paragraphs, the tokenisation to words will preserve the unit of analysis, and documents will remain on the paragraph level.
+_Tokenization_ is the process of splitting a text into its constituent tokens (which includes punctuation characters as tokens).  Tokenization usually happens by recognising the delimiters between words, which in most languages takes the form of a space.  In more technical language, inter-word delimiters are known as _whitespace_, and include additional machine characters such as newlines, tabs, and space variants.  Most languages separate words by whitespace, but some major ones such as Chinese, Japanese, and Korean do not.  Tokenizing these languages requires a set of rules to recognise word boundaries, usually from a listing of common word endings.  Smart tokenizers will also separate punctuation characters that occur immediately following a word, such as the comma after _word_ in this sentence. 
+
+In **quanteda**, the built-in tokenizer provides the option to tokenise our texts to different levels: words, sentences, or individual characters. Most of the time, we tokenise our documents to the level of words, although the default "word" tokeniser also separates out punctuation characters and numerals.  Each tokenised document will consist of the list of tokens found in that document, but always still organised into the same document units that define the corpus. 
 
 Throughout all tokenisation steps, we know the position of each tokens in the document, which we can use to identify and compound multiword-expressions or apply a dictionary with multiword expressions. These aspects will be covered in much more detail in @sec-quanteda-tokensadvanced. For now, it is important to keep in mind the main difference between tokens objects and a document-feature matrix: while we know the relative position of each feature in a tokens object, a document-feature matrix reports the counts of features (which can be words, punctuation characters, numbers, or multiword expressions) in each document, but does not allow us to identify _where_ a certain feature appeared in the document.
 
@@ -31,6 +33,11 @@ Stopword lists often originate from two primary methodologies. The first method 
 ## Applications
 
 In this section, we apply the processing steps described above. The examples in this chapter are limited to tokenizing short texts. In practice and in most other chapters, you will be working with much larger text data sets. We always recommend creating a corpus object first and then tokenizing the corpus, rather than moving directly from a character vector or data frame to a tokens object.
+
+::: {.callout-alert appearance="simple"}
+**NOTE**: We could use a diagram here.
+:::
+
 
 ### Tokenizing and Lowercasing Texts
 
@@ -90,7 +97,7 @@ tokens(txt,
        split_hyphens = TRUE)
 ```
 
-Details on processing steps are provided in the documentation of the tokens function, which can be accessed by typing `?tokens()` into the terminal.
+Details on processing steps are provided in the documentation of the tokens function, which can be accessed through the document for `tokens()` (accessed by typing `?tokens` into the R console).
 
 ::: {.callout-warning appearance="simple"}
 With large text corpora, it might be difficult to assess whether the tokenisation works as expected. We therefore encourage researchers to work with minimal working examples, e.g., one or two sentences that contain certain features you want to tokenise, remove, keep, or compound. You can run your code on this small example and test whether the tokenisation worked as expected before applying the code to the entire corpus.
@@ -117,15 +124,12 @@ length(quanteda::stopwords("de"))
 head(quanteda::stopwords("de"), 5)
 ```
 
-We can also use other lists included in the **stopwords** package.
+Because quanteda's `stopwords()` function is merely a re-export from the same function in the stand-alone [**stopwords** package](https://github.com/quanteda/stopwords), we can access the additional stopwords lists defined in that package.
 
 ```{r}
-# load the stopwords package
-library(stopwords)
-
-# check the first five stopwords from English ISO code list
+# check the first ten stopwords from an expanded English stopword list
 # (note that list includes numbers)
-head(stopwords::stopwords("en", source = "stopwords-iso"), 5)
+head(stopwords("en", source = "stopwords-iso"), 10)
 ```
 
 Finally, you can create your own list of stopwords adding stopwords in a character vector. The short `my_stopwords` list below is for illustration purposes only since many custom lists will be considerably longer.
@@ -134,7 +138,7 @@ Finally, you can create your own list of stopwords adding stopwords in a charact
 my_stopwords <- c("a", "an", "the")
 ```
 
-In the next step, we apply various stopword lists to our tokens object using `tokens_select(selection = "remove")` and the wrapper function `tokens_remove()`.
+In the next step, we apply various stopword lists to our tokens object using `tokens_select(x, selection = "remove")` and the wrapper function `tokens_remove()`.
 
 ```{r}
 # remove English stopwords and inspect output
@@ -153,6 +157,10 @@ tokens(txt) |>
 tokens(txt) |>
     tokens_remove(pattern = my_stopwords)
 ```
+
+::: {.callout-alert appearance="simple"}
+**NOTE**: We should describe here what the `pattern`, `valuetype`, and `case_insensitive` trio of arguments mean.
+:::
 
 ::: {.callout-note appearance="simple"}
 By default, `tokens_select()` and the wrappers `tokens_remove()` and `tokens_keep()` are case insensitive, meaning the tokens in lowercase and uppercase will be removed if it matches a pattern. If we set `case_insensitive` to `FALSE`, the selection is sensitive to the spelling in uppercase or lowercase.
@@ -173,7 +181,7 @@ tokens(txt) |>
 
 ## Stemming
 
-The **quanteda** packages includes the function `tokens_wordstem()`, a wrapper around `wordStem` from the SnowballC package. The function uses Martin Porter's [@porter01snowball] algorithm described above. The example below shows how `tokens_wordstem()` adjust various words.
+The **quanteda** packages includes the function `tokens_wordstem()`, a wrapper around `wordStem()` from the SnowballC package. The function uses Martin Porter's [@porter01snowball] algorithm described above. The example below shows how `tokens_wordstem()` adjust various words.
 
 ```{r}
 # example applied to tokens
@@ -222,7 +230,7 @@ While stemming works directly in **quanteda** using `tokens_wordstem()`, lemmati
 
 ```{r}
 # load spacyr package
-library(spacyr)
+library("spacyr")
 
 # use spacy_install() to install spacy in a new or existing
 # virtual environment. Check ?spacy_install() for details
