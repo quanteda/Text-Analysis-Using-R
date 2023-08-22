@@ -36,7 +36,7 @@ Some tools for text analysis call for "cleaning" a corpus, sometimes by removing
 
 ## Applications
 
-In this section, we will demonstrate how to create a corpus from different input sources, how to access and assign docvars and corpus metadata, how to subset documents from a corpus based on document-level variables, and how to draw a random sample of documents from a text corpus. We will use the corpus of US inaugural speeches, which is included in the **quanteda** package as `data_corpus_inaugural`.
+In this section, we will demonstrate how to create a corpus from different input sources, how to access and assign docvars and corpus metadata, how to subset documents from a corpus based on document-level variables, and how to draw a random sample of documents from a text corpus.
 
 ### Creating a Corpus from Different Input Sources
 
@@ -58,7 +58,8 @@ dat <- data.frame(
     some_ints = 1L:6L,
     some_text = paste0("This is text number ", 1:6, "."),
     stringsAsFactors = FALSE,
-    row.names = paste0("from_df_", 1:6))
+    row.names = paste0("from_df_", 1:6)
+)
 
 head(dat)
 
@@ -83,12 +84,12 @@ In addition, we can create a text corpus from a `kwic()` object. Keywords-in-con
 For example, we could extract all mentions of "freedom", "war", and "economy", and the immediate context of 20 words from our corpus of hotel reviews, and convert the output to a new text corpus.
 
 ```{r}
-kw_inaugural <- data_corpus_inaugural |> 
-    tokens(remove_separators = FALSE) |> 
-    kwic(pattern = c("freedom", "war",
-                     "econom*"),
-         window = 20,
-         separator = " ")
+# create keyword-in-context object for three terms
+# and a window of ±20 tokens
+kw_inaugural <- data_corpus_inaugural |>
+    tokens(remove_separators = FALSE) |>
+    kwic(pattern = c("freedom", "war","econom*"),
+         window = 20, separator = " ")
 
 # check number of matches
 nrow(kw_inaugural)
@@ -133,14 +134,16 @@ We see that the `Year` variable stores the year when each speech was delivered. 
 #| message: false
 
 # use $ operator
-data_corpus_inaugural$PrePostWW2 <- 
-  ifelse(data_corpus_inaugural$Year > 1945, 
-         "Post World War II", "Pre World War II")
+data_corpus_inaugural$PrePostWW2 <-
+    ifelse(data_corpus_inaugural$Year > 1945,
+           "Post World War II", "Pre World War II"
+    )
 
 # equivalent to
-docvars(data_corpus_inaugural, "PrePostWW") <- 
-  ifelse(docvars(data_corpus_inaugural, "Year") > 1945, 
-         "Post World War II", "Pre World War II")
+docvars(data_corpus_inaugural, "PrePostWW") <-
+    ifelse(docvars(data_corpus_inaugural, "Year") > 1945,
+           "Post World War II", "Pre World War II"
+    )
 ```
 
 ::: {.callout-note appearance="simple"}
@@ -153,18 +156,16 @@ Applying `corpus_subset()` to a corpus allows us to subset a text corpus based o
 
 ```{r}
 # subset only Republican Presidents
-corp_democrats <- corpus_subset(data_corpus_inaugural,
-                                Party == "Republican")
+corp_democrats <- corpus_subset(data_corpus_inaugural, Party == "Republican")
 
 # subset speeches delivered after WW2
 corp_postww2 <- corpus_subset(data_corpus_inaugural,
                               PrePostWW2 == "Post World War II")
 
-corp_postww2 <- corpus_subset(data_corpus_inaugural, 
-                              Year > 1945)
+corp_postww2 <- corpus_subset(data_corpus_inaugural, Year > 1945)
 
 # subset speeches delivered by Clinton, Obama, and Biden
-corp_cob <- corpus_subset(data_corpus_inaugural, 
+corp_cob <- corpus_subset(data_corpus_inaugural,
                           President %in% c("Clinton", "Obama", "Biden"))
 
 # remove Biden's 2021 speech
@@ -195,12 +196,14 @@ The `corpus_sample()` function allows for sampling documents from a specified si
 ```{r}
 # sample 30 inaugural speeches without replacement
 set.seed(10987)
-corp_sample30 <- corpus_sample(data_corpus_inaugural, size = 30, replace = FALSE)
+corp_sample30 <- corpus_sample(data_corpus_inaugural, size = 30, 
+                               replace = FALSE)
 
 # check that the corpus consists of 30 documents
 ndoc(corp_sample30)
 
-corp_sample_prepost <- corpus_sample(data_corpus_inaugural, size = 15, 
+corp_sample_prepost <- corpus_sample(data_corpus_inaugural,
+                                     size = 15,
                                      replace = FALSE, by = PrePostWW2)
 
 # check that corpus contains 15 pre- and 15 post-WW II documents
@@ -261,8 +264,8 @@ library("TAUR")
 # set seed for reproducibility
 set.seed(35)
 
-corp_TAhotels_sample <- corpus_sample(data_corpus_TAhotels, 
-                                      size = 1000, 
+corp_TAhotels_sample <- corpus_sample(data_corpus_TAhotels,
+                                      size = 1000,
                                       replace = FALSE)
 
 # convert corpus to data frame
@@ -279,12 +282,12 @@ We can easily store this data frame as a spreadsheet, which can be useful when h
 #| eval: false
 
 # store data frame as csv file with UTF-8 encoding and remove row names
-write.csv(dat_TAhotels_sample_base_r, 
+write.csv(dat_TAhotels_sample_base_r,
           file = "dat_TAhotels_sample.csv",
           fileEncoding = "UTF-8",
           row.names = FALSE)
 
-# the rio package allows us to store 
+# the rio package allows us to store
 # the data frame in many different file formats
 library("rio")
 
@@ -297,6 +300,7 @@ export(dat_TAhotels_sample_base_r,
 We can coerce an object to a text corpus (`as.corpus()`) or extract the texts from a corpus (`as.character()`). `as.corpus()` can only be applied to a **quanteda** corpus object and upgrades it to the newest format. This function can be handy for researchers who work with older **quanteda** objects. For transforming data frames or **tm** corpus objects into a **quanteda** corpus, you should use the `corpus()` function. The function `as.character()` returns the corpus text as a plain character vector.
 
 ```{r}
+# retrieve texts from corpus object
 chars_TAhotels <- as.character(data_corpus_TAhotels)
 
 # inspect character object
@@ -338,10 +342,11 @@ By default, `corpus_segment()` will split the original documents into smaller do
 
 ```{r}
 # segment text corpus to level of utterances
-data_corpus_debatesseg <- corpus_segment(data_corpus_debates, 
-                                         pattern =  "\\s*[[:upper:]]+:\\s+", 
-                                         valuetype = "regex", 
-                                         case_insensitive = FALSE)
+data_corpus_debatesseg <- corpus_segment(data_corpus_debates,
+                                         pattern = "\\s*[[:upper:]]+:\\s+",
+                                         valuetype = "regex",
+                                         case_insensitive = FALSE
+)
 
 # overview of text corpus; n = 4 prints only the first four documents
 summary(data_corpus_debatesseg, n = 4)
@@ -356,10 +361,10 @@ In the split document, the new docvar `pattern` contains the pattern that we mat
 library("stringr")
 library("quanteda.tidy")
 
-data_corpus_debatesseg <- data_corpus_debatesseg |> 
+data_corpus_debatesseg <- data_corpus_debatesseg |>
     mutate(speaker = stringr::str_trim(pattern),
            speaker = stringr::str_remove_all(speaker, ":"),
-           speaker = stringr::str_to_title(speaker)) 
+           speaker = stringr::str_to_title(speaker))
 ```
 
 Next, we can use simple base R functions to inspect the count of utterances by speaker and debate.
@@ -393,7 +398,7 @@ summary(dat_summary_sents)
 Segmenting corpora into smaller units requires a common pattern across the documents. In the example above, we identified utterances based on the combination of a speaker's surname in capital letters followed by a colon. Other corpora may include markers such as line breaks or headings that can be used to segment a corpus. When segmenting text corpora, we strongly recommend inspecting the resulting text corpus and spot-check that the segmentation worked as expected.
 :::
 
-### Reshaping Corpora after Statistical Analyis of Texts
+### Reshaping Corpora after Statistical Analysis of Texts
 
 In many applications, the unit of analysis of the text corpus differs from the dataset used for statistical analyses. For example, @castanhosilva22eu study sentiment on European politics in tweets and parliamentary speeches. The authors construct a corpus of speeches and tweets that mention keywords relating to Europe or the EU and apply a sentiment dictionary to each document. The authors aggregate sentiment to the level of all relevant texts by a single politician, moving from over 100,000 Europe-related tweets and 20,000 Europe-related speeches to around 2500 observations. Each observation stores the sentiment by one Member of Parliament during their period of investigation. These sentiment scores are then used in regression models.
 
