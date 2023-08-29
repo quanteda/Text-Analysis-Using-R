@@ -2,9 +2,18 @@
 
 ## Objectives
 
-Creating and revising dictionaries. - key-value lists - more details on pattern types - the `phrase()` argument - importing foreign dictionaries - editing dictionaries - using dictionaries as `pattern` inputs to other functions - exporting dictionaries - using dictionaries: `tokens_lookup()`
+Creating and revising dictionaries. 
 
-## Methods
+- key-value lists 
+- more details on pattern types 
+- the `phrase()` argument 
+- importing foreign dictionaries 
+- editing dictionaries -
+using dictionaries as `pattern` inputs to other functions
+- exporting dictionaries 
+- using dictionaries: `tokens_lookup()`
+
+## Applications
 
 Applicable methods for the objectives listed above.
 
