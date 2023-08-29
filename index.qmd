@@ -16,9 +16,9 @@ bibliography: [TAUR.bib]
 
 \pagenumbering{roman}
 
-This is the draft version of *Text Analysis Using R*. This book offers a comprehensive practical guide to text analysis and natural language processing using the R language. We have pitched the book at those already familiar with some R, but we also provide a gentle enough introduction that it is also suitable for newcomers to R.
+This is the draft version of *Text Analysis Using R*. This book offers a comprehensive practical guide to text analysis and natural language processing using the R language. We have pitched the book at those already familiar with some R, but we also provide a gentle enough introduction that it is suitable for newcomers to R.
 
-You'll learn how to prepare your texts for analysis, how to analyse texts for insight using statistical methods and machine learning, and how to present those results using graphical methods. Each chapter covers a distinct topic, fist presenting the methodology underlying each topic, and then providing practical examples using R. We also discuss advanced issues facing each method and its application. Finally, for those engaged in self-learning or wishing to use this book for instruction, we provide practical exercises for each chapter.
+You'll learn how to prepare your texts for analysis, how to analyse texts for insight using statistical methods and machine learning, and how to present those results using graphical methods. Each chapter covers a distinct topic, first presenting the methodology underlying each topic, and then providing practical examples using R. We also discuss advanced issues facing each method and its application. Finally, for those engaged in self-learning or wishing to use this book for instruction, we provide practical exercises for each chapter.
 
 ```{r, eval = FALSE, child = if (knitr::is_html_output()) 'welcome-html.qmd'}
 ```
