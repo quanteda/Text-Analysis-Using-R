@@ -465,21 +465,21 @@ div.csl-indent {
   <ul>
   <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">11.1</span> Objectives</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">11.2</span> Methods</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">11.3</span> Examples</a></li>
-  <li><a href="#replacing-and-looking-up-tokens" id="toc-replacing-and-looking-up-tokens" class="nav-link" data-scroll-target="#replacing-and-looking-up-tokens"><span class="header-section-number">11.4</span> Replacing and Looking Up Tokens</a></li>
-  <li><a href="#pattern-matching-pattern-valuetype-and-case_insensitive" id="toc-pattern-matching-pattern-valuetype-and-case_insensitive" class="nav-link" data-scroll-target="#pattern-matching-pattern-valuetype-and-case_insensitive"><span class="header-section-number">11.5</span> Pattern Matching: pattern, valuetype, and case_insensitive</a>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">11.3</span> Examples</a>
   <ul class="collapse">
-  <li><a href="#n-grams-and-skip-grams" id="toc-n-grams-and-skip-grams" class="nav-link" data-scroll-target="#n-grams-and-skip-grams"><span class="header-section-number">11.5.1</span> N-Grams and Skip-Grams</a></li>
-  <li><a href="#compounding-tokens" id="toc-compounding-tokens" class="nav-link" data-scroll-target="#compounding-tokens"><span class="header-section-number">11.5.2</span> Compounding Tokens</a></li>
-  <li><a href="#selecting-tokens-within-windows" id="toc-selecting-tokens-within-windows" class="nav-link" data-scroll-target="#selecting-tokens-within-windows"><span class="header-section-number">11.5.3</span> Selecting Tokens within Windows</a></li>
+  <li><a href="#replacing-and-looking-up-tokens" id="toc-replacing-and-looking-up-tokens" class="nav-link" data-scroll-target="#replacing-and-looking-up-tokens"><span class="header-section-number">11.3.1</span> Replacing and Looking Up Tokens</a></li>
+  <li><a href="#pattern-matching-pattern-valuetype-and-case_insensitive" id="toc-pattern-matching-pattern-valuetype-and-case_insensitive" class="nav-link" data-scroll-target="#pattern-matching-pattern-valuetype-and-case_insensitive"><span class="header-section-number">11.3.2</span> Pattern Matching: pattern, valuetype, and case_insensitive</a></li>
+  <li><a href="#n-grams-and-skip-grams" id="toc-n-grams-and-skip-grams" class="nav-link" data-scroll-target="#n-grams-and-skip-grams"><span class="header-section-number">11.3.3</span> N-Grams and Skip-Grams</a></li>
+  <li><a href="#compounding-tokens" id="toc-compounding-tokens" class="nav-link" data-scroll-target="#compounding-tokens"><span class="header-section-number">11.3.4</span> Compounding Tokens</a></li>
+  <li><a href="#selecting-tokens-within-windows" id="toc-selecting-tokens-within-windows" class="nav-link" data-scroll-target="#selecting-tokens-within-windows"><span class="header-section-number">11.3.5</span> Selecting Tokens within Windows</a></li>
   </ul></li>
-  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced"><span class="header-section-number">11.6</span> Advanced</a>
+  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced"><span class="header-section-number">11.4</span> Advanced</a>
   <ul class="collapse">
-  <li><a href="#splitting" id="toc-splitting" class="nav-link" data-scroll-target="#splitting"><span class="header-section-number">11.6.1</span> Splitting</a></li>
-  <li><a href="#chunking" id="toc-chunking" class="nav-link" data-scroll-target="#chunking"><span class="header-section-number">11.6.2</span> Chunking</a></li>
+  <li><a href="#splitting" id="toc-splitting" class="nav-link" data-scroll-target="#splitting"><span class="header-section-number">11.4.1</span> Splitting</a></li>
+  <li><a href="#chunking" id="toc-chunking" class="nav-link" data-scroll-target="#chunking"><span class="header-section-number">11.4.2</span> Chunking</a></li>
   </ul></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">11.7</span> Further Reading</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.8</span> Exercises</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">11.5</span> Further Reading</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.6</span> Exercises</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/11-quanteda-tokensadvanced.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -522,9 +522,8 @@ div.csl-indent {
 <section id="examples" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="examples"><span class="header-section-number">11.3</span> Examples</h2>
 <p>In this section, we rely on short sentences and text corpora of political speeches and hotel reviews to explain how to replace tokens, how to create n-grams and skip-grams, how to compound multi-word expressions, and how to select tokens and their context.</p>
-</section>
-<section id="replacing-and-looking-up-tokens" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="replacing-and-looking-up-tokens"><span class="header-section-number">11.4</span> Replacing and Looking Up Tokens</h2>
+<section id="replacing-and-looking-up-tokens" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="replacing-and-looking-up-tokens"><span class="header-section-number">11.3.1</span> Replacing and Looking Up Tokens</h3>
 <p>In some cases, users may want to substitute tokens. Reasons to replace tokens include standardising terms, accounting for synonyms, acronyms, or fixing typographical errors. For example, it may be reasonable to harmonise “EU” and “European Union” in political texts. The function <code>tokens_replace()</code> allows us to conduct one-to-one matching and replace EU with European Union.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>toks_eu_uk <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"The European Union negotiated with the UK."</span>)</span>
@@ -643,8 +642,8 @@ text1 :
 </div>
 </div>
 </section>
-<section id="pattern-matching-pattern-valuetype-and-case_insensitive" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="pattern-matching-pattern-valuetype-and-case_insensitive"><span class="header-section-number">11.5</span> Pattern Matching: pattern, valuetype, and case_insensitive</h2>
+<section id="pattern-matching-pattern-valuetype-and-case_insensitive" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="pattern-matching-pattern-valuetype-and-case_insensitive"><span class="header-section-number">11.3.2</span> Pattern Matching: pattern, valuetype, and case_insensitive</h3>
 <p>Pattern matching is central when compounding or selecting tokens. Let’s consider the following example: we might want to keep only “president”, “president’s” and “presidential” in our tokens object. One option is to use <strong>fixed</strong> pattern matching and only keep the exact matches. We specify the <code>pattern</code>and <code>valuetype</code> in the <code>tokens_select()</code> function and determine whether to treat patterns case-sensitive or case-insensitive.</p>
 <p>Let’s go through this trio systematically. The <code>pattern</code> can be one ore more unigrams or multi-word sequences. When including multi-word sequences, make sure to use the <code>phrase()</code> function as described above. <code>case_insensitive</code> specifies whether or not to ignore the case of terms when matching a pattern. The <code>valuetype</code> can take one of three arguments: <code>"glob"</code> for “glob”-style wildcard expressions; <code>"regex"</code> for regular expressions; or <code>"fixed"</code> for exact matching.</p>
 <p>We start explaining <strong>fixed pattern matching</strong> and the the behaviour of <code>case_insensitive</code> before moving to “glob”-style pattern matching and matching based on regular expressions. We refer readers to <a href="04-r-strings.html"><span>Chapter&nbsp;4</span></a> and <a href="31-appendix-regex.html"><span>Appendix&nbsp;C</span></a> for details about regular expressions.</p>
@@ -733,8 +732,9 @@ text1 :
 <p>If you want to have more control over pattern matches, we recommend regular expressions (<code>valuetype = "regex"</code>).</p>
 </div>
 </div>
-<section id="n-grams-and-skip-grams" class="level3" data-number="11.5.1">
-<h3 data-number="11.5.1" class="anchored" data-anchor-id="n-grams-and-skip-grams"><span class="header-section-number">11.5.1</span> N-Grams and Skip-Grams</h3>
+</section>
+<section id="n-grams-and-skip-grams" class="level3" data-number="11.3.3">
+<h3 data-number="11.3.3" class="anchored" data-anchor-id="n-grams-and-skip-grams"><span class="header-section-number">11.3.3</span> N-Grams and Skip-Grams</h3>
 <p>You can create n-grams and skip-grams in various lengths using <code>tokens_ngrams()</code> and <code>tokens_skipgrams()</code>. While using these functions is fairly straightforward, users need to make decisions about removing patterns before concatenating tokens and need to determine the size of n-grams and/or skips. We describe these options below. First, we create n-grams and skip-grams of various sizes. Then, we combine skip-grams and n-grams in the same function, and finally show how the output changes if we process a tokens object before constructing n-grams.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise a sentence</span></span>
@@ -864,8 +864,8 @@ When to pay attention to very sparse objects
 </div>
 </div>
 </section>
-<section id="compounding-tokens" class="level3" data-number="11.5.2">
-<h3 data-number="11.5.2" class="anchored" data-anchor-id="compounding-tokens"><span class="header-section-number">11.5.2</span> Compounding Tokens</h3>
+<section id="compounding-tokens" class="level3" data-number="11.3.4">
+<h3 data-number="11.3.4" class="anchored" data-anchor-id="compounding-tokens"><span class="header-section-number">11.3.4</span> Compounding Tokens</h3>
 <p>Before transforming a tokens object into a document-feature matrix (<a href="13-quanteda-dfms.html"><span>Chapter&nbsp;13</span></a>), we often want or need to compound multi-word expressions. Compounded phrases will be treated as a single feature in subsequent analyses. Let’s explore how to compound the multi-word expressions “social welfare” and “social security.” As mentioned above, we need to explicitly declare multi-word expressions with the <code>pattern()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create tokens object for examples</span></span>
@@ -963,8 +963,8 @@ text1 :
 </div>
 </div>
 </section>
-<section id="selecting-tokens-within-windows" class="level3" data-number="11.5.3">
-<h3 data-number="11.5.3" class="anchored" data-anchor-id="selecting-tokens-within-windows"><span class="header-section-number">11.5.3</span> Selecting Tokens within Windows</h3>
+<section id="selecting-tokens-within-windows" class="level3" data-number="11.3.5">
+<h3 data-number="11.3.5" class="anchored" data-anchor-id="selecting-tokens-within-windows"><span class="header-section-number">11.3.5</span> Selecting Tokens within Windows</h3>
 <p>Isolating specific tokens within a defined range of words can refine many research questions. For example, we could keep the term <code>room</code> and the context of ±4 tokens in the corpus of hotel reviews. This approach might provide a first descriptive insights into aspects the customers really (dis-)liked about their hotel room.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenize and process the corpus of hotel reviews</span></span>
@@ -1065,11 +1065,11 @@ text1 :
 </div>
 </section>
 </section>
-<section id="advanced" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="advanced"><span class="header-section-number">11.6</span> Advanced</h2>
+<section id="advanced" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="advanced"><span class="header-section-number">11.4</span> Advanced</h2>
 <p>Next, we provide an overview of advanced tokens operations: splitting and chunking tokens. Both can be useful in some contexts, but tend to be used less frequently than the operations discussed so far.</p>
-<section id="splitting" class="level3" data-number="11.6.1">
-<h3 data-number="11.6.1" class="anchored" data-anchor-id="splitting"><span class="header-section-number">11.6.1</span> Splitting</h3>
+<section id="splitting" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="splitting"><span class="header-section-number">11.4.1</span> Splitting</h3>
 <p>Splitting tokens implies that we split one token into multiple replacements. The function <code>tokens_split()</code> splits a tokens by a separator pattern, effectively reversing the operation of <code>tokens_compound()</code>. The example below shows how to undo a compounding operation.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>toks <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"Value added tax is a multi-word expression."</span>)</span>
@@ -1096,8 +1096,8 @@ text1 :
 </div>
 </div>
 </section>
-<section id="chunking" class="level3" data-number="11.6.2">
-<h3 data-number="11.6.2" class="anchored" data-anchor-id="chunking"><span class="header-section-number">11.6.2</span> Chunking</h3>
+<section id="chunking" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="chunking"><span class="header-section-number">11.4.2</span> Chunking</h3>
 <p>In some applications, we may be interested by dividing our texts into equally-sized segments or chunks. You might be working with a set of very long documents, which cannot be segmented into smaller units such as paragraphs or sentences due to missing delimiters (see <a href="09-quanteda-corpus.html"><span>Chapter&nbsp;9</span></a> and using <code>corpus_reshape()</code> or <code>corpus_segment()</code>). Some methods, such as topic models (<a href="25-ml-topicmodels.html"><span>Chapter&nbsp;25</span></a>) work better when the documents have similar lengths. The function <code>tokens_chunk()</code> can be used to segment a tokens object by chunks of a given size. The <code>overlap</code> argument allows you to specify whether to take over tokens from the preceding chunk. We use the first hotel review of <code>data_corpus_TAhotels</code> and divide the reviews up into smaller chunks with and without overlaps.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenize the first hotel review</span></span>
@@ -1151,16 +1151,16 @@ text1.3 :
 <p>As always, this example serves only for illustration purposes. Usually, the selected chunks would be larger than five documents to mirror the length of “typical” documents, such as sentences or paragraphs.</p>
 </section>
 </section>
-<section id="further-reading" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">11.7</span> Further Reading</h2>
+<section id="further-reading" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">11.5</span> Further Reading</h2>
 <ul>
 <li>Examples of targeted analyses</li>
 <li>Part-of-speech tagging</li>
 <li>spacy</li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="11.8">
-<h2 data-number="11.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.8</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.6</span> Exercises</h2>
 <p>Add some here.</p>
 
 
