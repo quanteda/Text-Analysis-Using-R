@@ -72,7 +72,7 @@ Classifying topics, policy areas, or concepts can also be conducted with a "look
 
 In this section, we rely on short sentences and text corpora of political speeches and hotel reviews to explain how to replace tokens, how to create n-grams and skip-grams, how to compound multi-word expressions, and how to select tokens and their context. 
 
-## Replacing and Looking Up Tokens
+### Replacing and Looking Up Tokens
 
 In some cases, users may want to substitute tokens. Reasons to replace tokens include standardising terms, accounting for synonyms, acronyms, or fixing typographical errors. For example, it may be reasonable to harmonise "EU" and "European Union" in political texts. The function  `tokens_replace()` allows us to conduct one-to-one matching and replace EU with European Union.
 
@@ -148,7 +148,7 @@ tokens_lookup(toks_eu,
 ```
 
 
-## Pattern Matching: pattern, valuetype, and case_insensitive
+### Pattern Matching: pattern, valuetype, and case_insensitive
 
 Pattern matching is central when compounding or selecting tokens. Let's consider the following example: we might want to keep only "president", "president's" and "presidential" in our tokens object. One option is to use **fixed** pattern matching and only keep the exact matches. We specify the `pattern`and `valuetype` in the `tokens_select()` function and determine whether to treat patterns case-sensitive or case-insensitive. 
 
