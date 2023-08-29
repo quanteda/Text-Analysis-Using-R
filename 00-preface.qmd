@@ -141,7 +141,10 @@ This book was written in [RStudio](https://www.rstudio.com/ide/) using [**Quarto
 
 This version of the book was built with `r R.version.string` and the following packages:
 
-```{r, echo = FALSE, results="asis", cache=FALSE}
+```{r}
+#| echo: false
+#| results: asis
+#| cache: FALSE
 deps <- desc::desc_get_deps()
 pkgs <- sort(deps$package[deps$type == "Imports"])
 pkgs <- sessioninfo::package_info(pkgs, dependencies = FALSE)
@@ -151,7 +154,7 @@ df <- tibble::tibble(
   Source = gsub("@", "\\\\@", pkgs$source)
 ) |>
   dplyr::mutate(Source = stringr::str_remove(Source, "\\\\@[a-f0-9]*"))
-knitr::kable(df, format = "markdown")
+gt::gt(df)
 ```
 
 ### How to Contact Us {.unnumbered}
