@@ -2,33 +2,487 @@
 
 ## Objectives
 
-Advanced operations with tokens.
+The previous chapter introduced you to the basics of tokenisation and processing of tokens objects. Now we move to advanced token manipulations. We show how to replace tokens and introduce n-grams and skip-grams. We explain why we often want to compound multi-word expressions into a single token. We also outline why you might want to keep specific tokens and a context window around these tokens, and close the chapter with a brief introduction to lookup functions, which we cover much more extensively in @sec-exploring-dictionaries.
 
--   selecting within windows
--   replacement
--   splitting
--   chunking
--   compounding
--   the `phrase()` function
--   ngrams
--   skipgrams
--   brief introduction to lookup
 
 ## Methods
 
-Applicable methods for the objectives listed above.
+Occasionally, you might want to **replace** certain tokens. For example, in political texts, `Labour` spelled usually implies a mention to the named-entity Labour Party, while `labour` refers to the noun. Country names is another example: if we want to understand mentions of the United States of America in UN General Debates, we could replace `US`, `USA`, and `United States` with `united_states_of_america`. Dictionaries, discussed in @sec-quanteda-dictionaries, are an effective tool for replacing tokens with an overarching "key", such as `united_states`.
+
+In some applications, tokens sequences might reveal more information than individual tokens. Before transforming a tokens object to a dfm, many existing studies create n-grams or skipgrams. **N-grams** are sequences of "n" items. **Skip-grams** are variations of n-grams which pairs non-consecutive tokens. N-grams capture local word patterns, whereas skip-grams capture broader contexts within texts. The sentence `I loved my stay in New York.` would result in the following bi-grams (sequence of two tokens): `"I_loved"  "loved_my" "my_stay"  "stay_in"  "in_New" "New_York" "York_."`. Skip-grams of size 2 with a distance of 0 and 1 would change the object to:  `"I_loved" "I_my" "loved_my" "loved_time" "my_time" "my_in"  "time_in" "time_New" "in_New" "in_York" "New_York" "New_." "York_."`. 
+
+These examples highlight advantages and shortcomings of n-grams and skip-grams. On the one hand, both approaches provide information about the context of each token. On the other hand, n-grams and skip-grams increase the number of types (i.e., unique tokens) in our corpus. For example, the number of types in the corpus of US inaugural speeches more than doubles when creating bi-grams rather than uni-grams and triples when creating tri-grams instead of uni-grams. Instead of creating bi-grams or tri-grams, manual or automated identification of meaningful multi-word expressions is often sufficient or even preferred over n-grams.
+
+```{r}
+#| echo: false
+#| include: false
+
+# assess differences in ntype between 
+# unigrams, bigrams, and trigrams
+# do not print code or output in book
+library(quanteda)
+ntype_uni <- data_corpus_inaugural |> 
+    tokens() |> 
+    dfm() |> 
+    ntype() |> 
+    sum()
+ntype_uni
+# [1] 45454
+
+ntype_bi <- data_corpus_inaugural |> 
+    tokens() |> 
+    tokens_ngrams(n = 2) |> 
+    dfm() |> 
+    ntype() |> 
+    sum()
+# [1] 117430
+
+ntype_tri <- data_corpus_inaugural |> 
+    tokens() |> 
+    tokens_ngrams(n = 3) |> 
+    dfm() |> 
+    ntype() |> 
+    sum()
+# [1] 144424
+
+# increase from uni-grams to bi-grams
+ntype_bi / ntype_uni
+
+# increase from uni-grams to tri-grams
+# [1] 3.177366
+
+ntype_tri / ntype_uni
+# [1] 3.177366
+```
+
+
+So far, we treated all tokens as so-called unigrams. We separated tokens by spaces and did not combine two or more tokens that might form a multi-word expression. In languages with compound words, we do not need to pay much attention to **multi-word expresions**. For example, the German term "Mehrwertsteuer" is a single word in German, but its English equivalent consists of three words: "value added tax". Suppose we are interested in companies' or politicians' focus on different forms of taxation. In that case, we want to treat `value added tax` as a multi-word expression rather than three separate tokens `value`, `added`, `tax`. Identifying multi-word expressions is especially important for document-feature matrices (dfm) (@sec-quanteda-dfms), which contain the counts of features in each document. If we do not explicitly compound `value added tax`, the words will be included as three separate tokens in our dfm. Compounding the expression during the tokenisation process, will ensure that the dfm contains the compound noun `value_added_tax`.
+
+In many cases, we know multi-word expressions through our domain knowledge. For example, in reviews about hotels in New York, we might want to compound `New_York`, `Madison_Square_Garden`, and `Wall_Street`. In parliamentary speeches, we want to compound party names: instead of treating the combination `green party` as separate tokens, we might prefer the multi-word expression `green party` before proceeding with our statistical analysis.
+
+Users need to discover relevant multi-word expressions. We can use approaches such as **keywords-in-context** (@sec-exploring-kwic) to explore the context of specific words or conduct a **collocation analysis** to identify terms that tend to co-occur together automatically. We introduce these methods in _add reference to new chapter_. Having identified multi-word expressions, you can compound these collocations before continuing your textual analysis.
+
+**Keeping tokens and their context windows** is another effective---and sometimes underused---tokenisation operation. We can keep specific tokens and the words around these patterns to refine our research question and focus on specific aspects of our text corpus. Let's imagine the following example: we are working with all speeches delivered in parliament over a period of three decades and want to understand how parties' focus and positions about climate change have evolved. Most speeches in our corpus will focus on different policies or contain procedural language, but we could create a list of words and phrases relating to the environment, and keep these terms with a context of several words. This approach would allow for a "targeted" analysis. Instead of analysing the full text corpus, we narrowed down our documents to the parts relevant to our research question. For example, @lupia20nsf limit U.S Congressional speeches to sentences mentioning the National Science Foundation (NSF). Afterwards, the authors identify which of these context words distinguish Democrats from Republicans, and how the topics (@sec-ml-topicmodels) mentioned in these sentences are moderated by the party of a speaker. @rauh20eu extract mentions of European institutions and a context window of three sentences from speeches delivered by European prime ministers. In the next step, the authors measure speech complexity and sentiment in these statements on European institutions. Their results reveals that prime minister tend to speak more favourably about the European Union when they face a strong Eurosceptic challenger party.
+
+Finally, we briefly introduce the concept of **looking up** tokens. We match tokens against a predefined list. This approach requires users to develop "dictionaries", consisting of one or more "keys" or categories. Each of these keys, in turn, contains various patterns, usually words or multi-word expressions. A sentiment analysis, covered in @sec-exploring-dictionaries, often relies on lists of terms and phrases scored as "positive" and "negative" and involves looking up these tokens.
+
+Classifying topics, policy areas, or concepts can also be conducted with a "lookup approach." For example, @gessler22immig create a dictionary of keywords and phrases related to immigration. Afterwards, the authors apply this dictionary to party press releases. The authors keep all documents containing keywords from their immigration dictionary. Their rule-based approach is more computationally efficient than supervised classification and produced valid results. Subsequent analyses apply scaling methods to this subset of immigration-related press releases to understand how the 2015 "refugee crisis" in Europe changed party positions on migration policy. @sec-exploring-dictionaries provides more details on creating and applying dictionaries.
 
 ## Examples
 
-Examples of each of the above methods.
+In this section, we rely on short sentences and text corpora of political speeches and hotel reviews to explain how to replace tokens, how to create n-grams and skip-grams, how to compound multi-word expressions, and how to select tokens and their context. 
 
-## Issues
+## Replacing and Looking Up Tokens
 
-Additional issues.
+In some cases, users may want to substitute tokens. Reasons to replace tokens include standardising terms, accounting for synonyms, acronyms, or fixing typographical errors. For example, it may be reasonable to harmonise "EU" and "European Union" in political texts. The function  `tokens_replace()` allows us to conduct one-to-one matching and replace EU with European Union.
+
+```{r}
+toks_eu_uk <- tokens("The European Union negotiated with the UK.")
+
+# important: use phrase if you want to detect a multi-word expression
+tokens_replace(toks_eu_uk, 
+               pattern = phrase("European Union"),
+               replacement = "EU")
+
+# we can also replace "UK" with a multi-word expression "United Kingdom"
+tokens_replace(toks_eu_uk, 
+               pattern = "UK", 
+               replacement = phrase("United Kingdom"))
+
+# if we want to treat United Kingdom and European Union as multi-word expressions across all texts,
+# we can compound it after the replacement
+toks_eu_uk |> 
+    tokens_replace(pattern = "UK", replacement = phrase("United Kingdom")) |> 
+    tokens_compound(pattern = phrase(c("United Kingdom",
+                                       "European Union")))
+```
+
+
+::: {.callout-important appearance="simple"}
+## How to declare multi-word expressions
+
+We need to declare explicitly when we work with multi-word expressions. The `phrase()` function declares a pattern to be a sequence of separate patterns. By using `phrase()` you make explicit that the elements should be used for matching multi-word sequences rather than individual matches to single words. It is vital to use `phrase()` in all functions involving multi-word expressions, including `tokens_compound()`.^[`tokens_lookup()`, which handles phrases internally, is an exception to the rule.]
+
+
+```{r}
+# make phrases from characters
+phrase(c("natural language processing"))
+
+# show that replacements of multi-word expressions
+# require phrase()
+tokens("natural language processing with quanteda") |> 
+    tokens_replace(pattern = phrase(c("natural language processing")), replacement = "NLP")
+
+# replacement does not work without phrase()
+tokens("natural language processing with quanteda") |> 
+    tokens_replace(pattern = "natural language processing", replacement = "NLP")
+```
+:::
+
+More common than one-to-one replacements is the conversation of tokens into equivalence classes defined by values of a dictionary object. Dictionaries, covered in much greater detail in chapters @sec-quanteda-dictionaries and @sec-exploring-dictionaries, allow us to look up uni-grams or multi-word expressions and replace these terms with the dictionary "key". We introduce the intuition behind `tokens_lookup()` with a simple example. The example below replaces selected European institutions with its dictionary key `eu_institution`. 
+
+```{r}
+# create a dictionary (covered more extensively in the next chapter)
+dict_euinst <- dictionary(
+    list(eu_institution = c("european commission", "ecb")))
+
+# tokenise a sentence 
+toks_eu <- tokens("The European Commission is based in Brussels 
+                  and the ECB in Frankfurt.")
+
+# look up institutions (default behaviour)
+tokens_lookup(toks_eu, dictionary = dict_euinst)
+
+# show unmatched tokens
+tokens_lookup(toks_eu, dictionary = dict_euinst,
+              nomatch = "_UNMATCHED")
+```
+
+By default, unmatched tokens are omitted, but we can assign a custom term to unmatched tokens. What is more, we can use `tokens_lookup()` as a more sophisticated form of `tokens_replace()`: setting `exclusive = FALSE` in `tokens_lookup()` replaces dictionary matches but leaves the other features unaffected.
+
+```{r}
+# replace dictionary matches and keep other features
+tokens_lookup(toks_eu, 
+              dictionary = dict_euinst,
+              exclusive = FALSE)
+```
+
+
+## Pattern Matching: pattern, valuetype, and case_insensitive
+
+Pattern matching is central when compounding or selecting tokens. Let's consider the following example: we might want to keep only "president", "president's" and "presidential" in our tokens object. One option is to use **fixed** pattern matching and only keep the exact matches. We specify the `pattern`and `valuetype` in the `tokens_select()` function and determine whether to treat patterns case-sensitive or case-insensitive. 
+
+Let's go through this trio systematically. The `pattern` can be one ore more unigrams or multi-word sequences. When including multi-word sequences, make sure to use the `phrase()` function as described above. `case_insensitive` specifies whether or not to ignore the case of terms when matching a pattern. The `valuetype` can take one of three arguments: `"glob"` for "glob"-style wildcard expressions; `"regex"` for regular expressions; or `"fixed"` for exact matching. 
+
+We start explaining **fixed pattern matching** and the the behaviour of `case_insensitive` before moving to "glob"-style pattern matching and matching based on regular expressions. We refer readers to @sec-rstrings and @sec-appendix-regex for details about regular expressions. 
+
+```{r}
+# create tokens object
+toks_president <- tokens("The President attended the presidential gala
+                         where the president's policies were applauded.")
+
+# fixed (literal) pattern matching
+tokens_keep(toks_president, pattern = c("president", "presidential",
+                                        "president's"),
+            valuetype = "fixed")
+```
+The default pattern match is `case_insentitive = TRUE`. Therefore, `President` remains part of the tokens object even though the pattern includes `president` in lower-case. We could change this behaviour by setting `tokens_keep(x, case_insensitive = FALSE)`. 
+
+```{r}
+# fixed (literal) pattern matching: case-sensitive
+tokens_keep(toks_president, pattern = c("president", "presidential",
+                                        "president's"),
+            valuetype = "fixed",
+            case_insensitive = FALSE)
+```
+
+Now only `presidential` and `president's` are kept in the tokens object while the term  `President` is not capture since it does not match the term "president" when selecting tokens in a case-sensitive way.
+
+
+::: {.callout-important appearance="simple"}
+## `*` and `?`: two "glob"-style matches to rule them all
+
+Pattern matching in quanteda defaults to "glob"-style because it's simpler than regular expression matching and suffices for the majority of user requirements. Moreover, it aligns with fixed pattern matching when wildcard characters (`*` and `?`) aren't utilised. 
+The implementation in **quanteda** uses `*` to match any number of any characters including none, and `?` to match any single character. Let's take a look at a few examples to explain the behaviour of wildcard pattern matches.
+
+```{r}
+# match the token "president" and all terms starting with "president"
+tokens_keep(toks_president, pattern = "president*",
+            valuetype = "glob")
+
+# match tokens ending on "ing*
+tokens("buying buy paying pay playing laying lay") |> 
+    tokens_keep(pattern = "*ing", valuetype = "glob")
+
+# match tokens starting with "p" and ending on "ing"
+tokens("buying buy paying pay playing laying lay") |> 
+    tokens_keep(pattern = "p*ing", valuetype = "glob")
+
+# match tokens starting with a character followed by "ay"
+tokens("buying buy paying pay playing laying lay") |> 
+    tokens_keep(pattern = "?ay", valuetype = "glob")
+
+# match tokens starting with a character, followed "ay" and none or more characters
+tokens("buying buy paying pay playing laying lay") |> 
+    tokens_keep(pattern = "?ay*", valuetype = "glob")
+```
+
+If you want to have more control over pattern matches, we recommend regular expressions (`valuetype = "regex"`). 
+:::
+
+
+### N-Grams and Skip-Grams
+
+You can create n-grams and skip-grams in various lengths using `tokens_ngrams()` and `tokens_skipgrams()`. While using these functions is fairly straightforward, users need to make decisions about removing patterns before concatenating tokens and need to determine the size of n-grams and/or skips. We describe these options below. First, we create n-grams and skip-grams of various sizes. Then, we combine skip-grams and n-grams in the same function, and finally show how the output changes if we process a tokens object before constructing n-grams. 
+
+```{r}
+# tokenise a sentence
+toks_social <- tokens("We should consider increasing social welfare payments.")
+
+# form n-grams of size 2
+tokens_ngrams(toks_social, n = 2)
+
+# form n-grams of size 3
+tokens_ngrams(toks_social, n = 3)
+
+# form n-grams of size 2 and 3
+tokens_ngrams(toks_social, n = 2:3)
+
+# form skip-grams of size 2 and skip 1 token
+tokens_skipgrams(toks_social, n = 2, skip = 1)
+
+# form skip-grams of size 2 and skip 1 and 2 tokens
+tokens_skipgrams(toks_social, n = 2, skip = 1:2)
+
+# form n-grams of size 1 and skip-grams with a skip of 1 token
+tokens_ngrams(toks_social, n = 2, skip = 1)
+
+# remove stopwords and punctuation before creating n-grams
+toks_social |> 
+    tokens(remove_punct = TRUE) |> 
+    tokens_remove(pattern = stopwords("en")) |> 
+    tokens_ngrams(n = 2)
+```
+
+The example above underscore that several combinations do not add much value to the context in which words appear. Many types are simply combinations of tokens and stopwords. From our experience, creating skip-grams or n-grams for all documents without any processing decisions in advance does not improve our analysis or results. 
+
+It is worth keeping in mind that n-grams applied to larger corpora inflate the number of types. We showcase the increase in tokens based on our corpus of `r ndoc(data_corpus_inaugural)` US inaugural speeches.
+
+```{r}
+# number of types with uni-grams and no processing
+data_corpus_inaugural |> 
+    tokens() |> 
+    ntype() |> 
+    sum()
+
+# number of types with n-grams of size 2 
+# after removing stopwords and punctuation characters
+data_corpus_inaugural |> 
+    tokens(remove_punct = TRUE) |> 
+    tokens_remove(pattern = stopwords("en")) |> 
+    tokens_ngrams(n = 2) |> 
+    ntype() |> 
+    sum()
+
+# number of types with n-grams of size 2 and no processing
+data_corpus_inaugural |> 
+    tokens() |> 
+    tokens_ngrams(n = 2) |> 
+    ntype() |> 
+    sum()
+
+# number of types with n-grams of size 3 and no processing
+data_corpus_inaugural |> 
+    tokens() |> 
+    tokens_ngrams(n = 3) |> 
+    ntype() |> 
+    sum()
+```
+
+
+::: {.callout-important appearance="simple"}
+## When to pay attention to very sparse objects
+```{r}
+#| echo: false
+#| include: false
+
+# calculate sparsity for text below, but do not include code or output 
+# in results
+
+# sparsity using unigrams
+sparsity_unigrams <- data_corpus_inaugural |> 
+    tokens() |> 
+    dfm() |> 
+    sparsity() 
+
+# sparsity using bigrams
+sparsity_bigrams <- data_corpus_inaugural |> 
+    tokens() |> 
+    tokens_ngrams(n = 2) |> 
+    dfm() |> 
+    sparsity()
+```
+
+An increase in types through n-grams increases the sparsity of a document-feature matrix, i.e., the proportion of cells that have zero counts.  (@sec-quanteda-dfms). The sparsity of US inaugural debates (`data_corpus_inaugural`) increases from `r round(100 * sparsity_unigrams)`% to `r round(100 * sparsity_bigrams, 1)`% when using bi-grams instead of uni-grams. While **quanteda** handles sparse document-feature matrices very efficiently, a very high sparsity might result in convergence issues for unsupervised scaling models (@sec-ml-unsupervised-scaling) or topic models (@sec-ml-topicmodels). Therefore, n-grams or skip-grams may be counterproductive for some research questions.
+:::
+
+
+### Compounding Tokens
+
+Before transforming a tokens object into a document-feature matrix (@sec-quanteda-dfms), we often want or need to compound multi-word expressions. Compounded phrases will be treated as a single feature in subsequent analyses. Let's explore how to compound the multi-word expressions "social welfare" and "social security." As mentioned above, we need to explicitly declare multi-word expressions with the `pattern()` function.
+
+```{r}
+# create tokens object for examples
+toks_social <- tokens("We need to increase social welfare payments 
+                      and improve social security.")
+
+# compound the pattern "social welfare"
+toks_social |> 
+    tokens_compound(pattern = phrase("social welfare"))
+
+# note: compounding does not work without phrase()
+toks_social |> 
+    tokens_compound(pattern = "social welfare")
+```
+
+We can include several patterns in our character vector containing multi-word expressions.
+
+```{r}
+# compound two patterns
+tokens_compound(toks_social,
+                pattern = phrase(c("social welfare",
+                                   "social security")))
+```
+
+::: {.callout-tip appearance="simple"}
+## Setting the concatenator
+
+By default, compounded tokens are concatenated using an underscore (`_`). The default is recommended since underscores will not be removed during normal cleaning and tokenisation. Using an underscore as a separator also allows you to check whether compounding worked as expected.
+
+```{r}
+# check whether compounding worked as expected 
+# by extracting patterns containing underscores
+toks_social |> 
+    tokens_compound(pattern = phrase(c("social welfare", 
+                                       "social security"))) |> 
+    tokens_keep(pattern = "*_*") # keep patterns with underscores
+```
+:::
+
+You can also compound terms based on regular expressions (@sec-rstrings and @sec-appendix-regex) or "wild card" pattern matches. Below, we use the glob-style wildcard expression `*` to compound all multi-word expressions starting with "social" in US State of the Union speeches.
+
+```{r}
+# tokenise SOTU speeches, remove punctuation and numbers
+# before removing stopwords
+toks_sotu <- TAUR::data_corpus_sotu |> 
+    tokens(remove_punct = TRUE,
+           remove_numbers = TRUE) |> 
+    tokens_remove(pattern = stopwords("en"),
+                  padding = TRUE)
+
+# compound all phrases starting with "social"
+toks_sotu_comp <- tokens_compound(toks_sotu, pattern = phrase("social *"))
+
+# spot-check results by keeping all tokens starting 
+# with social using "glob"-style wildcard pattern match
+# and create dfm to check compounded terms
+tokens_keep(toks_sotu_comp, pattern = "social_*") |> 
+    dfm() |> 
+    topfeatures(n = 15) # get 15 most frequent compounded tokens
+```
+
+
+
+
+
+
+### Selecting Tokens within Windows
+
+Isolating specific tokens within a defined range of words can refine many research questions. For example, we could keep the term `room`  and the context of ±4 tokens in the corpus of hotel reviews. This approach might provide a first descriptive insights into aspects the customers really (dis-)liked about their hotel room.
+
+```{r}
+# tokenize and process the corpus of hotel reviews
+toks_hotels <- tokens(TAUR::data_corpus_TAhotels,
+                      remove_punct = TRUE,
+                      remove_numbers = TRUE,
+                      padding = TRUE)
+
+# keep "room*" and its context of ±3 tokens
+toks_room <- toks_hotels |> 
+    tokens_remove(pattern = stopwords("en"),
+                  padding = TRUE) |> 
+    tokens_keep(pattern = "room*", 
+                window = 4, padding = TRUE)
+
+# inspect the first three hotel reviews
+print(toks_room, max_ndoc = 4)
+
+# transform tokens object into a document-feature matrix (dfm) and 
+# get 30 most frequent words surrounding "room*" using topfeatures()
+toks_room |> 
+    dfm() |>
+    dfm_remove(pattern = "") |> # remove padding placeholder
+    topfeatures(n = 30)
+```
+
+::: {.callout-tip appearance="simple"}
+## To pad or not to pad?
+Padding implies leaving an empty string where removed tokens previously existed. Padding can be useful when we want to remove certain patterns, but (1) still know the position of tokens that remain in the corpus or (2) if we select tokens and their context window. The examples below highlight the differences.
+
+```{r}
+toks <- tokens("We're having a great time at the
+               pool and lovely food in the restaurant.")
+
+# keep great, lovely and a context window of ±1 tokens
+# without padding
+tokens_keep(toks, pattern = c("great", "lovely"),
+            window = 1,
+            padding = FALSE)
+
+# keep great, lovely and a context window of ±1 tokens
+# with padding
+tokens_keep(toks, pattern = c("great", "lovely"),
+            window = 1,
+            padding = TRUE)
+```
+:::
+
+
+## Advanced
+
+Next, we provide an overview of advanced tokens operations: splitting and chunking tokens. Both can be useful in some contexts, but tend to be used less frequently than the operations discussed so far. 
+
+
+### Splitting
+
+Splitting tokens implies that we split one token into multiple replacements. The function `tokens_split()` splits a tokens by a separator pattern, effectively reversing the operation of `tokens_compound()`. The example below shows how to undo a compounding operation.
+
+```{r}
+toks <- tokens("Value added tax is a multi-word expression.")
+
+# compound value added tax
+toks_vat <- tokens_compound(toks, 
+                            pattern = phrase("value added tax*"), 
+                            concatenator = "_")
+toks_vat
+
+# reverse compounding using "_" as the separator 
+# for splitting tokens
+tokens_split(toks_vat, separator = "_")
+```
+
+
+### Chunking
+
+In some applications, we may be interested by dividing our texts into equally-sized segments or chunks. You might be working with a set of very long documents, which cannot be segmented into smaller units such as paragraphs or sentences due to missing delimiters (see @sec-quanteda-corpus and using `corpus_reshape()` or `corpus_segment()`). Some methods, such as topic models (@sec-ml-topicmodels) work better when the documents have similar lengths. The function `tokens_chunk()` can be used to segment a tokens object by chunks of a given size. The `overlap` argument allows you to specify whether to take over tokens from the preceding chunk. We use the first hotel review of `data_corpus_TAhotels` and divide the reviews up into smaller chunks with and without overlaps.
+
+```{r}
+# tokenize the first hotel review
+toks_r1 <- tokens(TAUR::data_corpus_TAhotels[1])
+
+# print first 15 tokens
+print(toks_r1, max_ntoken = 15)
+
+# chunk into chunks of 5 tokens without overlap
+toks_r1_chunk <- tokens_chunk(toks_r1, size = 5)
+
+# inspect chunked tokens object
+print(toks_r1_chunk, max_ndoc = 3)
+
+# chunk into chunks of 5 tokens with overlap and inspect result
+tokens_chunk(toks_r1, size = 5, overlap = 2) |> 
+    print(max_ndoc = 3)
+```
+
+As always, this example serves only for illustration purposes. Usually, the selected chunks would be larger than five documents to mirror the length of "typical" documents, such as sentences or paragraphs.
+
 
 ## Further Reading
 
-Additional resources from libraries or the web.
+- Examples of targeted analyses
+- Part-of-speech tagging
+- spacy
+
 
 ## Exercises
 
