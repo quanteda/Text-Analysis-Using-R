@@ -9,7 +9,6 @@ book:
   site-url: https://quanteda.github.io/Text-Analysis-Using-R/
   repo-url: https://github.com/quanteda/Text-Analysis-Using-R
   repo-actions: [edit]
-  sharing: [twitter, facebook, linkedin]
   chapters:
     - "index.qmd"
     - "00-preface.qmd"
