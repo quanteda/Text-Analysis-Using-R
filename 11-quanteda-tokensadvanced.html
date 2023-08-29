@@ -20,7 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -92,29 +145,6 @@ ul.task-list li input[type="checkbox"] {
       <a href="./">Text Analysis Using R</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/quanteda/Text-Analysis-Using-R" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-              <i class="bi bi-bi-twitter pe-1"></i>
-            Twitter
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-              <i class="bi bi-bi-facebook pe-1"></i>
-            Facebook
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-              <i class="bi bi-bi-linkedin pe-1"></i>
-            LinkedIn
-            </a>
-          </li>
-      </ul>
-    </div>
 </div>
     </div>
       </div>
@@ -231,7 +261,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-quanteda-tokens.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing tokens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -436,11 +466,22 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">11.1</span> Objectives</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">11.2</span> Methods</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">11.3</span> Examples</a></li>
-  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues"><span class="header-section-number">11.4</span> Issues</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">11.5</span> Further Reading</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.6</span> Exercises</a></li>
+  <li><a href="#replacing-and-looking-up-tokens" id="toc-replacing-and-looking-up-tokens" class="nav-link" data-scroll-target="#replacing-and-looking-up-tokens"><span class="header-section-number">11.4</span> Replacing and Looking Up Tokens</a></li>
+  <li><a href="#pattern-matching-pattern-valuetype-and-case_insensitive" id="toc-pattern-matching-pattern-valuetype-and-case_insensitive" class="nav-link" data-scroll-target="#pattern-matching-pattern-valuetype-and-case_insensitive"><span class="header-section-number">11.5</span> Pattern Matching: pattern, valuetype, and case_insensitive</a>
+  <ul class="collapse">
+  <li><a href="#n-grams-and-skip-grams" id="toc-n-grams-and-skip-grams" class="nav-link" data-scroll-target="#n-grams-and-skip-grams"><span class="header-section-number">11.5.1</span> N-Grams and Skip-Grams</a></li>
+  <li><a href="#compounding-tokens" id="toc-compounding-tokens" class="nav-link" data-scroll-target="#compounding-tokens"><span class="header-section-number">11.5.2</span> Compounding Tokens</a></li>
+  <li><a href="#selecting-tokens-within-windows" id="toc-selecting-tokens-within-windows" class="nav-link" data-scroll-target="#selecting-tokens-within-windows"><span class="header-section-number">11.5.3</span> Selecting Tokens within Windows</a></li>
+  </ul></li>
+  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced"><span class="header-section-number">11.6</span> Advanced</a>
+  <ul class="collapse">
+  <li><a href="#splitting" id="toc-splitting" class="nav-link" data-scroll-target="#splitting"><span class="header-section-number">11.6.1</span> Splitting</a></li>
+  <li><a href="#chunking" id="toc-chunking" class="nav-link" data-scroll-target="#chunking"><span class="header-section-number">11.6.2</span> Chunking</a></li>
+  </ul></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">11.7</span> Further Reading</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.8</span> Exercises</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/master/11-quanteda-tokensadvanced.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/11-quanteda-tokensadvanced.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -464,40 +505,682 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="objectives" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">11.1</span> Objectives</h2>
-<p>Advanced operations with tokens.</p>
-<ul>
-<li>selecting within windows</li>
-<li>replacement</li>
-<li>splitting</li>
-<li>chunking</li>
-<li>compounding</li>
-<li>the <code>phrase()</code> function</li>
-<li>ngrams</li>
-<li>skipgrams</li>
-<li>brief introduction to lookup</li>
-</ul>
+<p>The previous chapter introduced you to the basics of tokenisation and processing of tokens objects. Now we move to advanced token manipulations. We show how to replace tokens and introduce n-grams and skip-grams. We explain why we often want to compound multi-word expressions into a single token. We also outline why you might want to keep specific tokens and a context window around these tokens, and close the chapter with a brief introduction to lookup functions, which we cover much more extensively in <a href="16-exploring-dictionaries.html"><span>Chapter&nbsp;16</span></a>.</p>
 </section>
 <section id="methods" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="methods"><span class="header-section-number">11.2</span> Methods</h2>
-<p>Applicable methods for the objectives listed above.</p>
+<p>Occasionally, you might want to <strong>replace</strong> certain tokens. For example, in political texts, <code>Labour</code> spelled usually implies a mention to the named-entity Labour Party, while <code>labour</code> refers to the noun. Country names is another example: if we want to understand mentions of the United States of America in UN General Debates, we could replace <code>US</code>, <code>USA</code>, and <code>United States</code> with <code>united_states_of_america</code>. Dictionaries, discussed in <a href="12-quanteda-dictionaries.html"><span>Chapter&nbsp;12</span></a>, are an effective tool for replacing tokens with an overarching “key”, such as <code>united_states</code>.</p>
+<p>In some applications, tokens sequences might reveal more information than individual tokens. Before transforming a tokens object to a dfm, many existing studies create n-grams or skipgrams. <strong>N-grams</strong> are sequences of “n” items. <strong>Skip-grams</strong> are variations of n-grams which pairs non-consecutive tokens. N-grams capture local word patterns, whereas skip-grams capture broader contexts within texts. The sentence <code>I loved my stay in New York.</code> would result in the following bi-grams (sequence of two tokens): <code>"I_loved"  "loved_my" "my_stay"  "stay_in"  "in_New" "New_York" "York_."</code>. Skip-grams of size 2 with a distance of 0 and 1 would change the object to: <code>"I_loved" "I_my" "loved_my" "loved_time" "my_time" "my_in"  "time_in" "time_New" "in_New" "in_York" "New_York" "New_." "York_."</code>.</p>
+<p>These examples highlight advantages and shortcomings of n-grams and skip-grams. On the one hand, both approaches provide information about the context of each token. On the other hand, n-grams and skip-grams increase the number of types (i.e., unique tokens) in our corpus. For example, the number of types in the corpus of US inaugural speeches more than doubles when creating bi-grams rather than uni-grams and triples when creating tri-grams instead of uni-grams. Instead of creating bi-grams or tri-grams, manual or automated identification of meaningful multi-word expressions is often sufficient or even preferred over n-grams.</p>
+<p>So far, we treated all tokens as so-called unigrams. We separated tokens by spaces and did not combine two or more tokens that might form a multi-word expression. In languages with compound words, we do not need to pay much attention to <strong>multi-word expresions</strong>. For example, the German term “Mehrwertsteuer” is a single word in German, but its English equivalent consists of three words: “value added tax”. Suppose we are interested in companies’ or politicians’ focus on different forms of taxation. In that case, we want to treat <code>value added tax</code> as a multi-word expression rather than three separate tokens <code>value</code>, <code>added</code>, <code>tax</code>. Identifying multi-word expressions is especially important for document-feature matrices (dfm) (<a href="13-quanteda-dfms.html"><span>Chapter&nbsp;13</span></a>), which contain the counts of features in each document. If we do not explicitly compound <code>value added tax</code>, the words will be included as three separate tokens in our dfm. Compounding the expression during the tokenisation process, will ensure that the dfm contains the compound noun <code>value_added_tax</code>.</p>
+<p>In many cases, we know multi-word expressions through our domain knowledge. For example, in reviews about hotels in New York, we might want to compound <code>New_York</code>, <code>Madison_Square_Garden</code>, and <code>Wall_Street</code>. In parliamentary speeches, we want to compound party names: instead of treating the combination <code>green party</code> as separate tokens, we might prefer the multi-word expression <code>green party</code> before proceeding with our statistical analysis.</p>
+<p>Users need to discover relevant multi-word expressions. We can use approaches such as <strong>keywords-in-context</strong> (<a href="15-exploring-kwic.html"><span>Chapter&nbsp;15</span></a>) to explore the context of specific words or conduct a <strong>collocation analysis</strong> to identify terms that tend to co-occur together automatically. We introduce these methods in <em>add reference to new chapter</em>. Having identified multi-word expressions, you can compound these collocations before continuing your textual analysis.</p>
+<p><strong>Keeping tokens and their context windows</strong> is another effective—and sometimes underused—tokenisation operation. We can keep specific tokens and the words around these patterns to refine our research question and focus on specific aspects of our text corpus. Let’s imagine the following example: we are working with all speeches delivered in parliament over a period of three decades and want to understand how parties’ focus and positions about climate change have evolved. Most speeches in our corpus will focus on different policies or contain procedural language, but we could create a list of words and phrases relating to the environment, and keep these terms with a context of several words. This approach would allow for a “targeted” analysis. Instead of analysing the full text corpus, we narrowed down our documents to the parts relevant to our research question. For example, <span class="citation" data-cites="lupia20nsf">Lupia, Soroka, and Beatty (<a href="references.html#ref-lupia20nsf" role="doc-biblioref">2020</a>)</span> limit U.S Congressional speeches to sentences mentioning the National Science Foundation (NSF). Afterwards, the authors identify which of these context words distinguish Democrats from Republicans, and how the topics (<a href="25-ml-topicmodels.html"><span>Chapter&nbsp;25</span></a>) mentioned in these sentences are moderated by the party of a speaker. <span class="citation" data-cites="rauh20eu">Rauh, Bes, and Schoonvelde (<a href="references.html#ref-rauh20eu" role="doc-biblioref">2020</a>)</span> extract mentions of European institutions and a context window of three sentences from speeches delivered by European prime ministers. In the next step, the authors measure speech complexity and sentiment in these statements on European institutions. Their results reveals that prime minister tend to speak more favourably about the European Union when they face a strong Eurosceptic challenger party.</p>
+<p>Finally, we briefly introduce the concept of <strong>looking up</strong> tokens. We match tokens against a predefined list. This approach requires users to develop “dictionaries”, consisting of one or more “keys” or categories. Each of these keys, in turn, contains various patterns, usually words or multi-word expressions. A sentiment analysis, covered in <a href="16-exploring-dictionaries.html"><span>Chapter&nbsp;16</span></a>, often relies on lists of terms and phrases scored as “positive” and “negative” and involves looking up these tokens.</p>
+<p>Classifying topics, policy areas, or concepts can also be conducted with a “lookup approach.” For example, <span class="citation" data-cites="gessler22immig">Gessler and Hunger (<a href="references.html#ref-gessler22immig" role="doc-biblioref">2022</a>)</span> create a dictionary of keywords and phrases related to immigration. Afterwards, the authors apply this dictionary to party press releases. The authors keep all documents containing keywords from their immigration dictionary. Their rule-based approach is more computationally efficient than supervised classification and produced valid results. Subsequent analyses apply scaling methods to this subset of immigration-related press releases to understand how the 2015 “refugee crisis” in Europe changed party positions on migration policy. <a href="16-exploring-dictionaries.html"><span>Chapter&nbsp;16</span></a> provides more details on creating and applying dictionaries.</p>
 </section>
 <section id="examples" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="examples"><span class="header-section-number">11.3</span> Examples</h2>
-<p>Examples of each of the above methods.</p>
+<p>In this section, we rely on short sentences and text corpora of political speeches and hotel reviews to explain how to replace tokens, how to create n-grams and skip-grams, how to compound multi-word expressions, and how to select tokens and their context.</p>
 </section>
-<section id="issues" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="issues"><span class="header-section-number">11.4</span> Issues</h2>
-<p>Additional issues.</p>
+<section id="replacing-and-looking-up-tokens" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="replacing-and-looking-up-tokens"><span class="header-section-number">11.4</span> Replacing and Looking Up Tokens</h2>
+<p>In some cases, users may want to substitute tokens. Reasons to replace tokens include standardising terms, accounting for synonyms, acronyms, or fixing typographical errors. For example, it may be reasonable to harmonise “EU” and “European Union” in political texts. The function <code>tokens_replace()</code> allows us to conduct one-to-one matching and replace EU with European Union.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>toks_eu_uk <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"The European Union negotiated with the UK."</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># important: use phrase if you want to detect a multi-word expression</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_replace</span>(toks_eu_uk, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="st">"European Union"</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">replacement =</span> <span class="st">"EU"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "The"        "EU"         "negotiated" "with"       "the"       
+[6] "UK"         "."         </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can also replace "UK" with a multi-word expression "United Kingdom"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_replace</span>(toks_eu_uk, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">pattern =</span> <span class="st">"UK"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">replacement =</span> <span class="fu">phrase</span>(<span class="st">"United Kingdom"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "The"        "European"   "Union"      "negotiated" "with"      
+[6] "the"        "United"     "Kingdom"    "."         </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if we want to treat United Kingdom and European Union as multi-word expressions across all texts,</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we can compound it after the replacement</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>toks_eu_uk <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_replace</span>(<span class="at">pattern =</span> <span class="st">"UK"</span>, <span class="at">replacement =</span> <span class="fu">phrase</span>(<span class="st">"United Kingdom"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_compound</span>(<span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="fu">c</span>(<span class="st">"United Kingdom"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"European Union"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "The"            "European_Union" "negotiated"     "with"          
+[5] "the"            "United_Kingdom" "."             </code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to declare multi-word expressions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We need to declare explicitly when we work with multi-word expressions. The <code>phrase()</code> function declares a pattern to be a sequence of separate patterns. By using <code>phrase()</code> you make explicit that the elements should be used for matching multi-word sequences rather than individual matches to single words. It is vital to use <code>phrase()</code> in all functions involving multi-word expressions, including <code>tokens_compound()</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make phrases from characters</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">phrase</span>(<span class="fu">c</span>(<span class="st">"natural language processing"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "natural"    "language"   "processing"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show that replacements of multi-word expressions</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># require phrase()</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"natural language processing with quanteda"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_replace</span>(<span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="fu">c</span>(<span class="st">"natural language processing"</span>)), <span class="at">replacement =</span> <span class="st">"NLP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "NLP"      "with"     "quanteda"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replacement does not work without phrase()</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"natural language processing with quanteda"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_replace</span>(<span class="at">pattern =</span> <span class="st">"natural language processing"</span>, <span class="at">replacement =</span> <span class="st">"NLP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "natural"    "language"   "processing" "with"       "quanteda"  </code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>More common than one-to-one replacements is the conversation of tokens into equivalence classes defined by values of a dictionary object. Dictionaries, covered in much greater detail in chapters <a href="12-quanteda-dictionaries.html"><span>Chapter&nbsp;12</span></a> and <a href="16-exploring-dictionaries.html"><span>Chapter&nbsp;16</span></a>, allow us to look up uni-grams or multi-word expressions and replace these terms with the dictionary “key”. We introduce the intuition behind <code>tokens_lookup()</code> with a simple example. The example below replaces selected European institutions with its dictionary key <code>eu_institution</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dictionary (covered more extensively in the next chapter)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dict_euinst <span class="ot">&lt;-</span> <span class="fu">dictionary</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(<span class="at">eu_institution =</span> <span class="fu">c</span>(<span class="st">"european commission"</span>, <span class="st">"ecb"</span>)))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise a sentence </span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>toks_eu <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"The European Commission is based in Brussels </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="st">                  and the ECB in Frankfurt."</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># look up institutions (default behaviour)</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_lookup</span>(toks_eu, <span class="at">dictionary =</span> dict_euinst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "eu_institution" "eu_institution"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show unmatched tokens</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_lookup</span>(toks_eu, <span class="at">dictionary =</span> dict_euinst,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">nomatch =</span> <span class="st">"_UNMATCHED"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+ [1] "_UNMATCHED"     "eu_institution" "_UNMATCHED"     "_UNMATCHED"    
+ [5] "_UNMATCHED"     "_UNMATCHED"     "_UNMATCHED"     "_UNMATCHED"    
+ [9] "eu_institution" "_UNMATCHED"     "_UNMATCHED"     "_UNMATCHED"    </code></pre>
+</div>
+</div>
+<p>By default, unmatched tokens are omitted, but we can assign a custom term to unmatched tokens. What is more, we can use <code>tokens_lookup()</code> as a more sophisticated form of <code>tokens_replace()</code>: setting <code>exclusive = FALSE</code> in <code>tokens_lookup()</code> replaces dictionary matches but leaves the other features unaffected.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace dictionary matches and keep other features</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_lookup</span>(toks_eu, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">dictionary =</span> dict_euinst,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">exclusive =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+ [1] "The"            "EU_INSTITUTION" "is"             "based"         
+ [5] "in"             "Brussels"       "and"            "the"           
+ [9] "EU_INSTITUTION" "in"             "Frankfurt"      "."             </code></pre>
+</div>
+</div>
 </section>
-<section id="further-reading" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">11.5</span> Further Reading</h2>
-<p>Additional resources from libraries or the web.</p>
+<section id="pattern-matching-pattern-valuetype-and-case_insensitive" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="pattern-matching-pattern-valuetype-and-case_insensitive"><span class="header-section-number">11.5</span> Pattern Matching: pattern, valuetype, and case_insensitive</h2>
+<p>Pattern matching is central when compounding or selecting tokens. Let’s consider the following example: we might want to keep only “president”, “president’s” and “presidential” in our tokens object. One option is to use <strong>fixed</strong> pattern matching and only keep the exact matches. We specify the <code>pattern</code>and <code>valuetype</code> in the <code>tokens_select()</code> function and determine whether to treat patterns case-sensitive or case-insensitive.</p>
+<p>Let’s go through this trio systematically. The <code>pattern</code> can be one ore more unigrams or multi-word sequences. When including multi-word sequences, make sure to use the <code>phrase()</code> function as described above. <code>case_insensitive</code> specifies whether or not to ignore the case of terms when matching a pattern. The <code>valuetype</code> can take one of three arguments: <code>"glob"</code> for “glob”-style wildcard expressions; <code>"regex"</code> for regular expressions; or <code>"fixed"</code> for exact matching.</p>
+<p>We start explaining <strong>fixed pattern matching</strong> and the the behaviour of <code>case_insensitive</code> before moving to “glob”-style pattern matching and matching based on regular expressions. We refer readers to <a href="04-r-strings.html"><span>Chapter&nbsp;4</span></a> and <a href="31-appendix-regex.html"><span>Appendix&nbsp;C</span></a> for details about regular expressions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create tokens object</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>toks_president <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"The President attended the presidential gala</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="st">                         where the president's policies were applauded."</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># fixed (literal) pattern matching</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_keep</span>(toks_president, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"president"</span>, <span class="st">"presidential"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"president's"</span>),</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">valuetype =</span> <span class="st">"fixed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "President"    "presidential" "president's" </code></pre>
+</div>
+</div>
+<p>The default pattern match is <code>case_insentitive = TRUE</code>. Therefore, <code>President</code> remains part of the tokens object even though the pattern includes <code>president</code> in lower-case. We could change this behaviour by setting <code>tokens_keep(x, case_insensitive = FALSE)</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fixed (literal) pattern matching: case-sensitive</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_keep</span>(toks_president, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"president"</span>, <span class="st">"presidential"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"president's"</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">valuetype =</span> <span class="st">"fixed"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "presidential" "president's" </code></pre>
+</div>
+</div>
+<p>Now only <code>presidential</code> and <code>president's</code> are kept in the tokens object while the term <code>President</code> is not capture since it does not match the term “president” when selecting tokens in a case-sensitive way.</p>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>*</code> and <code>?</code>: two “glob”-style matches to rule them all
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pattern matching in quanteda defaults to “glob”-style because it’s simpler than regular expression matching and suffices for the majority of user requirements. Moreover, it aligns with fixed pattern matching when wildcard characters (<code>*</code> and <code>?</code>) aren’t utilised. The implementation in <strong>quanteda</strong> uses <code>*</code> to match any number of any characters including none, and <code>?</code> to match any single character. Let’s take a look at a few examples to explain the behaviour of wildcard pattern matches.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match the token "president" and all terms starting with "president"</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_keep</span>(toks_president, <span class="at">pattern =</span> <span class="st">"president*"</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "President"    "presidential" "president's" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match tokens ending on "ing*</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"buying buy paying pay playing laying lay"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_keep</span>(<span class="at">pattern =</span> <span class="st">"*ing"</span>, <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "buying"  "paying"  "playing" "laying" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match tokens starting with "p" and ending on "ing"</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"buying buy paying pay playing laying lay"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_keep</span>(<span class="at">pattern =</span> <span class="st">"p*ing"</span>, <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "paying"  "playing"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match tokens starting with a character followed by "ay"</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"buying buy paying pay playing laying lay"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_keep</span>(<span class="at">pattern =</span> <span class="st">"?ay"</span>, <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "pay" "lay"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match tokens starting with a character, followed "ay" and none or more characters</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"buying buy paying pay playing laying lay"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_keep</span>(<span class="at">pattern =</span> <span class="st">"?ay*"</span>, <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "paying" "pay"    "laying" "lay"   </code></pre>
+</div>
+</div>
+<p>If you want to have more control over pattern matches, we recommend regular expressions (<code>valuetype = "regex"</code>).</p>
+</div>
+</div>
+<section id="n-grams-and-skip-grams" class="level3" data-number="11.5.1">
+<h3 data-number="11.5.1" class="anchored" data-anchor-id="n-grams-and-skip-grams"><span class="header-section-number">11.5.1</span> N-Grams and Skip-Grams</h3>
+<p>You can create n-grams and skip-grams in various lengths using <code>tokens_ngrams()</code> and <code>tokens_skipgrams()</code>. While using these functions is fairly straightforward, users need to make decisions about removing patterns before concatenating tokens and need to determine the size of n-grams and/or skips. We describe these options below. First, we create n-grams and skip-grams of various sizes. Then, we combine skip-grams and n-grams in the same function, and finally show how the output changes if we process a tokens object before constructing n-grams.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise a sentence</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>toks_social <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"We should consider increasing social welfare payments."</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># form n-grams of size 2</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_ngrams</span>(toks_social, <span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "We_should"           "should_consider"     "consider_increasing"
+[4] "increasing_social"   "social_welfare"      "welfare_payments"   
+[7] "payments_."         </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># form n-grams of size 3</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_ngrams</span>(toks_social, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "We_should_consider"         "should_consider_increasing"
+[3] "consider_increasing_social" "increasing_social_welfare" 
+[5] "social_welfare_payments"    "welfare_payments_."        </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># form n-grams of size 2 and 3</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_ngrams</span>(toks_social, <span class="at">n =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+ [1] "We_should"                  "should_consider"           
+ [3] "consider_increasing"        "increasing_social"         
+ [5] "social_welfare"             "welfare_payments"          
+ [7] "payments_."                 "We_should_consider"        
+ [9] "should_consider_increasing" "consider_increasing_social"
+[11] "increasing_social_welfare"  "social_welfare_payments"   
+[ ... and 1 more ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># form skip-grams of size 2 and skip 1 token</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_skipgrams</span>(toks_social, <span class="at">n =</span> <span class="dv">2</span>, <span class="at">skip =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "We_consider"        "should_increasing"  "consider_social"   
+[4] "increasing_welfare" "social_payments"    "welfare_."         </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># form skip-grams of size 2 and skip 1 and 2 tokens</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_skipgrams</span>(toks_social, <span class="at">n =</span> <span class="dv">2</span>, <span class="at">skip =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+ [1] "We_consider"         "We_increasing"       "should_increasing"  
+ [4] "should_social"       "consider_social"     "consider_welfare"   
+ [7] "increasing_welfare"  "increasing_payments" "social_payments"    
+[10] "social_."            "welfare_."          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># form n-grams of size 1 and skip-grams with a skip of 1 token</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_ngrams</span>(toks_social, <span class="at">n =</span> <span class="dv">2</span>, <span class="at">skip =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "We_consider"        "should_increasing"  "consider_social"   
+[4] "increasing_welfare" "social_payments"    "welfare_."         </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove stopwords and punctuation before creating n-grams</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>toks_social <span class="sc">|&gt;</span> </span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_ngrams</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "consider_increasing" "increasing_social"   "social_welfare"     
+[4] "welfare_payments"   </code></pre>
+</div>
+</div>
+<p>The example above underscore that several combinations do not add much value to the context in which words appear. Many types are simply combinations of tokens and stopwords. From our experience, creating skip-grams or n-grams for all documents without any processing decisions in advance does not improve our analysis or results.</p>
+<p>It is worth keeping in mind that n-grams applied to larger corpora inflate the number of types. We showcase the increase in tokens based on our corpus of 59 US inaugural speeches.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of types with uni-grams and no processing</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>data_corpus_inaugural <span class="sc">|&gt;</span> </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntype</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 47496</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of types with n-grams of size 2 </span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># after removing stopwords and punctuation characters</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>data_corpus_inaugural <span class="sc">|&gt;</span> </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_ngrams</span>(<span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntype</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 63971</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of types with n-grams of size 2 and no processing</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>data_corpus_inaugural <span class="sc">|&gt;</span> </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_ngrams</span>(<span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntype</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 118934</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of types with n-grams of size 3 and no processing</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>data_corpus_inaugural <span class="sc">|&gt;</span> </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_ngrams</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntype</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 144820</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+When to pay attention to very sparse objects
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An increase in types through n-grams increases the sparsity of a document-feature matrix, i.e., the proportion of cells that have zero counts. (<a href="13-quanteda-dfms.html"><span>Chapter&nbsp;13</span></a>). The sparsity of US inaugural debates (<code>data_corpus_inaugural</code>) increases from 92% to 96.9% when using bi-grams instead of uni-grams. While <strong>quanteda</strong> handles sparse document-feature matrices very efficiently, a very high sparsity might result in convergence issues for unsupervised scaling models (<a href="22-ml-unsupervised-scaling.html"><span>Chapter&nbsp;22</span></a>) or topic models (<a href="25-ml-topicmodels.html"><span>Chapter&nbsp;25</span></a>). Therefore, n-grams or skip-grams may be counterproductive for some research questions.</p>
+</div>
+</div>
 </section>
-<section id="exercises" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.6</span> Exercises</h2>
+<section id="compounding-tokens" class="level3" data-number="11.5.2">
+<h3 data-number="11.5.2" class="anchored" data-anchor-id="compounding-tokens"><span class="header-section-number">11.5.2</span> Compounding Tokens</h3>
+<p>Before transforming a tokens object into a document-feature matrix (<a href="13-quanteda-dfms.html"><span>Chapter&nbsp;13</span></a>), we often want or need to compound multi-word expressions. Compounded phrases will be treated as a single feature in subsequent analyses. Let’s explore how to compound the multi-word expressions “social welfare” and “social security.” As mentioned above, we need to explicitly declare multi-word expressions with the <code>pattern()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create tokens object for examples</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>toks_social <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"We need to increase social welfare payments </span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="st">                      and improve social security."</span>)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compound the pattern "social welfare"</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>toks_social <span class="sc">|&gt;</span> </span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_compound</span>(<span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="st">"social welfare"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+ [1] "We"             "need"           "to"             "increase"      
+ [5] "social_welfare" "payments"       "and"            "improve"       
+ [9] "social"         "security"       "."             </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note: compounding does not work without phrase()</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>toks_social <span class="sc">|&gt;</span> </span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_compound</span>(<span class="at">pattern =</span> <span class="st">"social welfare"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+ [1] "We"       "need"     "to"       "increase" "social"   "welfare" 
+ [7] "payments" "and"      "improve"  "social"   "security" "."       </code></pre>
+</div>
+</div>
+<p>We can include several patterns in our character vector containing multi-word expressions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compound two patterns</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_compound</span>(toks_social,</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="fu">c</span>(<span class="st">"social welfare"</span>,</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"social security"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+ [1] "We"              "need"            "to"              "increase"       
+ [5] "social_welfare"  "payments"        "and"             "improve"        
+ [9] "social_security" "."              </code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Setting the concatenator
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By default, compounded tokens are concatenated using an underscore (<code>_</code>). The default is recommended since underscores will not be removed during normal cleaning and tokenisation. Using an underscore as a separator also allows you to check whether compounding worked as expected.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check whether compounding worked as expected </span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># by extracting patterns containing underscores</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>toks_social <span class="sc">|&gt;</span> </span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_compound</span>(<span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="fu">c</span>(<span class="st">"social welfare"</span>, </span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"social security"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_keep</span>(<span class="at">pattern =</span> <span class="st">"*_*"</span>) <span class="co"># keep patterns with underscores</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "social_welfare"  "social_security"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>You can also compound terms based on regular expressions (<a href="04-r-strings.html"><span>Chapter&nbsp;4</span></a> and <a href="31-appendix-regex.html"><span>Appendix&nbsp;C</span></a>) or “wild card” pattern matches. Below, we use the glob-style wildcard expression <code>*</code> to compound all multi-word expressions starting with “social” in US State of the Union speeches.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise SOTU speeches, remove punctuation and numbers</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># before removing stopwords</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>toks_sotu <span class="ot">&lt;-</span> TAUR<span class="sc">::</span>data_corpus_sotu <span class="sc">|&gt;</span> </span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">padding =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compound all phrases starting with "social"</span></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>toks_sotu_comp <span class="ot">&lt;-</span> <span class="fu">tokens_compound</span>(toks_sotu, <span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="st">"social *"</span>))</span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a><span class="co"># spot-check results by keeping all tokens starting </span></span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a><span class="co"># with social using "glob"-style wildcard pattern match</span></span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a><span class="co"># and create dfm to check compounded terms</span></span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_keep</span>(toks_sotu_comp, <span class="at">pattern =</span> <span class="st">"social_*"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">topfeatures</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="co"># get 15 most frequent compounded tokens</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    social_security     social_problems     social_services        social_needs 
+                229                  16                  15                  13 
+        social_life        social_order     social_progress       social_system 
+                 10                   9                   9                   7 
+     social_welfare     social_programs  social_intercourse    social_condition 
+                  7                   7                   6                   6 
+      social_change    social_insurance social_institutions 
+                  6                   6                   5 </code></pre>
+</div>
+</div>
+</section>
+<section id="selecting-tokens-within-windows" class="level3" data-number="11.5.3">
+<h3 data-number="11.5.3" class="anchored" data-anchor-id="selecting-tokens-within-windows"><span class="header-section-number">11.5.3</span> Selecting Tokens within Windows</h3>
+<p>Isolating specific tokens within a defined range of words can refine many research questions. For example, we could keep the term <code>room</code> and the context of ±4 tokens in the corpus of hotel reviews. This approach might provide a first descriptive insights into aspects the customers really (dis-)liked about their hotel room.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenize and process the corpus of hotel reviews</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>toks_hotels <span class="ot">&lt;-</span> <span class="fu">tokens</span>(TAUR<span class="sc">::</span>data_corpus_TAhotels,</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">padding =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="co"># keep "room*" and its context of ±3 tokens</span></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>toks_room <span class="ot">&lt;-</span> toks_hotels <span class="sc">|&gt;</span> </span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>),</span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">padding =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_keep</span>(<span class="at">pattern =</span> <span class="st">"room*"</span>, </span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">window =</span> <span class="dv">4</span>, <span class="at">padding =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect the first three hotel reviews</span></span>
+<span id="cb65-15"><a href="#cb65-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(toks_room, <span class="at">max_ndoc =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 20,491 documents and 1 docvar.
+text1 :
+ [1] "" "" "" "" "" "" "" "" "" "" "" ""
+[ ... and 86 more ]
+
+text2 :
+ [1] "" "" "" "" "" "" "" "" "" "" "" ""
+[ ... and 260 more ]
+
+text3 :
+ [1] "nice"       "rooms"      ""           ""           ""          
+ [6] "experience" ""           ""           ""           ""          
+[11] ""           ""          
+[ ... and 226 more ]
+
+text4 :
+ [1] "" "" "" "" "" "" "" "" "" "" "" ""
+[ ... and 92 more ]
+
+[ reached max_ndoc ... 20,487 more documents ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform tokens object into a document-feature matrix (dfm) and </span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co"># get 30 most frequent words surrounding "room*" using topfeatures()</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>toks_room <span class="sc">|&gt;</span> </span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>() <span class="sc">|&gt;</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm_remove</span>(<span class="at">pattern =</span> <span class="st">""</span>) <span class="sc">|&gt;</span> <span class="co"># remove padding placeholder</span></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">topfeatures</span>(<span class="at">n =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       room       rooms       hotel       clean        nice       small 
+      34357       12043        5523        4761        2908        2690 
+      great       staff         n't     service       floor        view 
+       2630        2475        2414        2342        2181        2148 
+       good comfortable         bed    bathroom       large   breakfast 
+       2106        1957        1677        1596        1594        1591 
+      night      stayed    spacious        stay    location         got 
+       1425        1415        1332        1313        1274        1267 
+        day        just        size        beds      booked    friendly 
+       1216        1181        1161        1050        1002         992 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+To pad or not to pad?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Padding implies leaving an empty string where removed tokens previously existed. Padding can be useful when we want to remove certain patterns, but (1) still know the position of tokens that remain in the corpus or (2) if we select tokens and their context window. The examples below highlight the differences.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>toks <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"We're having a great time at the</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="st">               pool and lovely food in the restaurant."</span>)</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># keep great, lovely and a context window of ±1 tokens</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="co"># without padding</span></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_keep</span>(toks, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"great"</span>, <span class="st">"lovely"</span>),</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">window =</span> <span class="dv">1</span>,</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">padding =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "a"      "great"  "time"   "and"    "lovely" "food"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keep great, lovely and a context window of ±1 tokens</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co"># with padding</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_keep</span>(toks, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"great"</span>, <span class="st">"lovely"</span>),</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">window =</span> <span class="dv">1</span>,</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">padding =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+ [1] ""       ""       "a"      "great"  "time"   ""       ""       ""      
+ [9] "and"    "lovely" "food"   ""      
+[ ... and 3 more ]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="advanced" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="advanced"><span class="header-section-number">11.6</span> Advanced</h2>
+<p>Next, we provide an overview of advanced tokens operations: splitting and chunking tokens. Both can be useful in some contexts, but tend to be used less frequently than the operations discussed so far.</p>
+<section id="splitting" class="level3" data-number="11.6.1">
+<h3 data-number="11.6.1" class="anchored" data-anchor-id="splitting"><span class="header-section-number">11.6.1</span> Splitting</h3>
+<p>Splitting tokens implies that we split one token into multiple replacements. The function <code>tokens_split()</code> splits a tokens by a separator pattern, effectively reversing the operation of <code>tokens_compound()</code>. The example below shows how to undo a compounding operation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>toks <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"Value added tax is a multi-word expression."</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># compound value added tax</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>toks_vat <span class="ot">&lt;-</span> <span class="fu">tokens_compound</span>(toks, </span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="st">"value added tax*"</span>), </span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">concatenator =</span> <span class="st">"_"</span>)</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>toks_vat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "Value_added_tax" "is"              "a"               "multi-word"     
+[5] "expression"      "."              </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse compounding using "_" as the separator </span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for splitting tokens</span></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_split</span>(toks_vat, <span class="at">separator =</span> <span class="st">"_"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "Value"      "added"      "tax"        "is"         "a"         
+[6] "multi-word" "expression" "."         </code></pre>
+</div>
+</div>
+</section>
+<section id="chunking" class="level3" data-number="11.6.2">
+<h3 data-number="11.6.2" class="anchored" data-anchor-id="chunking"><span class="header-section-number">11.6.2</span> Chunking</h3>
+<p>In some applications, we may be interested by dividing our texts into equally-sized segments or chunks. You might be working with a set of very long documents, which cannot be segmented into smaller units such as paragraphs or sentences due to missing delimiters (see <a href="09-quanteda-corpus.html"><span>Chapter&nbsp;9</span></a> and using <code>corpus_reshape()</code> or <code>corpus_segment()</code>). Some methods, such as topic models (<a href="25-ml-topicmodels.html"><span>Chapter&nbsp;25</span></a>) work better when the documents have similar lengths. The function <code>tokens_chunk()</code> can be used to segment a tokens object by chunks of a given size. The <code>overlap</code> argument allows you to specify whether to take over tokens from the preceding chunk. We use the first hotel review of <code>data_corpus_TAhotels</code> and divide the reviews up into smaller chunks with and without overlaps.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenize the first hotel review</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>toks_r1 <span class="ot">&lt;-</span> <span class="fu">tokens</span>(TAUR<span class="sc">::</span>data_corpus_TAhotels[<span class="dv">1</span>])</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print first 15 tokens</span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(toks_r1, <span class="at">max_ntoken =</span> <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document and 1 docvar.
+text1 :
+ [1] "nice"        "hotel"       "expensive"   "parking"     "got"        
+ [6] "good"        "deal"        "stay"        "hotel"       "anniversary"
+[11] ","           "arrived"     "late"        "evening"     "took"       
+[ ... and 83 more ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chunk into chunks of 5 tokens without overlap</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>toks_r1_chunk <span class="ot">&lt;-</span> <span class="fu">tokens_chunk</span>(toks_r1, <span class="at">size =</span> <span class="dv">5</span>)</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect chunked tokens object</span></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(toks_r1_chunk, <span class="at">max_ndoc =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 20 documents and 1 docvar.
+text1.1 :
+[1] "nice"      "hotel"     "expensive" "parking"   "got"      
+
+text1.2 :
+[1] "good"        "deal"        "stay"        "hotel"       "anniversary"
+
+text1.3 :
+[1] ","       "arrived" "late"    "evening" "took"   
+
+[ reached max_ndoc ... 17 more documents ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chunk into chunks of 5 tokens with overlap and inspect result</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_chunk</span>(toks_r1, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">overlap =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">max_ndoc =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 33 documents and 1 docvar.
+text1.1 :
+[1] "nice"      "hotel"     "expensive" "parking"   "got"      
+
+text1.2 :
+[1] "parking" "got"     "good"    "deal"    "stay"   
+
+text1.3 :
+[1] "deal"        "stay"        "hotel"       "anniversary" ","          
+
+[ reached max_ndoc ... 30 more documents ]</code></pre>
+</div>
+</div>
+<p>As always, this example serves only for illustration purposes. Usually, the selected chunks would be larger than five documents to mirror the length of “typical” documents, such as sentences or paragraphs.</p>
+</section>
+</section>
+<section id="further-reading" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">11.7</span> Further Reading</h2>
+<ul>
+<li>Examples of targeted analyses</li>
+<li>Part-of-speech tagging</li>
+<li>spacy</li>
+</ul>
+</section>
+<section id="exercises" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.8</span> Exercises</h2>
 <p>Add some here.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-gessler22immig" class="csl-entry" role="listitem">
+Gessler, Theresa, and Sophia Hunger. 2022. <span>“How the Refugee Crisis and Radical Right Parties Shape Party Competition on Immigration.”</span> <em>Political Science Research and Methods</em> 10 (3): 524–44. <a href="https://doi.org/10.1017/psrm.2021.64">https://doi.org/10.1017/psrm.2021.64</a>.
+</div>
+<div id="ref-lupia20nsf" class="csl-entry" role="listitem">
+Lupia, Arthur, Stuart N. Soroka, and Alison Beatty. 2020. <span>“What Does Congress Want from the National Science Foundation? A Content Analysis of Remarks from 1995 to 2018.”</span> <em>Science Advances</em> 6 (33): eaaz6300. <a href="https://doi.org/10.1126/sciadv.aaz6300">https://doi.org/10.1126/sciadv.aaz6300</a>.
+</div>
+<div id="ref-rauh20eu" class="csl-entry" role="listitem">
+Rauh, Christopher, Bart Joachim Bes, and Martijn Schoonvelde. 2020. <span>“Undermining, Defusing or Defending European Integration? Assessing Public Communication of European Executives in Times of EU Politicisation.”</span> <em>European Journal of Political Research</em> 59 (2): 397–423. <a href="https://doi.org/10.1111/1475-6765.12350">https://doi.org/10.1111/1475-6765.12350</a>.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><code>tokens_lookup()</code>, which handles phrases internally, is an exception to the rule.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -737,7 +1420,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./10-quanteda-tokens.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing tokens</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

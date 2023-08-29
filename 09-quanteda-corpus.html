@@ -145,29 +145,6 @@ div.csl-indent {
       <a href="./">Text Analysis Using R</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/quanteda/Text-Analysis-Using-R" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-              <i class="bi bi-bi-twitter pe-1"></i>
-            Twitter
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-              <i class="bi bi-bi-facebook pe-1"></i>
-            Facebook
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-              <i class="bi bi-bi-linkedin pe-1"></i>
-            LinkedIn
-            </a>
-          </li>
-      </ul>
-    </div>
 </div>
     </div>
       </div>
@@ -284,7 +261,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-quanteda-tokens.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing tokens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -502,12 +479,12 @@ div.csl-indent {
   <li><a href="#conversion-from-and-to-other-formats" id="toc-conversion-from-and-to-other-formats" class="nav-link" data-scroll-target="#conversion-from-and-to-other-formats"><span class="header-section-number">9.4.3</span> Conversion from and to Other Formats</a></li>
   <li><a href="#converting-or-coercing-to-other-object-types" id="toc-converting-or-coercing-to-other-object-types" class="nav-link" data-scroll-target="#converting-or-coercing-to-other-object-types"><span class="header-section-number">9.4.4</span> Converting or Coercing to Other Object Types</a></li>
   <li><a href="#changing-the-unit-of-analysis" id="toc-changing-the-unit-of-analysis" class="nav-link" data-scroll-target="#changing-the-unit-of-analysis"><span class="header-section-number">9.4.5</span> Changing the Unit of Analysis</a></li>
-  <li><a href="#reshaping-corpora-after-statistical-analyis-of-texts" id="toc-reshaping-corpora-after-statistical-analyis-of-texts" class="nav-link" data-scroll-target="#reshaping-corpora-after-statistical-analyis-of-texts"><span class="header-section-number">9.4.6</span> Reshaping Corpora after Statistical Analyis of Texts</a></li>
+  <li><a href="#reshaping-corpora-after-statistical-analysis-of-texts" id="toc-reshaping-corpora-after-statistical-analysis-of-texts" class="nav-link" data-scroll-target="#reshaping-corpora-after-statistical-analysis-of-texts"><span class="header-section-number">9.4.6</span> Reshaping Corpora after Statistical Analysis of Texts</a></li>
   </ul></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">9.5</span> Further Reading</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.6</span> Exercises</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/master/09-quanteda-corpus.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/09-quanteda-corpus.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -576,7 +553,7 @@ div.csl-indent {
 </section>
 <section id="applications" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="applications"><span class="header-section-number">9.3</span> Applications</h2>
-<p>In this section, we will demonstrate how to create a corpus from different input sources, how to access and assign docvars and corpus metadata, how to subset documents from a corpus based on document-level variables, and how to draw a random sample of documents from a text corpus. We will use the corpus of US inaugural speeches, which is included in the <strong>quanteda</strong> package as <code>data_corpus_inaugural</code>.</p>
+<p>In this section, we will demonstrate how to create a corpus from different input sources, how to access and assign docvars and corpus metadata, how to subset documents from a corpus based on document-level variables, and how to draw a random sample of documents from a text corpus.</p>
 <section id="creating-a-corpus-from-different-input-sources" class="level3" data-number="9.3.1">
 <h3 data-number="9.3.1" class="anchored" data-anchor-id="creating-a-corpus-from-different-input-sources"><span class="header-section-number">9.3.1</span> Creating a Corpus from Different Input Sources</h3>
 <p>We can create a <em>quanteda</em> corpus from different input sources, for example a data frame, a <strong>tm</strong> corpus object, or a keyword-in-context object (<code>kwic</code>).</p>
@@ -600,9 +577,10 @@ div.csl-indent {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">some_ints =</span> 1L<span class="sc">:</span>6L,</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">some_text =</span> <span class="fu">paste0</span>(<span class="st">"This is text number "</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="st">"."</span>),</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> <span class="fu">paste0</span>(<span class="st">"from_df_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> <span class="fu">paste0</span>(<span class="st">"from_df_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          letter_factor some_ints              some_text
 from_df_1             a         1 This is text number 1.
@@ -639,12 +617,12 @@ from_df_6             c         6 This is text number 6.</code></pre>
 <p>In addition, we can create a text corpus from a <code>kwic()</code> object. Keywords-in-context is covered extensively in <a href="15-exploring-kwic.html"><span>Chapter&nbsp;15</span></a>.</p>
 <p>For example, we could extract all mentions of “freedom”, “war”, and “economy”, and the immediate context of 20 words from our corpus of hotel reviews, and convert the output to a new text corpus.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>kw_inaugural <span class="ot">&lt;-</span> data_corpus_inaugural <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_separators =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kwic</span>(<span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"freedom"</span>, <span class="st">"war"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"econom*"</span>),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">window =</span> <span class="dv">20</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">separator =</span> <span class="st">" "</span>)</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create keyword-in-context object for three terms</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and a window of ±20 tokens</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>kw_inaugural <span class="ot">&lt;-</span> data_corpus_inaugural <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_separators =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kwic</span>(<span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"freedom"</span>, <span class="st">"war"</span>,<span class="st">"econom*"</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">window =</span> <span class="dv">20</span>, <span class="at">separator =</span> <span class="st">" "</span>)</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># check number of matches</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(kw_inaugural)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -744,14 +722,16 @@ $title
 <p>We see that the <code>Year</code> variable stores the year when each speech was delivered. We could create a binary variable <code>PrePostWW2</code> which distinguishes between speeches held before and after 1945. T</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use $ operator</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>data_corpus_inaugural<span class="sc">$</span>PrePostWW2 <span class="ot">&lt;-</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(data_corpus_inaugural<span class="sc">$</span>Year <span class="sc">&gt;</span> <span class="dv">1945</span>, </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Post World War II"</span>, <span class="st">"Pre World War II"</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent to</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">docvars</span>(data_corpus_inaugural, <span class="st">"PrePostWW"</span>) <span class="ot">&lt;-</span> </span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(<span class="fu">docvars</span>(data_corpus_inaugural, <span class="st">"Year"</span>) <span class="sc">&gt;</span> <span class="dv">1945</span>, </span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Post World War II"</span>, <span class="st">"Pre World War II"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>data_corpus_inaugural<span class="sc">$</span>PrePostWW2 <span class="ot">&lt;-</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(data_corpus_inaugural<span class="sc">$</span>Year <span class="sc">&gt;</span> <span class="dv">1945</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Post World War II"</span>, <span class="st">"Pre World War II"</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent to</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">docvars</span>(data_corpus_inaugural, <span class="st">"PrePostWW"</span>) <span class="ot">&lt;-</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(<span class="fu">docvars</span>(data_corpus_inaugural, <span class="st">"Year"</span>) <span class="sc">&gt;</span> <span class="dv">1945</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Post World War II"</span>, <span class="st">"Pre World War II"</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -769,23 +749,21 @@ $title
 <p>Applying <code>corpus_subset()</code> to a corpus allows us to subset a text corpus based on values of document-level variables. We can filter, for instance, only speeches delivered by Democratic Presidents, speeches delivered after World War II, or speeches from selected presidents.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset only Republican Presidents</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>corp_democrats <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural,</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                                Party <span class="sc">==</span> <span class="st">"Republican"</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># subset speeches delivered after WW2</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>corp_postww2 <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                              PrePostWW2 <span class="sc">==</span> <span class="st">"Post World War II"</span>)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>corp_postww2 <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural, </span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                              Year <span class="sc">&gt;</span> <span class="dv">1945</span>)</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># subset speeches delivered by Clinton, Obama, and Biden</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>corp_cob <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural, </span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>                          President <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Clinton"</span>, <span class="st">"Obama"</span>, <span class="st">"Biden"</span>))</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># remove Biden's 2021 speech</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>corp_nobiden <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural,</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>                              President <span class="sc">!=</span> <span class="st">"Biden"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>corp_democrats <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural, Party <span class="sc">==</span> <span class="st">"Republican"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># subset speeches delivered after WW2</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>corp_postww2 <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                              PrePostWW2 <span class="sc">==</span> <span class="st">"Post World War II"</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>corp_postww2 <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural, Year <span class="sc">&gt;</span> <span class="dv">1945</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># subset speeches delivered by Clinton, Obama, and Biden</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>corp_cob <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                          President <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Clinton"</span>, <span class="st">"Obama"</span>, <span class="st">"Biden"</span>))</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># remove Biden's 2021 speech</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>corp_nobiden <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural,</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>                              President <span class="sc">!=</span> <span class="st">"Biden"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
@@ -816,18 +794,20 @@ $title
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample 30 inaugural speeches without replacement</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10987</span>)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>corp_sample30 <span class="ot">&lt;-</span> <span class="fu">corpus_sample</span>(data_corpus_inaugural, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check that the corpus consists of 30 documents</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ndoc</span>(corp_sample30)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>corp_sample30 <span class="ot">&lt;-</span> <span class="fu">corpus_sample</span>(data_corpus_inaugural, <span class="at">size =</span> <span class="dv">30</span>, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                               <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># check that the corpus consists of 30 documents</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ndoc</span>(corp_sample30)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>corp_sample_prepost <span class="ot">&lt;-</span> <span class="fu">corpus_sample</span>(data_corpus_inaugural, <span class="at">size =</span> <span class="dv">15</span>, </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">replace =</span> <span class="cn">FALSE</span>, <span class="at">by =</span> PrePostWW2)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check that corpus contains 15 pre- and 15 post-WW II documents</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(corp_sample_prepost<span class="sc">$</span>PrePostWW2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>corp_sample_prepost <span class="ot">&lt;-</span> <span class="fu">corpus_sample</span>(data_corpus_inaugural,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">size =</span> <span class="dv">15</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">replace =</span> <span class="cn">FALSE</span>, <span class="at">by =</span> PrePostWW2)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># check that corpus contains 15 pre- and 15 post-WW II documents</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(corp_sample_prepost<span class="sc">$</span>PrePostWW2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Post World War II  Pre World War II 
@@ -872,14 +852,14 @@ Post World War II  Pre World War II
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not a corpus any longer</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> <span class="fu">corpus</span>(<span class="fu">c</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]))</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_replace</span>(corp, <span class="st">"b"</span>, <span class="st">"B"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(corp, <span class="st">"b"</span>, <span class="st">"B"</span>)</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>corp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a" "B" "c"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># still a corpus</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> <span class="fu">corpus</span>(<span class="fu">c</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]))</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>corp[<span class="fu">seq_along</span>(corp)] <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_replace</span>(corp, <span class="st">"b"</span>, <span class="st">"B"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>corp[<span class="fu">seq_along</span>(corp)] <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(corp, <span class="st">"b"</span>, <span class="st">"B"</span>)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>corp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Corpus consisting of 3 documents.
@@ -906,8 +886,8 @@ text3 :
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed for reproducibility</span></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">35</span>)</span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>corp_TAhotels_sample <span class="ot">&lt;-</span> <span class="fu">corpus_sample</span>(data_corpus_TAhotels, </span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">size =</span> <span class="dv">1000</span>, </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>corp_TAhotels_sample <span class="ot">&lt;-</span> <span class="fu">corpus_sample</span>(data_corpus_TAhotels,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">size =</span> <span class="dv">1000</span>,</span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># convert corpus to data frame</span></span>
@@ -918,12 +898,12 @@ text3 :
 <p>We can easily store this data frame as a spreadsheet, which can be useful when hand-code a selection of reviews (for instance, based on their sentiment).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store data frame as csv file with UTF-8 encoding and remove row names</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dat_TAhotels_sample_base_r, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dat_TAhotels_sample_base_r,</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"dat_TAhotels_sample.csv"</span>,</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">fileEncoding =</span> <span class="st">"UTF-8"</span>,</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the rio package allows us to store </span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the rio package allows us to store</span></span>
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># the data frame in many different file formats</span></span>
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"rio"</span>)</span>
 <span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
@@ -935,10 +915,11 @@ text3 :
 <h3 data-number="9.4.4" class="anchored" data-anchor-id="converting-or-coercing-to-other-object-types"><span class="header-section-number">9.4.4</span> Converting or Coercing to Other Object Types</h3>
 <p>We can coerce an object to a text corpus (<code>as.corpus()</code>) or extract the texts from a corpus (<code>as.character()</code>). <code>as.corpus()</code> can only be applied to a <strong>quanteda</strong> corpus object and upgrades it to the newest format. This function can be handy for researchers who work with older <strong>quanteda</strong> objects. For transforming data frames or <strong>tm</strong> corpus objects into a <strong>quanteda</strong> corpus, you should use the <code>corpus()</code> function. The function <code>as.character()</code> returns the corpus text as a plain character vector.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>chars_TAhotels <span class="ot">&lt;-</span> <span class="fu">as.character</span>(data_corpus_TAhotels)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect character object</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(chars_TAhotels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieve texts from corpus object</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>chars_TAhotels <span class="ot">&lt;-</span> <span class="fu">as.character</span>(data_corpus_TAhotels)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect character object</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(chars_TAhotels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Named chr [1:20491] "nice hotel expensive parking got good deal stay hotel anniversary, arrived late evening took advice previous re"| __truncated__ ...
  - attr(*, "names")= chr [1:20491] "text1" "text2" "text3" "text4" ...</code></pre>
@@ -958,11 +939,11 @@ text3 :
 <pre><code>Corpus consisting of 2 documents, showing 2 documents:
 
               Text Types Tokens Sentences             location       date
- Debate 2020-09-29  2450  24847      2039      Cleveland, Ohio 2020-09-29
- Debate 2020-10-22  2400  21727      1488 Nashville, Tennessee 2020-10-22</code></pre>
+ Debate 2020-09-29  2454  24836      2039      Cleveland, Ohio 2020-09-29
+ Debate 2020-10-22  2403  21726      1488 Nashville, Tennessee 2020-10-22</code></pre>
 </div>
 </div>
-<p>The output of <code>summary(data_corpus_debates)</code> reveals that the corpus contains only two documents, i.e.&nbsp;the full debate transcript. The first document contains the transcript of the debate in Cleveland, consisting of 24,847 tokens, 2,450 types (i.e., unique tokens), and 2,039 sentences. The second debate in Nashville is slightly shorter (21,727 tokens and 2,400 types).</p>
+<p>The output of <code>summary(data_corpus_debates)</code> reveals that the corpus contains only two documents, i.e.&nbsp;the full debate transcript. The first document contains the transcript of the debate in Cleveland, consisting of 24,836 tokens, 2,454 types (i.e., unique tokens), and 2,039 sentences. The second debate in Nashville is slightly shorter (21,726 tokens and 2,403 types).</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -980,13 +961,14 @@ text3 :
 <p>By default, <code>corpus_segment()</code> will split the original documents into smaller documents corresponding to the segments preceded by the pattern, and extract the pattern found to a new variable for the split document (a docvar named <code>pattern</code>). It is also smart enough to record the original, longer document from which each split document originally came.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># segment text corpus to level of utterances</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>data_corpus_debatesseg <span class="ot">&lt;-</span> <span class="fu">corpus_segment</span>(data_corpus_debates, </span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">pattern =</span>  <span class="st">"</span><span class="sc">\\</span><span class="st">s*[[:upper:]]+:</span><span class="sc">\\</span><span class="st">s+"</span>, </span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">valuetype =</span> <span class="st">"regex"</span>, </span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># overview of text corpus; n = 4 prints only the first four documents</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_corpus_debatesseg, <span class="at">n =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>data_corpus_debatesseg <span class="ot">&lt;-</span> <span class="fu">corpus_segment</span>(data_corpus_debates,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">s*[[:upper:]]+:</span><span class="sc">\\</span><span class="st">s+"</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">valuetype =</span> <span class="st">"regex"</span>,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">case_insensitive =</span> <span class="cn">FALSE</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># overview of text corpus; n = 4 prints only the first four documents</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_corpus_debatesseg, <span class="at">n =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Corpus consisting of 1208 documents, showing 4 documents:
 
@@ -1008,10 +990,10 @@ text3 :
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"stringr"</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"quanteda.tidy"</span>)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>data_corpus_debatesseg <span class="ot">&lt;-</span> data_corpus_debatesseg <span class="sc">|&gt;</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>data_corpus_debatesseg <span class="ot">&lt;-</span> data_corpus_debatesseg <span class="sc">|&gt;</span></span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">speaker =</span> stringr<span class="sc">::</span><span class="fu">str_trim</span>(pattern),</span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">speaker =</span> stringr<span class="sc">::</span><span class="fu">str_remove_all</span>(speaker, <span class="st">":"</span>),</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">speaker =</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(speaker)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">speaker =</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(speaker))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we can use simple base R functions to inspect the count of utterances by speaker and debate.</p>
 <div class="cell">
@@ -1054,7 +1036,7 @@ text3 :
  Min.   : 0.000   Min.   :0.00000   Min.   :0.00000   Min.   :0   Min.   :0  
  1st Qu.: 1.000   1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0   1st Qu.:0  
  Median : 2.000   Median :0.00000   Median :0.00000   Median :0   Median :0  
- Mean   : 2.111   Mean   :0.07893   Mean   :0.01376   Mean   :0   Mean   :0  
+ Mean   : 2.074   Mean   :0.07893   Mean   :0.01376   Mean   :0   Mean   :0  
  3rd Qu.: 3.000   3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0   3rd Qu.:0  
  Max.   :15.000   Max.   :4.00000   Max.   :2.00000   Max.   :0   Max.   :0  
      emojis 
@@ -1077,8 +1059,8 @@ text3 :
 </div>
 </div>
 </section>
-<section id="reshaping-corpora-after-statistical-analyis-of-texts" class="level3" data-number="9.4.6">
-<h3 data-number="9.4.6" class="anchored" data-anchor-id="reshaping-corpora-after-statistical-analyis-of-texts"><span class="header-section-number">9.4.6</span> Reshaping Corpora after Statistical Analyis of Texts</h3>
+<section id="reshaping-corpora-after-statistical-analysis-of-texts" class="level3" data-number="9.4.6">
+<h3 data-number="9.4.6" class="anchored" data-anchor-id="reshaping-corpora-after-statistical-analysis-of-texts"><span class="header-section-number">9.4.6</span> Reshaping Corpora after Statistical Analysis of Texts</h3>
 <p>In many applications, the unit of analysis of the text corpus differs from the dataset used for statistical analyses. For example, <span class="citation" data-cites="castanhosilva22eu">Castanho Silva and Proksch (<a href="references.html#ref-castanhosilva22eu" role="doc-biblioref">2021</a>)</span> study sentiment on European politics in tweets and parliamentary speeches. The authors construct a corpus of speeches and tweets that mention keywords relating to Europe or the EU and apply a sentiment dictionary to each document. The authors aggregate sentiment to the level of all relevant texts by a single politician, moving from over 100,000 Europe-related tweets and 20,000 Europe-related speeches to around 2500 observations. Each observation stores the sentiment by one Member of Parliament during their period of investigation. These sentiment scores are then used in regression models.</p>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
@@ -1097,7 +1079,7 @@ text3 :
 <ul>
 <li>Selecting document and considerations of “found data”: <span class="citation" data-cites="grimmer22textasdata">Grimmer, Roberts, and Stewart (<a href="references.html#ref-grimmer22textasdata" role="doc-biblioref">2022</a>, ch.&nbsp;4)</span></li>
 <li>Definitions of document units and the reasons for and implications of redefining these: <span class="citation" data-cites="benoit2020text">Benoit (<a href="references.html#ref-benoit2020text" role="doc-biblioref">2020, pp480–481</a>, “Defining Documents and Choosing the Unit of Analysis”)</span></li>
-<li>Adjusting strings: <span class="citation" data-cites="wickham17r4ds">Wickham and Grolemund (<a href="references.html#ref-wickham17r4ds" role="doc-biblioref">2017</a>, ch.&nbsp;14)</span></li>
+<li>Adjusting strings: <span class="citation" data-cites="wickham23r4ds">Wickham, Çetinkaya-Rundel, and Grolemund (<a href="references.html#ref-wickham23r4ds" role="doc-biblioref">2023</a>, ch.&nbsp;15)</span></li>
 </ul>
 </section>
 <section id="exercises" class="level2" data-number="9.6">
@@ -1137,13 +1119,13 @@ Herzog, Alexander, and Kenneth Benoit. 2015. <span>“The Most Unkindest Cuts: S
 Monroe, B. L., K. M. Quinn, and M. P. Colaresi. 2008. <span>“Fightin’ Words: <span>L</span>exical Feature Selection and Evaluation for Identifying the Content of Political Conflict.”</span> <em>Political Analysis</em> 16 (4): 372–403.
 </div>
 <div id="ref-Most63" class="csl-entry" role="listitem">
-Mosteller, F., and D. L. Wallace. 1963. <span>“Inference in an Authorship Problem.”</span> <em>J. Am. Stat. Assoc.</em> 58 (302): 275–309.
+Mosteller, F., and D. L. Wallace. 1963. <span>“Inference in an Authorship Problem.”</span> <em>Journal of the American Statistical Assocation</em> 58 (302): 275–309.
 </div>
 <div id="ref-pangetal2002" class="csl-entry" role="listitem">
 Pang, B., L. Lee, and S. Vaithyanathan. 2002. <span>“Thumbs up? Sentiment Classification Using Machine Learning Techniques.”</span> <em>Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP)</em>, 79–86.
 </div>
-<div id="ref-wickham17r4ds" class="csl-entry" role="listitem">
-Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. Sebastopol: O’Reilly. <a href="https://r4ds.had.co.nz">https://r4ds.had.co.nz</a>.
+<div id="ref-wickham23r4ds" class="csl-entry" role="listitem">
+Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. 2nd ed. Sebastopol: O’Reilly. <a href="https://r4ds.hadley.nz">https://r4ds.hadley.nz</a>.
 </div>
 </div>
 </section>
@@ -1396,7 +1378,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./10-quanteda-tokens.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing tokens</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

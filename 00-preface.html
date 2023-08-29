@@ -147,29 +147,6 @@ div.csl-indent {
       <a href="./">Text Analysis Using R</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/quanteda/Text-Analysis-Using-R" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-              <i class="bi bi-bi-twitter pe-1"></i>
-            Twitter
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-              <i class="bi bi-bi-facebook pe-1"></i>
-            Facebook
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-              <i class="bi bi-bi-linkedin pe-1"></i>
-            LinkedIn
-            </a>
-          </li>
-      </ul>
-    </div>
 </div>
     </div>
       </div>
@@ -286,7 +263,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-quanteda-tokens.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing tokens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -504,7 +481,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/master/00-preface.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/00-preface.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -655,9 +632,9 @@ Warning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"quanteda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Package version: 3.2.3
-Unicode version: 13.0
-ICU version: 69.1</code></pre>
+<pre><code>Package version: 3.3.1
+Unicode version: 14.0
+ICU version: 70.1</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Parallel computing: 12 of 12 threads used.</code></pre>
@@ -712,54 +689,485 @@ Tip
 <section id="colophon" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="colophon">Colophon</h2>
 <p>This book was written in <a href="https://www.rstudio.com/ide/">RStudio</a> using <a href="https://quarto.org"><strong>Quarto</strong></a>. The <a href="https://quanteda.github.io/Text-Analysis-Using-R/">website</a> is hosted via <a href="https://pages.github.com">GitHub Pages</a>, and the complete source is available on <a href="https://github.com/quanteda/Text-Analysis-Using-R">GitHub</a>.</p>
-<p>This version of the book was built with R version 4.2.1 (2022-06-23) and the following packages:</p>
+<p>This version of the book was built with R version 4.2.3 (2023-03-15) and the following packages:</p>
 <div class="cell-output-display">
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Package</th>
-<th style="text-align: left;">Version</th>
-<th style="text-align: left;">Source</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">quanteda</td>
-<td style="text-align: left;">3.2.3</td>
-<td style="text-align: left;">CRAN (R 4.2.0)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">quanteda.textmodels</td>
-<td style="text-align: left;">0.9.4</td>
-<td style="text-align: left;">CRAN (R 4.2.0)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">quanteda.textplots</td>
-<td style="text-align: left;">0.94.1</td>
-<td style="text-align: left;">CRAN (R 4.2.0)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">quanteda.textstats</td>
-<td style="text-align: left;">0.95</td>
-<td style="text-align: left;">CRAN (R 4.2.0)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">readtext</td>
-<td style="text-align: left;">0.81</td>
-<td style="text-align: left;">CRAN (R 4.2.0)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stopwords</td>
-<td style="text-align: left;">2.3</td>
-<td style="text-align: left;">CRAN (R 4.2.0)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">tidyverse</td>
-<td style="text-align: left;">1.3.2</td>
-<td style="text-align: left;">CRAN (R 4.2.0)</td>
-</tr>
-</tbody>
+
+<div id="umsnvosddy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#umsnvosddy table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#umsnvosddy thead, #umsnvosddy tbody, #umsnvosddy tfoot, #umsnvosddy tr, #umsnvosddy td, #umsnvosddy th {
+  border-style: none;
+}
+
+#umsnvosddy p {
+  margin: 0;
+  padding: 0;
+}
+
+#umsnvosddy .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#umsnvosddy .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#umsnvosddy .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#umsnvosddy .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#umsnvosddy .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#umsnvosddy .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#umsnvosddy .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#umsnvosddy .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#umsnvosddy .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#umsnvosddy .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#umsnvosddy .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#umsnvosddy .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#umsnvosddy .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#umsnvosddy .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#umsnvosddy .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#umsnvosddy .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#umsnvosddy .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#umsnvosddy .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#umsnvosddy .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#umsnvosddy .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#umsnvosddy .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#umsnvosddy .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#umsnvosddy .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#umsnvosddy .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#umsnvosddy .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#umsnvosddy .gt_left {
+  text-align: left;
+}
+
+#umsnvosddy .gt_center {
+  text-align: center;
+}
+
+#umsnvosddy .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#umsnvosddy .gt_font_normal {
+  font-weight: normal;
+}
+
+#umsnvosddy .gt_font_bold {
+  font-weight: bold;
+}
+
+#umsnvosddy .gt_font_italic {
+  font-style: italic;
+}
+
+#umsnvosddy .gt_super {
+  font-size: 65%;
+}
+
+#umsnvosddy .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#umsnvosddy .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#umsnvosddy .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#umsnvosddy .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#umsnvosddy .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#umsnvosddy .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#umsnvosddy .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Package">Package</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Version">Version</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Source">Source</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Package" class="gt_row gt_left">quanteda</td>
+<td headers="Version" class="gt_row gt_right">3.3.1</td>
+<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
+    <tr><td headers="Package" class="gt_row gt_left">quanteda.textmodels</td>
+<td headers="Version" class="gt_row gt_right">0.9.6</td>
+<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
+    <tr><td headers="Package" class="gt_row gt_left">quanteda.textplots</td>
+<td headers="Version" class="gt_row gt_right">0.94.2</td>
+<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
+    <tr><td headers="Package" class="gt_row gt_left">quanteda.textstats</td>
+<td headers="Version" class="gt_row gt_right">0.96</td>
+<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
+    <tr><td headers="Package" class="gt_row gt_left">readtext</td>
+<td headers="Version" class="gt_row gt_right">0.81</td>
+<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
+    <tr><td headers="Package" class="gt_row gt_left">stopwords</td>
+<td headers="Version" class="gt_row gt_right">2.3</td>
+<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
+    <tr><td headers="Package" class="gt_row gt_left">tidyverse</td>
+<td headers="Version" class="gt_row gt_right">2.0.0</td>
+<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
+  </tbody>
+  
+  
 </table>
+</div>
 </div>
 <section id="how-to-contact-us" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="how-to-contact-us">How to Contact Us</h3>
@@ -770,15 +1178,15 @@ Tip
 <section id="acknowledgements" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
 <p>Developing <strong>quanteda</strong> has been a labour of many years involving many contributors. The most notable contributor to the package and its learning materials is Kohei Watanabe, without whom <strong>quanteda</strong> would not be the incredible package it is today. Kohei has provided a clear and vigorous vision for the package’s evolution across its major versions and continues to maintain it today. Others have contributed in major ways both through design and programming, namely Paul Nulty and Akitaka Matsuo, both who were present at creation and through the 1.0 launch which involved the first of many major redesigns. Adam Obeng made a brief but indelible imprint on several of the packages in the quanteda family. Haiyan Wang wrote versions of some of the core C++ code that makes quanteda so fast, as well as contributing to the R base. William Lowe and Christian Müller also contributed code and ideas that have enriched the package and the methods it implements.</p>
-<p>No project this large could have existed without institutional and financial benefactors and supporters. Most notable of these is the European Research Council, who funded the original development under a its Starting Investigator Grant scheme, awarded to Kenneth Benoit in 2011 for a project entitled QUANTESS: Quantitative Text Analysis for the Social Sciences (ERC-2011-StG 283794-QUANTESS). Our day jobs (as university professors) have also provided invaluable material and intellectual support for the development of the ideas, methodologies, and software documented in this book. This list includes the London School of Economics and Political Science, which employs Ken Benoit and which hosted the QUANTESS grant and employed many of the core quanteda team and/or where they completed PhDs; University College Dublin where Stefan Müller is employed; Trinity College Dublin, where Ken Benoit was formerly a Professor of Quantitative Social Sciences and where Stefan completed his PhD in political science; and the Australian National University which provided a generous affiliation to Ken Benoit and where the outline for this book took first shape as a giant tableau of post-it notes on the wall of a visiting office in the former building of the School of Politics and International Relations.</p>
-<p>As we develop this book, we hope that many readers of the work-in-progress will contribute feedback, comments, and even edits, and we plan to acknowledge you all. So, don’t be shy readers.</p>
+<p>No project this large could have existed without institutional and financial benefactors and supporters. Most notable of these is the European Research Council, who funded the original development under a its Starting Investigator Grant scheme, awarded to Kenneth Benoit in 2011 for a project entitled QUANTESS: Quantitative Text Analysis for the Social Sciences (ERC-2011-StG 283794-QUANTESS). Our day jobs (as university professors) have also provided invaluable material and intellectual support for the development of the ideas, methodologies, and software documented in this book. This list includes the London School of Economics and Political Science, which employs Ken Benoit and which hosted the QUANTESS grant and employed many of the core quanteda team and/or where they completed PhDs; University College Dublin where Stefan Müller is employed; Trinity College Dublin, where Ken Benoit was formerly a Professor of Quantitative Social Sciences and where Stefan completed his PhD in political science; and the Australian National University which provided a generous affiliation to Ken and where the outline for this book took first shape as a giant tableau of post-it notes on the wall of a visiting office in the former building of the School of Politics and International Relations.</p>
+<p>As we develop this book, we hope that many readers of the work-in-progress will contribute feedback, comments, and even edits, and we plan to acknowledge you all. So, don’t be shy readers. You can suggest changes by clicking on “Edit this page” in the top-right corner, <a href="https://gist.github.com/Chaser324/ce0505fbed06b947d962">forking</a> the <a href="https://github.com/quanteda/Text-Analysis-Using-R">GitHub repository</a>, and making a pull request. More details on contributing and copyright are provided in a separate page on <a href="https://github.com/quanteda/Text-Analysis-Using-R/blob/main/contributing.md">Contributing to Text Analysis Using R</a>.</p>
 <p>We also have to give a much-deserved shout-out to the amazing team at RStudio, many of whom we’ve been privileged to hear speak at events or meet in person. You made Quarto available at just the right time. That and the innovations in R tools and software that you have driven for the past decade have been rich beyond every expectation.</p>
 <p>Finally, no acknowledgements would be complete without a profound thanks to our partners, who have put up with us during the long incubation of this project. They have had to listen us talk about this book for years before we finally got around to writing it. They’ve tolerated us cursing software bugs, students, CRAN, each other, package users, and ourselves. But they’ve also seen they joy that we’ve experienced from creating tools and materials that empower users and students, and the excitement of the long intellectual voyage we have taken together and with our ever-growing base of users and students. Bina and Émeline, thank you for all of your support and encouragement. You’ll be so happy to know we finally have this book project well underway.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-becue2019textual" class="csl-entry" role="listitem">
-Bécue-Bertaut, Monica. 2019. <em>Textual Data Science with r</em>. CRC Press.
+Bécue-Bertaut, Monica. 2019. <em>Textual Data Science with <span>R</span></em>. CRC Press.
 </div>
 <div id="ref-benoit2020text" class="csl-entry" role="listitem">
 Benoit, Kenneth. 2020. <span>“Text as Data: An Overview.”</span> In <em>Handbook of Research Methods in Political Science and International Relations</em>, edited by Luigi Curini and Robert Franzese, 461–97. Thousand Oaks: Sage.
@@ -796,13 +1204,13 @@ Feinerer, Ingo, Kurt Hornik, and David Meyer. 2008. <span>“Text Mining Infrast
 Honnibal, Matthew, Ines Montani, Sophie Van Landeghem, and Adriane Boyd. 2020. <span>“<span class="nocase">spaCy</span>: Industrial-Strength Natural Language Processing in Python.”</span> <a href="https://doi.org/10.5281/zenodo.1212303">https://doi.org/10.5281/zenodo.1212303</a>.
 </div>
 <div id="ref-kwartler2017text" class="csl-entry" role="listitem">
-Kwartler, Ted. 2017. <em>Text Mining in Practice with r</em>. John Wiley &amp; Sons.
+Kwartler, Ted. 2017. <em>Text Mining in Practice with <span>R</span></em>. Chichester: John Wiley &amp; Sons.
 </div>
 <div id="ref-tidytextJOSS" class="csl-entry" role="listitem">
-Silge, Julia, and David Robinson. 2016. <span>“Tidytext: Text Mining and Analysis Using Tidy Data Principles in r.”</span> <em>JOSS</em> 1 (3). <a href="https://doi.org/10.21105/joss.00037">https://doi.org/10.21105/joss.00037</a>.
+Silge, Julia, and David Robinson. 2016. <span>“Tidytext: Text Mining and Analysis Using Tidy Data Principles in r.”</span> <em>Journal of Open Source Software</em> 1 (3). <a href="https://doi.org/10.21105/joss.00037">https://doi.org/10.21105/joss.00037</a>.
 </div>
 <div id="ref-silge2017text" class="csl-entry" role="listitem">
-———. 2017. <em>Text Mining with r: A Tidy Approach</em>. " O’Reilly Media, Inc.".
+———. 2017. <em>Text Mining with r: A Tidy Approach</em>. O’Reilly Media, Inc.
 </div>
 <div id="ref-turenne2016analyse" class="csl-entry" role="listitem">
 Turenne, Nicolas. 2016. <em>Analyse de Donn<span>é</span>es Textuelles Sous r</em>. ISTE Group.
