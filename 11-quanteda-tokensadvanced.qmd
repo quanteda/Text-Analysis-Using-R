@@ -89,7 +89,8 @@ tokens_replace(toks_eu_uk,
                pattern = "UK", 
                replacement = phrase("United Kingdom"))
 
-# if we want to treat United Kingdom and European Union as multi-word expressions across all texts,
+# if we want to treat United Kingdom and European Union 
+# as multi-word expressions across all texts,
 # we can compound it after the replacement
 toks_eu_uk |> 
     tokens_replace(pattern = "UK", replacement = phrase("United Kingdom")) |> 
@@ -110,12 +111,14 @@ phrase(c("natural language processing"))
 
 # show that replacements of multi-word expressions
 # require phrase()
-tokens("natural language processing with quanteda") |> 
-    tokens_replace(pattern = phrase(c("natural language processing")), replacement = "NLP")
+tokens("quantitative text analysis with quanteda") |> 
+    tokens_replace(pattern = phrase(c("quantitative text analysis")),
+                   replacement = "QTA")
 
 # replacement does not work without phrase()
-tokens("natural language processing with quanteda") |> 
-    tokens_replace(pattern = "natural language processing", replacement = "NLP")
+tokens("quantitative text analysis with quanteda") |> 
+    tokens_replace(pattern = "quantitative text analysis",
+                   replacement = "QTA")
 ```
 :::
 
@@ -148,67 +151,6 @@ tokens_lookup(toks_eu,
 ```
 
 
-## Pattern Matching: pattern, valuetype, and case_insensitive
-
-Pattern matching is central when compounding or selecting tokens. Let's consider the following example: we might want to keep only "president", "president's" and "presidential" in our tokens object. One option is to use **fixed** pattern matching and only keep the exact matches. We specify the `pattern`and `valuetype` in the `tokens_select()` function and determine whether to treat patterns case-sensitive or case-insensitive. 
-
-Let's go through this trio systematically. The `pattern` can be one ore more unigrams or multi-word sequences. When including multi-word sequences, make sure to use the `phrase()` function as described above. `case_insensitive` specifies whether or not to ignore the case of terms when matching a pattern. The `valuetype` can take one of three arguments: `"glob"` for "glob"-style wildcard expressions; `"regex"` for regular expressions; or `"fixed"` for exact matching. 
-
-We start explaining **fixed pattern matching** and the the behaviour of `case_insensitive` before moving to "glob"-style pattern matching and matching based on regular expressions. We refer readers to @sec-rstrings and @sec-appendix-regex for details about regular expressions. 
-
-```{r}
-# create tokens object
-toks_president <- tokens("The President attended the presidential gala
-                         where the president's policies were applauded.")
-
-# fixed (literal) pattern matching
-tokens_keep(toks_president, pattern = c("president", "presidential",
-                                        "president's"),
-            valuetype = "fixed")
-```
-The default pattern match is `case_insentitive = TRUE`. Therefore, `President` remains part of the tokens object even though the pattern includes `president` in lower-case. We could change this behaviour by setting `tokens_keep(x, case_insensitive = FALSE)`. 
-
-```{r}
-# fixed (literal) pattern matching: case-sensitive
-tokens_keep(toks_president, pattern = c("president", "presidential",
-                                        "president's"),
-            valuetype = "fixed",
-            case_insensitive = FALSE)
-```
-
-Now only `presidential` and `president's` are kept in the tokens object while the term  `President` is not capture since it does not match the term "president" when selecting tokens in a case-sensitive way.
-
-
-::: {.callout-important appearance="simple"}
-## `*` and `?`: two "glob"-style matches to rule them all
-
-Pattern matching in quanteda defaults to "glob"-style because it's simpler than regular expression matching and suffices for the majority of user requirements. Moreover, it aligns with fixed pattern matching when wildcard characters (`*` and `?`) aren't utilised. 
-The implementation in **quanteda** uses `*` to match any number of any characters including none, and `?` to match any single character. Let's take a look at a few examples to explain the behaviour of wildcard pattern matches.
-
-```{r}
-# match the token "president" and all terms starting with "president"
-tokens_keep(toks_president, pattern = "president*",
-            valuetype = "glob")
-
-# match tokens ending on "ing*
-tokens("buying buy paying pay playing laying lay") |> 
-    tokens_keep(pattern = "*ing", valuetype = "glob")
-
-# match tokens starting with "p" and ending on "ing"
-tokens("buying buy paying pay playing laying lay") |> 
-    tokens_keep(pattern = "p*ing", valuetype = "glob")
-
-# match tokens starting with a character followed by "ay"
-tokens("buying buy paying pay playing laying lay") |> 
-    tokens_keep(pattern = "?ay", valuetype = "glob")
-
-# match tokens starting with a character, followed "ay" and none or more characters
-tokens("buying buy paying pay playing laying lay") |> 
-    tokens_keep(pattern = "?ay*", valuetype = "glob")
-```
-
-If you want to have more control over pattern matches, we recommend regular expressions (`valuetype = "regex"`). 
-:::
 
 
 ### N-Grams and Skip-Grams

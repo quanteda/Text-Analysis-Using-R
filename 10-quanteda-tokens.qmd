@@ -158,25 +158,70 @@ tokens(txt) |>
     tokens_remove(pattern = my_stopwords)
 ```
 
-::: {.callout-alert appearance="simple"}
-**NOTE**: We should describe here what the `pattern`, `valuetype`, and `case_insensitive` trio of arguments mean.
-:::
 
-::: {.callout-note appearance="simple"}
-By default, `tokens_select()` and the wrappers `tokens_remove()` and `tokens_keep()` are case insensitive, meaning the tokens in lowercase and uppercase will be removed if it matches a pattern. If we set `case_insensitive` to `FALSE`, the selection is sensitive to the spelling in uppercase or lowercase.
+## Pattern Matching
 
-In the examples above, the tokens `A` is removed when we set `case_insensitive = TRUE` but it remains in the tokens object when `case_insensitive = FALSE`.
+Pattern matching is central when compounding or selecting tokens. Let's consider the following example: we might want to keep only "president", "president's" and "presidential" in our tokens object. One option is to use **fixed** pattern matching and only keep the exact matches. We specify the `pattern`and `valuetype` in the `tokens_select()` function and determine whether to treat patterns case-sensitive or case-insensitive. 
+
+Let's go through this trio systematically. The `pattern` can be one ore more unigrams or multi-word sequences. When including multi-word sequences, make sure to use the `phrase()` function as described above. `case_insensitive` specifies whether or not to ignore the case of terms when matching a pattern. The `valuetype` can take one of three arguments: `"glob"` for "glob"-style wildcard expressions; `"regex"` for regular expressions; or `"fixed"` for exact matching. 
+
+We start explaining **fixed pattern matching** and the the behaviour of `case_insensitive` before moving to "glob"-style pattern matching and matching based on regular expressions. We refer readers to @sec-rstrings and @sec-appendix-regex for details about regular expressions. 
 
 ```{r}
-# stopword removal is case-insensitive
-tokens(txt) |>
-    tokens_remove(pattern = my_stopwords, case_insensitive = TRUE)
+# create tokens object
+toks_president <- tokens("The President attended the presidential gala
+                         where the president's policies were applauded.")
 
-# stopword removal is case-sensitive
-tokens(txt) |>
-    tokens_remove(pattern = my_stopwords, case_insensitive = FALSE)
+# fixed (literal) pattern matching
+tokens_keep(toks_president, pattern = c("president", "presidential",
+                                        "president's"),
+            valuetype = "fixed")
 ```
+
+The default pattern match is `case_insentitive = TRUE`. Therefore, `President` remains part of the tokens object even though the pattern includes `president` in lower-case. We could change this behaviour by setting `tokens_keep(x, case_insensitive = FALSE)`. 
+
+```{r}
+# fixed (literal) pattern matching: case-sensitive
+tokens_keep(toks_president, pattern = c("president", "presidential",
+                                        "president's"),
+            valuetype = "fixed",
+            case_insensitive = FALSE)
+```
+
+Now only `presidential` and `president's` are kept in the tokens object while the term  `President` is not capture since it does not match the term "president" when selecting tokens in a case-sensitive way.
+
+::: {.callout-important appearance="simple"}
+## `*` and `?`: two "glob"-style matches to rule them all
+
+Pattern matching in quanteda defaults to "glob"-style because it's simpler than regular expression matching and suffices for the majority of user requirements. Moreover, it aligns with fixed pattern matching when wildcard characters (`*` and `?`) aren't utilised. 
+The implementation in **quanteda** uses `*` to match any number of any characters including none, and `?` to match any single character. 
 :::
+
+Let's take a look at a few examples to explain the behaviour of "glob"-style pattern matching.
+
+```{r}
+# match the token "president" and all terms starting with "president"
+tokens_keep(toks_president, pattern = "president*",
+            valuetype = "glob")
+
+# match tokens ending on "ing*
+tokens("buying buy paying pay playing laying lay") |> 
+    tokens_keep(pattern = "*ing", valuetype = "glob")
+
+# match tokens starting with "p" and ending on "ing"
+tokens("buying buy paying pay playing laying lay") |> 
+    tokens_keep(pattern = "p*ing", valuetype = "glob")
+
+# match tokens starting with a character followed by "ay"
+tokens("buying buy paying pay playing laying lay") |> 
+    tokens_keep(pattern = "?ay", valuetype = "glob")
+
+# match tokens starting with a character, followed "ay" and none or more characters
+tokens("buying buy paying pay playing laying lay") |> 
+    tokens_keep(pattern = "?ay*", valuetype = "glob")
+```
+
+If you want to have more control over pattern matches, we recommend regular expressions (`valuetype = "regex"`), which we explain in more detail in @sec-appendix-regex.
 
 
 ## Stemming
@@ -256,6 +301,10 @@ as.tokens(toks_spacy, use_lemma = TRUE)
 txt_compare |>
     tokens() |>
     tokens_wordstem()
+
+
+# finalise spaCy and terminate Python process to free up memory
+spacy_finalize()
 ```
 
 The code above highlights the differences between stemming and lemmatisation. Stemming can truncate words, resulting in non-real words. Lemmatisation reduces words to their canonical, valid form.
