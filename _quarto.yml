@@ -14,7 +14,7 @@ book:
     - "00-preface.qmd"
     - "00-authors.qmd"
     - "01-intro.qmd"
-    - part: "R"
+    - part: "Using R"
       chapters:
         - "02-r-basics.qmd"
         - "03-r-workflow.qmd"
@@ -24,14 +24,16 @@ book:
         - "05-acquiring-files.qmd"
         - "06-acquiring-packages.qmd"
         - "07-acquiring-internet.qmd"
-    - part: "Managing Textual Data Using quanteda"
+    - part: "Creating and Managing Corpora"
       chapters:
         - "08-quanteda-overview.qmd"
         - "09-quanteda-corpus.qmd"
+    - part: "Processing Texts"
+      chapters:
         - "10-quanteda-tokens.qmd"
         - "11-quanteda-tokensadvanced.qmd"
-        - "12-quanteda-dictionaries.qmd"
-        - "13-quanteda-dfms.qmd"
+        - "12-quanteda-dfms.qmd"
+        - "13-quanteda-fcms.qmd"
     - part: "Exploring and Describing Texts"
       chapters:
         - "14-exploring-description.qmd"
@@ -48,18 +50,21 @@ book:
         - "21-ml-supervised-scaling.qmd"
         - "22-ml-unsupervised-scaling.qmd"
         - "23-ml-classifiers.qmd"
-        - "24-ml-embedding.qmd"
-        - "25-ml-topicmodels.qmd"
-    - part: "Further Methods for Texts"
+        - "24-ml-topicmodels.qmd"
+    - part: "Incorporating Language Models"
       chapters:
-        - "26-further-advanced-nlp.qmd"
-        - "27-further-tidy.qmd"
-        - "28-further-hardlanguages.qmd"
+        - "25-lms-linguistic-parsing.qmd"
+        - "26-lms-embeddings.qmd"
+        - "27-lms-transformers.qmd"
+    - part: "Further Issues"
+      chapters:
+        - "28-further-tidy.qmd"
+        - "29-further-hardlanguages.qmd"
     - "references.qmd"
   appendices:
-      - "29-appendix-installation.qmd"
-      - "30-appendix-encoding.qmd"
-      - "31-appendix-regex.qmd"
+      - "30-appendix-installation.qmd"
+      - "31-appendix-encoding.qmd"
+      - "32-appendix-regex.qmd"
 
 format:
   html:

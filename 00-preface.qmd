@@ -144,7 +144,7 @@ This version of the book was built with `r R.version.string` and the following p
 ```{r}
 #| echo: false
 #| results: asis
-#| cache: FALSE
+#| cache: false
 deps <- desc::desc_get_deps()
 pkgs <- sort(deps$package[deps$type == "Imports"])
 pkgs <- sessioninfo::package_info(pkgs, dependencies = FALSE)

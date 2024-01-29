@@ -7,7 +7,7 @@ The previous chapter introduced you to the basics of tokenisation and processing
 
 ## Methods
 
-Occasionally, you might want to **replace** certain tokens. For example, in political texts, `Labour` spelled usually implies a mention to the named-entity Labour Party, while `labour` refers to the noun. Country names is another example: if we want to understand mentions of the United States of America in UN General Debates, we could replace `US`, `USA`, and `United States` with `united_states_of_america`. Dictionaries, discussed in @sec-quanteda-dictionaries, are an effective tool for replacing tokens with an overarching "key", such as `united_states`.
+Occasionally, you might want to **replace** certain tokens. For example, in political texts, `Labour` spelled usually implies a mention to the named-entity Labour Party, while `labour` refers to the noun. Country names is another example: if we want to understand mentions of the United States of America in UN General Debates, we could replace `US`, `USA`, and `United States` with `united_states_of_america`. Dictionaries, discussed in @sec-exploring-dictionaries, are an effective tool for replacing tokens with an overarching "key", such as `united_states`.
 
 In some applications, tokens sequences might reveal more information than individual tokens. Before transforming a tokens object to a dfm, many existing studies create n-grams or skipgrams. **N-grams** are sequences of "n" items. **Skip-grams** are variations of n-grams which pairs non-consecutive tokens. N-grams capture local word patterns, whereas skip-grams capture broader contexts within texts. The sentence `I loved my stay in New York.` would result in the following bi-grams (sequence of two tokens): `"I_loved"  "loved_my" "my_stay"  "stay_in"  "in_New" "New_York" "York_."`. Skip-grams of size 2 with a distance of 0 and 1 would change the object to:  `"I_loved" "I_my" "loved_my" "loved_time" "my_time" "my_in"  "time_in" "time_New" "in_New" "in_York" "New_York" "New_." "York_."`. 
 
@@ -122,7 +122,7 @@ tokens("quantitative text analysis with quanteda") |>
 ```
 :::
 
-More common than one-to-one replacements is the conversation of tokens into equivalence classes defined by values of a dictionary object. Dictionaries, covered in much greater detail in chapters @sec-quanteda-dictionaries and @sec-exploring-dictionaries, allow us to look up uni-grams or multi-word expressions and replace these terms with the dictionary "key". We introduce the intuition behind `tokens_lookup()` with a simple example. The example below replaces selected European institutions with its dictionary key `eu_institution`. 
+More common than one-to-one replacements is the conversation of tokens into equivalence classes defined by values of a dictionary object. Dictionaries, covered in much greater detail in chapter @sec-exploring-dictionaries, allow us to look up uni-grams or multi-word expressions and replace these terms with the dictionary "key". We introduce the intuition behind `tokens_lookup()` with a simple example. The example below replaces selected European institutions with its dictionary key `eu_institution`. 
 
 ```{r}
 # create a dictionary (covered more extensively in the next chapter)

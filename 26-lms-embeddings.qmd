@@ -2,8 +2,9 @@
 
 ## Objectives
 
-- The `word2vec` method and its descendants
-- Constructing a feature-cooccurrence matrix
+- Understanding what are word embeddings
+- Methods: `word2vec`, `doc2vec`, GLoVe, SVD/LSA
+- Constructing a feature-co-occurrence matrix
 - Fitting a word embedding model
 - Using pre-trained embedding scores with documents
 - Prediction based on embeddings

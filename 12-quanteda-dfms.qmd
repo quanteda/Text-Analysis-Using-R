@@ -56,7 +56,7 @@ The sparsity was reduced from 28% to 20%, and the number of columns changed from
 ::: {.callout-warning appearance="simple"}
 ## Selecting features in your tokens object rather than the dfm
 
-We strongly recommend to conduct all processing steps involving the removal of features during the tokenisation step rather than applying the same functions to a dfm. Multi-word expressions can be easily detected in tokens object, but this information is not available in a dfm anymore. Similarly, we strongly recommend applying dictionaries (@sec-quanteda-dictionaries) to the tokens object to identify possible multi-word expressions correctly. 
+We strongly recommend to conduct all processing steps involving the removal of features during the tokenisation step rather than applying the same functions to a dfm. Multi-word expressions can be easily detected in tokens object, but this information is not available in a dfm anymore. Similarly, we strongly recommend applying dictionaries (@sec-exploring-dictionaries) to the tokens object to identify possible multi-word expressions correctly. 
 
 There are, however, a few processing steps that rely on feature frequencies. Users might want to remove word appearing in less or more than a certain number of percentage of documents. These so-called trimming operations, covered in detail in the Applications section, only work dfm objects since we need to the word counts to filter by frequncies.
 :::

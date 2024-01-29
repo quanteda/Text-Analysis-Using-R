@@ -1,0 +1,34 @@
+# Advanced NLP using R {#sec-further-nlp}
+
+## Objectives
+
+-   POS tagging
+-   Named Entity Recognition
+-   sentiment analysis
+-   clustering of words or documents
+-   classification
+-   topic models
+
+## Methods
+
+Applicable methods for the objectives listed above.
+
+## Examples
+
+Examples of each of the above methods.
+
+## Issues
+
+Alternative NLP tools. (Here we focus on **spacyr**.)
+
+Other languages.
+
+Training new models.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.

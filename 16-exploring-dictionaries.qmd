@@ -11,6 +11,17 @@
 - Dictionary validation using `kwic()`
 - Dictionary construction using `textstat_keyness()`
 
+Creating and revising dictionaries. 
+
+- key-value lists 
+- more details on pattern types 
+- the `phrase()` argument 
+- importing foreign dictionaries 
+- editing dictionaries -
+using dictionaries as `pattern` inputs to other functions
+- exporting dictionaries 
+- using dictionaries: `tokens_lookup()`
+
 ## Methods
 
 Applicable methods for the objectives listed above.
@@ -21,11 +32,19 @@ Sentiment analysis.
 
 ## Issues
 
+Copyright.
+
+Which format?
+
+Weighted dictionaries.
+
 Additional issues.
 
 ## Further Reading
 
-Additional resources from libraries or the web.
+On-line sources of dictionaries.
+
+QI's **quanteda.dictionaries** package.
 
 ## Exercises
 

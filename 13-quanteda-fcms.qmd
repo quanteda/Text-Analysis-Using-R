@@ -1,0 +1,28 @@
+# Building Feature Co-occurrence Matrices {#sec-quanteda-fcms}
+
+## Objectives
+
+In this chapter we explain the intuition behind feature co-occurrence matrices (fcm), when and why to use them, and how to construct an fcm from a **quanteda** tokens object. At the end of the chapter, readers will have a solid understanding of creating fcms and when and how they can use them.
+
+## Methods
+
+* Creating fcms
+* Advanced options
+
+## Examples
+
+* Co-occurrence statistics
+* Network analysis
+* Computing word embeddings
+
+## Issues
+
+Additional issues.
+
+## Further Reading
+
+Additional resources from libraries or the web.
+
+## Exercises
+
+Add some here.
