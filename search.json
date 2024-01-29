@@ -1899,232 +1899,232 @@
   {
     "objectID": "25-lms-linguistic-parsing.html",
     "href": "25-lms-linguistic-parsing.html",
-    "title": "25  Advanced NLP using R",
+    "title": "25  Linguistic Parsing",
     "section": "",
     "text": "25.1 Objectives",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Linguistic Parsing</span>"
     ]
   },
   {
     "objectID": "25-lms-linguistic-parsing.html#objectives",
     "href": "25-lms-linguistic-parsing.html#objectives",
-    "title": "25  Advanced NLP using R",
+    "title": "25  Linguistic Parsing",
     "section": "",
     "text": "What is “NLP” and how does it differ from what we have covered so far?\nPart of speech tagging\nDifferent schemes for part of speech tagging\nDifferentiating homographs based on POS\nPOS tagging in other languages\nNamed Entity Recognition\nNoun phrase extraction\nDependency parsing to extract syntactic relations",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Linguistic Parsing</span>"
     ]
   },
   {
     "objectID": "25-lms-linguistic-parsing.html#methods",
     "href": "25-lms-linguistic-parsing.html#methods",
-    "title": "25  Advanced NLP using R",
+    "title": "25  Linguistic Parsing",
     "section": "25.2 Methods",
     "text": "25.2 Methods\nApplicable methods for the objectives listed above.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Linguistic Parsing</span>"
     ]
   },
   {
     "objectID": "25-lms-linguistic-parsing.html#examples",
     "href": "25-lms-linguistic-parsing.html#examples",
-    "title": "25  Advanced NLP using R",
+    "title": "25  Linguistic Parsing",
     "section": "25.3 Examples",
     "text": "25.3 Examples\nExamples of each of the above methods.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Linguistic Parsing</span>"
     ]
   },
   {
     "objectID": "25-lms-linguistic-parsing.html#issues",
     "href": "25-lms-linguistic-parsing.html#issues",
-    "title": "25  Advanced NLP using R",
+    "title": "25  Linguistic Parsing",
     "section": "25.4 Issues",
     "text": "25.4 Issues\nAlternative NLP tools. (Here we focus on spacyr.)\nOther languages.\nTraining new models.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Linguistic Parsing</span>"
     ]
   },
   {
     "objectID": "25-lms-linguistic-parsing.html#further-reading",
     "href": "25-lms-linguistic-parsing.html#further-reading",
-    "title": "25  Advanced NLP using R",
+    "title": "25  Linguistic Parsing",
     "section": "25.5 Further Reading",
     "text": "25.5 Further Reading\nAdditional resources from libraries or the web.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Linguistic Parsing</span>"
     ]
   },
   {
     "objectID": "25-lms-linguistic-parsing.html#exercises",
     "href": "25-lms-linguistic-parsing.html#exercises",
-    "title": "25  Advanced NLP using R",
+    "title": "25  Linguistic Parsing",
     "section": "25.6 Exercises",
     "text": "25.6 Exercises\nAdd some here.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Linguistic Parsing</span>"
     ]
   },
   {
     "objectID": "26-lms-embeddings.html",
     "href": "26-lms-embeddings.html",
-    "title": "26  Word Embedding Models",
+    "title": "26  Word Embeddings",
     "section": "",
     "text": "26.1 Objectives",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embedding Models</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embeddings</span>"
     ]
   },
   {
     "objectID": "26-lms-embeddings.html#objectives",
     "href": "26-lms-embeddings.html#objectives",
-    "title": "26  Word Embedding Models",
+    "title": "26  Word Embeddings",
     "section": "",
     "text": "Understanding what are word embeddings\nMethods: word2vec, doc2vec, GLoVe, SVD/LSA\nConstructing a feature-co-occurrence matrix\nFitting a word embedding model\nUsing pre-trained embedding scores with documents\nPrediction based on embeddings\nFurther methods",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embedding Models</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embeddings</span>"
     ]
   },
   {
     "objectID": "26-lms-embeddings.html#methods",
     "href": "26-lms-embeddings.html#methods",
-    "title": "26  Word Embedding Models",
+    "title": "26  Word Embeddings",
     "section": "26.2 Methods",
     "text": "26.2 Methods\nApplicable methods for the objectives listed above.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embedding Models</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embeddings</span>"
     ]
   },
   {
     "objectID": "26-lms-embeddings.html#examples",
     "href": "26-lms-embeddings.html#examples",
-    "title": "26  Word Embedding Models",
+    "title": "26  Word Embeddings",
     "section": "26.3 Examples",
     "text": "26.3 Examples\nExamples here.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embedding Models</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embeddings</span>"
     ]
   },
   {
     "objectID": "26-lms-embeddings.html#issues",
     "href": "26-lms-embeddings.html#issues",
-    "title": "26  Word Embedding Models",
+    "title": "26  Word Embeddings",
     "section": "26.4 Issues",
     "text": "26.4 Issues\nIssues here.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embedding Models</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embeddings</span>"
     ]
   },
   {
     "objectID": "26-lms-embeddings.html#further-reading",
     "href": "26-lms-embeddings.html#further-reading",
-    "title": "26  Word Embedding Models",
+    "title": "26  Word Embeddings",
     "section": "26.5 Further Reading",
     "text": "26.5 Further Reading\nAdditional resources from libraries or the web.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embedding Models</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embeddings</span>"
     ]
   },
   {
     "objectID": "26-lms-embeddings.html#exercises",
     "href": "26-lms-embeddings.html#exercises",
-    "title": "26  Word Embedding Models",
+    "title": "26  Word Embeddings",
     "section": "26.6 Exercises",
     "text": "26.6 Exercises\nAdd some here.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embedding Models</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Word Embeddings</span>"
     ]
   },
   {
     "objectID": "27-lms-transformers.html",
     "href": "27-lms-transformers.html",
-    "title": "27  Advanced NLP using R",
+    "title": "27  Large Language Models and Transformers",
     "section": "",
     "text": "27.1 Objectives",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Large Language Models and Transformers</span>"
     ]
   },
   {
     "objectID": "27-lms-transformers.html#objectives",
     "href": "27-lms-transformers.html#objectives",
-    "title": "27  Advanced NLP using R",
+    "title": "27  Large Language Models and Transformers",
     "section": "",
     "text": "POS tagging\nNamed Entity Recognition\nsentiment analysis\nclustering of words or documents\nclassification\ntopic models",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Large Language Models and Transformers</span>"
     ]
   },
   {
     "objectID": "27-lms-transformers.html#methods",
     "href": "27-lms-transformers.html#methods",
-    "title": "27  Advanced NLP using R",
+    "title": "27  Large Language Models and Transformers",
     "section": "27.2 Methods",
     "text": "27.2 Methods\nApplicable methods for the objectives listed above.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Large Language Models and Transformers</span>"
     ]
   },
   {
     "objectID": "27-lms-transformers.html#examples",
     "href": "27-lms-transformers.html#examples",
-    "title": "27  Advanced NLP using R",
+    "title": "27  Large Language Models and Transformers",
     "section": "27.3 Examples",
     "text": "27.3 Examples\nExamples of each of the above methods.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Large Language Models and Transformers</span>"
     ]
   },
   {
     "objectID": "27-lms-transformers.html#issues",
     "href": "27-lms-transformers.html#issues",
-    "title": "27  Advanced NLP using R",
+    "title": "27  Large Language Models and Transformers",
     "section": "27.4 Issues",
     "text": "27.4 Issues\nAlternative NLP tools. (Here we focus on spacyr.)\nOther languages.\nTraining new models.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Large Language Models and Transformers</span>"
     ]
   },
   {
     "objectID": "27-lms-transformers.html#further-reading",
     "href": "27-lms-transformers.html#further-reading",
-    "title": "27  Advanced NLP using R",
+    "title": "27  Large Language Models and Transformers",
     "section": "27.5 Further Reading",
     "text": "27.5 Further Reading\nAdditional resources from libraries or the web.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Large Language Models and Transformers</span>"
     ]
   },
   {
     "objectID": "27-lms-transformers.html#exercises",
     "href": "27-lms-transformers.html#exercises",
-    "title": "27  Advanced NLP using R",
+    "title": "27  Large Language Models and Transformers",
     "section": "27.6 Exercises",
     "text": "27.6 Exercises\nAdd some here.",
     "crumbs": [
       "Incorporating Language Models",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Advanced NLP using R</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Large Language Models and Transformers</span>"
     ]
   },
   {
