@@ -89,7 +89,8 @@ tokens_replace(toks_eu_uk,
                pattern = "UK", 
                replacement = phrase("United Kingdom"))
 
-# if we want to treat United Kingdom and European Union as multi-word expressions across all texts,
+# if we want to treat United Kingdom and European Union 
+# as multi-word expressions across all texts,
 # we can compound it after the replacement
 toks_eu_uk |> 
     tokens_replace(pattern = "UK", replacement = phrase("United Kingdom")) |> 
@@ -110,12 +111,14 @@ phrase(c("natural language processing"))
 
 # show that replacements of multi-word expressions
 # require phrase()
-tokens("natural language processing with quanteda") |> 
-    tokens_replace(pattern = phrase(c("natural language processing")), replacement = "NLP")
+tokens("quantitative text analysis with quanteda") |> 
+    tokens_replace(pattern = phrase(c("quantitative text analysis")),
+                   replacement = "QTA")
 
 # replacement does not work without phrase()
-tokens("natural language processing with quanteda") |> 
-    tokens_replace(pattern = "natural language processing", replacement = "NLP")
+tokens("quantitative text analysis with quanteda") |> 
+    tokens_replace(pattern = "quantitative text analysis",
+                   replacement = "QTA")
 ```
 :::
 
@@ -146,7 +149,6 @@ tokens_lookup(toks_eu,
               dictionary = dict_euinst,
               exclusive = FALSE)
 ```
-
 
 ### Pattern Matching: pattern, valuetype, and case_insensitive
 
