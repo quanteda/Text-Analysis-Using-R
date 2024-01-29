@@ -116,7 +116,7 @@ The **trimming** of a document-feature matrix is another important step to remov
 
 Smoothing a dfm is required for statistical models that struggle with zero probabilities. For example, a zero probability of a feature in a Naive Bayes classifier (@sec-ml-classifiers) would change the entire document's probably to 0, even if other terms indicate it belongs to that class.
 
-Next, we move to the **feature co-occurrence matrix**, which measure the co-occurrence of features. Feature co-occurrence matrices are the input for many word embedding models, which will be covered extensively in @sec-ml-embeddings. The intuition behind fcms is simple: instead of counting how often a feature appears in a document (the intuition behind dfms) we want to know which feature appear together within a user-defined context window. 
+Next, we move to the **feature co-occurrence matrix**, which measure the co-occurrence of features. Feature co-occurrence matrices are the input for many word embedding models, which will be covered extensively in @sec-lms-embeddings. The intuition behind fcms is simple: instead of counting how often a feature appears in a document (the intuition behind dfms) we want to know which feature appear together within a user-defined context window. 
 
 _Add content on fcm here._
 
@@ -385,7 +385,7 @@ The popular **tidytext** package [@tidytextJOSS] includes the function `cast_dfm
 ### Creating and Processing a Feature Co-Occurrence Matrix
 
 
-_To be added._ Also reference @sec-ml-embeddings which will explain how to create word embeddings based on an fcm object. 
+_To be added._ Also reference @sec-lms-embeddings which will explain how to create word embeddings based on an fcm object. 
 
 
 ## Advanced

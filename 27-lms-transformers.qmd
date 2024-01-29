@@ -1,4 +1,4 @@
-# Advanced NLP using R {#sec-further-nlp}
+# Large Language Models and Transformers {#sec-lms-transformers}
 
 ## Objectives
 

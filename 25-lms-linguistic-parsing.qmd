@@ -1,4 +1,4 @@
-# Advanced NLP using R {#sec-further-nlp}
+# Linguistic Parsing {#sec-lms-linguistic-parsing}
 
 ## Objectives
 
