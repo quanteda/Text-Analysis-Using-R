@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,6 +116,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -118,6 +126,33 @@ div.csl-indent {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -126,12 +161,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-preface.html">Preface</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-preface.html">Preface</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -141,12 +176,12 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Text Analysis Using R</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/quanteda/Text-Analysis-Using-R" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/quanteda/Text-Analysis-Using-R" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -184,7 +219,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">R</span></a>
+ <span class="menu-text">Using R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -242,7 +277,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Managing Textual Data Using quanteda</span></a>
+ <span class="menu-text">Creating and Managing Corpora</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -260,6 +295,17 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating and Managing Corpora</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Processing Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-quanteda-tokens.html" class="sidebar-item-text sidebar-link">
@@ -274,27 +320,27 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-quanteda-dictionaries.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating and Managing Dictionaries</span></span></a>
+  <a href="./12-quanteda-dfms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-quanteda-dfms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></span></a>
+  <a href="./13-quanteda-fcms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Feature Co-occurrence Matrices</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Exploring and Describing Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./14-exploring-description.html" class="sidebar-item-text sidebar-link">
@@ -323,13 +369,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Statistics for Comparing Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./18-comparing-sophistication.html" class="sidebar-item-text sidebar-link">
@@ -352,13 +398,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
  <span class="menu-text">Machine Learning for Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21-ml-supervised-scaling.html" class="sidebar-item-text sidebar-link">
@@ -379,43 +425,60 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./24-ml-embedding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./25-ml-topicmodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Topic modelling</span></span></a>
+  <a href="./24-ml-topicmodels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Topic modelling</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
- <span class="menu-text">Further Methods for Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text">Incorporating Language Models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./26-further-advanced-nlp.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
+  <a href="./25-lms-linguistic-parsing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./27-further-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Integrating “tidy” approaches</span></span></a>
+  <a href="./26-lms-embeddings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./28-further-hardlanguages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Text analysis in “Hard” Languages</span></span></a>
+  <a href="./27-lms-transformers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+ <span class="menu-text">Further Issues</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-further-tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Integrating “tidy” approaches</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./29-further-hardlanguages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Text analysis in “Hard” Languages</span></span></a>
   </div>
 </li>
       </ul>
@@ -428,28 +491,28 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./29-appendix-installation.html" class="sidebar-item-text sidebar-link">
+  <a href="./30-appendix-installation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing the Required Tools</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./30-appendix-encoding.html" class="sidebar-item-text sidebar-link">
+  <a href="./31-appendix-encoding.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Everything You Never Wanted to Know about Encoding</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./31-appendix-regex.html" class="sidebar-item-text sidebar-link">
+  <a href="./32-appendix-regex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">A Survival Guide to Regular Expressions</span></span></a>
   </div>
 </li>
@@ -458,7 +521,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -481,7 +544,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/00-preface.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/00-preface.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -501,7 +564,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <div class="hidden">
 <p><span class="math display">\[
@@ -513,7 +578,7 @@ div.csl-indent {
 <p>This book provides a practical guide introducing the fundamentals of text analysis methods and how to implement them using the R programming language. It covers a wide range of topics to provide a useful resource for a range of students from complete beginners to experienced users of R wanting to learn more advanced techniques. Our emphasis is on the text analytic workflow as a whole, ranging from an introduction to text manipulation in R, all the way through to advanced machine learning methods for textual data.</p>
 <section id="why-another-book-on-text-mining-in-r" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="why-another-book-on-text-mining-in-r">Why another book on text mining in R?</h2>
-<p>Text mining tools for R have existed for many years, led by the venerable <strong>tm</strong> package <span class="citation" data-cites="tmpackage">(<a href="references.html#ref-tmpackage" role="doc-biblioref">Feinerer, Hornik, and Meyer 2008</a>)</span>. In 2015, the first version of <strong>quanteda</strong> <span class="citation" data-cites="quantedaJOSS">(<a href="references.html#ref-quantedaJOSS" role="doc-biblioref">Benoit et al. 2018</a>)</span> was published on CRAN. Since then, the package has undergone three major versions, with each release improving its consistency, power, and usability. Starting with version 2, <strong>quanteda</strong> split into a series of packages designed around its different functions (such as plotting, statistics, or machine learning), with <strong>quanteda</strong> retaining the core text processing functions. Other popular alternatives exist, such as <strong>tidytext</strong> <span class="citation" data-cites="tidytextJOSS">(<a href="references.html#ref-tidytextJOSS" role="doc-biblioref">Silge and Robinson 2016</a>)</span>, although as we explain in <a href="27-further-tidy.html">Chapter&nbsp;<span>27</span></a>, <strong>quanteda</strong> works perfectly well with the R “tidyverse” and related approaches to text analysis.</p>
+<p>Text mining tools for R have existed for many years, led by the venerable <strong>tm</strong> package <span class="citation" data-cites="tmpackage">(<a href="references.html#ref-tmpackage" role="doc-biblioref">Feinerer, Hornik, and Meyer 2008</a>)</span>. In 2015, the first version of <strong>quanteda</strong> <span class="citation" data-cites="quantedaJOSS">(<a href="references.html#ref-quantedaJOSS" role="doc-biblioref">Benoit et al. 2018</a>)</span> was published on CRAN. Since then, the package has undergone three major versions, with each release improving its consistency, power, and usability. Starting with version 2, <strong>quanteda</strong> split into a series of packages designed around its different functions (such as plotting, statistics, or machine learning), with <strong>quanteda</strong> retaining the core text processing functions. Other popular alternatives exist, such as <strong>tidytext</strong> <span class="citation" data-cites="tidytextJOSS">(<a href="references.html#ref-tidytextJOSS" role="doc-biblioref">Silge and Robinson 2016</a>)</span>, although as we explain in <a href="28-further-tidy.html" class="quarto-xref">Chapter&nbsp;<span>28&nbsp; Integrating “tidy” approaches</span></a>, <strong>quanteda</strong> works perfectly well with the R “tidyverse” and related approaches to text analysis.</p>
 <p>This is hardly the only book covering how to work with text in R. <span class="citation" data-cites="silge2017text">Silge and Robinson (<a href="references.html#ref-silge2017text" role="doc-biblioref">2017</a>)</span> introduced the <strong>tidytext</strong> package and numerous examples for mining text using the tidyverse approach to programming in R, including keyword analysis, mining word associations, and topic modelling. <span class="citation" data-cites="kwartler2017text">Kwartler (<a href="references.html#ref-kwartler2017text" role="doc-biblioref">2017</a>)</span> provides a good coverage of text mining workflows, plus methods for text visualisations, sentiment scoring, clustering, and classification, as well as methods for sourcing and manipulating source documents. Earlier works include <span class="citation" data-cites="turenne2016analyse">Turenne (<a href="references.html#ref-turenne2016analyse" role="doc-biblioref">2016</a>)</span> and <span class="citation" data-cites="becue2019textual">Bécue-Bertaut (<a href="references.html#ref-becue2019textual" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -570,7 +635,7 @@ One of the two hard things in computer science: Naming things
 <li><p>Further Reading. In part because our scholarly backgrounds compel us to do so, and in part because we know that many readers will want to read more about each method, each chapter contains its own set of references and further readings.</p></li>
 <li><p>Exercises. For those wishing additional practice or to use this text as a teaching resource (which we strongly encourage!), we provide exercises that can be assigned for each chapter.</p></li>
 </ul>
-<p>Throughout the book, we will demonstrate with examples and build models using a selection of text data sets. A description of these data sets can be found in <a href="29-appendix-installation.html">Appendix&nbsp;<span>A</span></a>.</p>
+<p>Throughout the book, we will demonstrate with examples and build models using a selection of text data sets. A description of these data sets can be found in <a href="30-appendix-installation.html" class="quarto-xref">Appendix&nbsp;<span>Appendix A — Installing the Required Tools</span></a>.</p>
 </section>
 <section id="conventions" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="conventions">Conventions</h3>
@@ -632,9 +697,9 @@ Warning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"quanteda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Package version: 3.3.1
+<pre><code>Package version: 4.0.0
 Unicode version: 14.0
-ICU version: 70.1</code></pre>
+ICU version: 71.1</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Parallel computing: 12 of 12 threads used.</code></pre>
@@ -689,26 +754,25 @@ Tip
 <section id="colophon" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="colophon">Colophon</h2>
 <p>This book was written in <a href="https://www.rstudio.com/ide/">RStudio</a> using <a href="https://quarto.org"><strong>Quarto</strong></a>. The <a href="https://quanteda.github.io/Text-Analysis-Using-R/">website</a> is hosted via <a href="https://pages.github.com">GitHub Pages</a>, and the complete source is available on <a href="https://github.com/quanteda/Text-Analysis-Using-R">GitHub</a>.</p>
-<p>This version of the book was built with R version 4.2.3 (2023-03-15) and the following packages:</p>
+<p>This version of the book was built with R version 4.3.2 (2023-10-31) and the following packages:</p>
 <div class="cell-output-display">
-
-<div id="umsnvosddy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#umsnvosddy table {
+<div id="yzcbjpivko" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yzcbjpivko table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#umsnvosddy thead, #umsnvosddy tbody, #umsnvosddy tfoot, #umsnvosddy tr, #umsnvosddy td, #umsnvosddy th {
+#yzcbjpivko thead, #yzcbjpivko tbody, #yzcbjpivko tfoot, #yzcbjpivko tr, #yzcbjpivko td, #yzcbjpivko th {
   border-style: none;
 }
 
-#umsnvosddy p {
+#yzcbjpivko p {
   margin: 0;
   padding: 0;
 }
 
-#umsnvosddy .gt_table {
+#yzcbjpivko .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -734,12 +798,12 @@ Tip
   border-left-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_caption {
+#yzcbjpivko .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#umsnvosddy .gt_title {
+#yzcbjpivko .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -751,7 +815,7 @@ Tip
   border-bottom-width: 0;
 }
 
-#umsnvosddy .gt_subtitle {
+#yzcbjpivko .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -763,7 +827,7 @@ Tip
   border-top-width: 0;
 }
 
-#umsnvosddy .gt_heading {
+#yzcbjpivko .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -775,13 +839,13 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_bottom_border {
+#yzcbjpivko .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_col_headings {
+#yzcbjpivko .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -796,7 +860,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_col_heading {
+#yzcbjpivko .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -816,7 +880,7 @@ Tip
   overflow-x: hidden;
 }
 
-#umsnvosddy .gt_column_spanner_outer {
+#yzcbjpivko .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -828,15 +892,15 @@ Tip
   padding-right: 4px;
 }
 
-#umsnvosddy .gt_column_spanner_outer:first-child {
+#yzcbjpivko .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#umsnvosddy .gt_column_spanner_outer:last-child {
+#yzcbjpivko .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#umsnvosddy .gt_column_spanner {
+#yzcbjpivko .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -848,11 +912,11 @@ Tip
   width: 100%;
 }
 
-#umsnvosddy .gt_spanner_row {
+#yzcbjpivko .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#umsnvosddy .gt_group_heading {
+#yzcbjpivko .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -878,7 +942,7 @@ Tip
   text-align: left;
 }
 
-#umsnvosddy .gt_empty_group_heading {
+#yzcbjpivko .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -893,15 +957,15 @@ Tip
   vertical-align: middle;
 }
 
-#umsnvosddy .gt_from_md > :first-child {
+#yzcbjpivko .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#umsnvosddy .gt_from_md > :last-child {
+#yzcbjpivko .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#umsnvosddy .gt_row {
+#yzcbjpivko .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -920,7 +984,7 @@ Tip
   overflow-x: hidden;
 }
 
-#umsnvosddy .gt_stub {
+#yzcbjpivko .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -933,7 +997,7 @@ Tip
   padding-right: 5px;
 }
 
-#umsnvosddy .gt_stub_row_group {
+#yzcbjpivko .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -947,15 +1011,15 @@ Tip
   vertical-align: top;
 }
 
-#umsnvosddy .gt_row_group_first td {
+#yzcbjpivko .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#umsnvosddy .gt_row_group_first th {
+#yzcbjpivko .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#umsnvosddy .gt_summary_row {
+#yzcbjpivko .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -965,16 +1029,16 @@ Tip
   padding-right: 5px;
 }
 
-#umsnvosddy .gt_first_summary_row {
+#yzcbjpivko .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_first_summary_row.thick {
+#yzcbjpivko .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#umsnvosddy .gt_last_summary_row {
+#yzcbjpivko .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -984,7 +1048,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_grand_summary_row {
+#yzcbjpivko .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -994,7 +1058,7 @@ Tip
   padding-right: 5px;
 }
 
-#umsnvosddy .gt_first_grand_summary_row {
+#yzcbjpivko .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1004,7 +1068,7 @@ Tip
   border-top-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_last_grand_summary_row_top {
+#yzcbjpivko .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1014,11 +1078,11 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_striped {
+#yzcbjpivko .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#umsnvosddy .gt_table_body {
+#yzcbjpivko .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1027,7 +1091,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_footnotes {
+#yzcbjpivko .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1041,7 +1105,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_footnote {
+#yzcbjpivko .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1050,7 +1114,7 @@ Tip
   padding-right: 5px;
 }
 
-#umsnvosddy .gt_sourcenotes {
+#yzcbjpivko .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1064,7 +1128,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#umsnvosddy .gt_sourcenote {
+#yzcbjpivko .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1072,101 +1136,114 @@ Tip
   padding-right: 5px;
 }
 
-#umsnvosddy .gt_left {
+#yzcbjpivko .gt_left {
   text-align: left;
 }
 
-#umsnvosddy .gt_center {
+#yzcbjpivko .gt_center {
   text-align: center;
 }
 
-#umsnvosddy .gt_right {
+#yzcbjpivko .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#umsnvosddy .gt_font_normal {
+#yzcbjpivko .gt_font_normal {
   font-weight: normal;
 }
 
-#umsnvosddy .gt_font_bold {
+#yzcbjpivko .gt_font_bold {
   font-weight: bold;
 }
 
-#umsnvosddy .gt_font_italic {
+#yzcbjpivko .gt_font_italic {
   font-style: italic;
 }
 
-#umsnvosddy .gt_super {
+#yzcbjpivko .gt_super {
   font-size: 65%;
 }
 
-#umsnvosddy .gt_footnote_marks {
+#yzcbjpivko .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#umsnvosddy .gt_asterisk {
+#yzcbjpivko .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#umsnvosddy .gt_indent_1 {
+#yzcbjpivko .gt_indent_1 {
   text-indent: 5px;
 }
 
-#umsnvosddy .gt_indent_2 {
+#yzcbjpivko .gt_indent_2 {
   text-indent: 10px;
 }
 
-#umsnvosddy .gt_indent_3 {
+#yzcbjpivko .gt_indent_3 {
   text-indent: 15px;
 }
 
-#umsnvosddy .gt_indent_4 {
+#yzcbjpivko .gt_indent_4 {
   text-indent: 20px;
 }
 
-#umsnvosddy .gt_indent_5 {
+#yzcbjpivko .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Package">Package</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Version">Version</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Source">Source</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Package" class="gt_row gt_left">quanteda</td>
-<td headers="Version" class="gt_row gt_right">3.3.1</td>
-<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
-    <tr><td headers="Package" class="gt_row gt_left">quanteda.textmodels</td>
-<td headers="Version" class="gt_row gt_right">0.9.6</td>
-<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
-    <tr><td headers="Package" class="gt_row gt_left">quanteda.textplots</td>
-<td headers="Version" class="gt_row gt_right">0.94.2</td>
-<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
-    <tr><td headers="Package" class="gt_row gt_left">quanteda.textstats</td>
-<td headers="Version" class="gt_row gt_right">0.96</td>
-<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
-    <tr><td headers="Package" class="gt_row gt_left">readtext</td>
-<td headers="Version" class="gt_row gt_right">0.81</td>
-<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
-    <tr><td headers="Package" class="gt_row gt_left">stopwords</td>
-<td headers="Version" class="gt_row gt_right">2.3</td>
-<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
-    <tr><td headers="Package" class="gt_row gt_left">tidyverse</td>
-<td headers="Version" class="gt_row gt_right">2.0.0</td>
-<td headers="Source" class="gt_row gt_left">CRAN (R 4.2.0)</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Package" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Package</th>
+<th id="Version" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Version</th>
+<th id="Source" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Source</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Package">quanteda</td>
+<td class="gt_row gt_right" headers="Version">4.0.0</td>
+<td class="gt_row gt_left" headers="Source">local</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Package">quanteda.textmodels</td>
+<td class="gt_row gt_right" headers="Version">0.9.6</td>
+<td class="gt_row gt_left" headers="Source">CRAN (R 4.3.0)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Package">quanteda.textplots</td>
+<td class="gt_row gt_right" headers="Version">0.94.3</td>
+<td class="gt_row gt_left" headers="Source">CRAN (R 4.3.0)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Package">quanteda.textstats</td>
+<td class="gt_row gt_right" headers="Version">0.96.5</td>
+<td class="gt_row gt_left" headers="Source">local</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Package">readtext</td>
+<td class="gt_row gt_right" headers="Version">0.90</td>
+<td class="gt_row gt_left" headers="Source">CRAN (R 4.3.0)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Package">stopwords</td>
+<td class="gt_row gt_right" headers="Version">2.3</td>
+<td class="gt_row gt_left" headers="Source">CRAN (R 4.3.0)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Package">tidyverse</td>
+<td class="gt_row gt_right" headers="Version">2.0.0</td>
+<td class="gt_row gt_left" headers="Source">CRAN (R 4.3.0)</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 <section id="how-to-contact-us" class="level3 unnumbered">
@@ -1184,7 +1261,7 @@ Tip
 <p>Finally, no acknowledgements would be complete without a profound thanks to our partners, who have put up with us during the long incubation of this project. They have had to listen us talk about this book for years before we finally got around to writing it. They’ve tolerated us cursing software bugs, students, CRAN, each other, package users, and ourselves. But they’ve also seen they joy that we’ve experienced from creating tools and materials that empower users and students, and the excitement of the long intellectual voyage we have taken together and with our ever-growing base of users and students. Bina and Émeline, thank you for all of your support and encouragement. You’ll be so happy to know we finally have this book project well underway.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-becue2019textual" class="csl-entry" role="listitem">
 Bécue-Bertaut, Monica. 2019. <em>Textual Data Science with <span>R</span></em>. CRC Press.
 </div>
@@ -1298,10 +1375,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1311,8 +1387,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1325,6 +1410,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1368,6 +1572,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1393,6 +1598,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1454,12 +1685,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
+      <a href="./index.html" class="pagination-link  aria-label=" welcome"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00-authors.html" class="pagination-link">
+      <a href="./00-authors.html" class="pagination-link" aria-label="About the Authors">
         <span class="nav-page-text">About the Authors</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1468,4 +1699,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/00-preface.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

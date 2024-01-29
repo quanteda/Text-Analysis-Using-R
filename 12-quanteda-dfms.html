@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Text Analysis Using R - 12&nbsp; Building Document-Feature Matrices</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./13-quanteda-fcms.html" rel="next">
+<link href="./11-quanteda-tokensadvanced.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-quanteda-tokens.html">Processing Texts</a></li><li class="breadcrumb-item"><a href="./12-quanteda-dfms.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Text Analysis Using R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/quanteda/Text-Analysis-Using-R" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-authors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the Authors</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction and Motivation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Using R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-r-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-r-workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-r-strings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Working with Text in R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Acquiring Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-acquiring-files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with Files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-acquiring-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Using Text Import Tools</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-acquiring-internet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Obtaining Texts from the Internet</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Creating and Managing Corpora</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-quanteda-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introducing the <strong>quanteda</strong> Package</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-quanteda-corpus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating and Managing Corpora</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Processing Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-quanteda-tokens.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-quanteda-tokensadvanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Token Manipulation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-quanteda-dfms.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-quanteda-fcms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Feature Co-occurrence Matrices</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Exploring and Describing Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-exploring-description.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describing Texts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-exploring-kwic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Keywords-in-Context</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-exploring-dictionaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Applying Dictionaries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-exploring-frequencies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Most Frequent Words</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Statistics for Comparing Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-comparing-sophistication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Profiling Lexical Patterns and Usage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-comparing-documents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Document Similarity and Distance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-comparing-features.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Feature Similarity and Distance</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Machine Learning for Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-ml-supervised-scaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Supervised Document Scaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-ml-unsupervised-scaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Unsupervised Document Scaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-ml-classifiers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Methods for Text Classification</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-ml-topicmodels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Topic modelling</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text">Incorporating Language Models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-lms-linguistic-parsing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-lms-embeddings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./27-lms-transformers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+ <span class="menu-text">Further Issues</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-further-tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Integrating “tidy” approaches</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./29-further-hardlanguages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Text analysis in “Hard” Languages</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./30-appendix-installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing the Required Tools</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./31-appendix-encoding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Everything You Never Wanted to Know about Encoding</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./32-appendix-regex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">A Survival Guide to Regular Expressions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">12.1</span> Objectives</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">12.2</span> Methods</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><span class="header-section-number">12.3</span> Applications</a>
+  <ul class="collapse">
+  <li><a href="#creating-a-document-feature-matrix-from-a-tokens-object" id="toc-creating-a-document-feature-matrix-from-a-tokens-object" class="nav-link" data-scroll-target="#creating-a-document-feature-matrix-from-a-tokens-object"><span class="header-section-number">12.3.1</span> Creating a Document-Feature Matrix from a Tokens Object</a></li>
+  <li><a href="#types-tokens-features-and-sparsity" id="toc-types-tokens-features-and-sparsity" class="nav-link" data-scroll-target="#types-tokens-features-and-sparsity"><span class="header-section-number">12.3.2</span> Types, Tokens, Features, and Sparsity</a></li>
+  <li><a href="#feature-weighting" id="toc-feature-weighting" class="nav-link" data-scroll-target="#feature-weighting"><span class="header-section-number">12.3.3</span> Feature Weighting</a></li>
+  <li><a href="#trimming" id="toc-trimming" class="nav-link" data-scroll-target="#trimming"><span class="header-section-number">12.3.4</span> Trimming</a></li>
+  <li><a href="#grouping-and-subsetting" id="toc-grouping-and-subsetting" class="nav-link" data-scroll-target="#grouping-and-subsetting"><span class="header-section-number">12.3.5</span> Grouping and Subsetting</a></li>
+  <li><a href="#converting-a-dfm-object-for-further-use" id="toc-converting-a-dfm-object-for-further-use" class="nav-link" data-scroll-target="#converting-a-dfm-object-for-further-use"><span class="header-section-number">12.3.6</span> Converting a dfm Object for Further Use</a></li>
+  <li><a href="#creating-and-processing-a-feature-co-occurrence-matrix" id="toc-creating-and-processing-a-feature-co-occurrence-matrix" class="nav-link" data-scroll-target="#creating-and-processing-a-feature-co-occurrence-matrix"><span class="header-section-number">12.3.7</span> Creating and Processing a Feature Co-Occurrence Matrix</a></li>
+  </ul></li>
+  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced"><span class="header-section-number">12.4</span> Advanced</a>
+  <ul class="collapse">
+  <li><a href="#smoothing" id="toc-smoothing" class="nav-link" data-scroll-target="#smoothing"><span class="header-section-number">12.4.1</span> Smoothing</a></li>
+  <li><a href="#matching-two-document-feature-matrices" id="toc-matching-two-document-feature-matrices" class="nav-link" data-scroll-target="#matching-two-document-feature-matrices"><span class="header-section-number">12.4.2</span> Matching Two Document-Feature Matrices</a></li>
+  </ul></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">12.5</span> Further Reading</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.6</span> Exercises</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/12-quanteda-dfms.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-quanteda-tokens.html">Processing Texts</a></li><li class="breadcrumb-item"><a href="./12-quanteda-dfms.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-quanteda-dfms" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="objectives" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">12.1</span> Objectives</h2>
+<p>Collecting documents in a text corpus, changing the unit of analysis in this corpus (if necessary), tokenising and processing texts are central aspects of each text analysis project. Having processed the tokens object, many statistical analysis of texts require a document-feature matrix (dfm), a mathematical matrix that describes the frequency of terms (e.g., words or phrases) that occur in a collection of documents.</p>
+<p>In this chapter, we introduce you to the the assumptions we make when creating and analysing texts through document-feature matrices. We describe the nature of a dfm object and the importance of sparsity. You will learn how to create a dfm, how to subset or group a dfm, how to select features, and how to weight, trim, and smooth a dfm. We also show how to match dfms for machine learning approaches, and how to convert dfm objects for further use in other R packages. Finally, we explain the intuition behind feature co-occurrence matrices (fcm), when and why to use them, and how to construct an fcm from a <strong>quanteda</strong> tokens object. At the end of the chapter, readers will have a solid understanding of creating dfms and fcms, the workhorses for most statistical analyses of textual data.</p>
+</section>
+<section id="methods" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="methods"><span class="header-section-number">12.2</span> Methods</h2>
+<p>The <strong>document-feature matrix</strong> is the core object of many analysis of texts. It is a structured representation of textual data in the form of a matrix. After tokenising texts, we treat “text as data” by tabulating the counts of features by documents. Each row in a dfm represents a document, while each column represents a unique feature from across all the documents. The cells of the matrix indicate the frequency of a word in each document. After converting raw texts into a matrix, we move textual data into the same format as many forms of quantitative data. This format allows us to apply various statistical techniques and machine learning tools. Many of these methods have well-understood properties that allows us to generate probability statements and calculate measures of uncertainty <span class="citation" data-cites="benoit2020text">(<a href="references.html#ref-benoit2020text" role="doc-biblioref">Benoit 2020</a>)</span>.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why document-feature matrix rather than document-term matrix?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Many textbooks and software packages speak of “document-term matrices”. We prefer the name “document-feature matrix” since a dfm does not only contain terms, but can also contain features such as punctuation characters, numbers, symbols, or emojis. “Document-term matrix” implies that such features are uninformative. However, as we describe in <a href="10-quanteda-tokens.html" class="quarto-xref"><span>Chapter 10</span></a>, punctuation characters, numbers, or emojis can provide relevant information about texts and should remain in the matrix representation of the text corpus.</p>
+</div>
+</div>
+<p>Document-feature matrices allow us to analyse texts systematically. Somewhat ironically, we first need to destroy the structure of texts and make it impossible to “read” the documents. While we still know the order and context of words in tokens objects, document-feature matrix only provide information about the frequencies of features in a document. We no longer know at what position in a given document a certain feature appeared. Yet, only this oversimplification of texts allows us to apply statistical methods and analyse “text as data.”</p>
+<p><strong>Note:</strong> <em>Maybe add a few sentences on numerical representations of real-world phenomena, such as survey responses, economic indicators, or conflict data</em> (see Benoit 2020: 464-465)?</p>
+<p>Let us explain the structure of a dfm with a simple example. Consider two short documents:</p>
+<ul>
+<li>Document 1: “I love quanteda. I love text analysis.”</li>
+<li>Document 2: “Text analysis with quanteda is fun.”</li>
+</ul>
+<p>A matrix representation of these documents would look as follows:</p>
+<div id="tbl-dfm-raw" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-dfm-raw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12.1: A document-feature matrix without tokens removal, but lower-casing of all features
+</figcaption>
+<div aria-describedby="tbl-dfm-raw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 4%">
+<col style="width: 9%">
+<col style="width: 15%">
+<col style="width: 4%">
+<col style="width: 9%">
+<col style="width: 15%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>i</th>
+<th>love</th>
+<th>quanteda</th>
+<th>.</th>
+<th>text</th>
+<th>analysis</th>
+<th>with</th>
+<th>is</th>
+<th>fun</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Doc 1</strong></td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><strong>Doc 2</strong></td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#tbl-dfm-raw" class="quarto-xref">Table&nbsp;<span>12.1</span></a> shows a dfm consisting of two rows (one per document) and each feature has its own column. The numbers report how often a feature appeared a document. We can treat this dfm like any other quantitative data set. We cannot tell the precise position “love” appeared in Document 1 anymore, but we can immediately say that this feature appeared twice in the Document 1, and that love was not included in Document 2. Since we only know feature frequencies across documents but not their precise positions in a document, we call the process of transforming texts into a matrix <strong>“bag-of-words” approach</strong>.</p>
+<p><em>Maybe add a few more general sentences about dfms here.</em></p>
+<p>Let’s clarify a few key terms by inspecting the <a href="#tbl-dfm-raw" class="quarto-xref">Table&nbsp;<span>12.1</span></a>. First, the dfm consists of 2 <strong>document</strong> and 9 <strong>features</strong>. Document 1 contains 6 <strong>types</strong> (i.e., unique tokens). The types are <code>i</code>, <code>love</code>, <code>quanteda</code>, <code>text</code>, <code>analysis</code>, <code>.</code>. Document 1 consists of 9 tokens since the words <code>i</code>, <code>love</code> and <code>.</code> appear twice while <code>love</code>, <code>quanteda</code>, <code>text</code>, and <code>analysis</code> appear only once. In Document 2, the number of types is identical to the number of tokens: the processed document contains 7 tokens, and each token appears only once. The dfm has a <strong>sparsity</strong> of 27.7% since 5 out of the 18 cells have zero counts.</p>
+<p>The number of types, tokens, features, and a dfm’s sparsity depends on the processing steps we implemented during tokenisation (<a href="10-quanteda-tokens.html" class="quarto-xref"><span>Chapter 10</span></a>). For example, if we conduct the common steps of removing stopwords and punctuation characters, the document feature matrix will be considerably smaller. <a href="#tbl-dfm-processed" class="quarto-xref">Table&nbsp;<span>12.2</span></a> shows after removing punctuation characters and the words “i”, “with”, and “is”, which are included in most stopword lists. <span class="citation" data-cites="grimmer22textasdata">Grimmer, Roberts, and Stewart (<a href="references.html#ref-grimmer22textasdata" role="doc-biblioref">2022, 57–59</a>)</span> provide more examples of why the “default” processing steps might be problematic.</p>
+<div id="tbl-dfm-processed" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-dfm-processed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12.2: A document-feature matrix after removing punctuation characters and stopwords
+</figcaption>
+<div aria-describedby="tbl-dfm-processed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>love</th>
+<th>quanteda</th>
+<th>text</th>
+<th>analysis</th>
+<th>fun</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Doc 1</strong></td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><strong>Doc 2</strong></td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The sparsity was reduced from 28% to 20%, and the number of columns changed from nine to five. At the same time, removing these stopwords and punctuation did not result in a considerable loss of information about the content of each document. It is important to repeat, however, that stopword removal is not always recommended and that you should inspect the features included in a stopword list. We removed the pronoun “I”. In many cases, the removal of pronouns will not be an issue, but in other cases pronouns can tell us a lot about a text. For instance, <span class="citation" data-cites="crisp21voteseeking">Crisp et al. (<a href="references.html#ref-crisp21voteseeking" role="doc-biblioref">2021</a>)</span> show Japanese candidates mention first-person pronouns more often in their personal manifesto if they face stronger intra-party competition. The usage of pronouns is a signal of candidates’ campaign strategies and their degree of personalisation.</p>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Selecting features in your tokens object rather than the dfm
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We strongly recommend to conduct all processing steps involving the removal of features during the tokenisation step rather than applying the same functions to a dfm. Multi-word expressions can be easily detected in tokens object, but this information is not available in a dfm anymore. Similarly, we strongly recommend applying dictionaries (<a href="16-exploring-dictionaries.html" class="quarto-xref"><span>Chapter 16</span></a>) to the tokens object to identify possible multi-word expressions correctly.</p>
+<p>There are, however, a few processing steps that rely on feature frequencies. Users might want to remove word appearing in less or more than a certain number of percentage of documents. These so-called trimming operations, covered in detail in the Applications section, only work dfm objects since we need to the word counts to filter by frequncies.</p>
+</div>
+</div>
+<p>The dfm in <a href="#tbl-dfm-raw" class="quarto-xref">Table&nbsp;<span>12.1</span></a> reports counts of features. This is the default when a dfm is created. Oftentimes, we might prefer prefer <strong>weighting feature frequencies</strong>. For example, many users might want to normalise a dfm by calculating the proportion of feature counts within each document. This process is called <strong>document normalisation</strong> as it homogenises the counts for each document. As such, it addresses the (potential) issue of varied document length in a corpus, allowing for comparing relative frequencies as opposed to raw counts. For example, two mentions of “terrible” in a short hotel review consisting of 100 words have a larger weight than three mentions of “terrible” in review of 500 words. When normalising the document, the relative frequency of “terrible” would be 0.02 (or 2%) in the short review, and 0.006 (0.6%) in the longer review, highlighting the much higher prevalence of this negative term in the first review.</p>
+<p>Boolean weighting is another type of weighting. Applying boolean weights implies that all non-zero counts are recoded as 1. This weighting scheme is useful when users simply want to know whether or not a feature appeared in a document without being intersted in the absolute frequencies of the term.</p>
+<p>A popular, and slightly more complex, weighting scheme is called <strong>tf-idf</strong> or <strong>term frequency-inverse document frequency</strong>. Tf-idf is a very popular approach in information retrieval and often used in machine learning (<a href="23-ml-classifiers.html" class="quarto-xref"><span>Chapter 23</span></a>). Tf-idf up-weights terms that appear more often in a given document and down-weight terms that are common across documents. As a term appears in more documents, its weight approaches zero. While tf-idf is a very useful approach for identifying “unique” words that define a given document, tf-idf may be problematic when working with a topic-specific texts corpus. Tf-idf will assign low weights to words appearing across documents. When we apply td-idf to a corpus of debates on climate protection, td-idf will eliminate climate-related features even if they appear in different frequencies across documents. To sum up, while tf-idf can be useful for certain classification tasks, users should proceed with great caution when applying tf-idf weighting.</p>
+<p>Let’s go through a simple example to understand how to calculate tf-idf scores. Going back to the example above, Document 1 contains the word “horrible” 2 times and consists of 100 tokens. Document 2 contains the word horrible 3 times but consists of 500 tokens. Let’s use <strong>quanteda</strong>’s default calculation for an example.</p>
+<p>To calculate tf-idf we need to know term frequencies and inverse-docuemnt frequencies.</p>
+<p><span class="math display">\[
+\text{tf-idf} = \text{tf} \times \text{idf}
+\]</span></p>
+<p>When using the counts of the term frequencies for “horrible”, Document 1 has a <span class="math inline">\(tf = 2\)</span>, while the <span class="math inline">\(tf\)</span> of “horrible” for Document 2 equals <span class="math inline">\(3\)</span>.</p>
+<p>Note that we can also calculate tf with normalised frequencies, i.e.,</p>
+<p><span class="math display">\[
+\text{tf} = \frac{\text{Number of times term appears in the document}}{\text{Total number of terms in the document}}
+\]</span></p>
+<p>In this case, the <span class="math inline">\(tf\)</span> for Document 1 would be <span class="math inline">\(for \frac{2}{100}\)</span> and <span class="math inline">\(\frac{3}{500}\)</span> for Document 2. The <code>scheme_tf</code> argument in <strong>quanteda</strong>’s <code>dfm_tfidf()</code> allows you to select <code>count</code> or <code>prop</code>.</p>
+<p>Next we calculate the inverse document frequency (idf) as:</p>
+<p><span class="math display">\[
+\text{idf} = \log\left(\frac{\text{Total number of documents}}{\text{Number of documents with the term}}\right)
+\]</span></p>
+<p>Since “horrible” appears in both Document 1 and Document 2:</p>
+<p><span class="math display">\[
+\text{idf for "horrible"} = \log\left(\frac{2}{2}\right) = \log(1) = 0
+\]</span></p>
+<p>In the last step, we multiply each document’s <span class="math inline">\(tf\)</span> for “horrible” with the <span class="math inline">\(idf\)</span> of the same term.</p>
+<p><span class="math display">\[
+\text{tf-idf} = \text{tf} \times \text{idf}
+\]</span></p>
+<p>For Document 1: <span class="math inline">\(\text{tf-idf for "horrible" in Document 1} = 2 \times 0 = 0\)</span></p>
+<p>For Document 2: <span class="math inline">\(\text{tf-idf for "horrible" in Document 2} = 3 \times 0 = 0\)</span></p>
+<p>If Document 1 contained “terrible” 2 times, but Document 2 did not mention “horrible” at all, <span class="math inline">\(idf\)</span> would change to: <span class="math inline">\(\text{idf for "horrible"} = \log\left(\frac{2}{1}\right)\)</span> because “terrible” is included in only one of our two documents. tf-idf for Document 2 would remain 0, but tf-idf for “horrible” in Document 1 changes to <span class="math inline">\(2 \times \log(2) = 1.386\)</span>. The example shows highights that terms appearing in all documents always receive a tf-idf score of 0, no matter how (in)frequent they are. Keyness analysis (<a href="17-exploring-frequencies.html" class="quarto-xref"><span>Chapter 17</span></a>) is another approach of identifying words more “unique” to one group of documents, and–in contrast to tf-idf–features appearing across all documents are not down-weighted to 0 if their expected frequencies differ.</p>
+<p>The <strong>trimming</strong> of a document-feature matrix is another important step to remove the number of features and sparsity of the dfm. The dfm is reduced in size based on the document frequency or term frequency. Usually, we trim features based on minimum frequencies, but we can also exclude features in terms of maximum frequencies. Combining trimming operations for minimum and maximum frequencies will return features that fall within this range. Let’s consider the following example. If we have a large text corpus and want to remove very infrequent terms we could trim based on the minimum term frequencies and document frequencies. We could, for instance only keep terms occurring at least 10 times across all documents and also appear in at least 2 documents. In this case, the minimum term frequency equals <span class="math inline">\(10\)</span> and the minimum document frequency equals <span class="math inline">\(2\)</span>. Of course, we can also trim features based on relative frequencies. The Application section below provides several examples of trimming dfms.</p>
+<p><strong>Smoothing</strong> is another frequently used form of weighting a dfm. It implies that zero counts are changed to a constant other than zero. If we set a smoothing parameter of 1, the constant of 1 is added to all cells in the dfm: zero counts are changed to 1, cells with the value 1 get the value 2 etc.</p>
+<p>Smoothing a dfm is required for statistical models that struggle with zero probabilities. For example, a zero probability of a feature in a Naive Bayes classifier (<a href="23-ml-classifiers.html" class="quarto-xref"><span>Chapter 23</span></a>) would change the entire document’s probably to 0, even if other terms indicate it belongs to that class.</p>
+<p>Next, we move to the <strong>feature co-occurrence matrix</strong>, which measure the co-occurrence of features. Feature co-occurrence matrices are the input for many word embedding models, which will be covered extensively in <a href="26-lms-embeddings.html" class="quarto-xref"><span>Chapter 26</span></a>. The intuition behind fcms is simple: instead of counting how often a feature appears in a document (the intuition behind dfms) we want to know which feature appear together within a user-defined context window.</p>
+<p><em>Add content on fcm here.</em></p>
+</section>
+<section id="applications" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="applications"><span class="header-section-number">12.3</span> Applications</h2>
+<p>In this section, you will learn how to create a dfm, how to get identify the number of types and tokens, and assess it sparsity. You will learn how to weight, trim, group, and subset a document-feature matrix, and how to create and modify a feature co-occurrence matrix.</p>
+<section id="creating-a-document-feature-matrix-from-a-tokens-object" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="creating-a-document-feature-matrix-from-a-tokens-object"><span class="header-section-number">12.3.1</span> Creating a Document-Feature Matrix from a Tokens Object</h3>
+<p>We start with replicating the example mentioned above. Suppose we have two documents in a text corpus. We first tokenise the corpus and then create a <code>dfm()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create example corpus</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">&lt;-</span> <span class="fu">corpus</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">doc1 =</span> <span class="st">"I love quanteda. I love text analysis."</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">doc2 =</span> <span class="st">"Text analysis with quanteda is fun."</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenize corpus without making processing </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>toks <span class="ot">&lt;-</span> <span class="fu">tokens</span>(corp)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect tokens object</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(toks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 2 documents.
+doc1 :
+[1] "I"        "love"     "quanteda" "."        "I"        "love"     "text"    
+[8] "analysis" "."       
+
+doc2 :
+[1] "Text"     "analysis" "with"     "quanteda" "is"       "fun"      "."       </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a document-feature matrix</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dfmat <span class="ot">&lt;-</span> <span class="fu">dfm</span>(toks)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect dfm: first three documents, first four features</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dfmat, <span class="at">max_ndoc =</span> <span class="dv">3</span>, <span class="at">max_nfeat =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 2 documents, 9 features (27.78% sparse) and 0 docvars.
+      features
+docs   i love quanteda .
+  doc1 2    2        1 2
+  doc2 0    0        1 1
+[ reached max_nfeat ... 5 more features ]</code></pre>
+</div>
+</div>
+</section>
+<section id="types-tokens-features-and-sparsity" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="types-tokens-features-and-sparsity"><span class="header-section-number">12.3.2</span> Types, Tokens, Features, and Sparsity</h3>
+<p>We can access the number of features, tokens, types, and the sparsity of a dfm with in-built <strong>quanteda</strong> functions. We convert the corpus of US inaugural speeches to a document-feature matrix retrieve these statistics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dfmat_inaug <span class="ot">&lt;-</span> data_corpus_inaugural <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sparsity() and nfeat() are reported on the dfm-level</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sparsity</span>(dfmat_inaug)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9183668</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nfeat</span>(dfmat_inaug)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9437</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ntype() and ntoken() are reported on the document-level</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># show the number of types for first five documents</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ntype</span>(dfmat_inaug) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1789-Washington 1793-Washington      1797-Adams  1801-Jefferson  1805-Jefferson 
+            603              95             801             687             781 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the number of tokens for first five documents</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ntoken</span>(dfmat_inaug) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1789-Washington 1793-Washington      1797-Adams  1801-Jefferson  1805-Jefferson 
+           1537             147            2577            1923            2380 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>dfm()</code>’s default behaviour
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When converting a tokens object into a document-feature matrix, the <code>dfm()</code> considers all features included in the tokens object. It does not remove any features, but, by default, all tokens are transformed to lower case, even if you have not used <code>tokens_tolower()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>toks_example <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"Transforming a tokens object to a dfm."</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># by default, dfm() transforms all tokens to lowercase</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm</span>(toks_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 1 document, 7 features (0.00% sparse) and 0 docvars.
+       features
+docs    transforming a tokens object to dfm .
+  text1            1 2      1      1  1   1 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can change this behaviour by using dfm(x, tolower = FALSE)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm</span>(toks_example, <span class="at">tolower =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 1 document, 7 features (0.00% sparse) and 0 docvars.
+       features
+docs    Transforming a tokens object to dfm .
+  text1            1 2      1      1  1   1 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>In almost all applications we can think of, lower-casing tokens is a reasonable and recommended processing choice. The sparsity of a dfm and the number of types (unique tokens) increases drastically when you treat upper- and lower-case tokens separately. If you want to make sure certain tokens (e.g., <code>Labour</code> vs.&nbsp;<code>labour</code>) are treated separately, we suggest replacing these tokens during the tokenisation process (<a href="11-quanteda-tokensadvanced.html" class="quarto-xref"><span>Chapter 11</span></a>) rather than preserving the original case of <em>all</em> tokens.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform all features to lowercase</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dfmat_lower <span class="ot">&lt;-</span> data_corpus_inaugural <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>(<span class="at">tolower =</span> <span class="cn">TRUE</span>) <span class="co"># default</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># sum of features</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nfeat</span>(dfmat_lower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9437</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># do not change tokens to lowercase</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>dfmat_unchanged <span class="ot">&lt;-</span> data_corpus_inaugural <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>(<span class="at">tolower =</span> <span class="cn">FALSE</span>) <span class="co"># keep original case </span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># sum of features</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nfeat</span>(dfmat_unchanged)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10162</code></pre>
+</div>
+</div>
+<p>The number of unique tokens increased from 9,437 to 10,162 when not changing tokens to its lower-cased form. In the second case, upper-case tokens will be treated as a different feature than lower-case token.</p>
+</section>
+<section id="feature-weighting" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="feature-weighting"><span class="header-section-number">12.3.3</span> Feature Weighting</h3>
+<p>When you have created a document-feature matrix, you can apply weights using <code>dfm_weight()</code> and adjust the <code>scheme</code> argument. Let’s weight the document-feature matrix of inaugural speeches by proportion to normalise the documents.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dfmat_inaug <span class="ot">&lt;-</span> data_corpus_inaugural <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>()</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># document normalisation using dfm(x, scheme = prop)</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>dfmat_inaug_prop <span class="ot">&lt;-</span> <span class="fu">dfm_weight</span>(dfmat_inaug, <span class="at">scheme =</span> <span class="st">"prop"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect dfm: first three documents, first four features</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dfmat_inaug_prop, <span class="at">max_ndoc =</span> <span class="dv">3</span>, <span class="at">max_nfeat =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 59 documents, 9,437 features (91.84% sparse) and 4 docvars.
+                 features
+docs              fellow-citizens         of        the       senate
+  1789-Washington    0.0006506181 0.04619388 0.07547170 0.0006506181
+  1793-Washington    0            0.07482993 0.08843537 0           
+  1797-Adams         0.0011641444 0.05432674 0.06325184 0.0003880481
+[ reached max_ndoc ... 56 more documents, reached max_nfeat ... 9,433 more features ]</code></pre>
+</div>
+</div>
+<p>We can transform non-zero counts to 1 with <code>dfm_weight(x, scheme = "boolean"</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply boolean weighting</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>dfmat_inaug_boolen <span class="ot">&lt;-</span> <span class="fu">dfm_weight</span>(dfmat_inaug, <span class="at">scheme =</span> <span class="st">"boolean"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect dfm: first five documents, first four features</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dfmat_inaug_boolen, <span class="at">max_ndoc =</span> <span class="dv">3</span>, <span class="at">max_nfeat =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 59 documents, 9,437 features (91.84% sparse) and 4 docvars.
+                 features
+docs              fellow-citizens of the senate
+  1789-Washington               1  1   1      1
+  1793-Washington               0  1   1      0
+  1797-Adams                    1  1   1      1
+[ reached max_ndoc ... 56 more documents, reached max_nfeat ... 9,433 more features ]</code></pre>
+</div>
+</div>
+<p>After applying <code>dfm_weight(x, scheme = "boolean")</code>, the cells contain only 0 (document does not include feature) or 1 (document contains feature at least once) rather than absolute or relative frequencies.</p>
+<p>You can apply tf-idf weighting with <code>dfm_tfidf()</code>. Let’s transform <code>dfmat_inaug</code> to tf-idf by using counts instead of normalised frequencies first for the term frequencies.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply dfm-idf weighting; use count-based measure of term frequencies</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>dfmat_tfidfcount <span class="ot">&lt;-</span> <span class="fu">dfm_tfidf</span>(dfmat_inaug, <span class="at">scheme_tf =</span> <span class="st">"count"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect dfm: first five documents, first four features</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dfmat_tfidfcount, <span class="at">max_nfeat =</span> <span class="dv">5</span>, <span class="at">max_ndoc =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 59 documents, 9,437 features (91.84% sparse) and 4 docvars.
+                 features
+docs              fellow-citizens of the    senate and
+  1789-Washington       0.4920984  0   0 0.8166095   0
+  1793-Washington       0          0   0 0           0
+  1797-Adams            1.4762952  0   0 0.8166095   0
+  1801-Jefferson        0.9841968  0   0 0           0
+[ reached max_ndoc ... 55 more documents, reached max_nfeat ... 9,432 more features ]</code></pre>
+</div>
+</div>
+<p>The output reveals that features appearing in all documents, including <code>of</code> and <code>the</code> receive a score of 0. This “feature” of tf-idf will down-weight all terms appearing across documents, which might be problematic since it might also include meaningful terms. For example, it is very likely that every politicians will mention “climate” in parliamentary debates about environmental protection. Tf-idf, in turn, would assign the word “climate” a score of 0 for all speakers.</p>
+<p>You can adjust the way <strong>quanteda</strong> calculates tf-idf, for example by using harmonised term frequencies (<code>dfm_tfidf(x, scheme_tf = "prop")</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use harmonised counts (=prop) for term frequencies</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>dfmat_tfidfprop <span class="ot">&lt;-</span> <span class="fu">dfm_tfidf</span>(dfmat_inaug, <span class="at">scheme_tf =</span> <span class="st">"prop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can also change the base for the logarithms. <strong>quanteda</strong>’s default base 10, which mirrors the tf-idf implementation in <span class="citation" data-cites="manning08iir">Manning, Raghavan, and Schütze (<a href="references.html#ref-manning08iir" role="doc-biblioref">2008</a>)</span>. Other R packages use different default weights. <strong>tidytext</strong> <span class="citation" data-cites="tidytextJOSS">(<a href="references.html#ref-tidytextJOSS" role="doc-biblioref">Silge and Robinson 2016</a>)</span> applies the natural log, whereas <strong>tm</strong> <span class="citation" data-cites="tmpackage">(<a href="references.html#ref-tmpackage" role="doc-biblioref">Feinerer, Hornik, and Meyer 2008a</a>)</span> uses base 2. Below we show how to replicate other packages’ tf-idf scores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mirror tidytext's implementation</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm_tfidf</span>(dfmat_inaug, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">scheme_tf =</span> <span class="st">"prop"</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">scheme_df =</span> <span class="st">"inverse"</span>, </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">base =</span> <span class="fu">exp</span>(<span class="dv">1</span>))</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># mirror tm's implementation</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm_tfidf</span>(dfmat_inaug, </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">scheme_tf =</span> <span class="st">"prop"</span>, </span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">scheme_df =</span> <span class="st">"inverse"</span>, </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">base =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="trimming" class="level3" data-number="12.3.4">
+<h3 data-number="12.3.4" class="anchored" data-anchor-id="trimming"><span class="header-section-number">12.3.4</span> Trimming</h3>
+<p>As mentioned above, most dfms are very sparse. Sparsity above 90% is the norm in most text analysis applications, especially if documents are short. Most features simply do not appear in a document. Very high levels of sparsity can result in convergence issues for topic models or unsupervised scaling approaches such as Wordfish <span class="citation" data-cites="slapin08wordfish">(<a href="references.html#ref-slapin08wordfish" role="doc-biblioref">Slapin and Proksch 2008</a>)</span>. In turn, if we keep the most frequent terms in our dfm, many models might be heavily influenced by these very frequent terms, and potential differences across documents will not be uncovered. Let’s take the following example: as we have seen above, a large proportion of documents are punctuation characters and stopwords. If we keep these features in our dfm, these terms will drive the results and, possibly, underestimate differences in topic prevalence or policy positions. <a href="22-ml-unsupervised-scaling.html" class="quarto-xref"><span>Chapter 22</span></a> and <a href="24-ml-topicmodels.html" class="quarto-xref"><span>Chapter 24</span></a> cover these issues in more detail.</p>
+<p>The function <code>dfm_trim()</code> allows you to exclude very infrequent or very frequent terms from your dfm before proceeding with the analysis to avoid these issues or (at least) to assess the validity of the results when you exclude very frequent and infrequent terms. We can features in terms of absolute frequencies, proportions, ranks, or quantiles. In addition, we can reduce the size based on document frequencies (“In how many documents does a feature appear?”) or term frequencies (“How often does a feature appear across all documents?”). We explain all of these arguments in the example below. We use the corpus of hotel review as an example and always return the number of types and tokens to provide an overview of the reduction.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise corpus of hotel reviews without any tokens removal</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>toks_hotels <span class="ot">&lt;-</span> <span class="fu">tokens</span>(TAUR<span class="sc">::</span>data_corpus_TAhotels)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># no processing apart from lower-casing terms (quanteda's default)</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>dfmat_hotels <span class="ot">&lt;-</span> <span class="fu">dfm</span>(tokes)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only features occurring at least 10 times (min_termfreq = 20) </span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># and in &gt;= 10 documents (min_docfreq = 10)</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm_trim</span>(dfmat_hotels, <span class="at">min_termfreq =</span> <span class="dv">10</span>, <span class="at">min_docfreq =</span> <span class="dv">10</span>)</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only features occurring at least 10 times (min_termfreq = 10)</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co"># and in at least 40% of the documents (min_docfreq = 0.4)</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm_trim</span>(dfmat_hotels, <span class="at">min_termfreq =</span> <span class="dv">10</span>, <span class="at">min_docfreq =</span> <span class="fl">0.4</span>)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only features occurring at most 10 times (max_termfreq = 10) </span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co"># and in at most 200 documents (max_docfreq = 200)</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm_trim</span>(dfmat_hotels, <span class="at">max_termfreq =</span> <span class="dv">10</span>, <span class="at">max_docfreq =</span> <span class="dv">200</span>)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only features occurring at most 10 times and </span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="co"># in at most 3/4 of the documents</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm_trim</span>(dfmat_hotels, <span class="at">max_termfreq =</span> <span class="dv">10</span>, <span class="at">max_docfreq =</span> <span class="fl">0.75</span>)</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only words occurring frequently (top 20% -&gt; min_termfreq = 0.2) </span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a><span class="co"># and in at most 2 documents</span></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm_trim</span>(dfmat, <span class="at">min_termfreq =</span> <span class="fl">0.2</span>, <span class="at">max_docfreq =</span> <span class="dv">2</span>, </span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>         <span class="at">termfreq_type =</span> <span class="st">"quantile"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="grouping-and-subsetting" class="level3" data-number="12.3.5">
+<h3 data-number="12.3.5" class="anchored" data-anchor-id="grouping-and-subsetting"><span class="header-section-number">12.3.5</span> Grouping and Subsetting</h3>
+<p>By default, a dfm contains as many documents as the input tokens object. Yet, in some cases you might want to <strong>combine documents in a dfm by a grouping variable</strong>. Instead of analysing each speech by a delivered by a politician, we might want to aggregated speeches to the level of parties. If we want to understand differences between hotel reviews with low and high rankings, we could group our dfm by ranking rather than review.</p>
+<p>The function <code>dfm_group()</code> sums up cell frequencies within groups, determined by a document level variable and creates new “documents” with the group labels. Let’s introduce <code>dfm_group()</code> with an example: we transform the corpus of 20,491 hotel reviews (<code>data_corpus_TAhotels</code>) to a dfm, and then group this dfm by the “Rating” document-level variable, indicating the reviewer’s satisfaction with the hotel (ranging from 1 to 5 stars). The grouped dfm should therefore consist of five “documents”, with each document summing up cell frequencies of all documents with the same rating.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise the corpus and create a document feature matrix in one go</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>dfmat_hotels <span class="ot">&lt;-</span> TAUR<span class="sc">::</span>data_corpus_TAhotels <span class="sc">|&gt;</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="co"># remove punctuation</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>)) <span class="sc">|&gt;</span> <span class="co"># remove stopwords</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>() <span class="co"># create dfm</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect dfm: first five documents and first five features</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dfmat_hotels, <span class="at">max_ndoc =</span> <span class="dv">5</span>, <span class="at">max_nfeat =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 20,491 documents, 78,553 features (99.90% sparse) and 1 docvar.
+       features
+docs    nice hotel expensive parking got
+  text1    5     2         1       3   1
+  text2    1     5         0       0   3
+  text3    3     3         0       0   2
+  text4    2     4         0       0   0
+  text5    0     2         0       1   1
+[ reached max_ndoc ... 20,486 more documents, reached max_nfeat ... 78,548 more features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now group this dfm consisting of 20,491 review</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># based on Rating document-level variable</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>dfmat_hotels_grouped <span class="ot">&lt;-</span> <span class="fu">dfm_group</span>(dfmat_hotels, <span class="at">groups =</span> Rating)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect the grouped dfm: all documents and first five features</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dfmat_hotels_grouped, <span class="at">max_ndoc =</span> <span class="dv">5</span>, <span class="at">max_nfeat =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 5 documents, 78,553 features (64.64% sparse) and 1 docvar.
+    features
+docs nice hotel expensive parking  got
+   1  367  3604        97     180  630
+   2 1055  4187       195     177  844
+   3 1751  5078       269     232  812
+   4 4839 14183       669     567 1900
+   5 4424 21895       694     473 2003
+[ reached max_nfeat ... 78,548 more features ]</code></pre>
+</div>
+</div>
+<p>The grouped dfm consists of only 5 documents, while the number of features is the same as in the review-level dfm (<code>dfmat_hotels</code>). The number of frequencies does not change because <code>dfm_group()</code> simply sums up the cell counts. Inspecting the output of the first five features, we see that the <code>nice</code> appears 367 times in 1-star reviews, while the term appears 4,424 times in 5-star reviews.</p>
+<p>In <a href="09-quanteda-corpus.html" class="quarto-xref"><span>Chapter 9</span></a>, we introduced <code>corpus_subset()</code> to filter documents based on one or more document-level variables. We can do the same with dfm’s by using <code>dfm_subset()</code>. For example, we can filter only 1-star reviews to investigate word frequencies in very negative reviews.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get overview of reviews by rating</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dfmat_hotels<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1    2    3    4    5 
+1421 1793 2184 6039 9054 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset dfmat_hotels by keeping only 1-star reviews</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>dfmat_hotels_1star <span class="ot">&lt;-</span> <span class="fu">dfm_subset</span>(dfmat_hotels, Rating <span class="sc">==</span> <span class="st">"1"</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check that subsetting worked as expected by </span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a cross-table of the Rating docvars</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dfmat_hotels_1star<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1 
+1421 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Subset your objects wisely
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Tokenisation is the bottleneck operation in processing texts for quantitative analyses. If you know that you want to exclude certain documents from all analyses (for instance, all documents published prior to a specific date), we recommend filtering out these documents <em>before</em> from the corpus object using <code>corpus_subset()</code> rather than excluding the documents from the tokens object or dfm. Having said that, keep in mind that excluding documents may lead to selection biases and other problems <span class="citation" data-cites="grimmer22textasdata">(<a href="references.html#ref-grimmer22textasdata" role="doc-biblioref">Grimmer, Roberts, and Stewart 2022</a>: ch.&nbsp;3)</span>.</p>
+</div>
+</div>
+</section>
+<section id="converting-a-dfm-object-for-further-use" class="level3" data-number="12.3.6">
+<h3 data-number="12.3.6" class="anchored" data-anchor-id="converting-a-dfm-object-for-further-use"><span class="header-section-number">12.3.6</span> Converting a dfm Object for Further Use</h3>
+<p>Document-feature matrices are the input for many statistical analyses of textual data. The <strong>quanteda</strong> package infrastructure includes many text models that work directly with a <strong>quanteda</strong> dfm object. Other packages require a dfm in a slightly different format. The function <code>convert()</code> provides easy conversion from a dfm to document-term representations used in all other text analysis packages.</p>
+<p><strong>quanteda</strong>’s <code>convert()</code> function allows users to convert a dfm object to the following formats.</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/lda/lda.pdf"><code>lda</code></a>: a list with components “documents” and “vocab” as needed by the function <code>lda.collapsed.gibbs.sampler</code> from the <strong>lda</strong> package <span class="citation" data-cites="lda">(<a href="references.html#ref-lda" role="doc-biblioref">Chang 2015</a>)</span>.</li>
+<li><a href="https://cran.r-project.org/web/packages/tm/index.html"><code>tm</code></a>: a DocumentTermMatrix from the <strong>tm</strong> package <span class="citation" data-cites="JSSv025i05">(<a href="references.html#ref-JSSv025i05" role="doc-biblioref">Feinerer, Hornik, and Meyer 2008b</a>)</span>.</li>
+<li><a href="https://cran.r-project.org/web/packages/stm/index.html"><code>stm</code></a>: the format for the <strong>stm</strong> package <span class="citation" data-cites="stm">(<a href="references.html#ref-stm" role="doc-biblioref">Roberts, Stewart, and Tingley 2019</a>)</span> for structural topic models. Note: the <strong>stm</strong> package also allows you to input a <strong>quanteda</strong> object directly, and no conversion is required.</li>
+<li><a href="https://cran.r-project.org/web/packages/topicmodels/index.html"><code>topicmodels</code></a>: the <code>dtm</code> format as used by the <strong>topicmodels</strong> package <span class="citation" data-cites="topicmodels">(<a href="references.html#ref-topicmodels" role="doc-biblioref">Grün and Hornik 2011</a>)</span> for Latent Dirichlet Allocation (LDA) models and Correlated Topics Models (CTM)</li>
+</ul>
+<p>In addition, the dfm can be converted to a <code>data.frame</code> and <code>tripletlist</code> consisting of <code>document</code>, <code>feature</code>, and <code>frequency</code>.</p>
+<p>Many recently developed R packages, such as <strong>keyATM</strong> <span class="citation" data-cites="keyatm">(<a href="references.html#ref-keyatm" role="doc-biblioref">Eshima, Imai, and Sakasi 2023</a>)</span> for keyword-assisted topic models, <strong>LSX</strong> <span class="citation" data-cites="lsx">(<a href="references.html#ref-lsx" role="doc-biblioref">Watanabe 2023</a>)</span> for latent semantic scaling, or <strong>conText</strong> <span class="citation" data-cites="context">(<a href="references.html#ref-context" role="doc-biblioref">Rodriguez, Spirling, and Stewart 2023</a>)</span> for ‘a la Carte’ on Text Embedding Regression, rely on <strong>quanteda</strong> and allow you to input processed <code>tokens()</code> or <code>dfm()</code> objects.</p>
+<p>The popular <strong>tidytext</strong> package <span class="citation" data-cites="tidytextJOSS">(<a href="references.html#ref-tidytextJOSS" role="doc-biblioref">Silge and Robinson 2016</a>)</span> includes the function <code>cast_dfm()</code> which allows you to cast a data frame to a <strong>quanteda</strong> dfm (see also <a href="28-further-tidy.html" class="quarto-xref"><span>Chapter 28</span></a>).</p>
+</section>
+<section id="creating-and-processing-a-feature-co-occurrence-matrix" class="level3" data-number="12.3.7">
+<h3 data-number="12.3.7" class="anchored" data-anchor-id="creating-and-processing-a-feature-co-occurrence-matrix"><span class="header-section-number">12.3.7</span> Creating and Processing a Feature Co-Occurrence Matrix</h3>
+<p><em>To be added.</em> Also reference <a href="26-lms-embeddings.html" class="quarto-xref"><span>Chapter 26</span></a> which will explain how to create word embeddings based on an fcm object.</p>
+</section>
+</section>
+<section id="advanced" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="advanced"><span class="header-section-number">12.4</span> Advanced</h2>
+<p>We introduce two more operations for dfm objects, which are useful—and required—for many analyses, but slightly more advanced: smoothing and matching dfms.</p>
+<section id="smoothing" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="smoothing"><span class="header-section-number">12.4.1</span> Smoothing</h3>
+<p>As described in the Methods section above, smoothing a dfm implies that zero counts in a dfm are changed to a constant other than zero. Smoothing is required for models that do not work with zero probabilities, for instance Naive Bayes classifiers. We return to the minimal dfm object created above to show how to smooth your <code>dfm()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print dfm object</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dfmat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 2 documents, 9 features (27.78% sparse) and 0 docvars.
+      features
+docs   i love quanteda . text analysis with is fun
+  doc1 2    2        1 2    1        1    0  0   0
+  doc2 0    0        1 1    1        1    1  1   1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># smooth dfm by adding a constant of 1 to zero cells</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm_smooth</span>(dfmat, <span class="at">smoothing =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 2 documents, 9 features (0.00% sparse) and 0 docvars.
+      features
+docs   i love quanteda . text analysis with is fun
+  doc1 3    3        2 3    2        2    1  1   1
+  doc2 1    1        2 2    2        2    2  2   2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent to:</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm_weight</span>(dfmat, <span class="at">smoothing =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># smooth dfm by adding a constant of 0.5 to zero cells</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dfm_smooth</span>(dfmat, <span class="at">smoothing =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 2 documents, 9 features (0.00% sparse) and 0 docvars.
+      features
+docs     i love quanteda   . text analysis with  is fun
+  doc1 2.5  2.5      1.5 2.5  1.5      1.5  0.5 0.5 0.5
+  doc2 0.5  0.5      1.5 1.5  1.5      1.5  1.5 1.5 1.5</code></pre>
+</div>
+</div>
+</section>
+<section id="matching-two-document-feature-matrices" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="matching-two-document-feature-matrices"><span class="header-section-number">12.4.2</span> Matching Two Document-Feature Matrices</h3>
+<p>Finally, we show how to match the features of two dfms. Matching features is required for some machine learning classifiers that can only consider features occurring in the training set for predictions of documents in a second dfm. More details are provided in <a href="23-ml-classifiers.html" class="quarto-xref"><span>Chapter 23</span></a>.</p>
+<p>Let’s split the corpus of US inaugural speeches into two objects: one corpus containing speeches delivered between 1945 and 1990, and another one including speeches delivered since 1990. Afterwards, we match the feature set of one dfm with the features existing in the other dfm.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># corpus consisting of speeches between 1945 and 1990</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>corp_pre1990 <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural, Year <span class="sc">&gt;</span> <span class="dv">1945</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;=</span> <span class="dv">1990</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check that subsetting worked as expected</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co"># by inspecting the Year document-level variable</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">docvars</span>(corp_pre1990, <span class="st">"Year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1949 1953 1957 1961 1965 1969 1973 1977 1981 1985 1989</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># corpus consisting of speeches since 1990</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>corp_post1990 <span class="ot">&lt;-</span> <span class="fu">corpus_subset</span>(data_corpus_inaugural, Year <span class="sc">&gt;</span> <span class="dv">1990</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check that subsetting worked as expected</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co"># by inspecting the Year document-level variable</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">docvars</span>(corp_post1990, <span class="st">"Year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1993 1997 2001 2005 2009 2013 2017 2021</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create two dfms</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>dfmat_pre1990 <span class="ot">&lt;-</span> corp_pre1990 <span class="sc">|&gt;</span> </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>()</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>dfmat_post1990 <span class="ot">&lt;-</span> corp_post1990 <span class="sc">|&gt;</span> </span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dfm</span>()</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co"># match dfms: only keep features in dfmat_pre1990</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co"># that appear in dfmat_post1990</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>dfmat_pre1990matched <span class="ot">&lt;-</span> <span class="fu">dfm_match</span>(dfmat_pre1990, <span class="at">features =</span> <span class="fu">featnames</span>(dfmat_post1990))</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect dfm</span></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dfmat_pre1990matched)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 11 documents, 2,691 features (82.54% sparse) and 4 docvars.
+                 features
+docs              my fellow citizens   , today we celebrate the mystery  of
+  1949-Truman      1      1        1 105     2 59         0 141       0  96
+  1953-Eisenhower  4      2        3 126     1 66         0 171       0 142
+  1957-Eisenhower  4      0        0 121     2 51         0 114       0  96
+  1961-Kennedy     3      4        5  84     3 30         0  86       0  65
+  1965-Johnson     3      4        1  95     2 34         0  77       0  57
+  1969-Nixon       7      2        1 134     5 65         4 136       0  94
+[ reached max_ndoc ... 5 more documents, reached max_nfeat ... 2,681 more features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match dfms: only keep features in dfmat_post1990</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># that appear in dfmat_pre1990</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>dfmat_post1990matched <span class="ot">&lt;-</span> <span class="fu">dfm_match</span>(dfmat_post1990, <span class="at">features =</span> <span class="fu">featnames</span>(dfmat_pre1990))</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect dfm</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dfmat_post1990matched)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 8 documents, 3,331 features (84.20% sparse) and 4 docvars.
+              features
+docs           mr   . vice president   , chief justice and fellow citizens
+  1993-Clinton  0  81    0         2 139     0       0  66      5        2
+  1997-Clinton  0 108    0         1 131     0       1  94      7        7
+  2001-Bush     0  96    1         3 110     0       3  82      1        9
+  2005-Bush     1  98    1         4 120     1       6 108      3        6
+  2009-Obama    0 118    0         1 130     0       0 111      1        1
+  2013-Obama    1  89    1         2  99     1       2  89      3        6
+[ reached max_ndoc ... 2 more documents, reached max_nfeat ... 3,321 more features ]</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="further-reading" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">12.5</span> Further Reading</h2>
+<ul>
+<li>One of the first, and possibly most famous bag-of-words applications: <span class="citation" data-cites="Most63">Mosteller and Wallace (<a href="references.html#ref-Most63" role="doc-biblioref">1963</a>)</span></li>
+<li>A deep dive into weighting document-feature matrices: <span class="citation" data-cites="manning08iir">Manning, Raghavan, and Schütze (<a href="references.html#ref-manning08iir" role="doc-biblioref">2008</a>, ch.&nbsp;6)</span></li>
+<li>Document-feature matrices, processing, and why the default options are often not ideal: <span class="citation" data-cites="grimmer22textasdata">Grimmer, Roberts, and Stewart (<a href="references.html#ref-grimmer22textasdata" role="doc-biblioref">2022</a>, ch.&nbsp;5)</span></li>
+</ul>
+</section>
+<section id="exercises" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.6</span> Exercises</h2>
+<p>Add some here.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-benoit2020text" class="csl-entry" role="listitem">
+Benoit, Kenneth. 2020. <span>“Text as Data: An Overview.”</span> In <em>Handbook of Research Methods in Political Science and International Relations</em>, edited by Luigi Curini and Robert Franzese, 461–97. Thousand Oaks: Sage.
+</div>
+<div id="ref-lda" class="csl-entry" role="listitem">
+Chang, Jonathan. 2015. <em>Lda: Collapsed Gibbs Sampling Methods for Topic Models</em>. <a href="https://CRAN.R-project.org/package=lda">https://CRAN.R-project.org/package=lda</a>.
+</div>
+<div id="ref-crisp21voteseeking" class="csl-entry" role="listitem">
+Crisp, Brian F., Benjamin Schneider, Amy Catalinac, and Taishi Muraoka. 2021. <span>“Capturing Vote-Seeking Incentives and the Cultivation of a Personal and Party Vote.”</span> <em>Electoral Studies</em> 72: 102369. <a href="https://doi.org/10.1016/j.electstud.2021.102369">https://doi.org/10.1016/j.electstud.2021.102369</a>.
+</div>
+<div id="ref-keyatm" class="csl-entry" role="listitem">
+Eshima, Shusei, Kosuke Imai, and Tomoya Sakasi. 2023. <span>“Keyword Assisted Topic Models.”</span> <em>American Journal of Political Science</em> online first. <a href="https://doi.org/10.1111/ajps.12779">https://doi.org/10.1111/ajps.12779</a>.
+</div>
+<div id="ref-JSSv025i05" class="csl-entry" role="listitem">
+Feinerer, Ingo, Kurt Hornik, and David Meyer. 2008b. <span>“Text Mining Infrastructure in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 25 (5): 1–54. <a href="https://doi.org/10.18637/jss.v025.i05">https://doi.org/10.18637/jss.v025.i05</a>.
+</div>
+<div id="ref-tmpackage" class="csl-entry" role="listitem">
+———. 2008a. <span>“Text Mining Infrastructure in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 25 (5): 1–54. <a href="https://www.jstatsoft.org/v25/i05/">https://www.jstatsoft.org/v25/i05/</a>.
+</div>
+<div id="ref-grimmer22textasdata" class="csl-entry" role="listitem">
+Grimmer, Justin, Margaret E. Roberts, and Brandon M. Stewart. 2022. <em>Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts: A New Framework for Machine Learning and the Social Sciences</em>. Princeton: Princeton University Press.
+</div>
+<div id="ref-topicmodels" class="csl-entry" role="listitem">
+Grün, Bettina, and Kurt Hornik. 2011. <span>“<span class="nocase">topicmodels</span>: An <span>R</span> Package for Fitting Topic Models.”</span> <em>Journal of Statistical Software</em> 40 (13): 1–30. <a href="https://doi.org/10.18637/jss.v040.i13">https://doi.org/10.18637/jss.v040.i13</a>.
+</div>
+<div id="ref-manning08iir" class="csl-entry" role="listitem">
+Manning, Christopher D., Prabhakar Raghavan, and Hinrich Schütze. 2008. <em>An Introduction to Information Retrieval</em>. New York: Cambridge University Press. <a href="https://nlp.stanford.edu/IR-book/">https://nlp.stanford.edu/IR-book/</a>.
+</div>
+<div id="ref-Most63" class="csl-entry" role="listitem">
+Mosteller, F., and D. L. Wallace. 1963. <span>“Inference in an Authorship Problem.”</span> <em>Journal of the American Statistical Assocation</em> 58 (302): 275–309.
+</div>
+<div id="ref-stm" class="csl-entry" role="listitem">
+Roberts, Margaret E., Brandon M. Stewart, and Dustin Tingley. 2019. <span>“<span class="nocase">stm</span>: An <span>R</span> Package for Structural Topic Models.”</span> <em>Journal of Statistical Software</em> 91 (2): 1–40. <a href="https://doi.org/10.18637/jss.v091.i02">https://doi.org/10.18637/jss.v091.i02</a>.
+</div>
+<div id="ref-context" class="csl-entry" role="listitem">
+Rodriguez, Pedro L., Arthur Spirling, and Brandon Stewart. 2023. <em>conText: ’A La Carte’ on Text (ConText) Embedding Regression</em>. <a href="https://CRAN.R-project.org/package=conText">https://CRAN.R-project.org/package=conText</a>.
+</div>
+<div id="ref-tidytextJOSS" class="csl-entry" role="listitem">
+Silge, Julia, and David Robinson. 2016. <span>“Tidytext: Text Mining and Analysis Using Tidy Data Principles in r.”</span> <em>Journal of Open Source Software</em> 1 (3). <a href="https://doi.org/10.21105/joss.00037">https://doi.org/10.21105/joss.00037</a>.
+</div>
+<div id="ref-slapin08wordfish" class="csl-entry" role="listitem">
+Slapin, Jonathan B., and Sven-Oliver Proksch. 2008. <span>“A Scaling Model for Estimating Time-Series Party Positions from Texts.”</span> <em>American Journal of Political Science</em> 52 (3): 705–22. <a href="https://doi.org/10.1111/j.1540-5907.2008.00338.x">https://doi.org/10.1111/j.1540-5907.2008.00338.x</a>.
+</div>
+<div id="ref-lsx" class="csl-entry" role="listitem">
+Watanabe, Kohei. 2023. <em>LSX: Semi-Supervised Algorithm for Document Scaling</em>. <a href="https://CRAN.R-project.org/package=LSX">https://CRAN.R-project.org/package=LSX</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./11-quanteda-tokensadvanced.html" class="pagination-link  aria-label=" &lt;span="" token="" manipulation&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Token Manipulation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./13-quanteda-fcms.html" class="pagination-link" aria-label="<span class='chapter-number'>13</span>&nbsp; <span class='chapter-title'>Building Feature Co-occurrence Matrices</span>">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Feature Co-occurrence Matrices</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/12-quanteda-dfms.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

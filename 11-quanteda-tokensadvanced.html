@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -83,7 +84,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./12-quanteda-dictionaries.html" rel="next">
+<link href="./12-quanteda-dfms.html" rel="next">
 <link href="./10-quanteda-tokens.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,6 +116,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -124,12 +132,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-quanteda-overview.html">Managing Textual Data Using quanteda</a></li><li class="breadcrumb-item"><a href="./11-quanteda-tokensadvanced.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Token Manipulation</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-quanteda-tokens.html">Processing Texts</a></li><li class="breadcrumb-item"><a href="./11-quanteda-tokensadvanced.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Token Manipulation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -139,12 +147,12 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Text Analysis Using R</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/quanteda/Text-Analysis-Using-R" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/quanteda/Text-Analysis-Using-R" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -182,7 +190,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">R</span></a>
+ <span class="menu-text">Using R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -240,7 +248,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Managing Textual Data Using quanteda</span></a>
+ <span class="menu-text">Creating and Managing Corpora</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -258,6 +266,17 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating and Managing Corpora</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Processing Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-quanteda-tokens.html" class="sidebar-item-text sidebar-link">
@@ -272,27 +291,27 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-quanteda-dictionaries.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating and Managing Dictionaries</span></span></a>
+  <a href="./12-quanteda-dfms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-quanteda-dfms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></span></a>
+  <a href="./13-quanteda-fcms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Feature Co-occurrence Matrices</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Exploring and Describing Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./14-exploring-description.html" class="sidebar-item-text sidebar-link">
@@ -321,13 +340,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Statistics for Comparing Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./18-comparing-sophistication.html" class="sidebar-item-text sidebar-link">
@@ -350,13 +369,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
  <span class="menu-text">Machine Learning for Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21-ml-supervised-scaling.html" class="sidebar-item-text sidebar-link">
@@ -377,43 +396,60 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./24-ml-embedding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./25-ml-topicmodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Topic modelling</span></span></a>
+  <a href="./24-ml-topicmodels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Topic modelling</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
- <span class="menu-text">Further Methods for Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text">Incorporating Language Models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./26-further-advanced-nlp.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
+  <a href="./25-lms-linguistic-parsing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./27-further-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Integrating “tidy” approaches</span></span></a>
+  <a href="./26-lms-embeddings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./28-further-hardlanguages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Text analysis in “Hard” Languages</span></span></a>
+  <a href="./27-lms-transformers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+ <span class="menu-text">Further Issues</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-further-tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Integrating “tidy” approaches</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./29-further-hardlanguages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Text analysis in “Hard” Languages</span></span></a>
   </div>
 </li>
       </ul>
@@ -426,28 +462,28 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./29-appendix-installation.html" class="sidebar-item-text sidebar-link">
+  <a href="./30-appendix-installation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing the Required Tools</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./30-appendix-encoding.html" class="sidebar-item-text sidebar-link">
+  <a href="./31-appendix-encoding.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Everything You Never Wanted to Know about Encoding</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./31-appendix-regex.html" class="sidebar-item-text sidebar-link">
+  <a href="./32-appendix-regex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">A Survival Guide to Regular Expressions</span></span></a>
   </div>
 </li>
@@ -456,7 +492,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -481,12 +517,12 @@ div.csl-indent {
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">11.5</span> Further Reading</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.6</span> Exercises</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/11-quanteda-tokensadvanced.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/11-quanteda-tokensadvanced.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-quanteda-tokens.html">Processing Texts</a></li><li class="breadcrumb-item"><a href="./11-quanteda-tokensadvanced.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Token Manipulation</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-quanteda-tokensadvanced" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Token Manipulation</span></span></h1>
 </div>
@@ -501,23 +537,25 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="objectives" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">11.1</span> Objectives</h2>
-<p>The previous chapter introduced you to the basics of tokenisation and processing of tokens objects. Now we move to advanced token manipulations. We show how to replace tokens and introduce n-grams and skip-grams. We explain why we often want to compound multi-word expressions into a single token. We also outline why you might want to keep specific tokens and a context window around these tokens, and close the chapter with a brief introduction to lookup functions, which we cover much more extensively in <a href="16-exploring-dictionaries.html"><span>Chapter&nbsp;16</span></a>.</p>
+<p>The previous chapter introduced you to the basics of tokenisation and processing of tokens objects. Now we move to advanced token manipulations. We show how to replace tokens and introduce n-grams and skip-grams. We explain why we often want to compound multi-word expressions into a single token. We also outline why you might want to keep specific tokens and a context window around these tokens, and close the chapter with a brief introduction to lookup functions, which we cover much more extensively in <a href="16-exploring-dictionaries.html" class="quarto-xref"><span>Chapter 16</span></a>.</p>
 </section>
 <section id="methods" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="methods"><span class="header-section-number">11.2</span> Methods</h2>
-<p>Occasionally, you might want to <strong>replace</strong> certain tokens. For example, in political texts, <code>Labour</code> spelled usually implies a mention to the named-entity Labour Party, while <code>labour</code> refers to the noun. Country names is another example: if we want to understand mentions of the United States of America in UN General Debates, we could replace <code>US</code>, <code>USA</code>, and <code>United States</code> with <code>united_states_of_america</code>. Dictionaries, discussed in <a href="12-quanteda-dictionaries.html"><span>Chapter&nbsp;12</span></a>, are an effective tool for replacing tokens with an overarching “key”, such as <code>united_states</code>.</p>
+<p>Occasionally, you might want to <strong>replace</strong> certain tokens. For example, in political texts, <code>Labour</code> spelled usually implies a mention to the named-entity Labour Party, while <code>labour</code> refers to the noun. Country names is another example: if we want to understand mentions of the United States of America in UN General Debates, we could replace <code>US</code>, <code>USA</code>, and <code>United States</code> with <code>united_states_of_america</code>. Dictionaries, discussed in <a href="16-exploring-dictionaries.html" class="quarto-xref"><span>Chapter 16</span></a>, are an effective tool for replacing tokens with an overarching “key”, such as <code>united_states</code>.</p>
 <p>In some applications, tokens sequences might reveal more information than individual tokens. Before transforming a tokens object to a dfm, many existing studies create n-grams or skipgrams. <strong>N-grams</strong> are sequences of “n” items. <strong>Skip-grams</strong> are variations of n-grams which pairs non-consecutive tokens. N-grams capture local word patterns, whereas skip-grams capture broader contexts within texts. The sentence <code>I loved my stay in New York.</code> would result in the following bi-grams (sequence of two tokens): <code>"I_loved"  "loved_my" "my_stay"  "stay_in"  "in_New" "New_York" "York_."</code>. Skip-grams of size 2 with a distance of 0 and 1 would change the object to: <code>"I_loved" "I_my" "loved_my" "loved_time" "my_time" "my_in"  "time_in" "time_New" "in_New" "in_York" "New_York" "New_." "York_."</code>.</p>
 <p>These examples highlight advantages and shortcomings of n-grams and skip-grams. On the one hand, both approaches provide information about the context of each token. On the other hand, n-grams and skip-grams increase the number of types (i.e., unique tokens) in our corpus. For example, the number of types in the corpus of US inaugural speeches more than doubles when creating bi-grams rather than uni-grams and triples when creating tri-grams instead of uni-grams. Instead of creating bi-grams or tri-grams, manual or automated identification of meaningful multi-word expressions is often sufficient or even preferred over n-grams.</p>
-<p>So far, we treated all tokens as so-called unigrams. We separated tokens by spaces and did not combine two or more tokens that might form a multi-word expression. In languages with compound words, we do not need to pay much attention to <strong>multi-word expresions</strong>. For example, the German term “Mehrwertsteuer” is a single word in German, but its English equivalent consists of three words: “value added tax”. Suppose we are interested in companies’ or politicians’ focus on different forms of taxation. In that case, we want to treat <code>value added tax</code> as a multi-word expression rather than three separate tokens <code>value</code>, <code>added</code>, <code>tax</code>. Identifying multi-word expressions is especially important for document-feature matrices (dfm) (<a href="13-quanteda-dfms.html"><span>Chapter&nbsp;13</span></a>), which contain the counts of features in each document. If we do not explicitly compound <code>value added tax</code>, the words will be included as three separate tokens in our dfm. Compounding the expression during the tokenisation process, will ensure that the dfm contains the compound noun <code>value_added_tax</code>.</p>
+<p>So far, we treated all tokens as so-called unigrams. We separated tokens by spaces and did not combine two or more tokens that might form a multi-word expression. In languages with compound words, we do not need to pay much attention to <strong>multi-word expresions</strong>. For example, the German term “Mehrwertsteuer” is a single word in German, but its English equivalent consists of three words: “value added tax”. Suppose we are interested in companies’ or politicians’ focus on different forms of taxation. In that case, we want to treat <code>value added tax</code> as a multi-word expression rather than three separate tokens <code>value</code>, <code>added</code>, <code>tax</code>. Identifying multi-word expressions is especially important for document-feature matrices (dfm) (<a href="12-quanteda-dfms.html" class="quarto-xref"><span>Chapter 12</span></a>), which contain the counts of features in each document. If we do not explicitly compound <code>value added tax</code>, the words will be included as three separate tokens in our dfm. Compounding the expression during the tokenisation process, will ensure that the dfm contains the compound noun <code>value_added_tax</code>.</p>
 <p>In many cases, we know multi-word expressions through our domain knowledge. For example, in reviews about hotels in New York, we might want to compound <code>New_York</code>, <code>Madison_Square_Garden</code>, and <code>Wall_Street</code>. In parliamentary speeches, we want to compound party names: instead of treating the combination <code>green party</code> as separate tokens, we might prefer the multi-word expression <code>green party</code> before proceeding with our statistical analysis.</p>
-<p>Users need to discover relevant multi-word expressions. We can use approaches such as <strong>keywords-in-context</strong> (<a href="15-exploring-kwic.html"><span>Chapter&nbsp;15</span></a>) to explore the context of specific words or conduct a <strong>collocation analysis</strong> to identify terms that tend to co-occur together automatically. We introduce these methods in <em>add reference to new chapter</em>. Having identified multi-word expressions, you can compound these collocations before continuing your textual analysis.</p>
-<p><strong>Keeping tokens and their context windows</strong> is another effective—and sometimes underused—tokenisation operation. We can keep specific tokens and the words around these patterns to refine our research question and focus on specific aspects of our text corpus. Let’s imagine the following example: we are working with all speeches delivered in parliament over a period of three decades and want to understand how parties’ focus and positions about climate change have evolved. Most speeches in our corpus will focus on different policies or contain procedural language, but we could create a list of words and phrases relating to the environment, and keep these terms with a context of several words. This approach would allow for a “targeted” analysis. Instead of analysing the full text corpus, we narrowed down our documents to the parts relevant to our research question. For example, <span class="citation" data-cites="lupia20nsf">Lupia, Soroka, and Beatty (<a href="references.html#ref-lupia20nsf" role="doc-biblioref">2020</a>)</span> limit U.S Congressional speeches to sentences mentioning the National Science Foundation (NSF). Afterwards, the authors identify which of these context words distinguish Democrats from Republicans, and how the topics (<a href="25-ml-topicmodels.html"><span>Chapter&nbsp;25</span></a>) mentioned in these sentences are moderated by the party of a speaker. <span class="citation" data-cites="rauh20eu">Rauh, Bes, and Schoonvelde (<a href="references.html#ref-rauh20eu" role="doc-biblioref">2020</a>)</span> extract mentions of European institutions and a context window of three sentences from speeches delivered by European prime ministers. In the next step, the authors measure speech complexity and sentiment in these statements on European institutions. Their results reveals that prime minister tend to speak more favourably about the European Union when they face a strong Eurosceptic challenger party.</p>
-<p>Finally, we briefly introduce the concept of <strong>looking up</strong> tokens. We match tokens against a predefined list. This approach requires users to develop “dictionaries”, consisting of one or more “keys” or categories. Each of these keys, in turn, contains various patterns, usually words or multi-word expressions. A sentiment analysis, covered in <a href="16-exploring-dictionaries.html"><span>Chapter&nbsp;16</span></a>, often relies on lists of terms and phrases scored as “positive” and “negative” and involves looking up these tokens.</p>
-<p>Classifying topics, policy areas, or concepts can also be conducted with a “lookup approach.” For example, <span class="citation" data-cites="gessler22immig">Gessler and Hunger (<a href="references.html#ref-gessler22immig" role="doc-biblioref">2022</a>)</span> create a dictionary of keywords and phrases related to immigration. Afterwards, the authors apply this dictionary to party press releases. The authors keep all documents containing keywords from their immigration dictionary. Their rule-based approach is more computationally efficient than supervised classification and produced valid results. Subsequent analyses apply scaling methods to this subset of immigration-related press releases to understand how the 2015 “refugee crisis” in Europe changed party positions on migration policy. <a href="16-exploring-dictionaries.html"><span>Chapter&nbsp;16</span></a> provides more details on creating and applying dictionaries.</p>
+<p>Users need to discover relevant multi-word expressions. We can use approaches such as <strong>keywords-in-context</strong> (<a href="15-exploring-kwic.html" class="quarto-xref"><span>Chapter 15</span></a>) to explore the context of specific words or conduct a <strong>collocation analysis</strong> to identify terms that tend to co-occur together automatically. We introduce these methods in <em>add reference to new chapter</em>. Having identified multi-word expressions, you can compound these collocations before continuing your textual analysis.</p>
+<p><strong>Keeping tokens and their context windows</strong> is another effective—and sometimes underused—tokenisation operation. We can keep specific tokens and the words around these patterns to refine our research question and focus on specific aspects of our text corpus. Let’s imagine the following example: we are working with all speeches delivered in parliament over a period of three decades and want to understand how parties’ focus and positions about climate change have evolved. Most speeches in our corpus will focus on different policies or contain procedural language, but we could create a list of words and phrases relating to the environment, and keep these terms with a context of several words. This approach would allow for a “targeted” analysis. Instead of analysing the full text corpus, we narrowed down our documents to the parts relevant to our research question. For example, <span class="citation" data-cites="lupia20nsf">Lupia, Soroka, and Beatty (<a href="references.html#ref-lupia20nsf" role="doc-biblioref">2020</a>)</span> limit U.S Congressional speeches to sentences mentioning the National Science Foundation (NSF). Afterwards, the authors identify which of these context words distinguish Democrats from Republicans, and how the topics (<a href="24-ml-topicmodels.html" class="quarto-xref"><span>Chapter 24</span></a>) mentioned in these sentences are moderated by the party of a speaker. <span class="citation" data-cites="rauh20eu">Rauh, Bes, and Schoonvelde (<a href="references.html#ref-rauh20eu" role="doc-biblioref">2020</a>)</span> extract mentions of European institutions and a context window of three sentences from speeches delivered by European prime ministers. In the next step, the authors measure speech complexity and sentiment in these statements on European institutions. Their results reveals that prime minister tend to speak more favourably about the European Union when they face a strong Eurosceptic challenger party.</p>
+<p>Finally, we briefly introduce the concept of <strong>looking up</strong> tokens. We match tokens against a predefined list. This approach requires users to develop “dictionaries”, consisting of one or more “keys” or categories. Each of these keys, in turn, contains various patterns, usually words or multi-word expressions. A sentiment analysis, covered in <a href="16-exploring-dictionaries.html" class="quarto-xref"><span>Chapter 16</span></a>, often relies on lists of terms and phrases scored as “positive” and “negative” and involves looking up these tokens.</p>
+<p>Classifying topics, policy areas, or concepts can also be conducted with a “lookup approach.” For example, <span class="citation" data-cites="gessler22immig">Gessler and Hunger (<a href="references.html#ref-gessler22immig" role="doc-biblioref">2022</a>)</span> create a dictionary of keywords and phrases related to immigration. Afterwards, the authors apply this dictionary to party press releases. The authors keep all documents containing keywords from their immigration dictionary. Their rule-based approach is more computationally efficient than supervised classification and produced valid results. Subsequent analyses apply scaling methods to this subset of immigration-related press releases to understand how the 2015 “refugee crisis” in Europe changed party positions on migration policy. <a href="16-exploring-dictionaries.html" class="quarto-xref"><span>Chapter 16</span></a> provides more details on creating and applying dictionaries.</p>
 </section>
 <section id="examples" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="examples"><span class="header-section-number">11.3</span> Examples</h2>
@@ -548,12 +586,13 @@ text1 :
 [1] "The"        "European"   "Union"      "negotiated" "with"      
 [6] "the"        "United"     "Kingdom"    "."         </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if we want to treat United Kingdom and European Union as multi-word expressions across all texts,</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we can compound it after the replacement</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>toks_eu_uk <span class="sc">|&gt;</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_replace</span>(<span class="at">pattern =</span> <span class="st">"UK"</span>, <span class="at">replacement =</span> <span class="fu">phrase</span>(<span class="st">"United Kingdom"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_compound</span>(<span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="fu">c</span>(<span class="st">"United Kingdom"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"European Union"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if we want to treat United Kingdom and European Union </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># as multi-word expressions across all texts,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we can compound it after the replacement</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>toks_eu_uk <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_replace</span>(<span class="at">pattern =</span> <span class="st">"UK"</span>, <span class="at">replacement =</span> <span class="fu">phrase</span>(<span class="st">"United Kingdom"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_compound</span>(<span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="fu">c</span>(<span class="st">"United Kingdom"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"European Union"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 1 document.
 text1 :
@@ -581,25 +620,27 @@ How to declare multi-word expressions
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show that replacements of multi-word expressions</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># require phrase()</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"natural language processing with quanteda"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_replace</span>(<span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="fu">c</span>(<span class="st">"natural language processing"</span>)), <span class="at">replacement =</span> <span class="st">"NLP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"quantitative text analysis with quanteda"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_replace</span>(<span class="at">pattern =</span> <span class="fu">phrase</span>(<span class="fu">c</span>(<span class="st">"quantitative text analysis"</span>)),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">replacement =</span> <span class="st">"QTA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 1 document.
 text1 :
-[1] "NLP"      "with"     "quanteda"</code></pre>
+[1] "QTA"      "with"     "quanteda"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replacement does not work without phrase()</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"natural language processing with quanteda"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_replace</span>(<span class="at">pattern =</span> <span class="st">"natural language processing"</span>, <span class="at">replacement =</span> <span class="st">"NLP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"quantitative text analysis with quanteda"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_replace</span>(<span class="at">pattern =</span> <span class="st">"quantitative text analysis"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">replacement =</span> <span class="st">"QTA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 1 document.
 text1 :
-[1] "natural"    "language"   "processing" "with"       "quanteda"  </code></pre>
+[1] "quantitative" "text"         "analysis"     "with"         "quanteda"    </code></pre>
 </div>
 </div>
 </div>
 </div>
-<p>More common than one-to-one replacements is the conversation of tokens into equivalence classes defined by values of a dictionary object. Dictionaries, covered in much greater detail in chapters <a href="12-quanteda-dictionaries.html"><span>Chapter&nbsp;12</span></a> and <a href="16-exploring-dictionaries.html"><span>Chapter&nbsp;16</span></a>, allow us to look up uni-grams or multi-word expressions and replace these terms with the dictionary “key”. We introduce the intuition behind <code>tokens_lookup()</code> with a simple example. The example below replaces selected European institutions with its dictionary key <code>eu_institution</code>.</p>
+<p>More common than one-to-one replacements is the conversation of tokens into equivalence classes defined by values of a dictionary object. Dictionaries, covered in much greater detail in chapter <a href="16-exploring-dictionaries.html" class="quarto-xref"><span>Chapter 16</span></a>, allow us to look up uni-grams or multi-word expressions and replace these terms with the dictionary “key”. We introduce the intuition behind <code>tokens_lookup()</code> with a simple example. The example below replaces selected European institutions with its dictionary key <code>eu_institution</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dictionary (covered more extensively in the next chapter)</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dict_euinst <span class="ot">&lt;-</span> <span class="fu">dictionary</span>(</span>
@@ -646,7 +687,7 @@ text1 :
 <h3 data-number="11.3.2" class="anchored" data-anchor-id="pattern-matching-pattern-valuetype-and-case_insensitive"><span class="header-section-number">11.3.2</span> Pattern Matching: pattern, valuetype, and case_insensitive</h3>
 <p>Pattern matching is central when compounding or selecting tokens. Let’s consider the following example: we might want to keep only “president”, “president’s” and “presidential” in our tokens object. One option is to use <strong>fixed</strong> pattern matching and only keep the exact matches. We specify the <code>pattern</code>and <code>valuetype</code> in the <code>tokens_select()</code> function and determine whether to treat patterns case-sensitive or case-insensitive.</p>
 <p>Let’s go through this trio systematically. The <code>pattern</code> can be one ore more unigrams or multi-word sequences. When including multi-word sequences, make sure to use the <code>phrase()</code> function as described above. <code>case_insensitive</code> specifies whether or not to ignore the case of terms when matching a pattern. The <code>valuetype</code> can take one of three arguments: <code>"glob"</code> for “glob”-style wildcard expressions; <code>"regex"</code> for regular expressions; or <code>"fixed"</code> for exact matching.</p>
-<p>We start explaining <strong>fixed pattern matching</strong> and the the behaviour of <code>case_insensitive</code> before moving to “glob”-style pattern matching and matching based on regular expressions. We refer readers to <a href="04-r-strings.html"><span>Chapter&nbsp;4</span></a> and <a href="31-appendix-regex.html"><span>Appendix&nbsp;C</span></a> for details about regular expressions.</p>
+<p>We start explaining <strong>fixed pattern matching</strong> and the the behaviour of <code>case_insensitive</code> before moving to “glob”-style pattern matching and matching based on regular expressions. We refer readers to <a href="04-r-strings.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="32-appendix-regex.html" class="quarto-xref"><span>Appendix C</span></a> for details about regular expressions.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create tokens object</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>toks_president <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"The President attended the presidential gala</span></span>
@@ -818,7 +859,7 @@ text1 :
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntype</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 47496</code></pre>
+<pre><code>[1] 47494</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of types with n-grams of size 2 </span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># after removing stopwords and punctuation characters</span></span>
@@ -838,7 +879,7 @@ text1 :
 <span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntype</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 118934</code></pre>
+<pre><code>[1] 118939</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of types with n-grams of size 3 and no processing</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>data_corpus_inaugural <span class="sc">|&gt;</span> </span>
@@ -847,7 +888,7 @@ text1 :
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ntype</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 144820</code></pre>
+<pre><code>[1] 144825</code></pre>
 </div>
 </div>
 <div class="callout callout-style-simple callout-important callout-titled">
@@ -860,13 +901,13 @@ When to pay attention to very sparse objects
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>An increase in types through n-grams increases the sparsity of a document-feature matrix, i.e., the proportion of cells that have zero counts. (<a href="13-quanteda-dfms.html"><span>Chapter&nbsp;13</span></a>). The sparsity of US inaugural debates (<code>data_corpus_inaugural</code>) increases from 92% to 96.9% when using bi-grams instead of uni-grams. While <strong>quanteda</strong> handles sparse document-feature matrices very efficiently, a very high sparsity might result in convergence issues for unsupervised scaling models (<a href="22-ml-unsupervised-scaling.html"><span>Chapter&nbsp;22</span></a>) or topic models (<a href="25-ml-topicmodels.html"><span>Chapter&nbsp;25</span></a>). Therefore, n-grams or skip-grams may be counterproductive for some research questions.</p>
+<p>An increase in types through n-grams increases the sparsity of a document-feature matrix, i.e., the proportion of cells that have zero counts. (<a href="12-quanteda-dfms.html" class="quarto-xref"><span>Chapter 12</span></a>). The sparsity of US inaugural debates (<code>data_corpus_inaugural</code>) increases from 92% to 96.9% when using bi-grams instead of uni-grams. While <strong>quanteda</strong> handles sparse document-feature matrices very efficiently, a very high sparsity might result in convergence issues for unsupervised scaling models (<a href="22-ml-unsupervised-scaling.html" class="quarto-xref"><span>Chapter 22</span></a>) or topic models (<a href="24-ml-topicmodels.html" class="quarto-xref"><span>Chapter 24</span></a>). Therefore, n-grams or skip-grams may be counterproductive for some research questions.</p>
 </div>
 </div>
 </section>
 <section id="compounding-tokens" class="level3" data-number="11.3.4">
 <h3 data-number="11.3.4" class="anchored" data-anchor-id="compounding-tokens"><span class="header-section-number">11.3.4</span> Compounding Tokens</h3>
-<p>Before transforming a tokens object into a document-feature matrix (<a href="13-quanteda-dfms.html"><span>Chapter&nbsp;13</span></a>), we often want or need to compound multi-word expressions. Compounded phrases will be treated as a single feature in subsequent analyses. Let’s explore how to compound the multi-word expressions “social welfare” and “social security.” As mentioned above, we need to explicitly declare multi-word expressions with the <code>pattern()</code> function.</p>
+<p>Before transforming a tokens object into a document-feature matrix (<a href="12-quanteda-dfms.html" class="quarto-xref"><span>Chapter 12</span></a>), we often want or need to compound multi-word expressions. Compounded phrases will be treated as a single feature in subsequent analyses. Let’s explore how to compound the multi-word expressions “social welfare” and “social security.” As mentioned above, we need to explicitly declare multi-word expressions with the <code>pattern()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create tokens object for examples</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>toks_social <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"We need to increase social welfare payments </span></span>
@@ -932,7 +973,7 @@ text1 :
 </div>
 </div>
 </div>
-<p>You can also compound terms based on regular expressions (<a href="04-r-strings.html"><span>Chapter&nbsp;4</span></a> and <a href="31-appendix-regex.html"><span>Appendix&nbsp;C</span></a>) or “wild card” pattern matches. Below, we use the glob-style wildcard expression <code>*</code> to compound all multi-word expressions starting with “social” in US State of the Union speeches.</p>
+<p>You can also compound terms based on regular expressions (<a href="04-r-strings.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="32-appendix-regex.html" class="quarto-xref"><span>Appendix C</span></a>) or “wild card” pattern matches. Below, we use the glob-style wildcard expression <code>*</code> to compound all multi-word expressions starting with “social” in US State of the Union speeches.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise SOTU speeches, remove punctuation and numbers</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># before removing stopwords</span></span>
@@ -953,11 +994,11 @@ text1 :
 <span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">topfeatures</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="co"># get 15 most frequent compounded tokens</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    social_security     social_problems     social_services        social_needs 
-                229                  16                  15                  13 
-        social_life        social_order     social_progress       social_system 
-                 10                   9                   9                   7 
-     social_welfare     social_programs  social_intercourse    social_condition 
-                  7                   7                   6                   6 
+                229                  16                  16                  13 
+        social_life        social_order     social_progress      social_welfare 
+                 10                   9                   9                   8 
+    social_programs       social_system  social_intercourse    social_condition 
+                  8                   7                   6                   6 
       social_change    social_insurance social_institutions 
                   6                   6                   5 </code></pre>
 </div>
@@ -1012,15 +1053,15 @@ text4 :
 <span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">topfeatures</span>(<span class="at">n =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       room       rooms       hotel       clean        nice       small 
-      34357       12043        5523        4761        2908        2690 
+      34404       12061        5520        4766        2908        2694 
       great       staff         n't     service       floor        view 
-       2630        2475        2414        2342        2181        2148 
+       2632        2474        2414        2343        2181        2153 
        good comfortable         bed    bathroom       large   breakfast 
-       2106        1957        1677        1596        1594        1591 
+       2107        1961        1675        1596        1595        1593 
       night      stayed    spacious        stay    location         got 
-       1425        1415        1332        1313        1274        1267 
+       1426        1415        1333        1314        1273        1267 
         day        just        size        beds      booked    friendly 
-       1216        1181        1161        1050        1002         992 </code></pre>
+       1216        1180        1160        1050        1002         995 </code></pre>
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip callout-titled">
@@ -1098,7 +1139,7 @@ text1 :
 </section>
 <section id="chunking" class="level3" data-number="11.4.2">
 <h3 data-number="11.4.2" class="anchored" data-anchor-id="chunking"><span class="header-section-number">11.4.2</span> Chunking</h3>
-<p>In some applications, we may be interested by dividing our texts into equally-sized segments or chunks. You might be working with a set of very long documents, which cannot be segmented into smaller units such as paragraphs or sentences due to missing delimiters (see <a href="09-quanteda-corpus.html"><span>Chapter&nbsp;9</span></a> and using <code>corpus_reshape()</code> or <code>corpus_segment()</code>). Some methods, such as topic models (<a href="25-ml-topicmodels.html"><span>Chapter&nbsp;25</span></a>) work better when the documents have similar lengths. The function <code>tokens_chunk()</code> can be used to segment a tokens object by chunks of a given size. The <code>overlap</code> argument allows you to specify whether to take over tokens from the preceding chunk. We use the first hotel review of <code>data_corpus_TAhotels</code> and divide the reviews up into smaller chunks with and without overlaps.</p>
+<p>In some applications, we may be interested by dividing our texts into equally-sized segments or chunks. You might be working with a set of very long documents, which cannot be segmented into smaller units such as paragraphs or sentences due to missing delimiters (see <a href="09-quanteda-corpus.html" class="quarto-xref"><span>Chapter 9</span></a> and using <code>corpus_reshape()</code> or <code>corpus_segment()</code>). Some methods, such as topic models (<a href="24-ml-topicmodels.html" class="quarto-xref"><span>Chapter 24</span></a>) work better when the documents have similar lengths. The function <code>tokens_chunk()</code> can be used to segment a tokens object by chunks of a given size. The <code>overlap</code> argument allows you to specify whether to take over tokens from the preceding chunk. We use the first hotel review of <code>data_corpus_TAhotels</code> and divide the reviews up into smaller chunks with and without overlaps.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenize the first hotel review</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>toks_r1 <span class="ot">&lt;-</span> <span class="fu">tokens</span>(TAUR<span class="sc">::</span>data_corpus_TAhotels[<span class="dv">1</span>])</span>
@@ -1164,7 +1205,7 @@ text1.3 :
 <p>Add some here.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-gessler22immig" class="csl-entry" role="listitem">
 Gessler, Theresa, and Sophia Hunger. 2022. <span>“How the Refugee Crisis and Radical Right Parties Shape Party Competition on Immigration.”</span> <em>Political Science Research and Methods</em> 10 (3): 524–44. <a href="https://doi.org/10.1017/psrm.2021.64">https://doi.org/10.1017/psrm.2021.64</a>.
 </div>
@@ -1263,10 +1304,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1276,8 +1316,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1290,6 +1339,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1333,6 +1501,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1358,6 +1527,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1419,13 +1614,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./10-quanteda-tokens.html" class="pagination-link">
+      <a href="./10-quanteda-tokens.html" class="pagination-link  aria-label=" &lt;span="" and="" managing="" tokens&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./12-quanteda-dictionaries.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating and Managing Dictionaries</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./12-quanteda-dfms.html" class="pagination-link" aria-label="<span class='chapter-number'>12</span>&nbsp; <span class='chapter-title'>Building Document-Feature Matrices</span>">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1433,4 +1628,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/11-quanteda-tokensadvanced.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

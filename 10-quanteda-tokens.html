@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,6 +116,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -124,12 +132,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-quanteda-overview.html">Managing Textual Data Using quanteda</a></li><li class="breadcrumb-item"><a href="./10-quanteda-tokens.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-quanteda-tokens.html">Processing Texts</a></li><li class="breadcrumb-item"><a href="./10-quanteda-tokens.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -139,12 +147,12 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Text Analysis Using R</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/quanteda/Text-Analysis-Using-R" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/quanteda/Text-Analysis-Using-R" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -182,7 +190,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">R</span></a>
+ <span class="menu-text">Using R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -240,7 +248,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Managing Textual Data Using quanteda</span></a>
+ <span class="menu-text">Creating and Managing Corpora</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -258,6 +266,17 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating and Managing Corpora</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Processing Texts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-quanteda-tokens.html" class="sidebar-item-text sidebar-link active">
@@ -272,27 +291,27 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-quanteda-dictionaries.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating and Managing Dictionaries</span></span></a>
+  <a href="./12-quanteda-dfms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-quanteda-dfms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Document-Feature Matrices</span></span></a>
+  <a href="./13-quanteda-fcms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building Feature Co-occurrence Matrices</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Exploring and Describing Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./14-exploring-description.html" class="sidebar-item-text sidebar-link">
@@ -321,13 +340,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Statistics for Comparing Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./18-comparing-sophistication.html" class="sidebar-item-text sidebar-link">
@@ -350,13 +369,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
  <span class="menu-text">Machine Learning for Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21-ml-supervised-scaling.html" class="sidebar-item-text sidebar-link">
@@ -377,43 +396,60 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./24-ml-embedding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./25-ml-topicmodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Topic modelling</span></span></a>
+  <a href="./24-ml-topicmodels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Topic modelling</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
- <span class="menu-text">Further Methods for Texts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text">Incorporating Language Models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./26-further-advanced-nlp.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
+  <a href="./25-lms-linguistic-parsing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./27-further-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Integrating “tidy” approaches</span></span></a>
+  <a href="./26-lms-embeddings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Word Embedding Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./28-further-hardlanguages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Text analysis in “Hard” Languages</span></span></a>
+  <a href="./27-lms-transformers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Advanced NLP using R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+ <span class="menu-text">Further Issues</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28-further-tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Integrating “tidy” approaches</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./29-further-hardlanguages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Text analysis in “Hard” Languages</span></span></a>
   </div>
 </li>
       </ul>
@@ -426,28 +462,28 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./29-appendix-installation.html" class="sidebar-item-text sidebar-link">
+  <a href="./30-appendix-installation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing the Required Tools</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./30-appendix-encoding.html" class="sidebar-item-text sidebar-link">
+  <a href="./31-appendix-encoding.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Everything You Never Wanted to Know about Encoding</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./31-appendix-regex.html" class="sidebar-item-text sidebar-link">
+  <a href="./32-appendix-regex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">A Survival Guide to Regular Expressions</span></span></a>
   </div>
 </li>
@@ -456,7 +492,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -471,23 +507,24 @@ div.csl-indent {
   <li><a href="#removing-punctuation-separators-symbols" id="toc-removing-punctuation-separators-symbols" class="nav-link" data-scroll-target="#removing-punctuation-separators-symbols"><span class="header-section-number">10.3.2</span> Removing Punctuation, Separators, Symbols</a></li>
   <li><a href="#inspecting-and-removing-stopwords" id="toc-inspecting-and-removing-stopwords" class="nav-link" data-scroll-target="#inspecting-and-removing-stopwords"><span class="header-section-number">10.3.3</span> Inspecting and Removing Stopwords</a></li>
   </ul></li>
-  <li><a href="#stemming" id="toc-stemming" class="nav-link" data-scroll-target="#stemming"><span class="header-section-number">10.4</span> Stemming</a></li>
-  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced"><span class="header-section-number">10.5</span> Advanced</a>
+  <li><a href="#pattern-matching" id="toc-pattern-matching" class="nav-link" data-scroll-target="#pattern-matching"><span class="header-section-number">10.4</span> Pattern Matching</a></li>
+  <li><a href="#stemming" id="toc-stemming" class="nav-link" data-scroll-target="#stemming"><span class="header-section-number">10.5</span> Stemming</a></li>
+  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced"><span class="header-section-number">10.6</span> Advanced</a>
   <ul class="collapse">
-  <li><a href="#applying-different-tokenisers" id="toc-applying-different-tokenisers" class="nav-link" data-scroll-target="#applying-different-tokenisers"><span class="header-section-number">10.5.1</span> Applying Different Tokenisers</a></li>
-  <li><a href="#lemmatisation" id="toc-lemmatisation" class="nav-link" data-scroll-target="#lemmatisation"><span class="header-section-number">10.5.2</span> Lemmatisation</a></li>
-  <li><a href="#modifying-stopword-lists" id="toc-modifying-stopword-lists" class="nav-link" data-scroll-target="#modifying-stopword-lists"><span class="header-section-number">10.5.3</span> Modifying Stopword Lists</a></li>
-  <li><a href="#managing-document-level-variables-and-metadata" id="toc-managing-document-level-variables-and-metadata" class="nav-link" data-scroll-target="#managing-document-level-variables-and-metadata"><span class="header-section-number">10.5.4</span> Managing Document-Level Variables and Metadata</a></li>
+  <li><a href="#applying-different-tokenisers" id="toc-applying-different-tokenisers" class="nav-link" data-scroll-target="#applying-different-tokenisers"><span class="header-section-number">10.6.1</span> Applying Different Tokenisers</a></li>
+  <li><a href="#lemmatisation" id="toc-lemmatisation" class="nav-link" data-scroll-target="#lemmatisation"><span class="header-section-number">10.6.2</span> Lemmatisation</a></li>
+  <li><a href="#modifying-stopword-lists" id="toc-modifying-stopword-lists" class="nav-link" data-scroll-target="#modifying-stopword-lists"><span class="header-section-number">10.6.3</span> Modifying Stopword Lists</a></li>
+  <li><a href="#managing-document-level-variables-and-metadata" id="toc-managing-document-level-variables-and-metadata" class="nav-link" data-scroll-target="#managing-document-level-variables-and-metadata"><span class="header-section-number">10.6.4</span> Managing Document-Level Variables and Metadata</a></li>
   </ul></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">10.6</span> Further Reading</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.7</span> Exercises</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">10.7</span> Further Reading</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.8</span> Exercises</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/10-quanteda-tokens.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/10-quanteda-tokens.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-quanteda-tokens.html">Processing Texts</a></li><li class="breadcrumb-item"><a href="./10-quanteda-tokens.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-quanteda-tokens" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating and Managing Tokens</span></span></h1>
 </div>
@@ -502,7 +539,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="objectives" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">10.1</span> Objectives</h2>
@@ -510,10 +549,10 @@ div.csl-indent {
 </section>
 <section id="methods" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="methods"><span class="header-section-number">10.2</span> Methods</h2>
-<p>After having collected the text for analysis and collecting these texts in a corpus (see <a href="09-quanteda-corpus.html"><span>Chapter&nbsp;9</span></a>), the next most common step is tokenise our texts. Tokenisation is the process of segmenting longer texts into individual units known as <em>tokens</em>, based on semantic, linguistic, or lexographic distinctions. The most common variety of tokens consists of distinct words, but tokens can also be punctuation characters, numeric or alphabetic characters, emoji, or speaces. Tokens can also consist of sequences of these, such as sentences, paragraphs, or word sequences of arbitrary length.</p>
+<p>After having collected the text for analysis and collecting these texts in a corpus (see <a href="09-quanteda-corpus.html" class="quarto-xref"><span>Chapter 9</span></a>), the next most common step is tokenise our texts. Tokenisation is the process of segmenting longer texts into individual units known as <em>tokens</em>, based on semantic, linguistic, or lexographic distinctions. The most common variety of tokens consists of distinct words, but tokens can also be punctuation characters, numeric or alphabetic characters, emoji, or speaces. Tokens can also consist of sequences of these, such as sentences, paragraphs, or word sequences of arbitrary length.</p>
 <p><em>Tokenization</em> is the process of splitting a text into its constituent tokens (which includes punctuation characters as tokens). Tokenization usually happens by recognising the delimiters between words, which in most languages takes the form of a space. In more technical language, inter-word delimiters are known as <em>whitespace</em>, and include additional machine characters such as newlines, tabs, and space variants. Most languages separate words by whitespace, but some major ones such as Chinese, Japanese, and Korean do not. Tokenizing these languages requires a set of rules to recognise word boundaries, usually from a listing of common word endings. Smart tokenizers will also separate punctuation characters that occur immediately following a word, such as the comma after <em>word</em> in this sentence.</p>
 <p>In <strong>quanteda</strong>, the built-in tokenizer provides the option to tokenise our texts to different levels: words, sentences, or individual characters. Most of the time, we tokenise our documents to the level of words, although the default “word” tokeniser also separates out punctuation characters and numerals. Each tokenised document will consist of the list of tokens found in that document, but always still organised into the same document units that define the corpus.</p>
-<p>Throughout all tokenisation steps, we know the position of each tokens in the document, which we can use to identify and compound multiword-expressions or apply a dictionary with multiword expressions. These aspects will be covered in much more detail in <a href="11-quanteda-tokensadvanced.html"><span>Chapter&nbsp;11</span></a>. For now, it is important to keep in mind the main difference between tokens objects and a document-feature matrix: while we know the relative position of each feature in a tokens object, a document-feature matrix reports the counts of features (which can be words, punctuation characters, numbers, or multiword expressions) in each document, but does not allow us to identify <em>where</em> a certain feature appeared in the document.</p>
+<p>Throughout all tokenisation steps, we know the position of each tokens in the document, which we can use to identify and compound multiword-expressions or apply a dictionary with multiword expressions. These aspects will be covered in much more detail in <a href="11-quanteda-tokensadvanced.html" class="quarto-xref"><span>Chapter 11</span></a>. For now, it is important to keep in mind the main difference between tokens objects and a document-feature matrix: while we know the relative position of each feature in a tokens object, a document-feature matrix reports the counts of features (which can be words, punctuation characters, numbers, or multiword expressions) in each document, but does not allow us to identify <em>where</em> a certain feature appeared in the document.</p>
 <p>The next step after the tokenization of our documents is often described as pre-processing, but we prefer “processing.” Processing does not precede the analysis, but is an integral part of the workflow and can influence subsequent results <span class="citation" data-cites="denny18preprocess">(<a href="references.html#ref-denny18preprocess" role="doc-biblioref">Denny and Spirling 2018</a>)</span>. The most common types is the lower-casing of text (e.g., “Party” will be change to “party”); the removal of punctuation characters and symbols; the removal of so-called stopwords which appear frequently throughout all documents but do not add specific meaning; stemming or lemmatisation; or compounding phrases/multiword expressions to a single token. All of these decisions can influence our results. In this chapter, we focus on lower-casing, the removal of punctuation characters, and stopwords. The subsequent chapter covers more advanced tokenisation approaches, including phrases, tokens replacement, and chunking.</p>
 <p><strong>Lower-casing</strong> words is a standard procedure in many text analysis projects. The rationale behind this is that “Income” and “income” should be interpreted as the same textual feature due to their shared meaning. Furthermore, it’s a common practice to <strong>remove punctuation characters</strong> like commas, colons, semi-colons, question marks, and exclamation marks. Though these characters appear prolifically across texts, they often don’t significantly contribute to a quantitative text analysis. However, in certain contexts, punctuation can carry significant weight. For instance, the frequency of question marks can differentiate between positive and negative reviews of movies or hotels. They can also demarcate the rhetoric of opposition versus governing parties in parliamentary debates. Negative reviews might employ more question marks than positive ones, while opposition parties might employ rhetorical questions to criticise the ruling party. <strong>Symbols</strong> are another category often pruned during text processing.</p>
 <p>The removal of <strong>stopwords</strong> prior to quantitative analysis is another frequent step. The rationale behind removing stopwords might be to shrink the vector space, condense the size of document-feature matrices, or prevent common words from inflating document similarities. It’s pivotal to understand that there’s no one-size-fits-all stopwords list. These lists are usually developed by researchers and tend to be domain-specific. Some words might be redundant for specific research topics but invaluable for others. For instance, feminine pronouns like “she” and “her” are integral when scrutinising partisan bias in abortion debates <span class="citation" data-cites="monroe08intro">(<a href="references.html#ref-monroe08intro" role="doc-biblioref">Monroe and Schrodt 2008</a>)</span>, even though they might appear in many stopwords lists. In another case, the word “will” plays a pivotal role in discerning the temporal direction of a sentence <span class="citation" data-cites="mueller22temporal">(<a href="references.html#ref-mueller22temporal" role="doc-biblioref">Müller 2022</a>)</span>. Applying stopword lists without close inspection may lead to the removal of essential terms, undermining subsequent analysis. It is imperative that researchers critically evaluate which words to retain or exclude.</p>
@@ -523,11 +562,11 @@ div.csl-indent {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Stopword lists often originate from two primary methodologies. The first method involves examining frequent words in text corpora and manually pinpointing non-essential features. The second method leverages automated techniques, like term-frequency-inverse-document-frequency (tf-idf), to detect stopwords <span class="citation" data-cites="sarica21stopwords wilbur92stopwords">(<a href="references.html#ref-sarica21stopwords" role="doc-biblioref">Sarica and Luo 2021</a>; <a href="references.html#ref-wilbur92stopwords" role="doc-biblioref">Wilbur and Sirotkin 1992</a>)</span>. Refer to <a href="17-exploring-frequencies.html"><span>Chapter&nbsp;17</span></a> for an in-depth exploration of strategies to discern both informative and non-informative features.</p>
+<p>Stopword lists often originate from two primary methodologies. The first method involves examining frequent words in text corpora and manually pinpointing non-essential features. The second method leverages automated techniques, like term-frequency-inverse-document-frequency (tf-idf), to detect stopwords <span class="citation" data-cites="sarica21stopwords wilbur92stopwords">(<a href="references.html#ref-sarica21stopwords" role="doc-biblioref">Sarica and Luo 2021</a>; <a href="references.html#ref-wilbur92stopwords" role="doc-biblioref">Wilbur and Sirotkin 1992</a>)</span>. Refer to <a href="17-exploring-frequencies.html" class="quarto-xref"><span>Chapter 17</span></a> for an in-depth exploration of strategies to discern both informative and non-informative features.</p>
 </div>
 </div>
 </div>
-<p><strong>Stemming</strong> and <strong>lemmatisation</strong> serve as strategies to consolidate features. Stemming truncates tokens to their stems. In contrast, lemmatisation transforms a word into its fundamental form. Most stemming methodologies use predefined lists of suffixes and associated rules governing suffix removal. Many languages have these lists readily available. An exemplary rule-based stemming algorithm is the Snowball stemmer, developed by Martin F. Porter <span class="citation" data-cites="porter01snowball">(<a href="references.html#ref-porter01snowball" role="doc-biblioref">Porter 2001</a>)</span>. Lemmatisation, being more nuanced than stemming, ensures that tokens align with their root form. For example, a stemmer might truncate “easily” to “easili” and leave “easier” untouched. In contrast, a lemmatiser would convert both “easily” and “easier” to their root form: “easy”. While stemming in particular, and lemmatisation to a lower degree, are very popular processing step, reducing features to their base forms often does not change substantive results. <span class="citation" data-cites="schofield16stem">Schofield and Mimno (<a href="references.html#ref-schofield16stem" role="doc-biblioref">2016</a>)</span> compare and apply various stemmers before running topic models (<a href="25-ml-topicmodels.html"><span>Chapter&nbsp;25</span></a>). Their careful validation reveals that “stemmers produce no meaningful improvement in likelihood and coherence and in fact can degrade topic stability” <span class="citation" data-cites="schofield16stem">(<a href="references.html#ref-schofield16stem" role="doc-biblioref">Schofield and Mimno 2016</a>: 287)</span>.</p>
+<p><strong>Stemming</strong> and <strong>lemmatisation</strong> serve as strategies to consolidate features. Stemming truncates tokens to their stems. In contrast, lemmatisation transforms a word into its fundamental form. Most stemming methodologies use predefined lists of suffixes and associated rules governing suffix removal. Many languages have these lists readily available. An exemplary rule-based stemming algorithm is the Snowball stemmer, developed by Martin F. Porter <span class="citation" data-cites="porter01snowball">(<a href="references.html#ref-porter01snowball" role="doc-biblioref">Porter 2001</a>)</span>. Lemmatisation, being more nuanced than stemming, ensures that tokens align with their root form. For example, a stemmer might truncate “easily” to “easili” and leave “easier” untouched. In contrast, a lemmatiser would convert both “easily” and “easier” to their root form: “easy”. While stemming in particular, and lemmatisation to a lower degree, are very popular processing step, reducing features to their base forms often does not change substantive results. <span class="citation" data-cites="schofield16stem">Schofield and Mimno (<a href="references.html#ref-schofield16stem" role="doc-biblioref">2016</a>)</span> compare and apply various stemmers before running topic models (<a href="24-ml-topicmodels.html" class="quarto-xref"><span>Chapter 24</span></a>). Their careful validation reveals that “stemmers produce no meaningful improvement in likelihood and coherence and in fact can degrade topic stability” <span class="citation" data-cites="schofield16stem">(<a href="references.html#ref-schofield16stem" role="doc-biblioref">Schofield and Mimno 2016</a>: 287)</span>.</p>
 </section>
 <section id="applications" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="applications"><span class="header-section-number">10.3</span> Applications</h2>
@@ -639,8 +678,8 @@ doc1 :
  [7] "("        ")"        "works"    "."       
 
 doc2 :
-[1] "@"                    "quantedainit"         "and"                 
-[4] "#"                    "textanalysis"         "https://quanteda.org"</code></pre>
+ [1] "@"            "quantedainit" "and"          "#"            "textanalysis"
+ [6] "https"        ":"            "/"            "/"            "quanteda.org"</code></pre>
 </div>
 </div>
 <p>Details on processing steps are provided in the documentation of the tokens function, which can be accessed through the document for <code>tokens()</code> (accessed by typing <code>?tokens</code> into the R console).</p>
@@ -738,62 +777,112 @@ doc2 :
 [4] "https://quanteda.org"</code></pre>
 </div>
 </div>
-<div class="callout-alert" data-appearance="simple">
-<p><strong>NOTE</strong>: We should describe here what the <code>pattern</code>, <code>valuetype</code>, and <code>case_insensitive</code> trio of arguments mean.</p>
+</section>
+</section>
+<section id="pattern-matching" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="pattern-matching"><span class="header-section-number">10.4</span> Pattern Matching</h2>
+<p>Pattern matching is central when compounding or selecting tokens. Let’s consider the following example: we might want to keep only “president”, “president’s” and “presidential” in our tokens object. One option is to use <strong>fixed</strong> pattern matching and only keep the exact matches. We specify the <code>pattern</code>and <code>valuetype</code> in the <code>tokens_select()</code> function and determine whether to treat patterns case-sensitive or case-insensitive.</p>
+<p>Let’s go through this trio systematically. The <code>pattern</code> can be one ore more unigrams or multi-word sequences. When including multi-word sequences, make sure to use the <code>phrase()</code> function as described above. <code>case_insensitive</code> specifies whether or not to ignore the case of terms when matching a pattern. The <code>valuetype</code> can take one of three arguments: <code>"glob"</code> for “glob”-style wildcard expressions; <code>"regex"</code> for regular expressions; or <code>"fixed"</code> for exact matching.</p>
+<p>We start explaining <strong>fixed pattern matching</strong> and the the behaviour of <code>case_insensitive</code> before moving to “glob”-style pattern matching and matching based on regular expressions. We refer readers to <a href="04-r-strings.html" class="quarto-xref"><span>Chapter 4</span></a> and <a href="32-appendix-regex.html" class="quarto-xref"><span>Appendix C</span></a> for details about regular expressions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create tokens object</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>toks_president <span class="ot">&lt;-</span> <span class="fu">tokens</span>(<span class="st">"The President attended the presidential gala</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="st">                         where the president's policies were applauded."</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># fixed (literal) pattern matching</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_keep</span>(toks_president, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"president"</span>, <span class="st">"presidential"</span>,</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"president's"</span>),</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">valuetype =</span> <span class="st">"fixed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "President"    "presidential" "president's" </code></pre>
 </div>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
+</div>
+<p>The default pattern match is <code>case_insentitive = TRUE</code>. Therefore, <code>President</code> remains part of the tokens object even though the pattern includes <code>president</code> in lower-case. We could change this behaviour by setting <code>tokens_keep(x, case_insensitive = FALSE)</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fixed (literal) pattern matching: case-sensitive</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_keep</span>(toks_president, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">"president"</span>, <span class="st">"presidential"</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"president's"</span>),</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">valuetype =</span> <span class="st">"fixed"</span>,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "presidential" "president's" </code></pre>
+</div>
+</div>
+<p>Now only <code>presidential</code> and <code>president's</code> are kept in the tokens object while the term <code>President</code> is not capture since it does not match the term “president” when selecting tokens in a case-sensitive way.</p>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>By default, <code>tokens_select()</code> and the wrappers <code>tokens_remove()</code> and <code>tokens_keep()</code> are case insensitive, meaning the tokens in lowercase and uppercase will be removed if it matches a pattern. If we set <code>case_insensitive</code> to <code>FALSE</code>, the selection is sensitive to the spelling in uppercase or lowercase.</p>
-<p>In the examples above, the tokens <code>A</code> is removed when we set <code>case_insensitive = TRUE</code> but it remains in the tokens object when <code>case_insensitive = FALSE</code>.</p>
+<div class="callout-title-container flex-fill">
+<code>*</code> and <code>?</code>: two “glob”-style matches to rule them all
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pattern matching in quanteda defaults to “glob”-style because it’s simpler than regular expression matching and suffices for the majority of user requirements. Moreover, it aligns with fixed pattern matching when wildcard characters (<code>*</code> and <code>?</code>) aren’t utilised. The implementation in <strong>quanteda</strong> uses <code>*</code> to match any number of any characters including none, and <code>?</code> to match any single character.</p>
+</div>
+</div>
+<p>Let’s take a look at a few examples to explain the behaviour of “glob”-style pattern matching.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stopword removal is case-insensitive</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(txt) <span class="sc">|&gt;</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> my_stopwords, <span class="at">case_insensitive =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match the token "president" and all terms starting with "president"</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens_keep</span>(toks_president, <span class="at">pattern =</span> <span class="st">"president*"</span>,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tokens consisting of 2 documents.
-doc1 :
-[1] "sentence" ","        "showing"  "how"      "tokens"   "("        ")"       
-[8] "works"    "."       
-
-doc2 :
-[1] "@quantedainit"        "and"                  "#textanalysis"       
-[4] "https://quanteda.org"</code></pre>
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "President"    "presidential" "president's" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stopword removal is case-sensitive</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(txt) <span class="sc">|&gt;</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> my_stopwords, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match tokens ending on "ing*</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"buying buy paying pay playing laying lay"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_keep</span>(<span class="at">pattern =</span> <span class="st">"*ing"</span>, <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tokens consisting of 2 documents.
-doc1 :
- [1] "A"        "sentence" ","        "showing"  "how"      "tokens"  
- [7] "("        ")"        "works"    "."       
-
-doc2 :
-[1] "@quantedainit"        "and"                  "#textanalysis"       
-[4] "https://quanteda.org"</code></pre>
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "buying"  "paying"  "playing" "laying" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match tokens starting with "p" and ending on "ing"</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"buying buy paying pay playing laying lay"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_keep</span>(<span class="at">pattern =</span> <span class="st">"p*ing"</span>, <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "paying"  "playing"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match tokens starting with a character followed by "ay"</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"buying buy paying pay playing laying lay"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_keep</span>(<span class="at">pattern =</span> <span class="st">"?ay"</span>, <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "pay" "lay"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># match tokens starting with a character, followed "ay" and none or more characters</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(<span class="st">"buying buy paying pay playing laying lay"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_keep</span>(<span class="at">pattern =</span> <span class="st">"?ay*"</span>, <span class="at">valuetype =</span> <span class="st">"glob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tokens consisting of 1 document.
+text1 :
+[1] "paying" "pay"    "laying" "lay"   </code></pre>
 </div>
 </div>
-</div>
-</div>
-</div>
+<p>If you want to have more control over pattern matches, we recommend regular expressions (<code>valuetype = "regex"</code>), which we explain in more detail in <a href="32-appendix-regex.html" class="quarto-xref"><span>Appendix C</span></a>.</p>
 </section>
-</section>
-<section id="stemming" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="stemming"><span class="header-section-number">10.4</span> Stemming</h2>
+<section id="stemming" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="stemming"><span class="header-section-number">10.5</span> Stemming</h2>
 <p>The <strong>quanteda</strong> packages includes the function <code>tokens_wordstem()</code>, a wrapper around <code>wordStem()</code> from the SnowballC package. The function uses Martin Porter’s <span class="citation" data-cites="porter01snowball">(<a href="references.html#ref-porter01snowball" role="doc-biblioref">Porter 2001</a>)</span> algorithm described above. The example below shows how <code>tokens_wordstem()</code> adjust various words.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example applied to tokens</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">one =</span> <span class="st">"eating eater eaters eats ate"</span>,</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">two =</span> <span class="st">"taxing taxis taxes taxed my tax return"</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create tokens object</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(txt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example applied to tokens</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">one =</span> <span class="st">"eating eater eaters eats ate"</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">two =</span> <span class="st">"taxing taxis taxes taxed my tax return"</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create tokens object</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(txt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 2 documents.
 one :
@@ -802,10 +891,10 @@ one :
 two :
 [1] "taxing" "taxis"  "taxes"  "taxed"  "my"     "tax"    "return"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create tokens object and stem tokens</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>txt <span class="sc">|&gt;</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_wordstem</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create tokens object and stem tokens</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>txt <span class="sc">|&gt;</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_wordstem</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 2 documents.
 one :
@@ -817,20 +906,20 @@ two :
 </div>
 <p>Lemmatisation is more complex than stemming since it does not rely on pre-defined rules. The <strong>spacyr</strong> package allows you to lemmatise a text corpus. We describe lemmatisation in the Advanced section below.</p>
 </section>
-<section id="advanced" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="advanced"><span class="header-section-number">10.5</span> Advanced</h2>
-<section id="applying-different-tokenisers" class="level3" data-number="10.5.1">
-<h3 data-number="10.5.1" class="anchored" data-anchor-id="applying-different-tokenisers"><span class="header-section-number">10.5.1</span> Applying Different Tokenisers</h3>
+<section id="advanced" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="advanced"><span class="header-section-number">10.6</span> Advanced</h2>
+<section id="applying-different-tokenisers" class="level3" data-number="10.6.1">
+<h3 data-number="10.6.1" class="anchored" data-anchor-id="applying-different-tokenisers"><span class="header-section-number">10.6.1</span> Applying Different Tokenisers</h3>
 <p><strong>quanteda</strong> contains several tokenisers, which can be applied in <code>tokens()</code>. Moreover, you can apply tokenisers included in other packages.</p>
 <p>The current default tokeniser is <code>word3</code> included in <strong>quanteda</strong> version 3 and above. For forward compatibility including use of a more advanced tokeniser that will be used in major version 4, there is also a <code>word4</code> tokeniser that is even smarter than the defaults. You can apply the different tokenisers by specifying the <code>word</code> argument in <code>tokens()</code>.</p>
 <p>The <strong>tokenizers</strong> package includes additional tokenisers <span class="citation" data-cites="tokenizers">(<a href="references.html#ref-tokenizers" role="doc-biblioref">Mullen et al. 2018</a>)</span>. These tokenisers can also be applied and transformed to a <strong>quanteda</strong> tokens object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the tokenizers package</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tokenizers)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenisation without processing</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>tokenizers<span class="sc">::</span><span class="fu">tokenize_words</span>(txt) <span class="sc">%&gt;%</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the tokenizers package</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tokenizers)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenisation without processing</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>tokenizers<span class="sc">::</span><span class="fu">tokenize_words</span>(txt) <span class="sc">%&gt;%</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 2 documents.
 one :
@@ -839,9 +928,9 @@ one :
 two :
 [1] "taxing" "taxis"  "taxes"  "taxed"  "my"     "tax"    "return"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenisation with processing in both functions</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>tokenizers<span class="sc">::</span><span class="fu">tokenize_words</span>(txt, <span class="at">lowercase =</span> <span class="cn">FALSE</span>, <span class="at">strip_punct =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_symbols =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenisation with processing in both functions</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>tokenizers<span class="sc">::</span><span class="fu">tokenize_words</span>(txt, <span class="at">lowercase =</span> <span class="cn">FALSE</span>, <span class="at">strip_punct =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_symbols =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 2 documents.
 one :
@@ -852,37 +941,31 @@ two :
 </div>
 </div>
 </section>
-<section id="lemmatisation" class="level3" data-number="10.5.2">
-<h3 data-number="10.5.2" class="anchored" data-anchor-id="lemmatisation"><span class="header-section-number">10.5.2</span> Lemmatisation</h3>
+<section id="lemmatisation" class="level3" data-number="10.6.2">
+<h3 data-number="10.6.2" class="anchored" data-anchor-id="lemmatisation"><span class="header-section-number">10.6.2</span> Lemmatisation</h3>
 <p>While stemming works directly in <strong>quanteda</strong> using <code>tokens_wordstem()</code>, lemmatisation, i.e., changing tokens to its base form, requires different packages. You can use the <strong>spacyr</strong> package, a wrapper around the <strong>spaCy</strong> Python library, to lemmatise a <strong>quanteda</strong> tokens object. Note that you will need to install Python and a virtual environment to use the <strong>spaCy</strong> package.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load spacyr package</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"spacyr"</span>)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use spacy_install() to install spacy in a new or existing</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co"># virtual environment. Check ?spacy_install() for details</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># initialise and use English language model</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="fu">spacy_initialize</span>(<span class="at">model =</span> <span class="st">"en_core_web_sm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load spacyr package</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"spacyr"</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use spacy_install() to install spacy in a new or existing</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co"># virtual environment. Check ?spacy_install() for details</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co"># initialise and use English language model</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="fu">spacy_initialize</span>(<span class="at">model =</span> <span class="st">"en_core_web_sm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Found 'spacy_condaenv'. spacyr will use this environment</code></pre>
+<pre><code>successfully initialized (spaCy Version: 3.7.2, language model: en_core_web_sm)</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>successfully initialized (spaCy Version: 3.6.1, language model: en_core_web_sm)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>(python options: type = "condaenv", value = "spacy_condaenv")</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>txt_compare <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">one =</span> <span class="st">"The cats are running quickly."</span>,</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">two =</span> <span class="st">"The geese were flying overhead."</span></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co"># parse texts, return, part-of-speech and lemma</span></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>toks_spacy <span class="ot">&lt;-</span> <span class="fu">spacy_parse</span>(txt_compare, <span class="at">pos =</span> <span class="cn">TRUE</span>, <span class="at">lemma =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co"># show first 10 tokens, which are stored as a data frame</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(toks_spacy, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>txt_compare <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">one =</span> <span class="st">"The cats are running quickly."</span>,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">two =</span> <span class="st">"The geese were flying overhead."</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co"># parse texts, return, part-of-speech and lemma</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>toks_spacy <span class="ot">&lt;-</span> <span class="fu">spacy_parse</span>(txt_compare, <span class="at">pos =</span> <span class="cn">TRUE</span>, <span class="at">lemma =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="co"># show first 10 tokens, which are stored as a data frame</span></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(toks_spacy, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   doc_id sentence_id token_id   token   lemma   pos entity
 1     one           1        1     The     the   DET       
@@ -896,8 +979,8 @@ two :
 9     two           1        3    were      be   AUX       
 10    two           1        4  flying     fly  VERB       </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform object to a quanteda tokens object and use lemma</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.tokens</span>(toks_spacy, <span class="at">use_lemma =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform object to a quanteda tokens object and use lemma</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.tokens</span>(toks_spacy, <span class="at">use_lemma =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 2 documents.
 one :
@@ -906,10 +989,10 @@ one :
 two :
 [1] "the"      "geese"    "be"       "fly"      "overhead" "."       </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare with Snowball stemmer</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>txt_compare <span class="sc">|&gt;</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_wordstem</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare with Snowball stemmer</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>txt_compare <span class="sc">|&gt;</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>() <span class="sc">|&gt;</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_wordstem</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 2 documents.
 one :
@@ -918,39 +1001,41 @@ one :
 two :
 [1] "The"      "gees"     "were"     "fli"      "overhead" "."       </code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># finalise spaCy and terminate Python process to free up memory</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">spacy_finalize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The code above highlights the differences between stemming and lemmatisation. Stemming can truncate words, resulting in non-real words. Lemmatisation reduces words to their canonical, valid form. The word <code>flying</code> is stemmed to <code>fli</code>, while the lemmatiser changes the word to its base form, <code>fly</code>.</p>
 </section>
-<section id="modifying-stopword-lists" class="level3" data-number="10.5.3">
-<h3 data-number="10.5.3" class="anchored" data-anchor-id="modifying-stopword-lists"><span class="header-section-number">10.5.3</span> Modifying Stopword Lists</h3>
+<section id="modifying-stopword-lists" class="level3" data-number="10.6.3">
+<h3 data-number="10.6.3" class="anchored" data-anchor-id="modifying-stopword-lists"><span class="header-section-number">10.6.3</span> Modifying Stopword Lists</h3>
 <p>In many cases, you might want to use an existing stopword list but remove or add certain features. You can use <strong>quanteda</strong>’s <code>char_remove()</code> and base R’s <code>c()</code> function to remove or add features. The examples below show how to remove features from the default English stopword list.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if "will" is included in default stopword list</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="st">"will"</span> <span class="sc">%in%</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if "will" is included in default stopword list</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="st">"will"</span> <span class="sc">%in%</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove "will" and store output as new stopword list</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>stopw_reduced <span class="ot">&lt;-</span> <span class="fu">char_remove</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>), <span class="at">pattern =</span> <span class="st">"will"</span>)</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check whether "will" was removed</span></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="st">"will"</span> <span class="sc">%in%</span> stopw_reduced</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove "will" and store output as new stopword list</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>stopw_reduced <span class="ot">&lt;-</span> <span class="fu">char_remove</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>), <span class="at">pattern =</span> <span class="st">"will"</span>)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check whether "will" was removed</span></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="st">"will"</span> <span class="sc">%in%</span> stopw_reduced</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 <p>We use <code>c()</code> from base R to add words to stopword lists. For example, the feature <code>further</code> is included in the default English stopword list, but <code>furthermore</code> and <code>therefore</code> are not included. Let’s add both terms.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if terms are included in stopword list</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"furthermore"</span>, <span class="st">"therefore"</span>) <span class="sc">%in%</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if terms are included in stopword list</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"furthermore"</span>, <span class="st">"therefore"</span>) <span class="sc">%in%</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extend stopword list</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>stop_extended <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>), <span class="st">"furthermore"</span>, <span class="st">"therefore"</span>)</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check the last parts of the character vector</span></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(stop_extended)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extend stopword list</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>stop_extended <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>), <span class="st">"furthermore"</span>, <span class="st">"therefore"</span>)</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check the last parts of the character vector</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(stop_extended)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "than"        "too"         "very"        "will"        "furthermore"
 [6] "therefore"  </code></pre>
@@ -958,20 +1043,20 @@ two :
 </div>
 <p>As discussed above, tokenisation and processing involves many steps, and we can combine these steps using the base R pipe (<code>|&gt;</code>). The example below shows a typical workflow.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise data_corpus_inaugural,</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># remove punctuation and numbers,</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co"># remove stopwords,</span></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co"># stem the tokens,</span></span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and transform object to lowercase</span></span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>toks_inaugural <span class="ot">&lt;-</span> data_corpus_inaugural <span class="sc">|&gt;</span></span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>, <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_wordstem</span>() <span class="sc">|&gt;</span></span>
-<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_tolower</span>()</span>
-<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect first tokens from the first two speeches</span></span>
-<span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(toks_inaugural, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise data_corpus_inaugural,</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co"># remove punctuation and numbers,</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co"># remove stopwords,</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># stem the tokens,</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and transform object to lowercase</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>toks_inaugural <span class="ot">&lt;-</span> data_corpus_inaugural <span class="sc">|&gt;</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens</span>(<span class="at">remove_punct =</span> <span class="cn">TRUE</span>, <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_wordstem</span>() <span class="sc">|&gt;</span></span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_tolower</span>()</span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect first tokens from the first two speeches</span></span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(toks_inaugural, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 2 documents and 4 docvars.
 1789-Washington :
@@ -994,22 +1079,22 @@ two :
 <div class="callout-body-container">
 <p>The sequence of processing steps during the tokensation is important. For example, if we first stem our tokens and remove stopwords or specific patterns afterwards, we might not remove all desired features. Consider the following example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="st">"During my stay in London I visited the museum</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="st">and attended a very good concert."</span></span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remove stopwords before stemming tokens</span></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(txt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_wordstem</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="st">"During my stay in London I visited the museum</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="st">and attended a very good concert."</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remove stopwords before stemming tokens</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(txt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_wordstem</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 1 document.
 text1 :
 [1] "stay"    "London"  "visit"   "museum"  "attend"  "good"    "concert"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stem tokens before removing stopwords</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(txt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_wordstem</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stem tokens before removing stopwords</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tokens</span>(txt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_wordstem</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tokens_remove</span>(<span class="fu">stopwords</span>(<span class="st">"en"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Tokens consisting of 1 document.
 text1 :
@@ -1022,20 +1107,20 @@ text1 :
 </div>
 </div>
 </section>
-<section id="managing-document-level-variables-and-metadata" class="level3" data-number="10.5.4">
-<h3 data-number="10.5.4" class="anchored" data-anchor-id="managing-document-level-variables-and-metadata"><span class="header-section-number">10.5.4</span> Managing Document-Level Variables and Metadata</h3>
-<p>By default, tokens object contain the document-level variables and the metadata assigned to your corpus. You can access or modify these variables in the same way as we did in <a href="09-quanteda-corpus.html"><span>Chapter&nbsp;9</span></a>.</p>
+<section id="managing-document-level-variables-and-metadata" class="level3" data-number="10.6.4">
+<h3 data-number="10.6.4" class="anchored" data-anchor-id="managing-document-level-variables-and-metadata"><span class="header-section-number">10.6.4</span> Managing Document-Level Variables and Metadata</h3>
+<p>By default, tokens object contain the document-level variables and the metadata assigned to your corpus. You can access or modify these variables in the same way as we did in <a href="09-quanteda-corpus.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise US inaugural speeches</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>toks_inaugural <span class="ot">&lt;-</span> <span class="fu">tokens</span>(data_corpus_inaugural)</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add document level variable</span></span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>toks_inaugural<span class="sc">$</span>post_1990 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>    toks_inaugural<span class="sc">$</span>Year <span class="sc">&gt;</span> <span class="dv">1990</span>, <span class="st">"Post-1990"</span>, <span class="st">"Pre-1990"</span></span>
-<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect new document-level variable</span></span>
-<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(toks_inaugural<span class="sc">$</span>post_1990)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenise US inaugural speeches</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>toks_inaugural <span class="ot">&lt;-</span> <span class="fu">tokens</span>(data_corpus_inaugural)</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add document level variable</span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>toks_inaugural<span class="sc">$</span>post_1990 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>    toks_inaugural<span class="sc">$</span>Year <span class="sc">&gt;</span> <span class="dv">1990</span>, <span class="st">"Post-1990"</span>, <span class="st">"Pre-1990"</span></span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect new document-level variable</span></span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(toks_inaugural<span class="sc">$</span>post_1990)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Post-1990  Pre-1990 
@@ -1044,8 +1129,8 @@ Post-1990  Pre-1990
 </div>
 </section>
 </section>
-<section id="further-reading" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">10.6</span> Further Reading</h2>
+<section id="further-reading" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">10.7</span> Further Reading</h2>
 <ul>
 <li>The concept of tokenisation and how to build a custom tokeniser: <span class="citation" data-cites="hvitfeldt21ml">Hvitfeldt and Silge (<a href="references.html#ref-hvitfeldt21ml" role="doc-biblioref">2021</a>, ch.&nbsp;2)</span></li>
 <li>The intuition behind processing and tokenising texts: <span class="citation" data-cites="grimmer22textasdata">Grimmer, Roberts, and Stewart (<a href="references.html#ref-grimmer22textasdata" role="doc-biblioref">2022</a>, ch.&nbsp;5.3)</span></li>
@@ -1053,12 +1138,12 @@ Post-1990  Pre-1990
 <li>How processing decisions can influence results: <span class="citation" data-cites="denny18preprocess">Denny and Spirling (<a href="references.html#ref-denny18preprocess" role="doc-biblioref">2018</a>)</span></li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.8</span> Exercises</h2>
 <p>Add some here.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-denny18preprocess" class="csl-entry" role="listitem">
 Denny, Matthew W., and Arthur Spirling. 2018. <span>“Text Preprocessing for Unsupervised Learning: Why It Matters, When It Misleads, and What to Do about It.”</span> <em>Political Analysis</em> 26 (2): 168–89. <a href="https://doi.org/10.1017/pan.2017.44">https://doi.org/10.1017/pan.2017.44</a>.
 </div>
@@ -1094,7 +1179,7 @@ Wilbur, W. John, and Karl Sirotkin. 1992. <span>“The Automatic Identification 
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Detailed instructions are provided at <a href="http://spacyr.quanteda.io">http://spacyr.quanteda.io</a> and <a href="29-appendix-installation.html"><span>Appendix&nbsp;A</span></a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Detailed instructions are provided at <a href="http://spacyr.quanteda.io">http://spacyr.quanteda.io</a> and <a href="30-appendix-installation.html" class="quarto-xref"><span>Appendix A</span></a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1178,10 +1263,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1191,8 +1275,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1205,6 +1298,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1248,6 +1460,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1273,6 +1486,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1334,12 +1573,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./09-quanteda-corpus.html" class="pagination-link">
+      <a href="./09-quanteda-corpus.html" class="pagination-link  aria-label=" &lt;span="" and="" managing="" corpora&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating and Managing Corpora</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./11-quanteda-tokensadvanced.html" class="pagination-link">
+      <a href="./11-quanteda-tokensadvanced.html" class="pagination-link" aria-label="<span class='chapter-number'>11</span>&nbsp; <span class='chapter-title'>Advanced Token Manipulation</span>">
         <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Advanced Token Manipulation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1348,4 +1587,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/quanteda/Text-Analysis-Using-R/edit/main/10-quanteda-tokens.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
